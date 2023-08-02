@@ -1,0 +1,21 @@
+{
+  "name": "muzzik-site",
+  "version": "2.0.0",
+  "description": "muzzik 的个人站点，包含教程，笔记，以及部分产品的文档，api",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "docs:build": "vuepress build src",
+    "docs:clean-dev": "vuepress dev src --clean-cache",
+    "docs:dev": "vuepress dev src",
+    "docs:update-package": "pnpm dlx vp-update"
+  },
+  "devDependencies": {
+    "@vuepress/client": "2.0.0-beta.66",
+    "@vuepress/utils": "2.0.0-alpha.1",
+    "vue": "^3.2.47",
+    "vuepress": "2.0.0-beta.66",
+    "vuepress-plugin-components": "2.0.0-beta.234",
+    "vuepress-theme-hope": "2.0.0-beta.234"
+  }
+}
