@@ -1,6 +1,7 @@
 ---
 icon: people
 cover: /assets/images/intro.png
+sidebar: false
 ---
 
 # Muzzik

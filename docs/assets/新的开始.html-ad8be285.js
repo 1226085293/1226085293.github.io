@@ -1,0 +1,1 @@
+import{_ as t,o as a,c as _,a as e,b as c}from"./app-1811df69.js";const o={},r=e("h1",{id:"新的开始",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#新的开始","aria-hidden":"true"},"#"),c(" 新的开始")],-1),s=[r];function n(d,i){return a(),_("div",null,s)}const l=t(o,[["render",n],["__file","新的开始.html.vue"]]);export{l as default};

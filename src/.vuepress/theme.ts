@@ -19,7 +19,12 @@ export default hopeTheme(
 
 		// 关键词: "iconfont", "iconify", "fontawesome", "fontawesome-with-brands"
 		// iconAssets: "iconfont",
-		iconAssets: "//at.alicdn.com/t/c/font_4195463_b2v4azqrd4v.css",
+		iconAssets: [
+			// MKSite
+			"//at.alicdn.com/t/c/font_4195463_84qmrzqh6z8.css",
+			// MKSite-Demo
+			"//at.alicdn.com/t/c/font_4195520_3xkr974lpxe.css",
+		],
 		iconPrefix: "",
 
 		logo: "/logo.svg",

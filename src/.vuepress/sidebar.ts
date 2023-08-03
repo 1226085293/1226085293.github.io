@@ -12,12 +12,18 @@ export default sidebar({
 		// },
 		{
 			text: "文章",
-			icon: "book",
-			prefix: "posts/",
+			prefix: "博客/",
+			icon: "shuji1",
 			children: "structure",
-			// activeMatch: "^/posts/strawberry/$",
 		},
-		"intro",
+		// {
+		// 	text: "博客编写",
+		// 	prefix: "博客/博客编写/",
+		// 	icon: "bianxie1",
+		// 	children: "structure",
+		// 	collapsible: true,
+		// },
+		// "intro",
 		// "slides",
 	],
 });
