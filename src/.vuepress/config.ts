@@ -18,6 +18,9 @@ export default defineUserConfig({
 			"./components/BlogHero.vue"
 		),
 	},
+
+	// 构建输出目录
+	dest: "docs",
 	// Enable it with pwa
 	// shouldPrefetch: false,
 });
