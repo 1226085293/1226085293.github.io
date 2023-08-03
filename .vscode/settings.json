@@ -1,0 +1,7 @@
+{
+	// 搜索排除
+	"search.exclude": {
+		"**/node_modules": true,
+		"docs/": true
+	}
+}
