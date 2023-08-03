@@ -12,12 +12,15 @@ export default hopeTheme(
 		hostname: "https://mister-hope.github.io",
 
 		author: {
-			name: "Mr.Hope",
-			url: "https://mister-hope.com",
+			name: "muzzik",
+			// url: "https://mister-hope.com",
+			email: "1226085293@qq.com",
 		},
 
 		// 关键词: "iconfont", "iconify", "fontawesome", "fontawesome-with-brands"
-		iconAssets: "iconfont",
+		// iconAssets: "iconfont",
+		iconAssets: "//at.alicdn.com/t/c/font_4195463_5suxq71d6ag.css",
+		iconPrefix: "",
 
 		logo: "/logo.svg",
 

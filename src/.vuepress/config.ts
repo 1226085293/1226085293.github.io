@@ -6,7 +6,7 @@ export default defineUserConfig({
 	base: "/",
 
 	lang: "zh-CN",
-	title: "马赛克的网站",
+	title: "MKSite",
 	description: "你好，欢迎来到这个刚建立的网站",
 
 	theme,

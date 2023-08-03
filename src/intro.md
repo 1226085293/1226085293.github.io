@@ -1,6 +1,6 @@
 ---
 icon: people
-cover: /assets/images/intro.jpg
+cover: /assets/images/intro.png
 ---
 
 # Muzzik
