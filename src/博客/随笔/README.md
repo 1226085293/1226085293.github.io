@@ -2,7 +2,8 @@
 title: 随笔
 text: 目录
 # 这是侧边栏的顺序
-order: 1
+dir:
+  order: 0
 index: true
 icon: laptop-code
 category:

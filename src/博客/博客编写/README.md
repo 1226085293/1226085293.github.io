@@ -1,8 +1,9 @@
 ---
 title: 博客编写
 # 这是侧边栏的顺序
-order: 5
-index: true
+dir:
+  order: 999
+index: false
 icon: laptop-code
 category:
   - 博客编写

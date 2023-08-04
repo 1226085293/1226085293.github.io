@@ -7,32 +7,31 @@ const MR_HOPE_AVATAR =
 
 export default hopeTheme(
 	{
+		// 纯净模式
 		pure: true,
-
+		// 网站域名
 		hostname: "https://mister-hope.github.io",
-
+		// 作者信息
 		author: {
 			name: "muzzik",
 			// url: "https://mister-hope.com",
 			email: "1226085293@qq.com",
 		},
 
-		// 关键词: "iconfont", "iconify", "fontawesome", "fontawesome-with-brands"
-		// iconAssets: "iconfont",
+		// icon: "iconfont", "iconify", "fontawesome", "fontawesome-with-brands"
 		iconAssets: [
 			// MKSite
 			"//at.alicdn.com/t/c/font_4195463_84qmrzqh6z8.css",
 			// MKSite-Demo
 			"//at.alicdn.com/t/c/font_4195520_3xkr974lpxe.css",
 		],
+		// icon 前缀
 		iconPrefix: "",
-
+		// login
 		logo: "/logo.svg",
-
+		// 仓库链接
 		repo: "vuepress-theme-hope/vuepress-theme-hope",
-
 		docsDir: "src",
-
 		// navbar
 		navbar,
 		// 导航栏布局
@@ -90,7 +89,7 @@ export default hopeTheme(
 
 		encrypt: {
 			config: {
-				"/demo/encrypt.html": ["1234"],
+				"/博客/博客编写/encrypt.html": ["1234"],
 			},
 		},
 
