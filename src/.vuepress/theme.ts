@@ -40,6 +40,8 @@ export default hopeTheme(
 			center: [],
 			end: ["Language", "Repo", "Outlook", "Search"],
 		},
+		// 全屏按钮
+		fullscreen: true,
 
 		// sidebar
 		sidebar,
@@ -101,17 +103,21 @@ export default hopeTheme(
 		plugins: {
 			blog: true,
 
+			// 评论插件配置
 			comment: {
 				// You should generate and use your own comment service
-				provider: "Waline",
-				serverURL: "https://waline-comment.vuejs.press",
+				provider: "Giscus",
+				repo: "1226085293/1226085293.github.io",
+				repoId: "R_kgDOJ6pmwg",
+				category: "General",
+				categoryId: "DIC_kwDOJ6pmws4CX20J",
 			},
-
 			// all features are enabled for demo, only preserve features you need here
 			mdEnhance: {
 				align: true,
 				attrs: true,
 				chart: true,
+				card: true,
 				codetabs: true,
 				demo: true,
 				echarts: true,

@@ -2,6 +2,8 @@
 title: 幻灯片页
 icon: person-chalkboard
 layout: Slide
+article: false
+timeline: false
 ---
 
 <!-- markdownlint-disable MD024 MD033 MD051 -->

@@ -2,6 +2,8 @@
 title: Markdown 展示
 icon: fab fa-markdown
 order: 2
+article: false
+timeline: false
 category:
   - 博客编写
 tag:

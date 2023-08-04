@@ -1,5 +1,7 @@
 ---
 icon: lock
+article: false
+timeline: false
 category:
   - 博客编写
 tag:

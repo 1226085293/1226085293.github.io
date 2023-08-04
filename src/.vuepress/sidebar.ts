@@ -11,21 +11,6 @@ export default sidebar({
 		//   children: "structure",
 		// },
 	],
-	"/博客/": [
-		"",
-		{
-			text: "随笔",
-			prefix: "随笔/",
-			icon: "shuji1",
-			children: "structure",
-			collapsible: true,
-		},
-		{
-			text: "博客编写",
-			prefix: "博客编写/",
-			icon: "bianxie1",
-			children: "structure",
-			collapsible: true,
-		},
-	],
+	"/博客/": "structure",
+	"/MK框架/": "structure",
 });
