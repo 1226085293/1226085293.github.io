@@ -1,6 +1,5 @@
 ---
-title: 随笔
-icon: shuji1
+title: CocosCreator
 article: false
 timeline: false
 dir:
