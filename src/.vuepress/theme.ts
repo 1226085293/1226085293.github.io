@@ -21,12 +21,12 @@ export default hopeTheme(
 		// icon: "iconfont", "iconify", "fontawesome", "fontawesome-with-brands"
 		iconAssets: [
 			// MKSite
-			"//at.alicdn.com/t/c/font_4195463_84qmrzqh6z8.css",
+			"//at.alicdn.com/t/c/font_4195463_8hx246qyb0y.css",
 			// MKSite-Demo
-			"//at.alicdn.com/t/c/font_4195520_3xkr974lpxe.css",
+			"//at.alicdn.com/t/c/font_4195520_gc4uunkm9ru.css",
 		],
 		// icon 前缀
-		iconPrefix: "",
+		iconPrefix: "iconfont ",
 		// login
 		logo: "/logo.svg",
 		// 仓库链接
