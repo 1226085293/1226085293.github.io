@@ -21,6 +21,9 @@ export default defineUserConfig({
 
 	// 构建输出目录
 	dest: "docs",
+
+	// 描述要附加到的标签<head> tag
+	head: [["meta", { name: "referrer", content: "no-referrer" }]],
 	// Enable it with pwa
 	// shouldPrefetch: false,
 });

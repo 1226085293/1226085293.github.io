@@ -1,0 +1,20 @@
+---
+title: 分享一个 WebGL 引导式教学的网站
+# 时间
+date: 2021-09-28 17:59:00
+# 分类
+category:
+  - 笔记
+  - 图形学
+# 标签
+tag:
+  - WebGL
+---
+
+<!-- more -->
+
+![](https://forum.cocos.org/uploads/default/optimized/3X/4/8/484699682e226eec134d956f26cfd65658401fb9_2_588x499.png =588x499)
+
+![](https://forum.cocos.org/uploads/default/optimized/3X/f/8/f84be747d3b0104e5157608b09596bcab465c2e7_2_690x479.png =690x479)
+
+<a href="http://www.webglacademy.com/" class="onebox" target="_blank">http://www.webglacademy.com/</a>

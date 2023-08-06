@@ -5,46 +5,48 @@ date: 2022-04-15 18:40:00
 # 分类
 category:
   - 文章
+  - 图形学
   - 虚拟现实
 # 标签
 tag:
-  - 代码编辑器
+  - VR
 ---
 
 <!-- more -->
 
-![](https://forum.cocos.org/uploads/default/original/3X/5/1/510bf2e6d602bab436b24578dc316970a9356a7a.gif)
+![](https://forum.cocos.org/uploads/default/optimized/3X/5/1/510bf2e6d602bab436b24578dc316970a9356a7a_2_690x346.gif =690x346)
 
-# 前言
+# # 前言
 
-相信当年 VR 刚出的时候大家都体验过吧?这里就用 cocos 的后处理来实现 VR 效果
+_相信当年 VR 刚出的时候大家都体验过吧？这里就用 cocos 的后处理来实现 VR 效果_
+从其他的 VR 应用可以看出来，手机 VR 画面是由 _左右两个相同的类似老电视机画面组成_
+那么就从这里入手，去逛了下 [shadertoy](https://www.shadertoy.com/)，果然找到一个类似的 [效果](https://www.shadertoy.com/view/4sf3Dr)，然后搬到了 creator 里面，接下来我们看看是 VR 效果具体如何实现的
 
-从其他的 VR 应用可以看出来,手机 VR 画面是由 **左右两个相同的类似老电视机画面组成** 的(其实是我没找到关于手机 VR 展示的资料...)
+# # 实现
 
-那么就从这里入手,去逛了下 shadertoy,果然找到一个类似的 [效果](https://www.shadertoy.com/view/4sf3Dr),然后搬到了 creator 里面,接下来我们看看是 VR 效果具体如何实现的
+### 1. 把屏幕分成两块
 
-# 实现
+uv 坐标范围：0-1
+这里我们需要对 uv 进行处理，思路很简单，我们把半块屏幕当作 uv 的实际坐标范围，也就是 (0 ~ 0.5) 和 (0.5 ~ 1.0)
 
-## 1. 把屏幕分成两块
-
-uv 坐标范围:0-1
-
-这里我们需要对 uv 进行处理,思路很简单,我们把半块屏幕当作 uv 的实际坐标范围,也就是 (0 ~ 0.5) 和 (0.5 ~ 1.0)
 一句代码搞定
 
-```glsl
+```auto
 vec2 v_uv2 = mod(v_uv * 2.0, 1.0);
 ```
 
-![分割后的 UV ](https://forum.cocos.org/uploads/default/original/3X/8/2/825a6edc015fc29cc48177b77eb8c0b13cb7a819.png)
+_效果：_
 
-看到了输出结果,这句代码不仅把左右分成了两边,上下也是,那么我们怎么处理呢?
-也很简单
+![](https://forum.cocos.org/uploads/default/original/3X/8/2/825a6edc015fc29cc48177b77eb8c0b13cb7a819.png =500x334)
 
-- **uv.y 坐标移动到中间,也就是 +0.25**
-- **过滤掉多余画面**
+> 看到了输出结果，这句代码不仅把左右分成了两边，上下也是，那么我们怎么处理呢？
+>
+> 也很简单
 
-```glsl
+- _uv.y 坐标移动到中间，也就是 +0.25_
+- _过滤掉多余画面_
+
+```auto
     // uv 居中
     vec2 v_uv2 = vec2(v_uv.x, v_uv.y + 0.25);
     // uv 分块
@@ -55,20 +57,20 @@ vec2 v_uv2 = mod(v_uv * 2.0, 1.0);
     }
 ```
 
-![分割后效果](https://forum.cocos.org/uploads/default/original/3X/b/c/bc53695196af912578319b13fa9e012a638d15da.png)
+_效果：_
 
-不戳不戳有那味了~
+![](https://forum.cocos.org/uploads/default/original/3X/b/c/bc53695196af912578319b13fa9e012a638d15da.png =500x287)
 
-## 2. 添加 CRT 老电视效果
+### 2. 添加 CRT 老电视效果
 
-如果红色框是我们最开始界面,那我们的需求是:
+![](https://forum.cocos.org/uploads/default/original/3X/2/b/2b05cdc6f426cef223a126872c2c684ceadbae26.png =413x297)
+如果红色框是我们最开始界面，那我们的需求是：
 
-- uv.x 在(0 ~ 0.5)从大到小递增,在(0.5 ~ 1.0)从小到大递减
-- uv.y 在(0 ~ 0.5)从大到小递增,在(0.5 ~ 1.0)从小到大递减
+- uv.x 在（0 ~ 0.5）从大到小递增，在（0.5 ~ 1.0）从小到大递减
+- uv.y 在（0 ~ 0.5）从大到小递增，在（0.5 ~ 1.0）从小到大递减
+  上 <img src="https://forum.cocos.org/images/emoji/twitter/racehorse.png?v=9" title=":racehorse:" class="emoji" alt=":racehorse:">
 
-上 🚴
-
-```cpp
+```auto
 vec2 post_process_crt(vec2 uv_pos_v2_, float bend_f_) {
 	// -1.0 ~ 1.0
 	uv_pos_v2_ = (uv_pos_v2_ - 0.5) * 2.0;
@@ -89,27 +91,28 @@ vec2 post_process_crt(vec2 uv_pos_v2_, float bend_f_) {
 }
 ```
 
-**参考图:**
+_参考图：_
 
-- **x 为 递增的 vec2, t 为递增的 number**  
-  ![x 值图示](https://forum.cocos.org/uploads/default/original/3X/2/b/2b7c32418260f9ec7e226495f339366030b66400.png)
+- _x 为 递增的 vec2， t 为递增的 number_
 
-- **固定 y 后的 x 值**  
-  ![固定 y 后的 x 值](https://forum.cocos.org/uploads/default/original/3X/e/d/ed03ed41d5e5a90eccfe25010b820386093e3dfb.png)
+![](https://forum.cocos.org/uploads/default/original/3X/2/b/2b7c32418260f9ec7e226495f339366030b66400.png =690x312)
 
-- **固定 x 后的 y 值**  
-  ![固定 x 后的 y 值](https://forum.cocos.org/uploads/default/original/3X/9/a/9a14e29cc9e62038ad10b24ef8bf60f796be3f87.png)
+- _固定 y 后的 x 值_
 
-## 3. 最终输出
+![](https://forum.cocos.org/uploads/default/original/3X/e/d/ed03ed41d5e5a90eccfe25010b820386093e3dfb.png =690x289)
 
-![最终效果图示](https://forum.cocos.org/uploads/default/original/3X/d/5/d5ddb94d7985c817b7951d09bc17d1d354af6a03.png)
+- _固定 x 后的 y 值_
 
-至此完成我们的目标, 下班前赶稿,写的不好见谅
+![](https://forum.cocos.org/uploads/default/original/3X/9/a/9a14e29cc9e62038ad10b24ef8bf60f796be3f87.png =690x317)
 
-# 结语
+### 3. 最终输出
 
-**demo**: [github 链接](https://github.com/1226085293/mk_cocos_vr.git)
+![](https://forum.cocos.org/uploads/default/original/3X/d/5/d5ddb94d7985c817b7951d09bc17d1d354af6a03.png =500x238)
+_至此完成我们的目标_
 
-打开项目后请在 项目-> 项目设置 - >项目数据- > 更换渲染管线为 builtin-deferred2.rpp
+# # 结语
 
-由于目前 cocos 版本渲染管线对后处理的支持并不好, 我是修改的 web 端渲染管线实现的,所以更加推荐通过 renderTexture 方式实现。可以参考另外一篇帖子
+_demo_： [github 链接](https://github.com/1226085293/mk_cocos_vr.git)
+
+_打开项目后请在 项目-> 项目设置 -> 项目数据 -> 更换渲染管线为 builtin-deferred2.rpp_
+由于目前 cocos 版本渲染管线对后处理的支持并不好， 我是修改的 web 端渲染管线实现的，所以更加推荐通过 renderTexture 方式实现。可以参考另外一篇帖子[基于 renderTexture 的屏幕后期渲染|社区征文](https://forum.cocos.org/t/topic/134418)
