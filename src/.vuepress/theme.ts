@@ -37,8 +37,8 @@ export default hopeTheme(
 		// 导航栏布局
 		navbarLayout: {
 			start: ["Brand", "Links"],
-			center: [],
-			end: ["Language", "Repo", "Outlook", "Search"],
+			center: ["Search"],
+			end: ["Language", "Repo", "Outlook"],
 		},
 		// 全屏按钮
 		fullscreen: true,
