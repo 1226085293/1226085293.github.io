@@ -28,9 +28,9 @@ export default hopeTheme(
 		// icon 前缀
 		iconPrefix: "iconfont ",
 		// login
-		logo: "/logo.svg",
+		logo: "/logo.png",
 		// 仓库链接
-		repo: "vuepress-theme-hope/vuepress-theme-hope",
+		repo: "1226085293/1226085293.github.io/tree/dev",
 		docsDir: "src",
 		// navbar
 		navbar,
@@ -46,12 +46,14 @@ export default hopeTheme(
 		// sidebar
 		sidebar,
 
-		footer: "默认页脚",
+		footer: "来自 vuepress",
 
 		displayFooter: true,
 
 		blog: {
-			description: "muzzik",
+			avatar: "/logo.png",
+			description:
+				"游戏程序员，目前使用 CocosCreator 引擎，点击头像查看详细介绍",
 			intro: "/intro.html",
 			medias: {
 				// Baidu: "https://example.com",
