@@ -30,7 +30,7 @@ export default hopeTheme(
 		// login
 		logo: "/logo.png",
 		// 仓库链接
-		repo: "1226085293/1226085293.github.io/tree/dev",
+		repo: "1226085293/1226085293.github.io",
 		docsDir: "src",
 		// navbar
 		navbar,
