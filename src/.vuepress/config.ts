@@ -2,6 +2,7 @@ import { defineUserConfig } from "vuepress";
 import theme from "./theme.js";
 import { path } from "@vuepress/utils";
 import { searchProPlugin } from "vuepress-plugin-search-pro";
+import { autoCatalogPlugin } from "vuepress-plugin-auto-catalog";
 
 export default defineUserConfig({
 	base: "/",
@@ -26,6 +27,19 @@ export default defineUserConfig({
 	// 描述要附加到的标签<head> tag
 	head: [["meta", { name: "referrer", content: "no-referrer" }]],
 	plugins: [
+		// 自动目录
+		autoCatalogPlugin({
+			orderGetter(page) {
+				let dir_config = page.frontmatter.dir as any;
+
+				if (dir_config?.index) {
+					return dir_config.order;
+				}
+
+				return -new Date(page.date).getTime();
+			},
+		}),
+		// 搜索框
 		searchProPlugin({
 			// 索引全部内容
 			indexContent: true,

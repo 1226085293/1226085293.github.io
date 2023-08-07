@@ -51,7 +51,7 @@ export default hopeTheme(
 		displayFooter: true,
 
 		blog: {
-			avatar: "/logo.png",
+			avatar: "/head.png",
 			description:
 				"游戏程序员，目前使用 CocosCreator 引擎，点击头像查看详细介绍",
 			intro: "/intro.html",
@@ -212,6 +212,24 @@ export default hopeTheme(
 			//     ],
 			//   },
 			// },
+		},
+
+		// 侧边栏排序（README.md，文件夹(order)，文件(date)）
+		sidebarSorter(v_a, v_b) {
+			let order_a =
+				(v_a["filename"] ?? "") === "README.md"
+					? -9999999999999
+					: v_a.type === "dir"
+					? v_a.order!
+					: -new Date(v_a.frontmatter!.date! ?? 0).getTime();
+			let order_b =
+				(v_b["filename"] ?? "") === "README.md"
+					? -9999999999999
+					: v_b.type === "dir"
+					? v_b.order!
+					: -new Date(v_b.frontmatter!.date! ?? 0).getTime();
+
+			return order_a - order_b;
 		},
 	},
 	{ custom: true }

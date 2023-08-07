@@ -1,16 +1,7 @@
-import { sidebar } from "vuepress-theme-hope";
+import { SidebarArrayOptions, SidebarItem, sidebar } from "vuepress-theme-hope";
 
 export default sidebar({
-	"/": [
-		"",
-		// {
-		//   text: "如何使用",
-		//   icon: "laptop-code",
-		//   prefix: "demo/",
-		//   link: "demo/",
-		//   children: "structure",
-		// },
-	],
+	"/": [""],
 	"/博客/": "structure",
 	"/MK框架/": "structure",
 });
