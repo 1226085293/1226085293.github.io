@@ -32,11 +32,7 @@ jobs:
         with:
           node-version: 18
           cache: pnpm
-          
-      - name: 指定 pnpm 版本
-        run: pnpm config set store-dir ~/.pnpm-store
-        env:
-          PNPM_VERSION: 6
+
 
       - name: 构建文档
         env:
