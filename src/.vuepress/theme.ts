@@ -23,7 +23,7 @@ export default hopeTheme(
 			// MKSite
 			"//at.alicdn.com/t/c/font_4195463_8hx246qyb0y.css",
 			// MKSite-Demo
-			"//at.alicdn.com/t/c/font_4195520_tljlbxaqk8o.css",
+			"//at.alicdn.com/t/c/font_4195520_8e6nqjip2od.css",
 		],
 		// icon 前缀
 		iconPrefix: "iconfont ",
