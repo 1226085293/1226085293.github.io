@@ -1,8 +1,10 @@
+import { componentsPlugin } from "vuepress-plugin-components";
 import { defineUserConfig } from "vuepress";
 import theme from "./theme.js";
 import { path } from "@vuepress/utils";
 import { searchProPlugin } from "vuepress-plugin-search-pro";
 import { autoCatalogPlugin } from "vuepress-plugin-auto-catalog";
+import markdown_share from "./plugins/markdown_share.js";
 
 export default defineUserConfig({
 	base: "/",
@@ -27,6 +29,17 @@ export default defineUserConfig({
 	// 描述要附加到的标签<head> tag
 	head: [["meta", { name: "referrer", content: "no-referrer" }]],
 	plugins: [
+		// markdown 分享
+		markdown_share(),
+		// 组件库
+		componentsPlugin({
+			componentOptions: {
+				share: {
+					services: ["qq", "qrcode"],
+				},
+			},
+			components: ["Share"],
+		}),
 		// 自动目录
 		autoCatalogPlugin({
 			orderGetter(page) {
