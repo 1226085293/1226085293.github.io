@@ -4,7 +4,8 @@ import theme from "./theme.js";
 import { path } from "@vuepress/utils";
 import { searchProPlugin } from "vuepress-plugin-search-pro";
 import { autoCatalogPlugin } from "vuepress-plugin-auto-catalog";
-import markdown_share from "./plugins/markdown_share.js";
+import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
+import markdown_share from "./plugins/markdown_share";
 
 export default defineUserConfig({
 	base: "/",
@@ -29,6 +30,10 @@ export default defineUserConfig({
 	// 描述要附加到的标签<head> tag
 	head: [["meta", { name: "referrer", content: "no-referrer" }]],
 	plugins: [
+		// googleAnalytics 统计服务
+		googleAnalyticsPlugin({
+			id: "G-FGBELS042Y",
+		}),
 		// markdown 分享
 		markdown_share(),
 		// 组件库

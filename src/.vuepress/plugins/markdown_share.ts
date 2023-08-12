@@ -16,10 +16,14 @@ const markdown_share = (options?: never) => {
 					let old_render_f = md.renderer.render;
 
 					md.renderer.render = function (...args_as: any[]) {
-						// 排除 README.md 文件
 						if (
-							!(args_as[2].filePathRelative as string)?.endsWith("README.md") ??
-							false
+							// 存在内容
+							args_as[0].length &&
+							// 排除 README.md 文件
+							(!(args_as[2].filePathRelative as string)?.endsWith(
+								"README.md"
+							) ??
+								false)
 						) {
 							// 分享 token
 							const tokens = md.parse(
