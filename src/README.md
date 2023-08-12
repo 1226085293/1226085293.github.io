@@ -44,5 +44,5 @@ projects:
   #   desc: 自定义详细介绍
   #   link: https://你的自定义链接
 
-footer: muzzik.
+footer: 使用 <a href="https://v2.vuepress.vuejs.org/zh/" target="_blank">vuepress</a>.<a href="https://theme-hope.vuejs.press/zh/" target="_blank">hope</a> 搭建
 ---

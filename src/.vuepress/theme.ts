@@ -46,7 +46,7 @@ export default hopeTheme(
 		// sidebar
 		sidebar,
 		// 页脚
-		footer: "来自 vuepress",
+		footer: "",
 		// 展示页脚
 		displayFooter: false,
 
