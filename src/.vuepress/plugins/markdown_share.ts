@@ -29,8 +29,8 @@ const markdown_share = (options?: never) => {
 							const tokens = md.parse(
 								[
 									"---",
-									"## :mega: 觉得很赞？分享给你的朋友吧！",
-									`<Share services="qq,qrcode" colorful />`,
+									// "## :mega: 觉得很赞？分享给你的朋友吧！",
+									`<h3>📣 觉得很赞？分享给你的朋友吧！</h3><Share services="qq,qrcode" colorful />`,
 								].join("\n"),
 								{}
 							);
