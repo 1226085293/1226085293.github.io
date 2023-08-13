@@ -36,6 +36,7 @@ export default navbar([
 	{
 		text: "项目案例",
 		link: "",
+		icon: "mangguo",
 	},
 	// {
 	// 	text: "V2 文档",

@@ -1,6 +1,6 @@
 ---
 title: 笔记
-icon: shuji1
+icon: biji
 article: false
 timeline: false
 dir:

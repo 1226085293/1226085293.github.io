@@ -42,8 +42,16 @@ export default defineUserConfig({
 				share: {
 					services: ["qq", "qrcode"],
 				},
+				fontIcon: {
+					assets: [
+						// MKSite
+						"//at.alicdn.com/t/c/font_4195463_rqmolcl8cli.css",
+						// MKSite-Demo
+					],
+					prefix: "iconfont ",
+				},
 			},
-			components: ["Share"],
+			components: ["Share", "FontIcon"],
 		}),
 		// 自动目录
 		autoCatalogPlugin({
