@@ -100,6 +100,7 @@ export default hopeTheme(
 				repoId: "R_kgDOJ6pmwg",
 				category: "General",
 				categoryId: "DIC_kwDOJ6pmws4CX20J",
+				mapping: "title",
 			},
 			// all features are enabled for demo, only preserve features you need here
 			mdEnhance: {
