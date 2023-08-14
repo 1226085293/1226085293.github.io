@@ -31,33 +31,19 @@ jobs:
           node-version: 18
           cache: pnpm
 
-          # - name: 构建 github 文档
-          #   env:
-          #     NODE_OPTIONS: --max_old_space_size=8192
-          #   run: |-
-          #     pnpm run docs:build
-          #     > docs/.nojekyll
+      - name: 构建文档
+        env:
+          NODE_OPTIONS: --max_old_space_size=8192
+        run: |-
+          pnpm run docs:build
+          > docs/.nojekyll
 
-          # - name: 部署 github 文档
-          #   uses: JamesIves/github-pages-deploy-action@v4
-          #   with:
-          #     # 这是文档部署到的分支名称
-          #     branch: site
-          #     folder: docs
-
-      # - name: 替换为 gitee 配置
-      #   run: |
-      #     # 替换 base 配置
-      #     perl -pi -e 's/base: "\/"/base: "\/site\/"/' src/.vuepress/config.ts
-      #     # 替换 google analytics ID
-      #     perl -pi -e 's/G-FGBELS042Y/G-164KYDBXDF/' src/.vuepress/config.ts
-
-      # - name: 构建文档
-      #   env:
-      #     NODE_OPTIONS: --max_old_space_size=8192
-      #   run: |-
-      #     pnpm run docs:build
-      #     > docs/.nojekyll
+      - name: 部署文档
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          # 这是文档部署到的分支名称
+          branch: site
+          folder: docs
 
       - name: 同步至 Gitee
         uses: wearerequired/git-mirror-action@master
@@ -80,4 +66,4 @@ jobs:
           # 注意替换为你的 Gitee 仓库，仓库名严格区分大小写，请准确填写，否则会出错
           gitee-repo: muzzik/site
           # 要部署的分支，默认是 master，若是其他分支，则需要指定（指定的分支必须存在）
-          branch: site-gitee
+          branch: site

@@ -8,7 +8,7 @@ import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import markdown_share from "./plugins/markdown_share";
 
 export default defineUserConfig({
-	base: "/",
+	base: "/site/",
 
 	lang: "zh-CN",
 	title: "MKSite",
@@ -32,7 +32,7 @@ export default defineUserConfig({
 	plugins: [
 		// googleAnalytics 统计服务
 		googleAnalyticsPlugin({
-			id: "G-FGBELS042Y",
+			id: "G-164KYDBXDF",
 		}),
 		// markdown 分享
 		markdown_share(),
