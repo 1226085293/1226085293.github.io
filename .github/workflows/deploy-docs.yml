@@ -45,19 +45,19 @@ jobs:
           #     branch: site
           #     folder: docs
 
-      - name: 替换为 gitee 配置
-        run: |
-          # 替换 base 配置
-          perl -pi -e 's/base: "\/"/base: "\/site\/"/' src/.vuepress/config.ts
-          # 替换 google analytics ID
-          perl -pi -e 's/G-FGBELS042Y/G-164KYDBXDF/' src/.vuepress/config.ts
+      # - name: 替换为 gitee 配置
+      #   run: |
+      #     # 替换 base 配置
+      #     perl -pi -e 's/base: "\/"/base: "\/site\/"/' src/.vuepress/config.ts
+      #     # 替换 google analytics ID
+      #     perl -pi -e 's/G-FGBELS042Y/G-164KYDBXDF/' src/.vuepress/config.ts
 
-      - name: 构建文档
-        env:
-          NODE_OPTIONS: --max_old_space_size=8192
-        run: |-
-          pnpm run docs:build
-          > docs/.nojekyll
+      # - name: 构建文档
+      #   env:
+      #     NODE_OPTIONS: --max_old_space_size=8192
+      #   run: |-
+      #     pnpm run docs:build
+      #     > docs/.nojekyll
 
       - name: 同步至 Gitee
         uses: wearerequired/git-mirror-action@master
