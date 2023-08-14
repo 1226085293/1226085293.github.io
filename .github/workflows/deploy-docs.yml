@@ -47,7 +47,10 @@ jobs:
 
       - name: 替换为 gitee 配置
         run: |
+          # 替换 base 配置
           perl -pi -e 's/base: "\/"/base: "\/site\/"/' src/.vuepress/config.ts
+          # 替换 google analytics ID
+          perl -pi -e 's/G-FGBELS042Y/G-164KYDBXDF/' src/.vuepress/config.ts
 
       - name: 构建 gitee 文档
         env:
