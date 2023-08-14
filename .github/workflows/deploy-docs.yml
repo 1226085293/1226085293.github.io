@@ -47,7 +47,7 @@ jobs:
 
       - name: 替换为 gitee 配置
         run: |
-          perl -pi -e 's/base: "\/"/base: "\/site\/"/' src.vuepress/config.ts
+          perl -pi -e 's/base: "\/"/base: "\/site\/"/' src/.vuepress/config.ts
 
       - name: 构建 gitee 文档
         env:
