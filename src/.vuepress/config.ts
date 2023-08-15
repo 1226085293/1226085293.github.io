@@ -5,6 +5,8 @@ import { path } from "@vuepress/utils";
 import { searchProPlugin } from "vuepress-plugin-search-pro";
 import { autoCatalogPlugin } from "vuepress-plugin-auto-catalog";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
+import { seoPlugin } from "vuepress-plugin-seo2";
+import { sitemapPlugin } from "vuepress-plugin-sitemap2";
 import markdown_share from "./plugins/markdown_share";
 
 export default defineUserConfig({
@@ -30,6 +32,16 @@ export default defineUserConfig({
 	// 描述要附加到的标签<head> tag
 	head: [["meta", { name: "referrer", content: "no-referrer" }]],
 	plugins: [
+		// sitemap 生成
+		sitemapPlugin({
+			hostname: "https://muzzik.gitee.io/",
+		}),
+		// seo 优化
+		seoPlugin({
+			hostname: "https://muzzik.gitee.io/",
+			author: "muzzik",
+			autoDescription: true,
+		}),
 		// googleAnalytics 统计服务
 		googleAnalyticsPlugin({
 			id: "G-164KYDBXDF",
