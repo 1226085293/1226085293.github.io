@@ -5,9 +5,10 @@ date: 2022-08-04 15:17:00
 # 分类
 category:
   - 实用工具
-  - CocosCreator 插件
+  - Cocos
 # 标签
 tag:
+  - CocosCreator 插件
 ---
 
 <!-- more -->

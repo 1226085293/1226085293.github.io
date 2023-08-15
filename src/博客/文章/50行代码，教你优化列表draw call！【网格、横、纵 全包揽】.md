@@ -5,9 +5,10 @@ date: 2021-01-11 03:06:00
 # 分类
 category:
   - 文章
-  - CocosCreator
+  - Cocos
 # 标签
 tag:
+  - CocosCreator
   - 性能优化
 ---
 

@@ -5,9 +5,10 @@ date: 2023-06-17 03:15:00
 # 分类
 category:
   - 实用工具
-  - CocosCreator
+  - Cocos
 # 标签
 tag:
+  - CocosCreator
   - 游戏功能
 ---
 

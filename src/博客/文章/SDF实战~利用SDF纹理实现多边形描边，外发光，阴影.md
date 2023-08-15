@@ -5,11 +5,12 @@ date: 2022-05-12 23:17:00
 # 分类
 category:
   - 文章
-  - CocosCreator
+  - Cocos
   - 图形学
 # 标签
 tag:
   - SDF
+  - CocosCreator
 ---
 
 <!-- more -->

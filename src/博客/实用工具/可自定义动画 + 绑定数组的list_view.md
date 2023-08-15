@@ -5,9 +5,10 @@ date: 2020-09-14 02:00:00
 # 分类
 category:
   - 实用工具
-  - CocosCreator
+  - Cocos
 # 标签
 tag:
+  - CocosCreator
 ---
 
 <!-- more -->

@@ -1,0 +1,38 @@
+---
+title: C++利用模板推导数组长度
+# 时间
+date: 2020-05-28 16:51:28
+# 分类
+category:
+  - 笔记
+  - 编程语言
+# 标签
+tag:
+  - C++
+  - C++ 模板
+---
+
+<!-- more -->
+
+大家学会点个赞哦
+
+```cpp
+// 任意类型数组
+template <typename T, int N>
+int ArraySize1(T(&arr)[N]) {
+	return N;
+}
+
+// 指定类型数组，比如SOCKET
+template <int N>
+int ArraySize2(SOCKET(&arr)[N]) {
+	return N;
+}
+
+int main() {
+	int a[10];
+	std::cout << ArraySize1(a) << std::endl;		//输出结果为10
+}
+```
+
+怎么样，学会了吗，感谢这篇[博客](https://www.cnblogs.com/keviwu/p/6911405.html)

@@ -5,10 +5,11 @@ date: 2022-03-28 03:56:00
 # 分类
 category:
   - 文章
-  - CocosCreator
+  - Cocos
   - 图形学
 # 标签
 tag:
+  - CocosCreator
   - 2d 阴影
   - SDF
 ---

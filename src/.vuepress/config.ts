@@ -57,7 +57,7 @@ export default defineUserConfig({
 				fontIcon: {
 					assets: [
 						// MKSite
-						"//at.alicdn.com/t/c/font_4195463_rqmolcl8cli.css",
+						"//at.alicdn.com/t/c/font_4195463_bvajkf71tok.css",
 						// MKSite-Demo
 					],
 					prefix: "iconfont ",

@@ -1,0 +1,42 @@
+---
+title: C++判断是否为有效IP地址
+# 时间
+date: 2020-06-01 06:06:28
+# 分类
+category:
+  - 笔记
+  - 编程语言
+# 标签
+tag:
+  - C++
+  - 网络
+---
+
+<!-- more -->
+
+```cpp
+std::string ip("199.199.199.199");
+std::regex check_ip("(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[1-9])[.](25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[1-9])[.](25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[1-9])[.](25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[1-9])");
+
+struct in_addr s;
+uint64_t start_time1 = tool::time::get_ms();
+for (int i = 0; i < 10000; ++i) {
+	if (1 > inet_pton(AF_INET, ip.c_str(), &s)) {
+		printf("格式不正确\n");
+	}
+}
+printf("inet_pton消耗时间%I64d\n", (tool::time::get_ms() - start_time1));
+start_time1 = tool::time::get_ms();
+for (int i = 0; i < 10000; ++i) {
+	if (!regex_match(ip, check_ip)) {
+		printf("格式不正确\n");
+	}
+}
+printf("regex_match消耗时间%I64d\n", (tool::time::get_ms() - start_time1));
+```
+
+如上：使用了新的 std::regex 正则表达式和新的 inet_pton 函数检测。你们猜猜结果？
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200601060352818.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Mzk4MzAx,size_16,color_FFFFFF,t_70)
+
+看来还是微软检测牛逼啊。还是少用正则表达式。对于性能会有影响

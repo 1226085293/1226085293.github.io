@@ -1,0 +1,31 @@
+---
+title: 应用程序没有调用 WSAStartup，或者 WSAStartup 失败。一次奇怪的错误
+# 时间
+date: 2020-06-07 11:06:29
+# 分类
+category:
+  - 笔记
+  - 编程语言
+# 标签
+tag:
+  - C++
+  - Bug
+---
+
+<!-- more -->
+
+在 release 环境下，我的代码原本是这样：
+
+```cpp
+assert(WSAStartup(MAKEWORD(2, 2), &wsa) == 0);
+```
+
+莫名其妙的出现的这个错误，结果我认真看了几次，发现 vs**直接跳过了这个函数的执行**， 当时就傻眼了，结果是 release 优化后 assert 断言内的函数语句不会执行。
+然后我改回了下面这样就好了
+
+```cpp
+int re = WSAStartup(MAKEWORD(2, 2), &wsa);
+if (re) {
+	//错误处理
+}
+```

@@ -10,6 +10,7 @@ category:
 # 标签
 tag:
   - VR
+  - CocosCreator
 ---
 
 <!-- more -->

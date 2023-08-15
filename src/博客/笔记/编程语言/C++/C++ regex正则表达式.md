@@ -1,0 +1,34 @@
+---
+title: C++ std::regex正则表达式
+# 时间
+date: 2020-06-01 05:19:09
+# 分类
+category:
+  - 笔记
+  - 编程语言
+# 标签
+tag:
+  - C++
+  - 正则表达式
+---
+
+<!-- more -->
+
+- **使用**
+
+```cpp
+std::string str("123456");
+std::regex check("123");
+bool re1 = regex_match(str, check);		//false
+bool re2 = regex_search(str, check);	//true
+std::smatch result;						//匹配结果
+if (regex_search(ip, result, check_ip))//这里用regex_match或者regex_search都可以
+{
+	for (int i = 0; i < result.size(); ++i) {
+		// 这里按照自己想法实现
+	}
+}
+```
+
+1. regex_match 函数返回的是全词匹配结果
+2. regex_search 函数返回的是非全词匹配结果

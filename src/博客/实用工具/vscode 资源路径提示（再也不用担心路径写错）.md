@@ -5,9 +5,10 @@ date: 2023-02-13 15:27:00
 # 分类
 category:
   - 实用工具
-  - VSCode
+  - 代码编辑器
 # 标签
 tag:
+  - VSCode
 ---
 
 <!-- more -->

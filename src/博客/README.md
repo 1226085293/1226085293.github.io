@@ -1,7 +1,7 @@
 ---
 title: 博客
 index: true
-icon: laptop-code
+icon: yumaobi
 article: false
 timeline: false
 ---
