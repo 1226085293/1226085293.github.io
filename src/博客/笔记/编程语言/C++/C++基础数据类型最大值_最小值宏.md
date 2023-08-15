@@ -13,6 +13,6 @@ tag:
 
 <!-- more -->
 
-包含#include <cstdint> 头文件后就能使用这些宏
+包含`#include <cstdint>` 头文件后就能使用这些宏
 
 ​​![](https://img-blog.csdnimg.cn/20200523104751414.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Mzk4MzAx,size_16,color_FFFFFF,t_70)
