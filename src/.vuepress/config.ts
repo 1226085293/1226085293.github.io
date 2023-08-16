@@ -30,7 +30,12 @@ export default defineUserConfig({
 	dest: "docs",
 
 	// 描述要附加到的标签<head> tag
-	head: [["meta", { name: "referrer", content: "no-referrer" }]],
+	head: [
+		// 防止外部图片加载不了
+		["meta", { name: "referrer", content: "no-referrer" }],
+		// 百度网站所有权验证
+		["meta", { name: "baidu-site-verification", content: "codeva-7r485RpqNE" }],
+	],
 	plugins: [
 		// sitemap 生成
 		sitemapPlugin({
