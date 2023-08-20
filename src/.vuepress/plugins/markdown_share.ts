@@ -19,6 +19,8 @@ const markdown_share = (options?: never) => {
 						if (
 							// 存在内容
 							args_as[0].length &&
+							// 排除非文件
+							args_as[2].filePath &&
 							// 排除 README.md 文件
 							(!(args_as[2].filePathRelative as string)?.endsWith(
 								"README.md"
