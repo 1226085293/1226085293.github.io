@@ -8,9 +8,10 @@ sidebar: false
 date: 2023-08-20 16:08:00
 # 分类
 category:
-  - 文档
+  - 实用工具
 # 标签
 tag:
+  - CocosCreator 插件
   - protobufjs
 ---
 
