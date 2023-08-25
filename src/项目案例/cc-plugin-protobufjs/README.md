@@ -21,7 +21,7 @@ tag:
 
 ## :loudspeaker: 功能介绍
 
-- :hammer: 构建：只编译变更的 proto 文件，让你更快速
+- :hammer: 构建：只编译变更的 proto 文件，让构建更快
 
 - :headphones: 监听构建：当 proto 文件变更时，自动构建
 
