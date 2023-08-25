@@ -33,6 +33,14 @@ tag:
 
 为了支持任意方式的热更，直接将 proto 编译为 ts 和 d.ts 脚本
 
+![自动构建](/图片/产品文档/cc-plugin-protobufjs/自动构建.gif)
+
+![手动构建](/图片/产品文档/cc-plugin-protobufjs/手动构建.png)
+
+## :circus_tent: 商店传送门
+
+https://store.cocos.com/app/detail/5243
+
 ## :pushpin: 目录
 
 - :blush: [已经安装 protobufjs](#已经安装-protobufjs)
