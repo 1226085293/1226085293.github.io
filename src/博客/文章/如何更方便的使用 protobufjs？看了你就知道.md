@@ -74,6 +74,18 @@ message test {
 
 - https://github.com/1226085293/MKFramework/blob/dev/assets/tool/codec/tool_codec_proto_static.ts#L103
 
+### protobufjs 安装/使用
+
+推荐自动化插件
+
+- 包含导入式安装、NPM 安装
+
+- 自动监听 proto 修改构建协议文件
+
+- 可自定义构建流程
+
+更多内容点击查看：https://muzzik.gitee.io/%E9%A1%B9%E7%9B%AE%E6%A1%88%E4%BE%8B/cc-plugin-protobufjs/
+
 ---
 
 ### 测试代码
