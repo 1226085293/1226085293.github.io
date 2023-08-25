@@ -92,6 +92,11 @@ export default hopeTheme(
 		plugins: {
 			blog: true,
 
+			// 缓存控制
+			pwa: {
+				update: "hint",
+			},
+
 			// 评论插件配置
 			comment: {
 				// You should generate and use your own comment service
