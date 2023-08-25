@@ -1,5 +1,5 @@
 ---
-title: cc-plugin-protobufjs
+title: protobufjs 自动化（从安装到使用） 
 index: true
 article: true
 timeline: true
