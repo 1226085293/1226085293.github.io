@@ -1,5 +1,5 @@
 ---
-title: protobufjs 自动化（从安装到使用） 
+title: protobufjs 自动化（从安装到使用）
 index: true
 article: true
 timeline: true
@@ -27,7 +27,9 @@ tag:
 
 - :briefcase: pb 包装：可以将单个目录下的多个 package 包装到一个对象内
 
-- :hamburger: 自定义构建参数：满足你裁剪代码缩小代码体积的需求！
+- :scissors: 代码裁剪：自定义构建参数满足你裁剪协议代码缩小体积的需求！
+
+- :car: 自定义消息头：消息头、消息 id 自动生成，满足你所有业务需求
 
 - :hamburger: 自定义构建：构建代码全可自定义，还怕不能适配你现在的项目？
 
@@ -168,3 +170,38 @@ module.exports = {
 ![](/图片/产品文档/cc-plugin-protobufjs/菜单.png)
 
 在安装完成后，点击跳转阅读 [已经安装 protobufjs](#已经安装-protobufjs) 章节
+
+### :car: 自定义消息头
+
+在插件根目录下，有个示例项目压缩包
+
+![](/图片/产品文档/cc-plugin-protobufjs/示例.png)
+
+解压缩即可看到我们通过自定义构建流程，添加了消息头以及消息 id 的自动生成逻辑，且完全可以根据你的项目自定义
+
+![](/图片/产品文档/cc-plugin-protobufjs/自定义构建.png)
+
+生成消息头及消息 id 的逻辑放在 `示例项目根目录/tool/protobuf/main.ts` 中，如内置逻辑不满足可按需自行修改
+
+## :rocket: 更新公告
+
+- 1.0.0
+
+  - 初始版本
+  - 支持 手动/监听 构建
+  - 支持自定义构建逻辑
+  - 构建为 ts, dts 以支持 版本对比, bundle 两种方式热更
+  - 支持 NPM/导入库文件 两种方式自动安装 protobufjs
+
+- 1.0.1
+  - 通过自定义构建流程添加对消息头以及消息 id 的生成
+
+## 购买须知
+
+本产品为付费虚拟商品，一经购买成功概不退款，请支付前谨慎确认购买内容
+
+## 联系作者
+
+QQ 群：[200351945](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=27MmztZVqbC4k_33HDECKJcBDHfUQp5d&authKey=RTgeQJFNZyd0QShfgeWbRhDs8wLB8HxIdxJmV%2B1a8dma5v3K%2FkBvV14dyVsXp8Ge&noverify=0&group_code=200351945)
+
+Cocos 论坛帖：https://forum.cocos.org/t/topic/152212
