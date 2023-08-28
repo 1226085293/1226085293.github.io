@@ -1,0 +1,20 @@
+import{_ as a,r as i,o as s,c as n,e as d,a as r,f as l}from"./app-ada173bc.js";const t={},c=l(`<h2 id="前言" tabindex="-1"><a class="header-anchor" href="#前言" aria-hidden="true">#</a> # 前言</h2><p>众所周知，我们想要<em>全局暂停游戏</em>的话只能调用 <em>cc.director.pause</em> 或者 <em>cc.game.pause</em></p><h2 id="讲解" tabindex="-1"><a class="header-anchor" href="#讲解" aria-hidden="true">#</a> # 讲解</h2><p>由于本人工作中需要用到游戏暂停效果，所以花了一上午写了个比较全面的游戏暂停方法</p><p>首先在 3.x 中，之前的各种管理器全部都变成了 system，而我们只需要分类管理即可，下面是运行时 system</p><figure><img src="https://forum.cocos.org/uploads/default/original/3X/d/3/d3cae608b188721226563cc4173f018e05d5ba52.png" alt="" width="677" height="499" tabindex="0" loading="lazy"><figcaption></figcaption></figure><p>可以看到上图中 system 一共有 5 个，分别是</p><ul><li>Scheduler：定时器</li><li>AnimationManager：动画管理器</li><li>TweenSystem：缓动</li><li>PhysicsSystem：3d 物理</li><li>PhysicsSystem2D：2d 物理<br> 其实如果项目中用到了龙骨，还有个</li><li>ArmatureSystem：骨骼系统</li></ul><h3 id="现在开始挨个暂停" tabindex="-1"><a class="header-anchor" href="#现在开始挨个暂停" aria-hidden="true">#</a> 现在开始挨个暂停…</h3><hr><p><em>Scheduler 定时器：</em></p><div class="language-auto line-numbers-mode" data-ext="auto"><pre class="language-auto"><code>// 暂停所有对象的定时器
+cc.director.getScheduler().pauseAllTargets()
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p><em>AnimationManager 动画管理器：</em></p><div class="language-auto line-numbers-mode" data-ext="auto"><pre class="language-auto"><code>// creator只提供了系统获取接口，并没有直接的暂停所有动画的接口，
+// 但是动画系统内的 _anims 保存了当前所有动画信息，所以直接挨个pause就好
+let anim_system = cc.director.getSystem(cc.AnimationManager.ID);
+pause_data.anim_as.splice(0, pause_data.anim_as.length, ...anim_system[&quot;_anims&quot;].array);
+pause_data.anim_as.forEach(v1 =&gt; {
+    v1.pause();
+});
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><em>ArmatureSystem 骨骼系统：</em></p><div class="language-auto line-numbers-mode" data-ext="auto"><pre class="language-auto"><code>// 同样也没有提供接口，不过可以另辟蹊径
+pause_data.dragon_bones_as = cc.director
+	.getScene()
+	.getComponentsInChildren(cc.dragonBones.ArmatureDisplay);
+pause_data.dragon_bones_as.forEach(v1 =&gt; {
+	v1.timeScale = 0;
+});
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><em>TweenSystem 缓动：</em></p><div class="language-auto line-numbers-mode" data-ext="auto"><pre class="language-auto"><code>cc.TweenSystem.instance.ActionManager.pauseAllRunningActions();
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><em>PhysicsSystem2D 2d 物理：</em></p><div class="language-auto line-numbers-mode" data-ext="auto"><pre class="language-auto"><code>cc.PhysicsSystem2D.instance.enable = false;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><em>PhysicsSystem 3d 物理：</em></p><div class="language-auto line-numbers-mode" data-ext="auto"><pre class="language-auto"><code>cc.PhysicsSystem.instance.enable = false;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>按照上面的方式就可以暂停所有当前系统内运行的对象，但不会对新增的节点暂停，如果需要排除暂停节点，就需要手动恢复了</p><h2 id="代码-福音书" tabindex="-1"><a class="header-anchor" href="#代码-福音书" aria-hidden="true">#</a> # 代码（福音书）</h2><p>内部除了游戏全局的暂停和恢复，还提供了排除暂停节点，以及单个节点的暂停和恢复</p><p><a class="attachment" href="/uploads/short-url/5UZSqkBXUApXjAsrYWMkj2izo9e.zip">game.zip</a> (1.5 KB)</p><hr><h3>📣 觉得很赞？分享给你的朋友吧！</h3>`,28);function u(m,o){const e=i("Share");return s(),n("div",null,[d(" more "),c,r(e,{services:"qq,qrcode",colorful:""})])}const p=a(t,[["render",u],["__file","3.x 暂停游戏解决方案.html.vue"]]);export{p as default};
