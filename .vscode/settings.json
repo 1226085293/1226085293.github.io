@@ -4,5 +4,7 @@
 		"**/node_modules": true,
 		"docs/": true,
 		"**/.temp/": true
-	}
+	},
+	// 保存时格式化
+	"editor.formatOnSave": false
 }
