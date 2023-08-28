@@ -204,4 +204,4 @@ module.exports = {
 
 QQ 群：[200351945](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=27MmztZVqbC4k_33HDECKJcBDHfUQp5d&authKey=RTgeQJFNZyd0QShfgeWbRhDs8wLB8HxIdxJmV%2B1a8dma5v3K%2FkBvV14dyVsXp8Ge&noverify=0&group_code=200351945)
 
-Cocos 论坛帖：https://forum.cocos.org/t/topic/152212
+Cocos 论坛帖：  https://forum.cocos.org/t/topic/152212
