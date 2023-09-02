@@ -74,7 +74,7 @@ tag:
 
 - 新的类 / ccclass 名（避免编辑器报错，引擎不支持）
 
-配置文件路径：`项目根目录/extensions/cc-plugin-protobufjs/.config.js`
+配置文件路径：`项目根目录/extensions/cc-plugin-asset-copy/.config.js`
 
 包含了以下内容:
 ```javascript
