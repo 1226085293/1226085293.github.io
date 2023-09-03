@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-03d9498c","path":"/MK%E6%A1%86%E6%9E%B6/API%20%E6%8E%A5%E5%8F%A3/","title":"A P I 接口","lang":"zh-CN","frontmatter":{"title":"A P I 接口","description":""},"headers":[],"git":{},"readingTime":{"minutes":0,"words":1},"filePathRelative":null,"excerpt":"","autoDesc":true}');export{e as data};
