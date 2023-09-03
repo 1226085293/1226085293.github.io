@@ -29,5 +29,7 @@ null/undefined：更新失败中断引导
 
 ## Remarks
 
-- 可在此内更新服务端数据并请求奖励 - 步骤可使用 this.step\_update\_data 获取返回数据
+- 可在此内更新服务端数据并请求奖励
+
+- 步骤可使用 this.step\_update\_data 获取返回数据
 

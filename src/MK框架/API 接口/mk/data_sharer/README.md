@@ -19,7 +19,9 @@ declare class mk_data_sharer<CT = any> extends mk_instance_base
 
 ## Remarks
 
-用以模块间共享数据 - 支持请求数据返回
+用以模块间共享数据
+
+- 支持请求数据返回
 
 ## Properties
 

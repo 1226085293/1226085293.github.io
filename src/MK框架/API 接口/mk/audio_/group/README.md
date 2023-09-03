@@ -41,5 +41,5 @@ export class group
 |  [del\_audio(audio\_)](./del_audio/) |  | 删除音频 |
 |  [pause()](./pause/) |  | 暂停 |
 |  [play(contains\_state\_n\_)](./play/) |  | 播放 |
-|  [stop(state\_b\_)](./stop/) |  | 停止 - 停止后播放的音频将跳过 |
+|  [stop(state\_b\_)](./stop/) |  | 停止 |
 

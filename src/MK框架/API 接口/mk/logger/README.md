@@ -19,7 +19,15 @@ declare class mk_logger extends mk_instance_base
 
 ## Remarks
 
-单例对象打印名为 default - 支持多实例 - 打印等级控制 - 打印屏蔽控制 - 报错日志 http 上传
+单例对象打印名为 default
+
+- 支持多实例
+
+- 打印等级控制
+
+- 打印屏蔽控制
+
+- 报错日志 http 上传
 
 ## Constructors
 

@@ -20,5 +20,9 @@ void \| Promise&lt;void&gt;
 
 ## Remarks
 
-可在此处初始化视图状态 - 静态模块：onLoad 时调用 - 动态模块：addChild 后调用
+可在此处初始化视图状态
+
+- 静态模块：onLoad 时调用
+
+- 动态模块：addChild 后调用
 

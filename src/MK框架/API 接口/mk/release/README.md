@@ -18,7 +18,9 @@ declare class mk_release
 
 ## Remarks
 
-- 统一 (cc.Node/cc.Asset) 资源的释放逻辑 - 可以通过 function 或继承添加自定义释放逻辑
+- 统一 (cc.Node/cc.Asset) 资源的释放逻辑
+
+- 可以通过 function 或继承添加自定义释放逻辑
 
 ## Methods
 

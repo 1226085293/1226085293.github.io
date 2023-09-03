@@ -17,5 +17,7 @@ get finish_b(): boolean;
 
 ## Remarks
 
-- true：任务结束 - false：任务进行中
+- true：任务结束
+
+- false：任务进行中
 

@@ -17,5 +17,9 @@ use_play_b?: boolean;
 
 ## Remarks
 
-common 使用 - play 接口存在最大并发数限制 cc.AudioSource.maxAudioChannel - playOneShot 接口不能暂停
+common 使用
+
+- play 接口存在最大并发数限制 cc.AudioSource.maxAudioChannel
+
+- playOneShot 接口不能暂停
 

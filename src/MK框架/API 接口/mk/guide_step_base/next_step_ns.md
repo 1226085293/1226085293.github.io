@@ -17,5 +17,7 @@ next_step_ns?: number[];
 
 ## Remarks
 
-- length == 1：预加载及 this.\_next 跳转 - length &gt; 1：预加载
+- length == 1：预加载及 this.\_next 跳转
+
+- length &gt; 1：预加载
 

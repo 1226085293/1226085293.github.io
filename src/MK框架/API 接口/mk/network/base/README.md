@@ -19,7 +19,15 @@ declare abstract class mk_network_base<CT extends mk_codec_base = mk_codec_base>
 
 ## Remarks
 
-- 支持多实例 - (心跳/断线重连)支持 - 网络消息接口事件化 - 支持消息潮 - 网络消息模拟
+- 支持多实例
+
+- (心跳/断线重连)支持
+
+- 网络消息接口事件化
+
+- 支持消息潮
+
+- 网络消息模拟
 
 ## Constructors
 

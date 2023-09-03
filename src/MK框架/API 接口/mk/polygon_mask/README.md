@@ -19,7 +19,9 @@ export declare class mk_polygon_mask extends cc.Component
 
 ## Remarks
 
-- 多边形图片遮罩 - 多边形触摸屏蔽
+- 多边形图片遮罩
+
+- 多边形触摸屏蔽
 
 ## Properties
 

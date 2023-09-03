@@ -20,5 +20,5 @@ constructor(network_: mk_network_base, interval_ms_n_: number);
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  network\_ | mk\_network\_base | 网络实例 |
-|  interval\_ms\_n\_ | number | 发送间隔 - -1：手动触发 - 0-n：自动发送间隔毫秒 |
+|  interval\_ms\_n\_ | number | <p>发送间隔</p><p>- -1：手动触发</p><p>- 0-n：自动发送间隔毫秒</p> |
 

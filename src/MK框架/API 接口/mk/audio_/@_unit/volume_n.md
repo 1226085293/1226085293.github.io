@@ -7,7 +7,7 @@ title: volume_n
 
 ## audio\_.\_unit.volume\_n property
 
-音量 - common：use\_play\_b 为 false 的情况下修改只能在下次 play 时生效
+音量
 
 **Signature:**
 
@@ -16,3 +16,8 @@ get volume_n(): number;
 
 set volume_n(value_n_: number);
 ```
+
+## Remarks
+
+- common：use\_play\_b 为 false 的情况下修改只能在下次 play 时生效
+

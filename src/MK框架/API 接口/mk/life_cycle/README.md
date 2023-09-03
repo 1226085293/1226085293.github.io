@@ -21,7 +21,11 @@ export declare class mk_life_cycle extends mk_layer implements mk_asset_.follow_
 
 ## Remarks
 
-用于模块生命周期控制，注意所有生命周期函数 onLoad、open ... 等都会自动执行父类函数再执行子类函数，不必手动 super.xxx 调用 - open 顺序: 子 -<!-- -->&gt; 父 - close 顺序: 父 -<!-- -->&gt; 子
+用于模块生命周期控制，注意所有生命周期函数 onLoad、open ... 等都会自动执行父类函数再执行子类函数，不必手动 super.xxx 调用
+
+- open 顺序: 子 -<!-- -->&gt; 父
+
+- close 顺序: 父 -<!-- -->&gt; 子
 
 ## Constructors
 

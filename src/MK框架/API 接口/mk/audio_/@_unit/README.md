@@ -41,7 +41,7 @@ export abstract class _unit
 |  [total\_time\_s\_n](./total_time_s_n/) | <code>readonly</code> | number | 总时长（秒） |
 |  [type](./type/) |  | global\_config.audio.type | 音频类型 |
 |  [use\_play\_b?](./use_play_b/) |  | boolean | _(Optional)_ 使用 play 接口，默认使用 playOneShot |
-|  [volume\_n](./volume_n/) |  | number | 音量 - common：use\_play\_b 为 false 的情况下修改只能在下次 play 时生效 |
+|  [volume\_n](./volume_n/) |  | number | 音量 |
 |  [wait\_play\_b](./wait_play_b/) |  | boolean | 等待播放开关 |
 |  [wait\_play\_n](./wait_play_n/) |  | number | 等待播放次数 |
 

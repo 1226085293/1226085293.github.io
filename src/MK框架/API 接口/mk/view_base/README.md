@@ -19,7 +19,11 @@ export declare class mk_view_base extends mk_life_cycle
 
 ## Remarks
 
-- 添加编辑器快捷操作 - 添加弹窗动画配置 - 独立展示配置
+- 添加编辑器快捷操作
+
+- 添加弹窗动画配置
+
+- 独立展示配置
 
 ## Properties
 

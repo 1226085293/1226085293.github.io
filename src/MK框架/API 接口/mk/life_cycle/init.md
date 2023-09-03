@@ -27,5 +27,9 @@ void \| Promise&lt;void&gt;
 
 ## Remarks
 
-所有依赖 init\_data 初始化的逻辑都应在此进行 - 静态模块：外部自行调用，常用于更新 item 或者静态模块 - 动态模块：onLoad 后，open 前调用
+所有依赖 init\_data 初始化的逻辑都应在此进行
+
+- 静态模块：外部自行调用，常用于更新 item 或者静态模块
+
+- 动态模块：onLoad 后，open 前调用
 

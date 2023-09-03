@@ -19,7 +19,9 @@ declare class mk_layer extends cc.Component
 
 ## Remarks
 
-- 动态多类型层级划分 - 支持类型层级细粒度划分
+- 动态多类型层级划分
+
+- 支持类型层级细粒度划分
 
 ## Properties
 

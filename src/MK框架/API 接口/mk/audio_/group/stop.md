@@ -7,7 +7,7 @@ title: stop
 
 ## audio\_.group.stop() method
 
-停止 - 停止后播放的音频将跳过
+停止
 
 **Signature:**
 
@@ -24,4 +24,8 @@ stop(state_b_?: boolean): void;
 **Returns:**
 
 void
+
+## Remarks
+
+- 停止后播放的音频将跳过
 
