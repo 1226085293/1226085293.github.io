@@ -19,7 +19,7 @@ declare class mk_event_target<CT> extends cc.EventTarget
 
 ## Remarks
 
-没啥好说的，就是安全1 - 获取事件键可以使用 event\_target.key.xxx
+没啥好说的，就是安全 测试 - 获取事件键可以使用 event\_target.key.xxx
 
 ## Properties
 
