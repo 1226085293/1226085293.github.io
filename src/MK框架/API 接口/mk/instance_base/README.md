@@ -8,7 +8,7 @@ index: true
 
 ## instance\_base class
 
-继承单例(类型安全)
+继承单例（类型安全）
 
 **Signature:**
 

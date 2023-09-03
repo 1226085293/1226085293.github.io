@@ -7,7 +7,7 @@ title: total_time_s_n
 
 ## audio\_.\_unit.total\_time\_s\_n property
 
-总时长(秒)
+总时长（秒）
 
 **Signature:**
 

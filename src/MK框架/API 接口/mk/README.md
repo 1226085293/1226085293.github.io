@@ -13,7 +13,7 @@ index: true
 |  Class | Description |
 |  --- | --- |
 |  [data\_sharer](./data_sharer/) | 数据共享器 |
-|  [event\_target](./event_target/) | 安全事件对象 |
+|  [event\_target](./event_target/) | 事件对象（类型安全） |
 |  [guide\_manage](./guide_manage/) | 引导管理器 |
 |  [layer](./layer/) | 层级管理 |
 |  [life\_cycle](./life_cycle/) | 生命周期 |
@@ -22,7 +22,7 @@ index: true
 |  [polygon\_mask](./polygon_mask/) | 多边形遮罩 |
 |  [release](./release/) | 对象释放器 |
 |  [scene\_drive](./scene_drive/) | 场景驱动 |
-|  [storage](./storage/) | 存储器(类型安全) |
+|  [storage](./storage/) | 存储器（类型安全） |
 |  [view\_base](./view_base/) | 视图基类 |
 
 ## Abstract Classes
@@ -31,7 +31,7 @@ index: true
 |  --- | --- |
 |  [codec\_base](./codec_base/) | 编解码器基类 |
 |  [guide\_step\_base](./guide_step_base/) | 引导步骤基类 |
-|  [instance\_base](./instance_base/) | 继承单例(类型安全) |
+|  [instance\_base](./instance_base/) | 继承单例（类型安全） |
 
 ## Namespaces
 

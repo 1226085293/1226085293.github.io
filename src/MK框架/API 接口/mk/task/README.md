@@ -13,5 +13,5 @@ index: true
 |  Class | Description |
 |  --- | --- |
 |  [pipeline](./pipeline/) | 任务管线 |
-|  [status](./status/) | 状态任务(类型安全) |
+|  [status](./status/) | 状态任务（类型安全） |
 

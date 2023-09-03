@@ -7,7 +7,7 @@ title: curr_time_s_n
 
 ## audio\_.\_unit.curr\_time\_s\_n property
 
-当前时间(秒)
+当前时间（秒）
 
 **Signature:**
 

@@ -8,7 +8,7 @@ index: true
 
 ## event\_target class
 
-安全事件对象
+事件对象（类型安全）
 
 **Signature:**
 
@@ -19,7 +19,7 @@ declare class mk_event_target<CT> extends cc.EventTarget
 
 ## Remarks
 
-没啥好说的，就是安全 测试 - 获取事件键可以使用 event\_target.key.xxx
+- 获取事件键使用 event\_target.key.xxx
 
 ## Properties
 

@@ -8,7 +8,7 @@ index: true
 
 ## storage class
 
-存储器(类型安全)
+存储器（类型安全）
 
 **Signature:**
 

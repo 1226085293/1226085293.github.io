@@ -30,7 +30,7 @@ export abstract class _unit
 |  [\_init\_b](./@_init_b/) | <code>protected</code> | boolean | 初始化状态 |
 |  [audio\_source](./audio_source/) |  | cc.AudioSource \| null | 音频组件 |
 |  [clip](./clip/) |  | cc.AudioClip \| null | 音频资源 |
-|  [curr\_time\_s\_n](./curr_time_s_n/) |  | number | 当前时间(秒) |
+|  [curr\_time\_s\_n](./curr_time_s_n/) |  | number | 当前时间（秒） |
 |  [event](./event/) | <code>readonly</code> | [mk\_event\_target](../../event_target/)<!-- -->&lt;event\_protocol&gt; | 事件对象 |
 |  [group\_ns](./group_ns/) |  | number\[\] | 分组 |
 |  [init\_b](./init_b/) |  | boolean | 初始化状态 |
@@ -38,7 +38,7 @@ export abstract class _unit
 |  [real\_volume\_n](./real_volume_n/) |  | number | 真实音量 |
 |  [state](./state/) |  | [state](../state/) | 播放状态 |
 |  [stop\_group\_n](./stop_group_n/) |  | number \| null | 当前停止分组 |
-|  [total\_time\_s\_n](./total_time_s_n/) | <code>readonly</code> | number | 总时长(秒) |
+|  [total\_time\_s\_n](./total_time_s_n/) | <code>readonly</code> | number | 总时长（秒） |
 |  [type](./type/) |  | global\_config.audio.type | 音频类型 |
 |  [use\_play\_b?](./use_play_b/) |  | boolean | _(Optional)_ 使用 play 接口，默认使用 playOneShot |
 |  [volume\_n](./volume_n/) |  | number | 音量 - common：use\_play\_b 为 false 的情况下修改只能在下次 play 时生效 |

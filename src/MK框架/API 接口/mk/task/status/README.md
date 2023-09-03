@@ -8,7 +8,7 @@ index: true
 
 ## task.status class
 
-状态任务(类型安全)
+状态任务（类型安全）
 
 **Signature:**
 
