@@ -19,7 +19,7 @@ declare class mk_event_target<CT> extends cc.EventTarget
 
 ## Remarks
 
-- 获取事件键使用 event\_target.key.xxx
+- 获取事件键使用 event\_target.key.xxx 0123
 
 ## Properties
 
