@@ -48,7 +48,7 @@ tag:
 
 ## :circus_tent: 商店传送门
 
-等待上架中...
+商店链接：[https://store.cocos.com/app/detail/5286](https://store.cocos.com/app/detail/5286)
 
 ## :pushpin: 目录
 
