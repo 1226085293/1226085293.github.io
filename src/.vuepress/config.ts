@@ -34,7 +34,7 @@ export default defineUserConfig({
 		// 防止外部图片加载不了
 		["meta", { name: "referrer", content: "no-referrer" }],
 		// 百度网站所有权验证
-		["meta", { name: "baidu-site-verification", content: "codeva-7r485RpqNE" }],
+		["meta", { name: "baidu-site-verification", content: "codeva-jUPycn44yb" }],
 	],
 	plugins: [
 		// sitemap 生成
