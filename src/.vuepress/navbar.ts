@@ -34,9 +34,9 @@ export default navbar([
 	// 	],
 	// },
 	{
-		text: "项目案例",
+		text: "项目产品",
 		icon: "mangguo",
-		link: "/项目案例/",
+		link: "/项目产品/",
 	},
 	// {
 	// 	text: "V2 文档",

@@ -93,7 +93,9 @@ export default hopeTheme(
 			blog: true,
 
 			// 缓存控制
-			pwa: false,
+			pwa: {
+				update: "hint",
+			},
 
 			// 评论插件配置
 			comment: {
