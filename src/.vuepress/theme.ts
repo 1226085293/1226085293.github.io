@@ -33,9 +33,9 @@ export default hopeTheme(
 		// sidebar
 		sidebar,
 		// 页脚
-		footer: "",
+		footer: `使用 <a href="https://v2.vuepress.vuejs.org/zh/" target="_blank">vuepress</a>.<a href="https://theme-hope.vuejs.press/zh/" target="_blank">hope</a> 搭建`,
 		// 展示页脚
-		displayFooter: false,
+		displayFooter: true,
 
 		blog: {
 			avatar: "/head.png",
