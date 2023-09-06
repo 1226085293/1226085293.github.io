@@ -35,6 +35,8 @@ export default defineUserConfig({
 		["meta", { name: "referrer", content: "no-referrer" }],
 		// 百度网站所有权验证
 		["meta", { name: "baidu-site-verification", content: "codeva-jUPycn44yb" }],
+		// 防止缓存主页，缓存会导致内容不是最新的
+		["meta", { "http-equiv": "cache-control", content: "no-cache, must-revalidate, post-check=0, pre-check=0" }],
 	],
 	plugins: [
 		// sitemap 生成
