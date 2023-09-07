@@ -1,4 +1,0 @@
-import{_ as e,r as n,o as a,c,d as o,f as t}from"./app-01e63fa9.js";const r={},l=t(`<blockquote><p>用于在运行时获取引擎版本</p></blockquote><div class="language-typescript line-numbers-mode" data-ext="ts"><pre class="language-typescript"><code><span class="token keyword">import</span> cc <span class="token operator">*</span> <span class="token keyword">as</span> <span class="token keyword">from</span> <span class="token string">&quot;cc&quot;</span><span class="token punctuation">;</span>
-
-cc<span class="token punctuation">.</span><span class="token constant">ENGINE_VERSION</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><hr><h3>📣 觉得很赞？分享给你的朋友吧！</h3>`,4);function p(i,d){const s=n("Share");return a(),c("div",null,[l,o(s,{services:"qq,qrcode",colorful:""})])}const u=e(r,[["render",p],["__file","获取引擎版本.html.vue"]]);export{u as default};
