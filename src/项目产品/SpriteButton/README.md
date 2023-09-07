@@ -66,7 +66,8 @@ tag:
 1. 设置 click_event_as 触发事件
 
 ## 商店传送门
-待添加...
+
+https://store.cocos.com/app/detail/5296
 
 ## 购买须知
 本产品为付费虚拟商品，一经购买成功概不退款，请支付前谨慎确认购买内容
