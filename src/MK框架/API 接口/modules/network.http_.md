@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / [network](network.md) / http\_
+[index](../README.md) / [network](network.md) / http\_
 
 # Namespace: http\_
 

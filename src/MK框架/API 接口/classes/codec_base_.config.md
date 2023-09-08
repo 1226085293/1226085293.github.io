@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / [codec\_base\_](../modules/codec_base_.md) / config
+[index](../README.md) / [codec\_base\_](../modules/codec_base_.md) / config
 
 # Class: config
 
@@ -47,7 +47,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_codec_base.ts:40](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_codec_base.ts#L40)
+[assets/@framework/mk_codec_base.ts:40](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_codec_base.ts#L40)
 
 ___
 
@@ -73,4 +73,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_codec_base.ts:42](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_codec_base.ts#L42)
+[assets/@framework/mk_codec_base.ts:42](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_codec_base.ts#L42)

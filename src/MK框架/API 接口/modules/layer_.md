@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / layer\_
+[index](../README.md) / layer\_
 
 # Namespace: layer\_
 

@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / obj\_pool
+[index](../README.md) / obj\_pool
 
 # Class: obj\_pool<CT\>
 
@@ -47,7 +47,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_obj_pool.ts:87](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_obj_pool.ts#L87)
+[assets/@framework/mk_obj_pool.ts:87](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_obj_pool.ts#L87)
 
 ## Accessors
 
@@ -63,7 +63,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_obj_pool.ts:96](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_obj_pool.ts#L96)
+[assets/@framework/mk_obj_pool.ts:96](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_obj_pool.ts#L96)
 
 ## Methods
 
@@ -85,7 +85,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_obj_pool.ts:113](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_obj_pool.ts#L113)
+[assets/@framework/mk_obj_pool.ts:113](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_obj_pool.ts#L113)
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_obj_pool.ts:137](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_obj_pool.ts#L137)
+[assets/@framework/mk_obj_pool.ts:137](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_obj_pool.ts#L137)
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_obj_pool.ts:160](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_obj_pool.ts#L160)
+[assets/@framework/mk_obj_pool.ts:160](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_obj_pool.ts#L160)
 
 ___
 
@@ -137,4 +137,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_obj_pool.ts:173](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_obj_pool.ts#L173)
+[assets/@framework/mk_obj_pool.ts:173](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_obj_pool.ts#L173)

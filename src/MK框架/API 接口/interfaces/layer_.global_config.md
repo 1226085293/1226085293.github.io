@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / [layer\_](../modules/layer_.md) / global\_config
+[index](../README.md) / [layer\_](../modules/layer_.md) / global\_config
 
 # Interface: global\_config
 
@@ -23,7 +23,7 @@
 
 #### Defined in
 
-[assets/@framework/module/mk_layer.ts:11](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/module/mk_layer.ts#L11)
+[assets/@framework/module/mk_layer.ts:11](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/module/mk_layer.ts#L11)
 
 ___
 
@@ -35,4 +35,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_layer.ts:13](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/module/mk_layer.ts#L13)
+[assets/@framework/module/mk_layer.ts:13](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/module/mk_layer.ts#L13)

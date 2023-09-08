@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / [network](network.md) / websocket\_
+[index](../README.md) / [network](network.md) / websocket\_
 
 # Namespace: websocket\_
 

@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / view\_base\_
+[index](../README.md) / view\_base\_
 
 # Namespace: view\_base\_
 

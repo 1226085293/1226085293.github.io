@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / [ui\_manage\_](../modules/ui_manage_.md) / regis\_config
+[index](../README.md) / [ui\_manage\_](../modules/ui_manage_.md) / regis\_config
 
 # Class: regis\_config<CT\>
 
@@ -53,7 +53,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:742](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_ui_manage.ts#L742)
+[assets/@framework/mk_ui_manage.ts:742](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_ui_manage.ts#L742)
 
 ## Properties
 
@@ -71,7 +71,7 @@ false
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:759](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_ui_manage.ts#L759)
+[assets/@framework/mk_ui_manage.ts:759](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_ui_manage.ts#L759)
 
 ___
 
@@ -89,7 +89,7 @@ Canvas 节点
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:765](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_ui_manage.ts#L765)
+[assets/@framework/mk_ui_manage.ts:765](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_ui_manage.ts#L765)
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:767](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_ui_manage.ts#L767)
+[assets/@framework/mk_ui_manage.ts:767](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_ui_manage.ts#L767)
 
 ___
 
@@ -119,7 +119,7 @@ this.repeat_b ? 8 : 1
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:773](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_ui_manage.ts#L773)
+[assets/@framework/mk_ui_manage.ts:773](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_ui_manage.ts#L773)
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:779](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_ui_manage.ts#L779)
+[assets/@framework/mk_ui_manage.ts:779](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_ui_manage.ts#L779)
 
 ___
 
@@ -155,4 +155,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:785](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_ui_manage.ts#L785)
+[assets/@framework/mk_ui_manage.ts:785](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_ui_manage.ts#L785)

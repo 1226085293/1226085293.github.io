@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / [language\_](../modules/language_.md) / texture\_data
+[index](../README.md) / [language\_](../modules/language_.md) / texture\_data
 
 # Class: texture\_data<CT\>
 
@@ -54,7 +54,7 @@
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:205](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/language/mk_language_manage.ts#L205)
+[assets/@framework/language/mk_language_manage.ts:205](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/language/mk_language_manage.ts#L205)
 
 ## Properties
 
@@ -70,7 +70,7 @@
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:195](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/language/mk_language_manage.ts#L195)
+[assets/@framework/language/mk_language_manage.ts:195](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/language/mk_language_manage.ts#L195)
 
 ___
 
@@ -86,4 +86,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:200](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/language/mk_language_manage.ts#L200)
+[assets/@framework/language/mk_language_manage.ts:200](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/language/mk_language_manage.ts#L200)

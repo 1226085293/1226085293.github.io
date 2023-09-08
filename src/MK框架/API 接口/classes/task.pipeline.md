@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / [task](../modules/task.md) / pipeline
+[index](../README.md) / [task](../modules/task.md) / pipeline
 
 # Class: pipeline
 
@@ -44,7 +44,7 @@
 
 #### Defined in
 
-[assets/@framework/task/mk_task_pipeline.ts:29](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/task/mk_task_pipeline.ts#L29)
+[assets/@framework/task/mk_task_pipeline.ts:29](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/task/mk_task_pipeline.ts#L29)
 
 ## Accessors
 
@@ -60,7 +60,7 @@
 
 #### Defined in
 
-[assets/@framework/task/mk_task_pipeline.ts:31](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/task/mk_task_pipeline.ts#L31)
+[assets/@framework/task/mk_task_pipeline.ts:31](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/task/mk_task_pipeline.ts#L31)
 
 • `set` **pause_b**(`value_b_`): `void`
 
@@ -76,7 +76,7 @@
 
 #### Defined in
 
-[assets/@framework/task/mk_task_pipeline.ts:35](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/task/mk_task_pipeline.ts#L35)
+[assets/@framework/task/mk_task_pipeline.ts:35](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/task/mk_task_pipeline.ts#L35)
 
 ## Methods
 
@@ -100,4 +100,4 @@
 
 #### Defined in
 
-[assets/@framework/task/mk_task_pipeline.ts:57](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/task/mk_task_pipeline.ts#L57)
+[assets/@framework/task/mk_task_pipeline.ts:57](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/task/mk_task_pipeline.ts#L57)

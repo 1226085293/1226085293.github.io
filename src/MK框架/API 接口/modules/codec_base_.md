@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / codec\_base\_
+[index](../README.md) / codec\_base\_
 
 # Namespace: codec\_base\_
 

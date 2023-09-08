@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / task
+[index](../README.md) / task
 
 # Namespace: task
 

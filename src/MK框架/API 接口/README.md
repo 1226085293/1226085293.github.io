@@ -1,31 +1,123 @@
-index / [Exports](modules.md)
-
-<div style="text-align:center">
-    <img src="https://gitee.com/muzzik/MKFramework/raw/main/home/logo.png" alt="Image" />
-</div>
-
-# Cocos Creator 3.x 游戏开发框架 (Beta)
-
-## 📣 功能简介
-
-> 游戏开发必备功能配齐，个人开发经验积累的果实，可以满足大部分游戏开发场景
-
-<div style="text-align:center">
-    <img src="https://gitee.com/muzzik/MKFramework/raw/main/home/功能简介.png" alt="Image" />
-</div>
-
 ---
+title: API 接口
+icon: api1
+article: false
+timeline: false
+dir:
+  order: 102
+  index: true
+---
+index
 
-## 📗 文档教程
+# index
 
-快速入门：待添加...
+## Table of contents
 
-案例教程：待添加...
+### Namespaces
 
-API 接口：https://muzzik.gitee.io/MK%E6%A1%86%E6%9E%B6/API%20%E6%8E%A5%E5%8F%A3/mk/
+- [audio\_](modules/audio_.md)
+- [guide\_manage\_](modules/guide_manage_.md)
+- [language](modules/language.md)
+- [language\_](modules/language_.md)
+- [codec\_base\_](modules/codec_base_.md)
+- [logger\_](modules/logger_.md)
+- [obj\_pool](modules/obj_pool-1.md)
+- [ui\_manage\_](modules/ui_manage_.md)
+- [layer\_](modules/layer_.md)
+- [view\_base\_](modules/view_base_.md)
+- [network](modules/network.md)
+- [asset\_](modules/asset_.md)
+- [bundle\_](modules/bundle_.md)
+- [task](modules/task.md)
 
-## 🛠️ 安装框架
+### Classes
 
-> 框架提供编辑器插件一键安装
+- [polygon\_mask](classes/polygon_mask.md)
+- [audio](classes/audio.md)
+- [guide\_manage](classes/guide_manage.md)
+- [guide\_step\_base](classes/guide_step_base.md)
+- [language\_manage](classes/language_manage.md)
+- [codec\_base](classes/codec_base.md)
+- [data\_sharer](classes/data_sharer.md)
+- [dynamic\_module](classes/dynamic_module.md)
+- [event\_target](classes/event_target.md)
+- [game](classes/game.md)
+- [instance\_base](classes/instance_base.md)
+- [logger](classes/logger.md)
+- [monitor](classes/monitor.md)
+- [obj\_pool](classes/obj_pool.md)
+- [release](classes/release.md)
+- [storage](classes/storage.md)
+- [ui\_manage](classes/ui_manage.md)
+- [layer](classes/layer.md)
+- [life\_cycle](classes/life_cycle.md)
+- [scene\_drive](classes/scene_drive.md)
+- [view\_base](classes/view_base.md)
+- [asset](classes/asset.md)
+- [bundle](classes/bundle.md)
 
-[https://github.com/1226085293/mk_framework/releases/tag/%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6](https://github.com/1226085293/mk_framework/wiki/%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F)
+### Functions
+
+- [log](README.md#log)
+- [warn](README.md#warn)
+- [error](README.md#error)
+
+## Functions
+
+### log
+
+▸ **log**(`...args_as_`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `...args_as_` | `any`[] |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[assets/@framework/mk_logger.ts:267](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_logger.ts#L267)
+
+___
+
+### warn
+
+▸ **warn**(`...args_as_`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `...args_as_` | `any`[] |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[assets/@framework/mk_logger.ts:271](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_logger.ts#L271)
+
+___
+
+### error
+
+▸ **error**(`...args_as_`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `...args_as_` | `any`[] |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[assets/@framework/mk_logger.ts:275](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_logger.ts#L275)

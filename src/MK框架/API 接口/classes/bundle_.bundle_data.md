@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / [bundle\_](../modules/bundle_.md) / bundle\_data
+[index](../README.md) / [bundle\_](../modules/bundle_.md) / bundle\_data
 
 # Class: bundle\_data
 
@@ -40,7 +40,7 @@ bundle 数据
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:496](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/resources/mk_bundle.ts#L496)
+[assets/@framework/resources/mk_bundle.ts:496](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/resources/mk_bundle.ts#L496)
 
 ## Properties
 
@@ -52,4 +52,4 @@ bundle 数据
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:502](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/resources/mk_bundle.ts#L502)
+[assets/@framework/resources/mk_bundle.ts:502](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/resources/mk_bundle.ts#L502)

@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / language
+[index](../README.md) / language
 
 # Namespace: language
 

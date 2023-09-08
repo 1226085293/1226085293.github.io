@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / bundle\_
+[index](../README.md) / bundle\_
 
 # Namespace: bundle\_
 

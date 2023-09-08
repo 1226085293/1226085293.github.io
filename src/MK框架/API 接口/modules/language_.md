@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / language\_
+[index](../README.md) / language\_
 
 # Namespace: language\_
 
@@ -31,4 +31,4 @@
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:171](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/language/mk_language_manage.ts#L171)
+[assets/@framework/language/mk_language_manage.ts:171](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/language/mk_language_manage.ts#L171)

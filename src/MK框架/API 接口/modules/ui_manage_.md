@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / ui\_manage\_
+[index](../README.md) / ui\_manage\_
 
 # Namespace: ui\_manage\_
 

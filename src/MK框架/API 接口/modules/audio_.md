@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / audio\_
+[index](../README.md) / audio\_
 
 # Namespace: audio\_
 
@@ -31,6 +31,6 @@
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:258](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/audio/mk_audio_base.ts#L258)
+[assets/@framework/audio/mk_audio_base.ts:258](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/audio/mk_audio_base.ts#L258)
 
-[assets/@framework/audio/mk_audio_base.ts:755](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/audio/mk_audio_base.ts#L755)
+[assets/@framework/audio/mk_audio_base.ts:755](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/audio/mk_audio_base.ts#L755)

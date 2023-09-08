@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / [ui\_manage\_](../modules/ui_manage_.md) / regis\_data
+[index](../README.md) / [ui\_manage\_](../modules/ui_manage_.md) / regis\_data
 
 # Class: regis\_data<CT\>
 
@@ -53,7 +53,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:793](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_ui_manage.ts#L793)
+[assets/@framework/mk_ui_manage.ts:793](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_ui_manage.ts#L793)
 
 ## Properties
 
@@ -65,7 +65,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:799](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_ui_manage.ts#L799)
+[assets/@framework/mk_ui_manage.ts:799](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_ui_manage.ts#L799)
 
 ___
 
@@ -77,4 +77,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:801](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_ui_manage.ts#L801)
+[assets/@framework/mk_ui_manage.ts:801](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/mk_ui_manage.ts#L801)

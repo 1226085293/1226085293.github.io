@@ -1,4 +1,4 @@
-[index](../README.md) / [Exports](../modules.md) / guide\_manage\_
+[index](../README.md) / guide\_manage\_
 
 # Namespace: guide\_manage\_
 
