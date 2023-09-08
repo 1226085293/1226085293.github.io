@@ -37,7 +37,7 @@
 
 #### Defined in
 
-[assets/@framework/module/mk_scene_drive.ts:21](https://github.com/1226085293/MKFramework/blob/6204f55/assets/@framework/module/mk_scene_drive.ts#L21)
+[assets/@framework/module/mk_scene_drive.ts:21](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/module/mk_scene_drive.ts#L21)
 
 ___
 
@@ -55,4 +55,4 @@ mk\_life\_cycle.onDestroy
 
 #### Defined in
 
-[assets/@framework/module/mk_scene_drive.ts:38](https://github.com/1226085293/MKFramework/blob/6204f55/assets/@framework/module/mk_scene_drive.ts#L38)
+[assets/@framework/module/mk_scene_drive.ts:38](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/module/mk_scene_drive.ts#L38)

@@ -20,9 +20,9 @@
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:381](https://github.com/1226085293/MKFramework/blob/6204f55/assets/@framework/mk_logger.ts#L381)
+[assets/@framework/mk_logger.ts:381](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_logger.ts#L381)
 
-[assets/@framework/mk_logger.ts:382](https://github.com/1226085293/MKFramework/blob/6204f55/assets/@framework/mk_logger.ts#L382)
+[assets/@framework/mk_logger.ts:382](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_logger.ts#L382)
 
 ## Variables
 
@@ -32,6 +32,6 @@
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:381](https://github.com/1226085293/MKFramework/blob/6204f55/assets/@framework/mk_logger.ts#L381)
+[assets/@framework/mk_logger.ts:381](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_logger.ts#L381)
 
-[assets/@framework/mk_logger.ts:382](https://github.com/1226085293/MKFramework/blob/6204f55/assets/@framework/mk_logger.ts#L382)
+[assets/@framework/mk_logger.ts:382](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_logger.ts#L382)

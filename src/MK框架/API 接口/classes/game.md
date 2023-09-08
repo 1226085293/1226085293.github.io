@@ -36,7 +36,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_game.ts:22](https://github.com/1226085293/MKFramework/blob/6204f55/assets/@framework/mk_game.ts#L22)
+[assets/@framework/mk_game.ts:22](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_game.ts#L22)
 
 ## Methods
 
@@ -56,7 +56,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_game.ts:37](https://github.com/1226085293/MKFramework/blob/6204f55/assets/@framework/mk_game.ts#L37)
+[assets/@framework/mk_game.ts:37](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_game.ts#L37)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_game.ts:51](https://github.com/1226085293/MKFramework/blob/6204f55/assets/@framework/mk_game.ts#L51)
+[assets/@framework/mk_game.ts:51](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_game.ts#L51)
 
 ___
 
@@ -102,4 +102,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_game.ts:96](https://github.com/1226085293/MKFramework/blob/6204f55/assets/@framework/mk_game.ts#L96)
+[assets/@framework/mk_game.ts:96](https://github.com/1226085293/MKFramework/blob/a571549/assets/@framework/mk_game.ts#L96)
