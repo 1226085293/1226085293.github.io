@@ -24,7 +24,7 @@
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:250](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/audio/mk_audio_base.ts#L250)
+[assets/@framework/audio/mk_audio_base.ts:250](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/audio/mk_audio_base.ts#L250)
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:252](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/audio/mk_audio_base.ts#L252)
+[assets/@framework/audio/mk_audio_base.ts:252](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/audio/mk_audio_base.ts#L252)
 
 ___
 
@@ -48,4 +48,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:254](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/audio/mk_audio_base.ts#L254)
+[assets/@framework/audio/mk_audio_base.ts:254](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/audio/mk_audio_base.ts#L254)

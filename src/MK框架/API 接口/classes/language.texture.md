@@ -44,7 +44,7 @@ mk\_language\_base.\_type\_s
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_texture.ts:35](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/language/component/mk_language_texture.ts#L35)
+[assets/@framework/language/component/mk_language_texture.ts:35](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/language/component/mk_language_texture.ts#L35)
 
 ## Accessors
 
@@ -62,7 +62,7 @@ mk\_language\_base.type
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_texture.ts:26](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/language/component/mk_language_texture.ts#L26)
+[assets/@framework/language/component/mk_language_texture.ts:26](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/language/component/mk_language_texture.ts#L26)
 
 • `set` **type**(`value_n_`): `void`
 
@@ -82,7 +82,7 @@ mk\_language\_base.type
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_texture.ts:30](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/language/component/mk_language_texture.ts#L30)
+[assets/@framework/language/component/mk_language_texture.ts:30](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/language/component/mk_language_texture.ts#L30)
 
 ## Methods
 
@@ -102,7 +102,7 @@ mk\_language\_base.\_reset\_data
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_texture.ts:44](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/language/component/mk_language_texture.ts#L44)
+[assets/@framework/language/component/mk_language_texture.ts:44](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/language/component/mk_language_texture.ts#L44)
 
 ___
 
@@ -120,7 +120,7 @@ mk\_language\_base.\_update\_content
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_texture.ts:66](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/language/component/mk_language_texture.ts#L66)
+[assets/@framework/language/component/mk_language_texture.ts:66](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/language/component/mk_language_texture.ts#L66)
 
 ___
 
@@ -138,7 +138,7 @@ mk\_language\_base.\_update\_mark
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_texture.ts:111](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/language/component/mk_language_texture.ts#L111)
+[assets/@framework/language/component/mk_language_texture.ts:111](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/language/component/mk_language_texture.ts#L111)
 
 ___
 
@@ -162,7 +162,7 @@ mk\_language\_base.\_set\_type
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_texture.ts:115](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/language/component/mk_language_texture.ts#L115)
+[assets/@framework/language/component/mk_language_texture.ts:115](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/language/component/mk_language_texture.ts#L115)
 
 ___
 
@@ -186,7 +186,7 @@ mk\_language\_base.\_set\_type\_s
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_texture.ts:120](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/language/component/mk_language_texture.ts#L120)
+[assets/@framework/language/component/mk_language_texture.ts:120](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/language/component/mk_language_texture.ts#L120)
 
 ___
 
@@ -204,7 +204,7 @@ mk\_language\_base.\_init\_data
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_texture.ts:133](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/language/component/mk_language_texture.ts#L133)
+[assets/@framework/language/component/mk_language_texture.ts:133](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/language/component/mk_language_texture.ts#L133)
 
 ___
 
@@ -228,4 +228,4 @@ mk\_language\_base.\_init\_event
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_texture.ts:146](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/language/component/mk_language_texture.ts#L146)
+[assets/@framework/language/component/mk_language_texture.ts:146](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/language/component/mk_language_texture.ts#L146)

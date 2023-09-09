@@ -24,7 +24,7 @@ play 配置
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:348](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/audio/mk_audio_base.ts#L348)
+[assets/@framework/audio/mk_audio_base.ts:348](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/audio/mk_audio_base.ts#L348)
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:350](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/audio/mk_audio_base.ts#L350)
+[assets/@framework/audio/mk_audio_base.ts:350](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/audio/mk_audio_base.ts#L350)
 
 ___
 
@@ -56,4 +56,4 @@ common 使用
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:360](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/audio/mk_audio_base.ts#L360)
+[assets/@framework/audio/mk_audio_base.ts:360](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/audio/mk_audio_base.ts#L360)

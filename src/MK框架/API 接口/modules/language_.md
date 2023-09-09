@@ -31,4 +31,4 @@
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:171](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/language/mk_language_manage.ts#L171)
+[assets/@framework/language/mk_language_manage.ts:171](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/language/mk_language_manage.ts#L171)

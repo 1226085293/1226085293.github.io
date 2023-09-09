@@ -45,7 +45,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:704](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/mk_ui_manage.ts#L704)
+[assets/@framework/mk_ui_manage.ts:704](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_ui_manage.ts#L704)
 
 ## Properties
 
@@ -57,7 +57,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:713](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/mk_ui_manage.ts#L713)
+[assets/@framework/mk_ui_manage.ts:713](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_ui_manage.ts#L713)
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:715](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/mk_ui_manage.ts#L715)
+[assets/@framework/mk_ui_manage.ts:715](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_ui_manage.ts#L715)
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:717](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/mk_ui_manage.ts#L717)
+[assets/@framework/mk_ui_manage.ts:717](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_ui_manage.ts#L717)
 
 ___
 
@@ -99,4 +99,4 @@ destroy_b
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:723](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/mk_ui_manage.ts#L723)
+[assets/@framework/mk_ui_manage.ts:723](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_ui_manage.ts#L723)
