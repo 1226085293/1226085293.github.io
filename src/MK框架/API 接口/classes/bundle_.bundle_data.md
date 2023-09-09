@@ -40,7 +40,7 @@ bundle 数据
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:496](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/resources/mk_bundle.ts#L496)
+[assets/@framework/resources/mk_bundle.ts:496](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/resources/mk_bundle.ts#L496)
 
 ## Properties
 
@@ -52,4 +52,4 @@ bundle 数据
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:502](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/resources/mk_bundle.ts#L502)
+[assets/@framework/resources/mk_bundle.ts:502](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/resources/mk_bundle.ts#L502)

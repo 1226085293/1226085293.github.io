@@ -57,7 +57,7 @@ mk\_life\_cycle.config
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:117](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L117)
+[assets/@framework/module/mk_view_base.ts:117](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L117)
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:137](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L137)
+[assets/@framework/module/mk_view_base.ts:137](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L137)
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:144](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L144)
+[assets/@framework/module/mk_view_base.ts:144](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L144)
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:191](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L191)
+[assets/@framework/module/mk_view_base.ts:191](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L191)
 
 ___
 
@@ -109,7 +109,7 @@ close 后重置 this.data，data 必须为 class 类型
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:216](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L216)
+[assets/@framework/module/mk_view_base.ts:216](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L216)
 
 ___
 
@@ -121,7 +121,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:218](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L218)
+[assets/@framework/module/mk_view_base.ts:218](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L218)
 
 ## Accessors
 
@@ -135,7 +135,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:151](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L151)
+[assets/@framework/module/mk_view_base.ts:151](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L151)
 
 • `set` **auto_mask_b**(`value_b_`): `void`
 
@@ -151,7 +151,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:155](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L155)
+[assets/@framework/module/mk_view_base.ts:155](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L155)
 
 ___
 
@@ -165,7 +165,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:164](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L164)
+[assets/@framework/module/mk_view_base.ts:164](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L164)
 
 • `set` **auto_widget_b**(`value_b_`): `void`
 
@@ -181,7 +181,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:168](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L168)
+[assets/@framework/module/mk_view_base.ts:168](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L168)
 
 ___
 
@@ -195,7 +195,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:177](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L177)
+[assets/@framework/module/mk_view_base.ts:177](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L177)
 
 • `set` **auto_block_input_b**(`value_b_`): `void`
 
@@ -211,7 +211,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:181](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L181)
+[assets/@framework/module/mk_view_base.ts:181](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L181)
 
 ___
 
@@ -227,7 +227,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:194](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L194)
+[assets/@framework/module/mk_view_base.ts:194](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L194)
 
 ___
 
@@ -253,7 +253,7 @@ mk\_life\_cycle.config
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:199](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L199)
+[assets/@framework/module/mk_view_base.ts:199](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L199)
 
 ## Methods
 
@@ -271,7 +271,7 @@ mk\_life\_cycle.config
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:221](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L221)
+[assets/@framework/module/mk_view_base.ts:221](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L221)
 
 ___
 
@@ -295,7 +295,7 @@ init 后执行，在此处执行无需 init_data 支持的模块初始化操作
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:243](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L243)
+[assets/@framework/module/mk_view_base.ts:243](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L243)
 
 ___
 
@@ -321,7 +321,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:261](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L261)
+[assets/@framework/module/mk_view_base.ts:261](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L261)
 
 ___
 
@@ -345,7 +345,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:271](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L271)
+[assets/@framework/module/mk_view_base.ts:271](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L271)
 
 ___
 
@@ -365,4 +365,4 @@ mk\_life\_cycle.\_init\_editor
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:293](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/module/mk_view_base.ts#L293)
+[assets/@framework/module/mk_view_base.ts:293](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/module/mk_view_base.ts#L293)
