@@ -57,7 +57,7 @@
 
 #### Defined in
 
-[assets/@framework/network/websocket/mk_websocket.ts:9](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/network/websocket/mk_websocket.ts#L9)
+[assets/@framework/network/websocket/mk_websocket.ts:9](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/network/websocket/mk_websocket.ts#L9)
 
 ## Properties
 
@@ -73,7 +73,7 @@
 
 #### Defined in
 
-[assets/@framework/network/websocket/mk_websocket.ts:15](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/network/websocket/mk_websocket.ts#L15)
+[assets/@framework/network/websocket/mk_websocket.ts:15](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/network/websocket/mk_websocket.ts#L15)
 
 ___
 
@@ -89,7 +89,7 @@ socket
 
 #### Defined in
 
-[assets/@framework/network/websocket/mk_websocket.ts:17](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/network/websocket/mk_websocket.ts#L17)
+[assets/@framework/network/websocket/mk_websocket.ts:17](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/network/websocket/mk_websocket.ts#L17)
 
 ## Methods
 
@@ -109,4 +109,4 @@ socket
 
 #### Defined in
 
-[assets/@framework/network/websocket/mk_websocket.ts:20](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/network/websocket/mk_websocket.ts#L20)
+[assets/@framework/network/websocket/mk_websocket.ts:20](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/network/websocket/mk_websocket.ts#L20)

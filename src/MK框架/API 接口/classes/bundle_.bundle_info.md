@@ -38,7 +38,7 @@ bundle 信息
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:465](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/resources/mk_bundle.ts#L465)
+[assets/@framework/resources/mk_bundle.ts:465](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/resources/mk_bundle.ts#L465)
 
 ## Properties
 
@@ -54,7 +54,7 @@ getBundle 时使用
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:478](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/resources/mk_bundle.ts#L478)
+[assets/@framework/resources/mk_bundle.ts:478](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/resources/mk_bundle.ts#L478)
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:480](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/resources/mk_bundle.ts#L480)
+[assets/@framework/resources/mk_bundle.ts:480](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/resources/mk_bundle.ts#L480)
 
 ___
 
@@ -88,4 +88,4 @@ loadBundle 时使用
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:488](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/resources/mk_bundle.ts#L488)
+[assets/@framework/resources/mk_bundle.ts:488](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/resources/mk_bundle.ts#L488)

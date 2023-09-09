@@ -41,7 +41,7 @@
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_node.ts:53](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/language/component/mk_language_node.ts#L53)
+[assets/@framework/language/component/mk_language_node.ts:53](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/language/component/mk_language_node.ts#L53)
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_node.ts:100](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/language/component/mk_language_node.ts#L100)
+[assets/@framework/language/component/mk_language_node.ts:100](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/language/component/mk_language_node.ts#L100)
 
 ___
 
@@ -65,7 +65,7 @@ layout 适配
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_node.ts:107](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/language/component/mk_language_node.ts#L107)
+[assets/@framework/language/component/mk_language_node.ts:107](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/language/component/mk_language_node.ts#L107)
 
 ___
 
@@ -79,7 +79,7 @@ mk\_life\_cycle.\_use\_layer\_b
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_node.ts:116](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/language/component/mk_language_node.ts#L116)
+[assets/@framework/language/component/mk_language_node.ts:116](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/language/component/mk_language_node.ts#L116)
 
 ## Accessors
 
@@ -95,7 +95,7 @@ mk\_life\_cycle.\_use\_layer\_b
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_node.ts:60](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/language/component/mk_language_node.ts#L60)
+[assets/@framework/language/component/mk_language_node.ts:60](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/language/component/mk_language_node.ts#L60)
 
 • `set` **language**(`value_n_`): `void`
 
@@ -111,7 +111,7 @@ mk\_life\_cycle.\_use\_layer\_b
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_node.ts:64](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/language/component/mk_language_node.ts#L64)
+[assets/@framework/language/component/mk_language_node.ts:64](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/language/component/mk_language_node.ts#L64)
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_node.ts:111](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/language/component/mk_language_node.ts#L111)
+[assets/@framework/language/component/mk_language_node.ts:111](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/language/component/mk_language_node.ts#L111)
 
 ## Methods
 
@@ -155,7 +155,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_node.ts:121](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/language/component/mk_language_node.ts#L121)
+[assets/@framework/language/component/mk_language_node.ts:121](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/language/component/mk_language_node.ts#L121)
 
 ___
 
@@ -179,4 +179,4 @@ init 后执行，在此处执行无需 init_data 支持的模块初始化操作
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_node.ts:125](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/language/component/mk_language_node.ts#L125)
+[assets/@framework/language/component/mk_language_node.ts:125](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/language/component/mk_language_node.ts#L125)

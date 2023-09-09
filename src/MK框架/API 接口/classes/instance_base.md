@@ -75,4 +75,4 @@
 
 #### Defined in
 
-[assets/@framework/mk_instance_base.ts:4](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/mk_instance_base.ts#L4)
+[assets/@framework/mk_instance_base.ts:4](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/mk_instance_base.ts#L4)

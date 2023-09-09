@@ -47,7 +47,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_codec_base.ts:40](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/mk_codec_base.ts#L40)
+[assets/@framework/mk_codec_base.ts:40](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/mk_codec_base.ts#L40)
 
 ___
 
@@ -73,4 +73,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_codec_base.ts:42](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/mk_codec_base.ts#L42)
+[assets/@framework/mk_codec_base.ts:42](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/mk_codec_base.ts#L42)

@@ -38,7 +38,7 @@ resources
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:587](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/resources/mk_asset.ts#L587)
+[assets/@framework/resources/mk_asset.ts:587](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/resources/mk_asset.ts#L587)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:589](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/resources/mk_asset.ts#L589)
+[assets/@framework/resources/mk_asset.ts:589](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/resources/mk_asset.ts#L589)
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:597](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/resources/mk_asset.ts#L597)
+[assets/@framework/resources/mk_asset.ts:597](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/resources/mk_asset.ts#L597)
 
 ___
 
@@ -104,4 +104,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:599](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/resources/mk_asset.ts#L599)
+[assets/@framework/resources/mk_asset.ts:599](https://github.com/1226085293/MKFramework/blob/5bafc02/assets/@framework/resources/mk_asset.ts#L599)
