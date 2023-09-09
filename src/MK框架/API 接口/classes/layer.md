@@ -45,7 +45,7 @@
 
 #### Defined in
 
-[assets/@framework/module/mk_layer.ts:39](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/module/mk_layer.ts#L39)
+[assets/@framework/module/mk_layer.ts:39](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/module/mk_layer.ts#L39)
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_layer.ts:64](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/module/mk_layer.ts#L64)
+[assets/@framework/module/mk_layer.ts:64](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/module/mk_layer.ts#L64)
 
 ___
 
@@ -79,7 +79,7 @@ false：关闭 layer 功能
 
 #### Defined in
 
-[assets/@framework/module/mk_layer.ts:94](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/module/mk_layer.ts#L94)
+[assets/@framework/module/mk_layer.ts:94](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/module/mk_layer.ts#L94)
 
 ## Accessors
 
@@ -95,7 +95,7 @@ false：关闭 layer 功能
 
 #### Defined in
 
-[assets/@framework/module/mk_layer.ts:49](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/module/mk_layer.ts#L49)
+[assets/@framework/module/mk_layer.ts:49](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/module/mk_layer.ts#L49)
 
 ___
 
@@ -111,7 +111,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_layer.ts:77](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/module/mk_layer.ts#L77)
+[assets/@framework/module/mk_layer.ts:77](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/module/mk_layer.ts#L77)
 
 • `set` **child_layer_n**(`value_n_`): `void`
 
@@ -127,7 +127,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_layer.ts:81](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/module/mk_layer.ts#L81)
+[assets/@framework/module/mk_layer.ts:81](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/module/mk_layer.ts#L81)
 
 ## Methods
 
@@ -155,7 +155,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_layer.ts:109](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/module/mk_layer.ts#L109)
+[assets/@framework/module/mk_layer.ts:109](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/module/mk_layer.ts#L109)
 
 ___
 
@@ -173,7 +173,7 @@ cc.Component.onLoad
 
 #### Defined in
 
-[assets/@framework/module/mk_layer.ts:126](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/module/mk_layer.ts#L126)
+[assets/@framework/module/mk_layer.ts:126](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/module/mk_layer.ts#L126)
 
 ___
 
@@ -189,4 +189,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_layer.ts:136](https://github.com/1226085293/MKFramework/blob/4086fa5/assets/@framework/module/mk_layer.ts#L136)
+[assets/@framework/module/mk_layer.ts:136](https://github.com/1226085293/MKFramework/blob/d0f91f2/assets/@framework/module/mk_layer.ts#L136)
