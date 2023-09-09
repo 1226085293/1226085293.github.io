@@ -55,7 +55,7 @@
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:23](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/guide/mk_guide_manage.ts#L23)
+[assets/@framework/guide/mk_guide_manage.ts:23](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/guide/mk_guide_manage.ts#L23)
 
 ## Properties
 
@@ -67,7 +67,7 @@
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:35](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/guide/mk_guide_manage.ts#L35)
+[assets/@framework/guide/mk_guide_manage.ts:35](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/guide/mk_guide_manage.ts#L35)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:37](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/guide/mk_guide_manage.ts#L37)
+[assets/@framework/guide/mk_guide_manage.ts:37](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/guide/mk_guide_manage.ts#L37)
 
 ## Accessors
 
@@ -95,7 +95,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:39](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/guide/mk_guide_manage.ts#L39)
+[assets/@framework/guide/mk_guide_manage.ts:39](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/guide/mk_guide_manage.ts#L39)
 
 • `set` **pause_b**(`value_b_`): `void`
 
@@ -111,7 +111,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:43](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/guide/mk_guide_manage.ts#L43)
+[assets/@framework/guide/mk_guide_manage.ts:43](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/guide/mk_guide_manage.ts#L43)
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:48](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/guide/mk_guide_manage.ts#L48)
+[assets/@framework/guide/mk_guide_manage.ts:48](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/guide/mk_guide_manage.ts#L48)
 
 ___
 
@@ -143,7 +143,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:53](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/guide/mk_guide_manage.ts#L53)
+[assets/@framework/guide/mk_guide_manage.ts:53](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/guide/mk_guide_manage.ts#L53)
 
 ## Methods
 
@@ -165,7 +165,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:77](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/guide/mk_guide_manage.ts#L77)
+[assets/@framework/guide/mk_guide_manage.ts:77](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/guide/mk_guide_manage.ts#L77)
 
 ___
 
@@ -185,7 +185,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:94](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/guide/mk_guide_manage.ts#L94)
+[assets/@framework/guide/mk_guide_manage.ts:94](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/guide/mk_guide_manage.ts#L94)
 
 ___
 
@@ -214,7 +214,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:212](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/guide/mk_guide_manage.ts#L212)
+[assets/@framework/guide/mk_guide_manage.ts:212](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/guide/mk_guide_manage.ts#L212)
 
 ___
 
@@ -230,7 +230,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:254](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/guide/mk_guide_manage.ts#L254)
+[assets/@framework/guide/mk_guide_manage.ts:254](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/guide/mk_guide_manage.ts#L254)
 
 ___
 
@@ -246,4 +246,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:259](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/guide/mk_guide_manage.ts#L259)
+[assets/@framework/guide/mk_guide_manage.ts:259](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/guide/mk_guide_manage.ts#L259)

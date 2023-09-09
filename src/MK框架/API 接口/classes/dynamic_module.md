@@ -47,7 +47,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_dynamic_module.ts:17](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/mk_dynamic_module.ts#L17)
+[assets/@framework/mk_dynamic_module.ts:17](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/mk_dynamic_module.ts#L17)
 
 ___
 
@@ -75,4 +75,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_dynamic_module.ts:55](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/mk_dynamic_module.ts#L55)
+[assets/@framework/mk_dynamic_module.ts:55](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/mk_dynamic_module.ts#L55)

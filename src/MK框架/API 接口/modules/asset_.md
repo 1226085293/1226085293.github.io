@@ -29,7 +29,7 @@
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:578](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/resources/mk_asset.ts#L578)
+[assets/@framework/resources/mk_asset.ts:578](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/resources/mk_asset.ts#L578)
 
 ___
 
@@ -41,4 +41,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:603](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/resources/mk_asset.ts#L603)
+[assets/@framework/resources/mk_asset.ts:603](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/resources/mk_asset.ts#L603)

@@ -31,7 +31,7 @@
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:178](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/language/mk_language_manage.ts#L178)
+[assets/@framework/language/mk_language_manage.ts:178](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/language/mk_language_manage.ts#L178)
 
 ## Properties
 
@@ -43,7 +43,7 @@
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:183](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/language/mk_language_manage.ts#L183)
+[assets/@framework/language/mk_language_manage.ts:183](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/language/mk_language_manage.ts#L183)
 
 ___
 
@@ -55,4 +55,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:185](https://github.com/1226085293/MKFramework/blob/271662f/assets/@framework/language/mk_language_manage.ts#L185)
+[assets/@framework/language/mk_language_manage.ts:185](https://github.com/1226085293/MKFramework/blob/2cca83f/assets/@framework/language/mk_language_manage.ts#L185)
