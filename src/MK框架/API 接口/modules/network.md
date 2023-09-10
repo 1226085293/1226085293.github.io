@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / network
 

@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / [network](../modules/network.md) / [base\_](../modules/network.base_.md) / send\_tide
 
@@ -48,7 +50,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:711](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/mk_network_base.ts#L711)
+[assets/@framework/network/mk_network_base.ts:711](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L711)
 
 ## Methods
 
@@ -70,7 +72,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:733](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/mk_network_base.ts#L733)
+[assets/@framework/network/mk_network_base.ts:733](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L733)
 
 ___
 
@@ -86,4 +88,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:755](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/mk_network_base.ts#L755)
+[assets/@framework/network/mk_network_base.ts:755](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L755)

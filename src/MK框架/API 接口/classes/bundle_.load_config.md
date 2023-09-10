@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / [bundle\_](../modules/bundle_.md) / load\_config
 
@@ -35,7 +37,7 @@ load 配置
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:507](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L507)
+[assets/@framework/resources/mk_bundle.ts:507](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L507)
 
 ## Properties
 
@@ -51,7 +53,7 @@ getBundle 时使用
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:516](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L516)
+[assets/@framework/resources/mk_bundle.ts:516](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L516)
 
 ___
 
@@ -78,4 +80,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:518](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L518)
+[assets/@framework/resources/mk_bundle.ts:518](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L518)

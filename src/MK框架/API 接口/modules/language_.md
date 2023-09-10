@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / language\_
 
@@ -35,4 +37,4 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:171](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L171)
+[assets/@framework/language/mk_language_manage.ts:171](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L171)

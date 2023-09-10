@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / [bundle\_](../modules/bundle_.md) / bundle\_manage\_base
 
@@ -50,7 +52,7 @@ bundle 管理器基类
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:557](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L557)
+[assets/@framework/resources/mk_bundle.ts:557](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L557)
 
 ## Properties
 
@@ -62,7 +64,7 @@ bundle 名
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:592](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L592)
+[assets/@framework/resources/mk_bundle.ts:592](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L592)
 
 ___
 
@@ -74,7 +76,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:594](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L594)
+[assets/@framework/resources/mk_bundle.ts:594](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L594)
 
 ___
 
@@ -86,7 +88,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:596](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L596)
+[assets/@framework/resources/mk_bundle.ts:596](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L596)
 
 ___
 
@@ -98,7 +100,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:598](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L598)
+[assets/@framework/resources/mk_bundle.ts:598](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L598)
 
 ___
 
@@ -110,7 +112,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:600](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L600)
+[assets/@framework/resources/mk_bundle.ts:600](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L600)
 
 ___
 
@@ -122,7 +124,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:602](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L602)
+[assets/@framework/resources/mk_bundle.ts:602](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L602)
 
 ___
 
@@ -134,7 +136,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:605](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L605)
+[assets/@framework/resources/mk_bundle.ts:605](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L605)
 
 ## Methods
 
@@ -154,7 +156,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:612](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L612)
+[assets/@framework/resources/mk_bundle.ts:612](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L612)
 
 ___
 
@@ -174,7 +176,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:619](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L619)
+[assets/@framework/resources/mk_bundle.ts:619](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L619)
 
 ___
 
@@ -194,7 +196,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:637](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L637)
+[assets/@framework/resources/mk_bundle.ts:637](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L637)
 
 ___
 
@@ -224,7 +226,7 @@ mk\_release\_.follow\_release\_object.follow\_release
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:665](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L665)
+[assets/@framework/resources/mk_bundle.ts:665](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L665)
 
 ___
 
@@ -254,4 +256,4 @@ mk\_release\_.follow\_release\_object.cancel\_release
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:681](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L681)
+[assets/@framework/resources/mk_bundle.ts:681](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L681)

@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / audio
 
@@ -49,7 +51,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:18](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L18)
+[assets/@framework/audio/mk_audio_base.ts:18](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L18)
 
 ## Properties
 
@@ -61,7 +63,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:25](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L25)
+[assets/@framework/audio/mk_audio_base.ts:25](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L25)
 
 ___
 
@@ -73,7 +75,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:27](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L27)
+[assets/@framework/audio/mk_audio_base.ts:27](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L27)
 
 ## Methods
 
@@ -95,7 +97,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:30](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L30)
+[assets/@framework/audio/mk_audio_base.ts:30](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L30)
 
 ___
 
@@ -117,7 +119,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:32](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L32)
+[assets/@framework/audio/mk_audio_base.ts:32](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L32)
 
 ___
 
@@ -145,7 +147,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:34](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L34)
+[assets/@framework/audio/mk_audio_base.ts:34](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L34)
 
 ___
 
@@ -167,7 +169,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:41](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L41)
+[assets/@framework/audio/mk_audio_base.ts:41](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L41)
 
 ___
 
@@ -191,7 +193,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:57](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L57)
+[assets/@framework/audio/mk_audio_base.ts:57](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L57)
 
 ▸ **add**(`url_ss_`, `target_`, `config_?`): `Promise`<``null`` \| [`unit`](../modules/audio_.md#unit)[]\>
 
@@ -211,7 +213,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:68](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L68)
+[assets/@framework/audio/mk_audio_base.ts:68](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L68)
 
 ___
 
@@ -234,7 +236,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:139](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L139)
+[assets/@framework/audio/mk_audio_base.ts:139](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L139)
 
 ___
 
@@ -250,7 +252,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:166](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L166)
+[assets/@framework/audio/mk_audio_base.ts:166](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L166)
 
 ___
 
@@ -266,7 +268,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:175](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L175)
+[assets/@framework/audio/mk_audio_base.ts:175](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L175)
 
 ___
 
@@ -282,4 +284,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:186](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L186)
+[assets/@framework/audio/mk_audio_base.ts:186](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L186)

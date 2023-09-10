@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / data\_sharer
 
@@ -47,7 +49,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/mk_data_sharer.ts:14](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_data_sharer.ts#L14)
+[assets/@framework/mk_data_sharer.ts:14](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_data_sharer.ts#L14)
 
 ## Methods
 
@@ -75,7 +77,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/mk_data_sharer.ts:28](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_data_sharer.ts#L28)
+[assets/@framework/mk_data_sharer.ts:28](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_data_sharer.ts#L28)
 
 ___
 
@@ -105,7 +107,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_data_sharer.ts:47](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_data_sharer.ts#L47)
+[assets/@framework/mk_data_sharer.ts:47](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_data_sharer.ts#L47)
 
 ___
 
@@ -134,7 +136,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_data_sharer.ts:65](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_data_sharer.ts#L65)
+[assets/@framework/mk_data_sharer.ts:65](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_data_sharer.ts#L65)
 
 ▸ **get**<`T`, `T2`, `T3`\>(`key_`, `request_`): `T2` extends ``true`` ? `Promise`<`T3`\> : ``null`` \| `T3`
 
@@ -161,7 +163,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_data_sharer.ts:71](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_data_sharer.ts#L71)
+[assets/@framework/mk_data_sharer.ts:71](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_data_sharer.ts#L71)
 
 ___
 
@@ -177,4 +179,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_data_sharer.ts:92](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_data_sharer.ts#L92)
+[assets/@framework/mk_data_sharer.ts:92](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_data_sharer.ts#L92)

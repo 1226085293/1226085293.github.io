@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / bundle
 
@@ -64,7 +66,7 @@ bundle 管理器
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:61](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L61)
+[assets/@framework/resources/mk_bundle.ts:61](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L61)
 
 ## Properties
 
@@ -76,7 +78,7 @@ bundle 管理器
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:97](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L97)
+[assets/@framework/resources/mk_bundle.ts:97](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L97)
 
 ___
 
@@ -88,7 +90,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:99](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L99)
+[assets/@framework/resources/mk_bundle.ts:99](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L99)
 
 ___
 
@@ -100,7 +102,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:101](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L101)
+[assets/@framework/resources/mk_bundle.ts:101](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L101)
 
 ___
 
@@ -112,7 +114,7 @@ bundle列表
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:103](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L103)
+[assets/@framework/resources/mk_bundle.ts:103](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L103)
 
 ___
 
@@ -124,7 +126,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:105](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L105)
+[assets/@framework/resources/mk_bundle.ts:105](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L105)
 
 ## Accessors
 
@@ -140,7 +142,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:108](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L108)
+[assets/@framework/resources/mk_bundle.ts:108](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L108)
 
 • `set` **bundle_s**(`value_s_`): `void`
 
@@ -156,7 +158,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:112](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L112)
+[assets/@framework/resources/mk_bundle.ts:112](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L112)
 
 ___
 
@@ -172,7 +174,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:117](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L117)
+[assets/@framework/resources/mk_bundle.ts:117](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L117)
 
 • `set` **scene_s**(`value_s`): `void`
 
@@ -188,7 +190,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:121](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L121)
+[assets/@framework/resources/mk_bundle.ts:121](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L121)
 
 ## Methods
 
@@ -210,7 +212,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:142](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L142)
+[assets/@framework/resources/mk_bundle.ts:142](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L142)
 
 ___
 
@@ -232,7 +234,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:160](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L160)
+[assets/@framework/resources/mk_bundle.ts:160](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L160)
 
 ___
 
@@ -255,7 +257,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:222](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L222)
+[assets/@framework/resources/mk_bundle.ts:222](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L222)
 
 ___
 
@@ -277,4 +279,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:341](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L341)
+[assets/@framework/resources/mk_bundle.ts:341](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L341)

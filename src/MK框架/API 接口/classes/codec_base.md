@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / codec\_base
 
@@ -41,7 +43,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/mk_codec_base.ts:6](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_codec_base.ts#L6)
+[assets/@framework/mk_codec_base.ts:6](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_codec_base.ts#L6)
 
 ## Properties
 
@@ -53,7 +55,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/mk_codec_base.ts:14](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_codec_base.ts#L14)
+[assets/@framework/mk_codec_base.ts:14](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_codec_base.ts#L14)
 
 ## Accessors
 
@@ -69,7 +71,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/mk_codec_base.ts:17](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_codec_base.ts#L17)
+[assets/@framework/mk_codec_base.ts:17](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_codec_base.ts#L17)
 
 ## Methods
 
@@ -91,7 +93,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/mk_codec_base.ts:26](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_codec_base.ts#L26)
+[assets/@framework/mk_codec_base.ts:26](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_codec_base.ts#L26)
 
 ___
 
@@ -113,4 +115,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_codec_base.ts:31](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_codec_base.ts#L31)
+[assets/@framework/mk_codec_base.ts:31](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_codec_base.ts#L31)

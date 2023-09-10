@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / [language\_](../modules/language_.md) / base\_data
 
@@ -55,7 +57,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:190](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L190)
+[assets/@framework/language/mk_language_manage.ts:190](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L190)
 
 ## Properties
 
@@ -67,7 +69,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:195](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L195)
+[assets/@framework/language/mk_language_manage.ts:195](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L195)
 
 ___
 
@@ -79,4 +81,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:200](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L200)
+[assets/@framework/language/mk_language_manage.ts:200](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L200)

@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / [network](../modules/network.md) / [base\_](../modules/network.base_.md) / status
 
@@ -29,7 +31,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:621](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/mk_network_base.ts#L621)
+[assets/@framework/network/mk_network_base.ts:621](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L621)
 
 ___
 
@@ -41,7 +43,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:623](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/mk_network_base.ts#L623)
+[assets/@framework/network/mk_network_base.ts:623](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L623)
 
 ___
 
@@ -53,7 +55,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:625](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/mk_network_base.ts#L625)
+[assets/@framework/network/mk_network_base.ts:625](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L625)
 
 ___
 
@@ -65,4 +67,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:627](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/mk_network_base.ts#L627)
+[assets/@framework/network/mk_network_base.ts:627](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L627)

@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / [bundle\_](../modules/bundle_.md) / switch\_scene\_config
 
@@ -42,7 +44,7 @@ switch_scene 配置
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:523](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L523)
+[assets/@framework/resources/mk_bundle.ts:523](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L523)
 
 ## Properties
 
@@ -58,7 +60,7 @@ getBundle 时使用
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:532](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L532)
+[assets/@framework/resources/mk_bundle.ts:532](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L532)
 
 ___
 
@@ -70,7 +72,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:534](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L534)
+[assets/@framework/resources/mk_bundle.ts:534](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L534)
 
 ___
 
@@ -82,7 +84,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:543](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L543)
+[assets/@framework/resources/mk_bundle.ts:543](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L543)
 
 ___
 
@@ -94,7 +96,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:545](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L545)
+[assets/@framework/resources/mk_bundle.ts:545](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L545)
 
 ___
 
@@ -106,7 +108,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:547](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L547)
+[assets/@framework/resources/mk_bundle.ts:547](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L547)
 
 ## Methods
 
@@ -130,4 +132,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:541](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_bundle.ts#L541)
+[assets/@framework/resources/mk_bundle.ts:541](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L541)

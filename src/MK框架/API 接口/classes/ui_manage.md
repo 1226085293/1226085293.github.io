@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / ui\_manage
 
@@ -54,7 +56,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:34](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_ui_manage.ts#L34)
+[assets/@framework/mk_ui_manage.ts:34](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_ui_manage.ts#L34)
 
 ## Properties
 
@@ -90,7 +92,7 @@ open 未注册模块时会使用此函数获取注册数据自动注册
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:47](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_ui_manage.ts#L47)
+[assets/@framework/mk_ui_manage.ts:47](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_ui_manage.ts#L47)
 
 ## Methods
 
@@ -121,7 +123,7 @@ open 未注册模块时会使用此函数获取注册数据自动注册
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:84](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_ui_manage.ts#L84)
+[assets/@framework/mk_ui_manage.ts:84](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_ui_manage.ts#L84)
 
 ___
 
@@ -149,7 +151,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:231](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_ui_manage.ts#L231)
+[assets/@framework/mk_ui_manage.ts:231](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_ui_manage.ts#L231)
 
 ___
 
@@ -165,7 +167,7 @@ readonly [`view_base`](view_base.md)[]
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:263](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_ui_manage.ts#L263)
+[assets/@framework/mk_ui_manage.ts:263](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_ui_manage.ts#L263)
 
 ▸ **get**<`T`, `T2`, `T3`\>(`key_`, `type_?`): ``null`` \| `T3`
 
@@ -192,7 +194,7 @@ readonly [`view_base`](view_base.md)[]
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:269](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_ui_manage.ts#L269)
+[assets/@framework/mk_ui_manage.ts:269](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_ui_manage.ts#L269)
 
 ▸ **get**<`T`, `T2`, `T3`\>(`key_`, `type_?`): readonly `T3`[]
 
@@ -219,7 +221,7 @@ readonly `T3`[]
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:278](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_ui_manage.ts#L278)
+[assets/@framework/mk_ui_manage.ts:278](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_ui_manage.ts#L278)
 
 ___
 
@@ -249,7 +251,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:316](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_ui_manage.ts#L316)
+[assets/@framework/mk_ui_manage.ts:316](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_ui_manage.ts#L316)
 
 ___
 
@@ -279,4 +281,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:479](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_ui_manage.ts#L479)
+[assets/@framework/mk_ui_manage.ts:479](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_ui_manage.ts#L479)

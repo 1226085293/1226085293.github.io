@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / [task](../modules/task.md) / pipeline
 
@@ -48,7 +50,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/task/mk_task_pipeline.ts:29](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/task/mk_task_pipeline.ts#L29)
+[assets/@framework/task/mk_task_pipeline.ts:29](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/task/mk_task_pipeline.ts#L29)
 
 ## Accessors
 
@@ -64,7 +66,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/task/mk_task_pipeline.ts:31](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/task/mk_task_pipeline.ts#L31)
+[assets/@framework/task/mk_task_pipeline.ts:31](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/task/mk_task_pipeline.ts#L31)
 
 • `set` **pause_b**(`value_b_`): `void`
 
@@ -80,7 +82,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/task/mk_task_pipeline.ts:35](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/task/mk_task_pipeline.ts#L35)
+[assets/@framework/task/mk_task_pipeline.ts:35](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/task/mk_task_pipeline.ts#L35)
 
 ## Methods
 
@@ -104,4 +106,4 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/task/mk_task_pipeline.ts:57](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/task/mk_task_pipeline.ts#L57)
+[assets/@framework/task/mk_task_pipeline.ts:57](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/task/mk_task_pipeline.ts#L57)

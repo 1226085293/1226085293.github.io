@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / language\_manage
 
@@ -52,7 +54,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:38](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L38)
+[assets/@framework/language/mk_language_manage.ts:38](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L38)
 
 ___
 
@@ -64,7 +66,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:40](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L40)
+[assets/@framework/language/mk_language_manage.ts:40](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L40)
 
 ___
 
@@ -76,7 +78,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:42](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L42)
+[assets/@framework/language/mk_language_manage.ts:42](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L42)
 
 ## Accessors
 
@@ -92,7 +94,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:45](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L45)
+[assets/@framework/language/mk_language_manage.ts:45](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L45)
 
 • `set` **type_s**(`value_`): `void`
 
@@ -108,7 +110,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:49](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L49)
+[assets/@framework/language/mk_language_manage.ts:49](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L49)
 
 ___
 
@@ -124,7 +126,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:54](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L54)
+[assets/@framework/language/mk_language_manage.ts:54](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L54)
 
 ## Methods
 
@@ -148,7 +150,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:72](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L72)
+[assets/@framework/language/mk_language_manage.ts:72](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L72)
 
 ___
 
@@ -173,7 +175,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:101](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L101)
+[assets/@framework/language/mk_language_manage.ts:101](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L101)
 
 ___
 
@@ -196,7 +198,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:137](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L137)
+[assets/@framework/language/mk_language_manage.ts:137](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L137)
 
 ___
 
@@ -219,4 +221,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:149](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L149)
+[assets/@framework/language/mk_language_manage.ts:149](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L149)

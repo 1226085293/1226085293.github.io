@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / [network](../modules/network.md) / [http\_](../modules/network.http_.md) / config
 
@@ -39,7 +41,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/network/mk_http.ts:133](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/mk_http.ts#L133)
+[assets/@framework/network/mk_http.ts:133](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_http.ts#L133)
 
 ## Properties
 
@@ -51,7 +53,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/network/mk_http.ts:138](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/mk_http.ts#L138)
+[assets/@framework/network/mk_http.ts:138](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_http.ts#L138)
 
 ___
 
@@ -63,7 +65,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_http.ts:140](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/mk_http.ts#L140)
+[assets/@framework/network/mk_http.ts:140](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_http.ts#L140)
 
 ___
 
@@ -75,7 +77,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_http.ts:142](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/mk_http.ts#L142)
+[assets/@framework/network/mk_http.ts:142](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_http.ts#L142)
 
 ___
 
@@ -87,7 +89,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_http.ts:144](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/mk_http.ts#L144)
+[assets/@framework/network/mk_http.ts:144](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_http.ts#L144)
 
 ___
 
@@ -99,7 +101,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_http.ts:146](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/mk_http.ts#L146)
+[assets/@framework/network/mk_http.ts:146](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_http.ts#L146)
 
 ___
 
@@ -129,4 +131,4 @@ open 后回调
 
 #### Defined in
 
-[assets/@framework/network/mk_http.ts:152](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/mk_http.ts#L152)
+[assets/@framework/network/mk_http.ts:152](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_http.ts#L152)

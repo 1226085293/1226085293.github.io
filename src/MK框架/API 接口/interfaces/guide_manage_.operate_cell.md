@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / [guide\_manage\_](../modules/guide_manage_.md) / operate\_cell
 
@@ -36,7 +38,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:348](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/guide/mk_guide_manage.ts#L348)
+[assets/@framework/guide/mk_guide_manage.ts:348](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/guide/mk_guide_manage.ts#L348)
 
 ___
 
@@ -56,7 +58,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:350](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/guide/mk_guide_manage.ts#L350)
+[assets/@framework/guide/mk_guide_manage.ts:350](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/guide/mk_guide_manage.ts#L350)
 
 ___
 
@@ -80,4 +82,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:356](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/guide/mk_guide_manage.ts#L356)
+[assets/@framework/guide/mk_guide_manage.ts:356](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/guide/mk_guide_manage.ts#L356)

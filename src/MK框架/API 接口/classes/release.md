@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / release
 
@@ -58,7 +60,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/mk_release.ts:26](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_release.ts#L26)
+[assets/@framework/mk_release.ts:26](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_release.ts#L26)
 
 ___
 
@@ -80,7 +82,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_release.ts:55](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_release.ts#L55)
+[assets/@framework/mk_release.ts:55](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_release.ts#L55)
 
 ___
 
@@ -96,4 +98,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_release.ts:75](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_release.ts#L75)
+[assets/@framework/mk_release.ts:75](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_release.ts#L75)

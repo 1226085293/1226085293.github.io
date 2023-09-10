@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / storage
 
@@ -56,7 +58,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/mk_storage.ts:18](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_storage.ts#L18)
+[assets/@framework/mk_storage.ts:18](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_storage.ts#L18)
 
 ## Properties
 
@@ -68,7 +70,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/mk_storage.ts:29](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_storage.ts#L29)
+[assets/@framework/mk_storage.ts:29](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_storage.ts#L29)
 
 ## Methods
 
@@ -84,7 +86,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/mk_storage.ts:45](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_storage.ts#L45)
+[assets/@framework/mk_storage.ts:45](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_storage.ts#L45)
 
 ___
 
@@ -115,7 +117,7 @@ storage.status
 
 #### Defined in
 
-[assets/@framework/mk_storage.ts:60](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_storage.ts#L60)
+[assets/@framework/mk_storage.ts:60](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_storage.ts#L60)
 
 ___
 
@@ -144,7 +146,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_storage.ts:93](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_storage.ts#L93)
+[assets/@framework/mk_storage.ts:93](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_storage.ts#L93)
 
 ___
 
@@ -172,7 +174,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_storage.ts:132](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_storage.ts#L132)
+[assets/@framework/mk_storage.ts:132](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_storage.ts#L132)
 
 ___
 
@@ -188,4 +190,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_storage.ts:143](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_storage.ts#L143)
+[assets/@framework/mk_storage.ts:143](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_storage.ts#L143)

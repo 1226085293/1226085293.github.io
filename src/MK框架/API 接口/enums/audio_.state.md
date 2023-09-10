@@ -1,6 +1,8 @@
 ---
 article: false
 timeline: false
+sitemap:
+  exclude: true
 ---
 [index](../README.md) / [audio\_](../modules/audio_.md) / state
 
@@ -28,7 +30,7 @@ timeline: false
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:250](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L250)
+[assets/@framework/audio/mk_audio_base.ts:250](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L250)
 
 ___
 
@@ -40,7 +42,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:252](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L252)
+[assets/@framework/audio/mk_audio_base.ts:252](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L252)
 
 ___
 
@@ -52,4 +54,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/audio/mk_audio_base.ts:254](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/audio/mk_audio_base.ts#L254)
+[assets/@framework/audio/mk_audio_base.ts:254](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/audio/mk_audio_base.ts#L254)
