@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / [ui\_manage\_](../modules/ui_manage_.md) / regis\_data
 
@@ -59,7 +58,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:793](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_ui_manage.ts#L793)
+[assets/@framework/mk_ui_manage.ts:793](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_ui_manage.ts#L793)
 
 ## Properties
 
@@ -71,7 +70,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:799](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_ui_manage.ts#L799)
+[assets/@framework/mk_ui_manage.ts:799](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_ui_manage.ts#L799)
 
 ___
 
@@ -83,4 +82,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:801](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_ui_manage.ts#L801)
+[assets/@framework/mk_ui_manage.ts:801](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_ui_manage.ts#L801)

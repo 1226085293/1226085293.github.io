@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / [task](../modules/task.md) / status
 
@@ -61,7 +60,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/task/mk_status_task.ts:12](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/task/mk_status_task.ts#L12)
+[assets/@framework/task/mk_status_task.ts:12](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/task/mk_status_task.ts#L12)
 
 ## Properties
 
@@ -73,7 +72,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/task/mk_status_task.ts:27](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/task/mk_status_task.ts#L27)
+[assets/@framework/task/mk_status_task.ts:27](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/task/mk_status_task.ts#L27)
 
 ## Accessors
 
@@ -95,7 +94,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/task/mk_status_task.ts:36](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/task/mk_status_task.ts#L36)
+[assets/@framework/task/mk_status_task.ts:36](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/task/mk_status_task.ts#L36)
 
 ## Methods
 
@@ -123,7 +122,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/task/mk_status_task.ts:54](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/task/mk_status_task.ts#L54)
+[assets/@framework/task/mk_status_task.ts:54](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/task/mk_status_task.ts#L54)
 
 ▸ **finish**<`T`\>(`finish_b_`, `data_`): `void`
 
@@ -148,4 +147,4 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/task/mk_status_task.ts:60](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/task/mk_status_task.ts#L60)
+[assets/@framework/task/mk_status_task.ts:60](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/task/mk_status_task.ts#L60)

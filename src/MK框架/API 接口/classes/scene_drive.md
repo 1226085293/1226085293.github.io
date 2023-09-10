@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / scene\_drive
 
@@ -43,7 +42,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/module/mk_scene_drive.ts:21](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/module/mk_scene_drive.ts#L21)
+[assets/@framework/module/mk_scene_drive.ts:21](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/module/mk_scene_drive.ts#L21)
 
 ___
 
@@ -61,4 +60,4 @@ mk\_life\_cycle.onDestroy
 
 #### Defined in
 
-[assets/@framework/module/mk_scene_drive.ts:38](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/module/mk_scene_drive.ts#L38)
+[assets/@framework/module/mk_scene_drive.ts:38](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/module/mk_scene_drive.ts#L38)

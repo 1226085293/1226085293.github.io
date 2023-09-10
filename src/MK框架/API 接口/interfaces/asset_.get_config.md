@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / [asset\_](../modules/asset_.md) / get\_config
 
@@ -44,7 +43,7 @@ resources
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:587](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_asset.ts#L587)
+[assets/@framework/resources/mk_asset.ts:587](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/resources/mk_asset.ts#L587)
 
 ___
 
@@ -71,7 +70,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:589](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_asset.ts#L589)
+[assets/@framework/resources/mk_asset.ts:589](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/resources/mk_asset.ts#L589)
 
 ___
 
@@ -98,7 +97,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:597](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_asset.ts#L597)
+[assets/@framework/resources/mk_asset.ts:597](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/resources/mk_asset.ts#L597)
 
 ___
 
@@ -110,4 +109,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:599](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_asset.ts#L599)
+[assets/@framework/resources/mk_asset.ts:599](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/resources/mk_asset.ts#L599)

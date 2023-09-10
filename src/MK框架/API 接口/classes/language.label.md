@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / [language](../modules/language.md) / label
 
@@ -51,7 +50,7 @@ label 适配
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_label.ts:30](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/component/mk_language_label.ts#L30)
+[assets/@framework/language/component/mk_language_label.ts:30](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/component/mk_language_label.ts#L30)
 
 ___
 
@@ -65,7 +64,7 @@ mk\_language\_base.\_type\_s
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_label.ts:55](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/component/mk_language_label.ts#L55)
+[assets/@framework/language/component/mk_language_label.ts:55](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/component/mk_language_label.ts#L55)
 
 ## Accessors
 
@@ -83,7 +82,7 @@ mk\_language\_base.type
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_label.ts:32](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/component/mk_language_label.ts#L32)
+[assets/@framework/language/component/mk_language_label.ts:32](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/component/mk_language_label.ts#L32)
 
 • `set` **type**(`value_`): `void`
 
@@ -103,7 +102,7 @@ mk\_language\_base.type
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_label.ts:36](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/component/mk_language_label.ts#L36)
+[assets/@framework/language/component/mk_language_label.ts:36](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/component/mk_language_label.ts#L36)
 
 ___
 
@@ -119,7 +118,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_label.ts:45](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/component/mk_language_label.ts#L45)
+[assets/@framework/language/component/mk_language_label.ts:45](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/component/mk_language_label.ts#L45)
 
 • `set` **args_ss**(`value_ss_`): `void`
 
@@ -135,7 +134,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_label.ts:49](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/component/mk_language_label.ts#L49)
+[assets/@framework/language/component/mk_language_label.ts:49](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/component/mk_language_label.ts#L49)
 
 ## Methods
 
@@ -155,7 +154,7 @@ mk\_language\_base.\_reset\_data
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_label.ts:66](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/component/mk_language_label.ts#L66)
+[assets/@framework/language/component/mk_language_label.ts:66](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/component/mk_language_label.ts#L66)
 
 ___
 
@@ -173,7 +172,7 @@ mk\_language\_base.\_update\_content
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_label.ts:83](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/component/mk_language_label.ts#L83)
+[assets/@framework/language/component/mk_language_label.ts:83](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/component/mk_language_label.ts#L83)
 
 ___
 
@@ -191,7 +190,7 @@ mk\_language\_base.\_update\_mark
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_label.ts:89](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/component/mk_language_label.ts#L89)
+[assets/@framework/language/component/mk_language_label.ts:89](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/component/mk_language_label.ts#L89)
 
 ___
 
@@ -215,7 +214,7 @@ mk\_language\_base.\_set\_type
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_label.ts:93](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/component/mk_language_label.ts#L93)
+[assets/@framework/language/component/mk_language_label.ts:93](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/component/mk_language_label.ts#L93)
 
 ___
 
@@ -239,7 +238,7 @@ mk\_language\_base.\_set\_type\_s
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_label.ts:98](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/component/mk_language_label.ts#L98)
+[assets/@framework/language/component/mk_language_label.ts:98](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/component/mk_language_label.ts#L98)
 
 ___
 
@@ -257,7 +256,7 @@ mk\_language\_base.\_init\_data
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_label.ts:111](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/component/mk_language_label.ts#L111)
+[assets/@framework/language/component/mk_language_label.ts:111](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/component/mk_language_label.ts#L111)
 
 ___
 
@@ -281,7 +280,7 @@ mk\_language\_base.\_init\_event
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_label.ts:154](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/component/mk_language_label.ts#L154)
+[assets/@framework/language/component/mk_language_label.ts:154](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/component/mk_language_label.ts#L154)
 
 ___
 
@@ -299,4 +298,4 @@ mk\_language\_base.\_event\_switch\_language
 
 #### Defined in
 
-[assets/@framework/language/component/mk_language_label.ts:227](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/component/mk_language_label.ts#L227)
+[assets/@framework/language/component/mk_language_label.ts:227](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/component/mk_language_label.ts#L227)

@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / dynamic\_module
 
@@ -53,7 +52,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/mk_dynamic_module.ts:17](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_dynamic_module.ts#L17)
+[assets/@framework/mk_dynamic_module.ts:17](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_dynamic_module.ts#L17)
 
 ___
 
@@ -81,4 +80,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_dynamic_module.ts:55](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_dynamic_module.ts#L55)
+[assets/@framework/mk_dynamic_module.ts:55](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_dynamic_module.ts#L55)

@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / game
 
@@ -42,7 +41,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/mk_game.ts:22](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_game.ts#L22)
+[assets/@framework/mk_game.ts:22](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_game.ts#L22)
 
 ## Methods
 
@@ -62,7 +61,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/mk_game.ts:37](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_game.ts#L37)
+[assets/@framework/mk_game.ts:37](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_game.ts#L37)
 
 ___
 
@@ -85,7 +84,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_game.ts:51](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_game.ts#L51)
+[assets/@framework/mk_game.ts:51](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_game.ts#L51)
 
 ___
 
@@ -108,4 +107,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_game.ts:96](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_game.ts#L96)
+[assets/@framework/mk_game.ts:96](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_game.ts#L96)

@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / [network](../modules/network.md) / [websocket\_](../modules/network.websocket_.md) / init\_config
 
@@ -70,7 +69,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/network/websocket/mk_websocket.ts:41](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/websocket/mk_websocket.ts#L41)
+[assets/@framework/network/websocket/mk_websocket.ts:41](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/websocket/mk_websocket.ts#L41)
 
 ## Properties
 
@@ -86,7 +85,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:637](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L637)
+[assets/@framework/network/mk_network_base.ts:637](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L637)
 
 ___
 
@@ -106,7 +105,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:643](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L643)
+[assets/@framework/network/mk_network_base.ts:643](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L643)
 
 ___
 
@@ -126,7 +125,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:649](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L649)
+[assets/@framework/network/mk_network_base.ts:649](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L649)
 
 ___
 
@@ -142,7 +141,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:651](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L651)
+[assets/@framework/network/mk_network_base.ts:651](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L651)
 
 ___
 
@@ -162,7 +161,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:657](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L657)
+[assets/@framework/network/mk_network_base.ts:657](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L657)
 
 ___
 
@@ -186,7 +185,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:659](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L659)
+[assets/@framework/network/mk_network_base.ts:659](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L659)
 
 ___
 
@@ -198,7 +197,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/websocket/mk_websocket.ts:47](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/websocket/mk_websocket.ts#L47)
+[assets/@framework/network/websocket/mk_websocket.ts:47](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/websocket/mk_websocket.ts#L47)
 
 ___
 
@@ -210,7 +209,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/websocket/mk_websocket.ts:49](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/websocket/mk_websocket.ts#L49)
+[assets/@framework/network/websocket/mk_websocket.ts:49](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/websocket/mk_websocket.ts#L49)
 
 ## Methods
 
@@ -238,7 +237,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:685](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L685)
+[assets/@framework/network/mk_network_base.ts:685](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L685)
 
 ___
 
@@ -266,4 +265,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:694](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L694)
+[assets/@framework/network/mk_network_base.ts:694](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L694)

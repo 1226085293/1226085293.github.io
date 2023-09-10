@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / [view\_base\_](../modules/view_base_.md) / view\_config
 
@@ -37,7 +36,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:415](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/module/mk_view_base.ts#L415)
+[assets/@framework/module/mk_view_base.ts:415](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/module/mk_view_base.ts#L415)
 
 ## Properties
 
@@ -49,7 +48,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:420](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/module/mk_view_base.ts#L420)
+[assets/@framework/module/mk_view_base.ts:420](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/module/mk_view_base.ts#L420)
 
 ___
 
@@ -61,4 +60,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_view_base.ts:422](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/module/mk_view_base.ts#L422)
+[assets/@framework/module/mk_view_base.ts:422](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/module/mk_view_base.ts#L422)

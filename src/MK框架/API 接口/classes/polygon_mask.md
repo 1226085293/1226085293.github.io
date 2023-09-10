@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / polygon\_mask
 
@@ -54,7 +53,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/@component/mk_polygon_mask.ts:27](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/@component/mk_polygon_mask.ts#L27)
+[assets/@framework/@component/mk_polygon_mask.ts:27](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/@component/mk_polygon_mask.ts#L27)
 
 ___
 
@@ -66,7 +65,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/@component/mk_polygon_mask.ts:31](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/@component/mk_polygon_mask.ts#L31)
+[assets/@framework/@component/mk_polygon_mask.ts:31](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/@component/mk_polygon_mask.ts#L31)
 
 ## Accessors
 
@@ -82,7 +81,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/@component/mk_polygon_mask.ts:39](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/@component/mk_polygon_mask.ts#L39)
+[assets/@framework/@component/mk_polygon_mask.ts:39](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/@component/mk_polygon_mask.ts#L39)
 
 • `set` **track_node**(`value_`): `void`
 
@@ -98,7 +97,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/@component/mk_polygon_mask.ts:43](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/@component/mk_polygon_mask.ts#L43)
+[assets/@framework/@component/mk_polygon_mask.ts:43](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/@component/mk_polygon_mask.ts#L43)
 
 ___
 
@@ -114,7 +113,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/@component/mk_polygon_mask.ts:49](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/@component/mk_polygon_mask.ts#L49)
+[assets/@framework/@component/mk_polygon_mask.ts:49](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/@component/mk_polygon_mask.ts#L49)
 
 • `set` **offset_v3**(`value_v3_`): `void`
 
@@ -130,7 +129,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/@component/mk_polygon_mask.ts:53](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/@component/mk_polygon_mask.ts#L53)
+[assets/@framework/@component/mk_polygon_mask.ts:53](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/@component/mk_polygon_mask.ts#L53)
 
 ## Methods
 
@@ -148,7 +147,7 @@ cc.Component.onLoad
 
 #### Defined in
 
-[assets/@framework/@component/mk_polygon_mask.ts:99](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/@component/mk_polygon_mask.ts#L99)
+[assets/@framework/@component/mk_polygon_mask.ts:99](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/@component/mk_polygon_mask.ts#L99)
 
 ___
 
@@ -166,7 +165,7 @@ cc.Component.start
 
 #### Defined in
 
-[assets/@framework/@component/mk_polygon_mask.ts:161](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/@component/mk_polygon_mask.ts#L161)
+[assets/@framework/@component/mk_polygon_mask.ts:161](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/@component/mk_polygon_mask.ts#L161)
 
 ___
 
@@ -184,7 +183,7 @@ cc.Component.onEnable
 
 #### Defined in
 
-[assets/@framework/@component/mk_polygon_mask.ts:165](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/@component/mk_polygon_mask.ts#L165)
+[assets/@framework/@component/mk_polygon_mask.ts:165](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/@component/mk_polygon_mask.ts#L165)
 
 ___
 
@@ -202,7 +201,7 @@ cc.Component.onDisable
 
 #### Defined in
 
-[assets/@framework/@component/mk_polygon_mask.ts:180](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/@component/mk_polygon_mask.ts#L180)
+[assets/@framework/@component/mk_polygon_mask.ts:180](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/@component/mk_polygon_mask.ts#L180)
 
 ___
 
@@ -226,7 +225,7 @@ cc.Component.update
 
 #### Defined in
 
-[assets/@framework/@component/mk_polygon_mask.ts:189](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/@component/mk_polygon_mask.ts#L189)
+[assets/@framework/@component/mk_polygon_mask.ts:189](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/@component/mk_polygon_mask.ts#L189)
 
 ___
 
@@ -244,7 +243,7 @@ cc.Component.onDestroy
 
 #### Defined in
 
-[assets/@framework/@component/mk_polygon_mask.ts:197](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/@component/mk_polygon_mask.ts#L197)
+[assets/@framework/@component/mk_polygon_mask.ts:197](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/@component/mk_polygon_mask.ts#L197)
 
 ___
 
@@ -260,4 +259,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/@component/mk_polygon_mask.ts:204](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/@component/mk_polygon_mask.ts#L204)
+[assets/@framework/@component/mk_polygon_mask.ts:204](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/@component/mk_polygon_mask.ts#L204)

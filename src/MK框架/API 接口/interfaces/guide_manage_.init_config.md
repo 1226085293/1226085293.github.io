@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / [guide\_manage\_](../modules/guide_manage_.md) / init\_config
 
@@ -35,7 +34,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:362](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/guide/mk_guide_manage.ts#L362)
+[assets/@framework/guide/mk_guide_manage.ts:362](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/guide/mk_guide_manage.ts#L362)
 
 ___
 
@@ -47,7 +46,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:364](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/guide/mk_guide_manage.ts#L364)
+[assets/@framework/guide/mk_guide_manage.ts:364](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/guide/mk_guide_manage.ts#L364)
 
 ___
 
@@ -59,7 +58,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:366](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/guide/mk_guide_manage.ts#L366)
+[assets/@framework/guide/mk_guide_manage.ts:366](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/guide/mk_guide_manage.ts#L366)
 
 ___
 
@@ -75,7 +74,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:372](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/guide/mk_guide_manage.ts#L372)
+[assets/@framework/guide/mk_guide_manage.ts:372](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/guide/mk_guide_manage.ts#L372)
 
 ## Methods
 
@@ -105,4 +104,4 @@ null/undefined：更新失败中断引导
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:383](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/guide/mk_guide_manage.ts#L383)
+[assets/@framework/guide/mk_guide_manage.ts:383](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/guide/mk_guide_manage.ts#L383)

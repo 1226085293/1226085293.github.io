@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / [network](../modules/network.md) / http
 
@@ -56,7 +55,7 @@ http 模块
 
 #### Defined in
 
-[assets/@framework/network/mk_http.ts:19](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_http.ts#L19)
+[assets/@framework/network/mk_http.ts:19](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_http.ts#L19)
 
 ___
 
@@ -79,7 +78,7 @@ GET方法
 
 #### Defined in
 
-[assets/@framework/network/mk_http.ts:120](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_http.ts#L120)
+[assets/@framework/network/mk_http.ts:120](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_http.ts#L120)
 
 ___
 
@@ -102,4 +101,4 @@ POST方法
 
 #### Defined in
 
-[assets/@framework/network/mk_http.ts:125](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_http.ts#L125)
+[assets/@framework/network/mk_http.ts:125](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_http.ts#L125)

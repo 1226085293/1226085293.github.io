@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / [bundle\_](../modules/bundle_.md) / bundle\_data
 
@@ -46,7 +45,7 @@ bundle 数据
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:496](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L496)
+[assets/@framework/resources/mk_bundle.ts:496](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/resources/mk_bundle.ts#L496)
 
 ## Properties
 
@@ -58,4 +57,4 @@ bundle 数据
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:502](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L502)
+[assets/@framework/resources/mk_bundle.ts:502](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/resources/mk_bundle.ts#L502)

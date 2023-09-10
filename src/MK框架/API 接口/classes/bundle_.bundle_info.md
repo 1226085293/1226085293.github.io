@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / [bundle\_](../modules/bundle_.md) / bundle\_info
 
@@ -44,7 +43,7 @@ bundle 信息
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:465](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L465)
+[assets/@framework/resources/mk_bundle.ts:465](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/resources/mk_bundle.ts#L465)
 
 ## Properties
 
@@ -60,7 +59,7 @@ getBundle 时使用
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:478](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L478)
+[assets/@framework/resources/mk_bundle.ts:478](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/resources/mk_bundle.ts#L478)
 
 ___
 
@@ -72,7 +71,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:480](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L480)
+[assets/@framework/resources/mk_bundle.ts:480](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/resources/mk_bundle.ts#L480)
 
 ___
 
@@ -94,4 +93,4 @@ loadBundle 时使用
 
 #### Defined in
 
-[assets/@framework/resources/mk_bundle.ts:488](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_bundle.ts#L488)
+[assets/@framework/resources/mk_bundle.ts:488](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/resources/mk_bundle.ts#L488)

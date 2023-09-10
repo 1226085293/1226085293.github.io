@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / instance\_base
 
@@ -81,4 +80,4 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/mk_instance_base.ts:4](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_instance_base.ts#L4)
+[assets/@framework/mk_instance_base.ts:4](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_instance_base.ts#L4)

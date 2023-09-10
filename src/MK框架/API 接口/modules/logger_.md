@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / logger\_
 
@@ -26,9 +25,9 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:381](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_logger.ts#L381)
+[assets/@framework/mk_logger.ts:381](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_logger.ts#L381)
 
-[assets/@framework/mk_logger.ts:382](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_logger.ts#L382)
+[assets/@framework/mk_logger.ts:382](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_logger.ts#L382)
 
 ## Variables
 
@@ -38,6 +37,6 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:381](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_logger.ts#L381)
+[assets/@framework/mk_logger.ts:381](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_logger.ts#L381)
 
-[assets/@framework/mk_logger.ts:382](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_logger.ts#L382)
+[assets/@framework/mk_logger.ts:382](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_logger.ts#L382)

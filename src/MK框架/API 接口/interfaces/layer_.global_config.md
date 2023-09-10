@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / [layer\_](../modules/layer_.md) / global\_config
 
@@ -29,7 +28,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/module/mk_layer.ts:11](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/module/mk_layer.ts#L11)
+[assets/@framework/module/mk_layer.ts:11](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/module/mk_layer.ts#L11)
 
 ___
 
@@ -41,4 +40,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/module/mk_layer.ts:13](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/module/mk_layer.ts#L13)
+[assets/@framework/module/mk_layer.ts:13](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/module/mk_layer.ts#L13)

@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / [language\_](../modules/language_.md) / label\_config
 
@@ -37,7 +36,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:178](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L178)
+[assets/@framework/language/mk_language_manage.ts:178](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/mk_language_manage.ts#L178)
 
 ## Properties
 
@@ -49,7 +48,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:183](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L183)
+[assets/@framework/language/mk_language_manage.ts:183](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/mk_language_manage.ts#L183)
 
 ___
 
@@ -61,4 +60,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:185](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/language/mk_language_manage.ts#L185)
+[assets/@framework/language/mk_language_manage.ts:185](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/language/mk_language_manage.ts#L185)

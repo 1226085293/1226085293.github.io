@@ -6,8 +6,7 @@ timeline: false
 dir:
   order: 102
   index: true
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 index
 
@@ -82,7 +81,7 @@ index
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:267](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_logger.ts#L267)
+[assets/@framework/mk_logger.ts:267](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_logger.ts#L267)
 
 ___
 
@@ -102,7 +101,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:271](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_logger.ts#L271)
+[assets/@framework/mk_logger.ts:271](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_logger.ts#L271)
 
 ___
 
@@ -122,4 +121,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:275](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/mk_logger.ts#L275)
+[assets/@framework/mk_logger.ts:275](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/mk_logger.ts#L275)

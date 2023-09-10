@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / asset
 
@@ -62,7 +61,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:72](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_asset.ts#L72)
+[assets/@framework/resources/mk_asset.ts:72](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/resources/mk_asset.ts#L72)
 
 ## Properties
 
@@ -74,7 +73,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:130](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_asset.ts#L130)
+[assets/@framework/resources/mk_asset.ts:130](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/resources/mk_asset.ts#L130)
 
 ## Methods
 
@@ -105,7 +104,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:152](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_asset.ts#L152)
+[assets/@framework/resources/mk_asset.ts:152](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/resources/mk_asset.ts#L152)
 
 ___
 
@@ -136,7 +135,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:318](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_asset.ts#L318)
+[assets/@framework/resources/mk_asset.ts:318](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/resources/mk_asset.ts#L318)
 
 ___
 
@@ -158,4 +157,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:459](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/resources/mk_asset.ts#L459)
+[assets/@framework/resources/mk_asset.ts:459](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/resources/mk_asset.ts#L459)

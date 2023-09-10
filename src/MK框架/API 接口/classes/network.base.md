@@ -1,8 +1,7 @@
 ---
 article: false
 timeline: false
-sitemap:
-  exclude: true
+sitemap.exclude: true
 ---
 [index](../README.md) / [network](../modules/network.md) / base
 
@@ -103,7 +102,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:212](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L212)
+[assets/@framework/network/mk_network_base.ts:212](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L212)
 
 ## Properties
 
@@ -115,7 +114,7 @@ sitemap:
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:225](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L225)
+[assets/@framework/network/mk_network_base.ts:225](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L225)
 
 ___
 
@@ -127,7 +126,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:227](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L227)
+[assets/@framework/network/mk_network_base.ts:227](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L227)
 
 ___
 
@@ -139,7 +138,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:229](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L229)
+[assets/@framework/network/mk_network_base.ts:229](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L229)
 
 ___
 
@@ -151,7 +150,7 @@ socket
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:247](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L247)
+[assets/@framework/network/mk_network_base.ts:247](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L247)
 
 ___
 
@@ -163,7 +162,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:249](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L249)
+[assets/@framework/network/mk_network_base.ts:249](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L249)
 
 ___
 
@@ -175,7 +174,7 @@ socket 状态
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:251](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L251)
+[assets/@framework/network/mk_network_base.ts:251](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L251)
 
 ___
 
@@ -187,7 +186,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:253](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L253)
+[assets/@framework/network/mk_network_base.ts:253](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L253)
 
 ___
 
@@ -199,7 +198,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:260](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L260)
+[assets/@framework/network/mk_network_base.ts:260](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L260)
 
 ## Accessors
 
@@ -215,7 +214,7 @@ socket 状态
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:232](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L232)
+[assets/@framework/network/mk_network_base.ts:232](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L232)
 
 ___
 
@@ -231,7 +230,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:237](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L237)
+[assets/@framework/network/mk_network_base.ts:237](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L237)
 
 • `set` **codec**(`value_`): `void`
 
@@ -247,7 +246,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:241](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L241)
+[assets/@framework/network/mk_network_base.ts:241](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L241)
 
 ## Methods
 
@@ -263,7 +262,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:281](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L281)
+[assets/@framework/network/mk_network_base.ts:281](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L281)
 
 ___
 
@@ -285,7 +284,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:284](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L284)
+[assets/@framework/network/mk_network_base.ts:284](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L284)
 
 ___
 
@@ -301,7 +300,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:291](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L291)
+[assets/@framework/network/mk_network_base.ts:291](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L291)
 
 ___
 
@@ -323,7 +322,7 @@ socket 准备完成
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:351](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L351)
+[assets/@framework/network/mk_network_base.ts:351](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L351)
 
 ___
 
@@ -345,7 +344,7 @@ socket 消息
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:366](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L366)
+[assets/@framework/network/mk_network_base.ts:366](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L366)
 
 ___
 
@@ -367,7 +366,7 @@ socket 错误
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:391](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L391)
+[assets/@framework/network/mk_network_base.ts:391](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L391)
 
 ___
 
@@ -389,7 +388,7 @@ socket 关闭
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:398](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L398)
+[assets/@framework/network/mk_network_base.ts:398](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L398)
 
 ___
 
@@ -405,7 +404,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:428](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L428)
+[assets/@framework/network/mk_network_base.ts:428](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L428)
 
 ___
 
@@ -421,7 +420,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:447](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L447)
+[assets/@framework/network/mk_network_base.ts:447](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L447)
 
 ___
 
@@ -443,7 +442,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:462](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L462)
+[assets/@framework/network/mk_network_base.ts:462](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L462)
 
 ___
 
@@ -465,7 +464,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:485](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L485)
+[assets/@framework/network/mk_network_base.ts:485](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L485)
 
 ___
 
@@ -481,7 +480,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:511](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L511)
+[assets/@framework/network/mk_network_base.ts:511](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L511)
 
 ___
 
@@ -501,7 +500,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:576](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L576)
+[assets/@framework/network/mk_network_base.ts:576](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L576)
 
 ___
 
@@ -515,4 +514,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/network/mk_network_base.ts:594](https://github.com/1226085293/MKFramework/blob/7cc97f0/assets/@framework/network/mk_network_base.ts#L594)
+[assets/@framework/network/mk_network_base.ts:594](https://github.com/1226085293/MKFramework/blob/4107a6f/assets/@framework/network/mk_network_base.ts#L594)
