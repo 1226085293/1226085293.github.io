@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / instance\_base
 
 # Class: instance\_base
@@ -75,4 +79,4 @@
 
 #### Defined in
 
-[assets/@framework/mk_instance_base.ts:4](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_instance_base.ts#L4)
+[assets/@framework/mk_instance_base.ts:4](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_instance_base.ts#L4)

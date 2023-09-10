@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / [codec\_base\_](../modules/codec_base_.md) / config
 
 # Class: config
@@ -47,7 +51,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_codec_base.ts:40](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_codec_base.ts#L40)
+[assets/@framework/mk_codec_base.ts:40](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_codec_base.ts#L40)
 
 ___
 
@@ -73,4 +77,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_codec_base.ts:42](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_codec_base.ts#L42)
+[assets/@framework/mk_codec_base.ts:42](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_codec_base.ts#L42)

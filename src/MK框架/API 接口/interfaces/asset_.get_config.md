@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / [asset\_](../modules/asset_.md) / get\_config
 
 # Interface: get\_config<T, T2\>
@@ -38,7 +42,7 @@ resources
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:587](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/resources/mk_asset.ts#L587)
+[assets/@framework/resources/mk_asset.ts:587](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_asset.ts#L587)
 
 ___
 
@@ -65,7 +69,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:589](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/resources/mk_asset.ts#L589)
+[assets/@framework/resources/mk_asset.ts:589](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_asset.ts#L589)
 
 ___
 
@@ -92,7 +96,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:597](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/resources/mk_asset.ts#L597)
+[assets/@framework/resources/mk_asset.ts:597](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_asset.ts#L597)
 
 ___
 
@@ -104,4 +108,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/resources/mk_asset.ts:599](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/resources/mk_asset.ts#L599)
+[assets/@framework/resources/mk_asset.ts:599](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/resources/mk_asset.ts#L599)

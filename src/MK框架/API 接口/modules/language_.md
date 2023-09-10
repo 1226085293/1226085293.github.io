@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / language\_
 
 # Namespace: language\_
@@ -31,4 +35,4 @@
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:171](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/language/mk_language_manage.ts#L171)
+[assets/@framework/language/mk_language_manage.ts:171](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L171)

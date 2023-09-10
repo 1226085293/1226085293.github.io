@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / obj\_pool
 
 # Namespace: obj\_pool

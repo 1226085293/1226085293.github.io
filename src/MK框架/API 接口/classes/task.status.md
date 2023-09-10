@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / [task](../modules/task.md) / status
 
 # Class: status<CT\>
@@ -55,7 +59,7 @@
 
 #### Defined in
 
-[assets/@framework/task/mk_status_task.ts:12](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/task/mk_status_task.ts#L12)
+[assets/@framework/task/mk_status_task.ts:12](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/task/mk_status_task.ts#L12)
 
 ## Properties
 
@@ -67,7 +71,7 @@
 
 #### Defined in
 
-[assets/@framework/task/mk_status_task.ts:27](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/task/mk_status_task.ts#L27)
+[assets/@framework/task/mk_status_task.ts:27](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/task/mk_status_task.ts#L27)
 
 ## Accessors
 
@@ -89,7 +93,7 @@
 
 #### Defined in
 
-[assets/@framework/task/mk_status_task.ts:36](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/task/mk_status_task.ts#L36)
+[assets/@framework/task/mk_status_task.ts:36](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/task/mk_status_task.ts#L36)
 
 ## Methods
 
@@ -117,7 +121,7 @@
 
 #### Defined in
 
-[assets/@framework/task/mk_status_task.ts:54](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/task/mk_status_task.ts#L54)
+[assets/@framework/task/mk_status_task.ts:54](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/task/mk_status_task.ts#L54)
 
 ▸ **finish**<`T`\>(`finish_b_`, `data_`): `void`
 
@@ -142,4 +146,4 @@
 
 #### Defined in
 
-[assets/@framework/task/mk_status_task.ts:60](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/task/mk_status_task.ts#L60)
+[assets/@framework/task/mk_status_task.ts:60](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/task/mk_status_task.ts#L60)

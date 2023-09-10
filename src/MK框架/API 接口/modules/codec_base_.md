@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / codec\_base\_
 
 # Namespace: codec\_base\_

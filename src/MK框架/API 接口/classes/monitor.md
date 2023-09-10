@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / monitor
 
 # Class: monitor
@@ -56,7 +60,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:116](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L116)
+[assets/@framework/mk_monitor.ts:116](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L116)
 
 ___
 
@@ -80,7 +84,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:138](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L138)
+[assets/@framework/mk_monitor.ts:138](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L138)
 
 ▸ **on_recursion**(`value_`, `on_callback_f_`, `off_callback_f_`, `target_?`): `void`
 
@@ -101,7 +105,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:146](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L146)
+[assets/@framework/mk_monitor.ts:146](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L146)
 
 ___
 
@@ -133,7 +137,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:181](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L181)
+[assets/@framework/mk_monitor.ts:181](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L181)
 
 ▸ **on**<`T`, `T2`\>(`value_`, `key_`, `on_callback_f_`, `off_callback_f_`, `target_?`): ``null`` \| `type_on_callback`<`T`[`T2`]\>
 
@@ -162,7 +166,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:195](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L195)
+[assets/@framework/mk_monitor.ts:195](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L195)
 
 ___
 
@@ -194,7 +198,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:226](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L226)
+[assets/@framework/mk_monitor.ts:226](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L226)
 
 ▸ **once**<`T`, `T2`\>(`value_`, `key_`, `on_callback_f_`, `off_callback_f_`, `target_?`): ``null`` \| `type_on_callback`<`T`[`T2`]\>
 
@@ -223,7 +227,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:240](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L240)
+[assets/@framework/mk_monitor.ts:240](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L240)
 
 ___
 
@@ -246,7 +250,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:270](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L270)
+[assets/@framework/mk_monitor.ts:270](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L270)
 
 ▸ **off_recursion**(`value_`, `on_callback_f_`, `target_?`): `Promise`<`any`\>
 
@@ -266,7 +270,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:277](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L277)
+[assets/@framework/mk_monitor.ts:277](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L277)
 
 ___
 
@@ -297,7 +301,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:317](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L317)
+[assets/@framework/mk_monitor.ts:317](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L317)
 
 ▸ **off**<`T`, `T2`\>(`value_`, `key_`, `on_callback_f_`, `target_?`): `Promise`<`void`\>
 
@@ -325,7 +329,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:325](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L325)
+[assets/@framework/mk_monitor.ts:325](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L325)
 
 ___
 
@@ -347,7 +351,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:343](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L343)
+[assets/@framework/mk_monitor.ts:343](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L343)
 
 ___
 
@@ -369,7 +373,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:377](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L377)
+[assets/@framework/mk_monitor.ts:377](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L377)
 
 ▸ **enable**<`T`, `T2`\>(`value_`, `key_`, `target_?`): `void`
 
@@ -396,7 +400,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:384](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L384)
+[assets/@framework/mk_monitor.ts:384](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L384)
 
 ▸ **enable**<`T`, `T2`\>(`value_`, `key_`, `callback_f_`, `target_?`): `void`
 
@@ -424,7 +428,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:392](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L392)
+[assets/@framework/mk_monitor.ts:392](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L392)
 
 ___
 
@@ -446,7 +450,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:401](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L401)
+[assets/@framework/mk_monitor.ts:401](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L401)
 
 ▸ **disable**<`T`, `T2`\>(`value_`, `key_`, `target_?`): `void`
 
@@ -473,7 +477,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:408](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L408)
+[assets/@framework/mk_monitor.ts:408](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L408)
 
 ▸ **disable**<`T`, `T2`\>(`value_`, `key_`, `callback_f_`, `target_?`): `void`
 
@@ -501,4 +505,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_monitor.ts:416](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_monitor.ts#L416)
+[assets/@framework/mk_monitor.ts:416](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_monitor.ts#L416)

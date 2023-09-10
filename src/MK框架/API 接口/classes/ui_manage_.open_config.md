@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / [ui\_manage\_](../modules/ui_manage_.md) / open\_config
 
 # Class: open\_config<CT\>
@@ -44,7 +48,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:728](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_ui_manage.ts#L728)
+[assets/@framework/mk_ui_manage.ts:728](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_ui_manage.ts#L728)
 
 ## Properties
 
@@ -56,7 +60,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:733](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_ui_manage.ts#L733)
+[assets/@framework/mk_ui_manage.ts:733](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_ui_manage.ts#L733)
 
 ___
 
@@ -68,7 +72,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:735](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_ui_manage.ts#L735)
+[assets/@framework/mk_ui_manage.ts:735](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_ui_manage.ts#L735)
 
 ___
 
@@ -80,4 +84,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_ui_manage.ts:737](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_ui_manage.ts#L737)
+[assets/@framework/mk_ui_manage.ts:737](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_ui_manage.ts#L737)

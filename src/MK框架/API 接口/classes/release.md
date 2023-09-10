@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / release
 
 # Class: release
@@ -54,7 +58,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_release.ts:26](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_release.ts#L26)
+[assets/@framework/mk_release.ts:26](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_release.ts#L26)
 
 ___
 
@@ -76,7 +80,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_release.ts:55](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_release.ts#L55)
+[assets/@framework/mk_release.ts:55](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_release.ts#L55)
 
 ___
 
@@ -92,4 +96,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_release.ts:75](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_release.ts#L75)
+[assets/@framework/mk_release.ts:75](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_release.ts#L75)

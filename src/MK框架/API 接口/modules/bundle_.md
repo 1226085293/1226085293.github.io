@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / bundle\_
 
 # Namespace: bundle\_

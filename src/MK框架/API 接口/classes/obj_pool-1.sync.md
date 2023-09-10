@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / [obj\_pool](../modules/obj_pool-1.md) / sync
 
 # Class: sync<CT\>
@@ -49,7 +53,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_obj_pool.ts:205](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_obj_pool.ts#L205)
+[assets/@framework/mk_obj_pool.ts:205](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_obj_pool.ts#L205)
 
 ## Accessors
 
@@ -65,7 +69,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_obj_pool.ts:214](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_obj_pool.ts#L214)
+[assets/@framework/mk_obj_pool.ts:214](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_obj_pool.ts#L214)
 
 ## Methods
 
@@ -87,7 +91,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_obj_pool.ts:227](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_obj_pool.ts#L227)
+[assets/@framework/mk_obj_pool.ts:227](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_obj_pool.ts#L227)
 
 ___
 
@@ -103,7 +107,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_obj_pool.ts:246](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_obj_pool.ts#L246)
+[assets/@framework/mk_obj_pool.ts:246](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_obj_pool.ts#L246)
 
 ___
 
@@ -119,7 +123,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_obj_pool.ts:262](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_obj_pool.ts#L262)
+[assets/@framework/mk_obj_pool.ts:262](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_obj_pool.ts#L262)
 
 ___
 
@@ -139,4 +143,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_obj_pool.ts:275](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_obj_pool.ts#L275)
+[assets/@framework/mk_obj_pool.ts:275](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_obj_pool.ts#L275)

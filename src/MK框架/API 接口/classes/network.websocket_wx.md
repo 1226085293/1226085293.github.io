@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / [network](../modules/network.md) / websocket\_wx
 
 # Class: websocket\_wx<CT\>
@@ -57,7 +61,7 @@
 
 #### Defined in
 
-[assets/@framework/network/websocket/mk_websocket_wx.ts:9](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/network/websocket/mk_websocket_wx.ts#L9)
+[assets/@framework/network/websocket/mk_websocket_wx.ts:9](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/websocket/mk_websocket_wx.ts#L9)
 
 ## Properties
 
@@ -73,7 +77,7 @@
 
 #### Defined in
 
-[assets/@framework/network/websocket/mk_websocket_wx.ts:15](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/network/websocket/mk_websocket_wx.ts#L15)
+[assets/@framework/network/websocket/mk_websocket_wx.ts:15](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/websocket/mk_websocket_wx.ts#L15)
 
 ___
 
@@ -89,7 +93,7 @@ socket
 
 #### Defined in
 
-[assets/@framework/network/websocket/mk_websocket_wx.ts:17](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/network/websocket/mk_websocket_wx.ts#L17)
+[assets/@framework/network/websocket/mk_websocket_wx.ts:17](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/websocket/mk_websocket_wx.ts#L17)
 
 ## Methods
 
@@ -109,4 +113,4 @@ socket
 
 #### Defined in
 
-[assets/@framework/network/websocket/mk_websocket_wx.ts:20](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/network/websocket/mk_websocket_wx.ts#L20)
+[assets/@framework/network/websocket/mk_websocket_wx.ts:20](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/network/websocket/mk_websocket_wx.ts#L20)

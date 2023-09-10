@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / [guide\_manage\_](../modules/guide_manage_.md) / event\_protocol
 
 # Interface: event\_protocol
@@ -33,7 +37,7 @@
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:312](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/guide/mk_guide_manage.ts#L312)
+[assets/@framework/guide/mk_guide_manage.ts:312](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/guide/mk_guide_manage.ts#L312)
 
 ___
 
@@ -49,7 +53,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:314](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/guide/mk_guide_manage.ts#L314)
+[assets/@framework/guide/mk_guide_manage.ts:314](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/guide/mk_guide_manage.ts#L314)
 
 ___
 
@@ -75,7 +79,7 @@ set_step 时执行
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:321](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/guide/mk_guide_manage.ts#L321)
+[assets/@framework/guide/mk_guide_manage.ts:321](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/guide/mk_guide_manage.ts#L321)
 
 ___
 
@@ -95,7 +99,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:327](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/guide/mk_guide_manage.ts#L327)
+[assets/@framework/guide/mk_guide_manage.ts:327](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/guide/mk_guide_manage.ts#L327)
 
 ___
 
@@ -117,7 +121,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:332](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/guide/mk_guide_manage.ts#L332)
+[assets/@framework/guide/mk_guide_manage.ts:332](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/guide/mk_guide_manage.ts#L332)
 
 ___
 
@@ -137,7 +141,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:338](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/guide/mk_guide_manage.ts#L338)
+[assets/@framework/guide/mk_guide_manage.ts:338](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/guide/mk_guide_manage.ts#L338)
 
 ___
 
@@ -153,7 +157,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:340](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/guide/mk_guide_manage.ts#L340)
+[assets/@framework/guide/mk_guide_manage.ts:340](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/guide/mk_guide_manage.ts#L340)
 
 ___
 
@@ -169,4 +173,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/guide/mk_guide_manage.ts:342](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/guide/mk_guide_manage.ts#L342)
+[assets/@framework/guide/mk_guide_manage.ts:342](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/guide/mk_guide_manage.ts#L342)

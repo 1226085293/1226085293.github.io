@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / [network](network.md) / base\_
 
 # Namespace: base\_

@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / logger
 
 # Class: logger
@@ -62,7 +66,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:63](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_logger.ts#L63)
+[assets/@framework/mk_logger.ts:63](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_logger.ts#L63)
 
 ## Properties
 
@@ -74,7 +78,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:151](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_logger.ts#L151)
+[assets/@framework/mk_logger.ts:151](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_logger.ts#L151)
 
 ## Methods
 
@@ -100,7 +104,7 @@
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:197](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_logger.ts#L197)
+[assets/@framework/mk_logger.ts:197](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_logger.ts#L197)
 
 ___
 
@@ -126,7 +130,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:208](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_logger.ts#L208)
+[assets/@framework/mk_logger.ts:208](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_logger.ts#L208)
 
 ___
 
@@ -146,7 +150,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:263](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_logger.ts#L263)
+[assets/@framework/mk_logger.ts:263](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_logger.ts#L263)
 
 ___
 
@@ -166,7 +170,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:267](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_logger.ts#L267)
+[assets/@framework/mk_logger.ts:267](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_logger.ts#L267)
 
 ___
 
@@ -186,7 +190,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:271](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_logger.ts#L271)
+[assets/@framework/mk_logger.ts:271](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_logger.ts#L271)
 
 ___
 
@@ -206,7 +210,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:275](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_logger.ts#L275)
+[assets/@framework/mk_logger.ts:275](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_logger.ts#L275)
 
 ___
 
@@ -229,7 +233,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:280](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_logger.ts#L280)
+[assets/@framework/mk_logger.ts:280](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_logger.ts#L280)
 
 ___
 
@@ -252,7 +256,7 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:297](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_logger.ts#L297)
+[assets/@framework/mk_logger.ts:297](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_logger.ts#L297)
 
 ___
 
@@ -275,4 +279,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/mk_logger.ts:316](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/mk_logger.ts#L316)
+[assets/@framework/mk_logger.ts:316](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/mk_logger.ts#L316)

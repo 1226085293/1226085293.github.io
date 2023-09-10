@@ -1,3 +1,7 @@
+---
+article: false
+timeline: false
+---
 [index](../README.md) / [language\_](../modules/language_.md) / label\_data
 
 # Class: label\_data<CT\>
@@ -54,7 +58,7 @@
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:213](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/language/mk_language_manage.ts#L213)
+[assets/@framework/language/mk_language_manage.ts:213](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L213)
 
 ## Properties
 
@@ -70,7 +74,7 @@
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:195](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/language/mk_language_manage.ts#L195)
+[assets/@framework/language/mk_language_manage.ts:195](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L195)
 
 ___
 
@@ -86,4 +90,4 @@ ___
 
 #### Defined in
 
-[assets/@framework/language/mk_language_manage.ts:200](https://github.com/1226085293/MKFramework/blob/0053bdc/assets/@framework/language/mk_language_manage.ts#L200)
+[assets/@framework/language/mk_language_manage.ts:200](https://github.com/1226085293/MKFramework/blob/d01a59e/assets/@framework/language/mk_language_manage.ts#L200)
