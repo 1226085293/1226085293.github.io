@@ -5,7 +5,7 @@ export default navbar([
 	{
 		text: "博客",
 		icon: "yumaobi",
-		link: "/博客/",
+		link: "/blog/",
 	},
 	// {
 	// 	text: "MK框架",
@@ -36,7 +36,7 @@ export default navbar([
 	{
 		text: "项目产品",
 		icon: "mangguo",
-		link: "/项目产品/",
+		link: "/project/",
 	},
 	// {
 	// 	text: "V2 文档",

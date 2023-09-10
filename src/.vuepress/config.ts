@@ -8,6 +8,7 @@ import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { seoPlugin } from "vuepress-plugin-seo2";
 import { sitemapPlugin } from "vuepress-plugin-sitemap2";
 import markdown_share from "./plugins/markdown_share";
+import baidu_auto_push from "./plugins/baidu_auto_push/baidu_auto_push.js";
 
 export default defineUserConfig({
 	base: "/",
@@ -39,6 +40,8 @@ export default defineUserConfig({
 		["meta", { "http-equiv": "cache-control", content: "no-cache, must-revalidate, post-check=0, pre-check=0" }],
 	],
 	plugins: [
+		// 百度资源自动推送
+		baidu_auto_push(),
 		// sitemap 生成
 		sitemapPlugin({
 			hostname: "https://muzzik.gitee.io/",
