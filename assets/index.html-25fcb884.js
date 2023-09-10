@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-e0ab12ce","path":"/mk-framework/api/interfaces/","title":"Interfaces","lang":"zh-CN","frontmatter":{"title":"Interfaces","description":""},"headers":[],"git":{},"readingTime":{"minutes":0,"words":1},"filePathRelative":null,"excerpt":"","autoDesc":true}');export{e as data};

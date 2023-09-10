@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-459a6b56","path":"/MK%E6%A1%86%E6%9E%B6/API%20%E6%8E%A5%E5%8F%A3/classes/","title":"Classes","lang":"zh-CN","frontmatter":{"title":"Classes","description":""},"headers":[],"git":{},"readingTime":{"minutes":0,"words":1},"filePathRelative":null,"excerpt":"","autoDesc":true}');export{e as data};
