@@ -108,7 +108,10 @@ export default defineUserConfig({
 		}),
 		// 重定向
 		redirectPlugin({
+			hostname: "https://muzzik.gitee.io",
 			config: {
+				// 3.x
+				"/博客/笔记/Cocos/CocosCreator/3.x获取像素颜色.html": "/blog/notes/cocos/cocos-creator/2.html",
 				// 3.x获取像素颜色
 				"/%E5%8D%9A%E5%AE%A2/%E7%AC%94%E8%AE%B0/Cocos/CocosCreator/3.x%E8%8E%B7%E5%8F%96%E5%83%8F%E7%B4%A0%E9%A2%9C%E8%89%B2.html": "/blog/notes/cocos/cocos-creator/2.html",
 				// 类型安全的单例基类
