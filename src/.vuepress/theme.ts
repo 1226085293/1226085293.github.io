@@ -95,6 +95,7 @@ export default hopeTheme(
 			// 缓存控制
 			pwa: {
 				update: "hint",
+				maxSize: 0
 			},
 
 			// 评论插件配置
