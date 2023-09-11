@@ -115,7 +115,9 @@ export default defineUserConfig({
 				// 类型安全的单例基类
 				"/博客/笔记/编程语言/Typescript/类型安全的单例基类.html": "/blog/notes/language/typescript/2.html",
 				// 如何更方便的使用 protobufjs
-				"/博客/文章/如何更方便的使用%20protobufjs？看了你就知道.html": "/blog/article/10.html"
+				"/博客/文章/如何更方便的使用%20protobufjs？看了你就知道.html": "/blog/article/10.html",
+				// 项目案例/cc-plugin-protobufjs
+				"/项目案例/cc-plugin-protobufjs/": "/project/cc-plugin-protobufjs/"
 			}
 		})
 	],
