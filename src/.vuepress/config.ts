@@ -7,6 +7,7 @@ import { autoCatalogPlugin } from "vuepress-plugin-auto-catalog";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { seoPlugin } from "vuepress-plugin-seo2";
 import { sitemapPlugin } from "vuepress-plugin-sitemap2";
+import { redirectPlugin } from "vuepress-plugin-redirect";
 import markdown_share from "./plugins/markdown_share";
 import baidu_auto_push from "./plugins/baidu_auto_push/baidu_auto_push.js";
 
@@ -105,6 +106,17 @@ export default defineUserConfig({
 				},
 			],
 		}),
+		// 重定向
+		redirectPlugin({
+			config: {
+				// 3.x获取像素颜色
+				"/%E5%8D%9A%E5%AE%A2/%E7%AC%94%E8%AE%B0/Cocos/CocosCreator/3.x%E8%8E%B7%E5%8F%96%E5%83%8F%E7%B4%A0%E9%A2%9C%E8%89%B2.html": "/blog/notes/cocos/cocos-creator/2.html",
+				// 类型安全的单例基类
+				"/%E5%8D%9A%E5%AE%A2/%E7%AC%94%E8%AE%B0/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Typescript/%E7%B1%BB%E5%9E%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%8D%95%E4%BE%8B%E5%9F%BA%E7%B1%BB.html": "/blog/notes/language/typescript/2.html",
+				// 如何更方便的使用 protobufjs
+				"/%E5%8D%9A%E5%AE%A2/%E6%96%87%E7%AB%A0/%E5%A6%82%E4%BD%95%E6%9B%B4%E6%96%B9%E4%BE%BF%E7%9A%84%E4%BD%BF%E7%94%A8%20protobufjs%EF%BC%9F%E7%9C%8B%E4%BA%86%E4%BD%A0%E5%B0%B1%E7%9F%A5%E9%81%93.html": "/blog/article/10.html"
+			}
+		})
 	],
 	// Enable it with pwa
 	// shouldPrefetch: false,
