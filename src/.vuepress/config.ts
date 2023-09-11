@@ -117,7 +117,9 @@ export default defineUserConfig({
 				// 如何更方便的使用 protobufjs
 				"/博客/文章/如何更方便的使用%20protobufjs？看了你就知道.html": "/blog/article/10.html",
 				// 项目案例/cc-plugin-protobufjs
-				"/项目案例/cc-plugin-protobufjs/": "/project/cc-plugin-protobufjs/"
+				"/项目案例/cc-plugin-protobufjs/": "/project/cc-plugin-protobufjs/",
+				// 项目案例/cc-plugin-asset-copy
+				"/项目案例/cc-plugin-asset-copy/": "/project/cc-plugin-asset-copy/",
 			}
 		})
 	],
