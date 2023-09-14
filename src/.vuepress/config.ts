@@ -59,7 +59,7 @@ export default defineUserConfig({
 		googleAnalyticsPlugin({
 			id: "G-164KYDBXDF",
 		}),
-		// markdown 分享
+		// markdown 底部内容
 		markdown_bottom_content([
 			"---",
 			`<h3>📣 觉得很赞？分享给你的朋友吧！</h3><Share services="qq,qrcode" colorful />`,
