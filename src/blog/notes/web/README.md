@@ -1,6 +1,5 @@
 ---
-title: Web
-icon: web
+title: WEB
 article: false
 timeline: false
 dir:

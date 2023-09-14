@@ -4,7 +4,7 @@ article: false
 timeline: false
 dir:
   index: true
-  order: 3
+  order: 2
 ---
 
 <AutoCatalog />
