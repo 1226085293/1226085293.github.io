@@ -8,7 +8,7 @@ import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { seoPlugin } from "vuepress-plugin-seo2";
 import { sitemapPlugin } from "vuepress-plugin-sitemap2";
 import { redirectPlugin } from "vuepress-plugin-redirect";
-import markdown_share from "./plugins/markdown_share";
+import markdown_bottom_content from "./plugins/markdown_bottom_content.js";
 import baidu_auto_push from "./plugins/baidu_auto_push/baidu_auto_push.js";
 
 export default defineUserConfig({
@@ -60,7 +60,10 @@ export default defineUserConfig({
 			id: "G-164KYDBXDF",
 		}),
 		// markdown 分享
-		markdown_share(),
+		markdown_bottom_content([
+			"---",
+			`<h3>📣 觉得很赞？分享给你的朋友吧！</h3><Share services="qq,qrcode" colorful />`,
+		].join("\n")),
 		// 组件库
 		componentsPlugin({
 			componentOptions: {

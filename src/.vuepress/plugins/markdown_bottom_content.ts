@@ -1,13 +1,13 @@
 import { App, Plugin, PluginConfig } from "vuepress";
 
 /**
- * markdown 分享插件
+ * markdown 底部内容
  * @remarks
- * 在每篇文章后添加分享组件
- * @param options
+ * 在每篇 markdown 后添加内容
+ * @param content_s_ markdown 格式内容
  * @returns
  */
-const markdown_share = (options?: never) => {
+const markdown_bottom_content = (content_s_: string) => {
 	return (app: App): Plugin => {
 		return {
 			name: "markdown_share",
@@ -28,14 +28,7 @@ const markdown_share = (options?: never) => {
 								false)
 						) {
 							// 分享 token
-							const tokens = md.parse(
-								[
-									"---",
-									// "## :mega: 觉得很赞？分享给你的朋友吧！",
-									`<h3>📣 觉得很赞？分享给你的朋友吧！</h3><Share services="qq,qrcode" colorful />`,
-								].join("\n"),
-								{}
-							);
+							const tokens = md.parse(content_s_, {});
 
 							// 添加额外的token
 							args_as[0].push(...tokens);
@@ -48,4 +41,4 @@ const markdown_share = (options?: never) => {
 		};
 	};
 };
-export default markdown_share;
+export default markdown_bottom_content;

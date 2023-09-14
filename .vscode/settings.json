@@ -6,5 +6,6 @@
 		"**/.temp/": true
 	},
 	// 保存时格式化
-	"editor.formatOnSave": false
+	"editor.formatOnSave": false,
+	"commentTranslate.targetLanguage": "en"
 }
