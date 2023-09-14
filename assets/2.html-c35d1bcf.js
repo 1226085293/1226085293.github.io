@@ -1,0 +1,1 @@
+import{_ as t,r as n,o as c,c as s,e as r,d as _,a as e}from"./app-9def5cef.js";const a={},l=e("p",null,"Date.now()",-1),d=e("hr",null,null,-1),m=e("h3",null,"📣 觉得很赞？分享给你的朋友吧！",-1);function h(u,i){const o=n("Share");return c(),s("div",null,[r(" more "),l,d,m,_(o,{services:"qq,qrcode",colorful:""})])}const p=t(a,[["render",h],["__file","2.html.vue"]]);export{p as default};
