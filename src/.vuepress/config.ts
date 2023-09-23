@@ -21,11 +21,11 @@ export default defineUserConfig({
 	theme,
 
 	alias: {
-		// // 覆盖默认首页组件
-		// "@theme-hope/modules/blog/components/BlogHero": path.join(
-		// 	__dirname,
-		// 	"./components/BlogHero.vue"
-		// ),
+		// 覆盖默认首页组件
+		"@theme-hope/modules/blog/components/BlogHero": path.join(
+			__dirname,
+			"./components/BlogHero.vue"
+		),
 	},
 
 	// 构建输出目录

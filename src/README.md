@@ -5,9 +5,9 @@ icon: home
 title: 主页
 heroImage:
 heroText: Muzzik
-tagline: 你好，欢迎来到马赛克的个人技术博客
-heroFullScreen: false
-bgImage: /background.jpg
+heroFullScreen: true
+# bgImage: /assets/images/主页/背景.png
+tagline:
 projects:
   # - icon: link
   #   name: 游戏框架
