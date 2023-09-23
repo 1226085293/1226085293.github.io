@@ -70,7 +70,8 @@ export default defineUserConfig({
 				fontIcon: {
 					assets: [
 						// MKSite
-						"//at.alicdn.com/t/c/font_4195463_jsygxwuzcac.css",
+						// "//at.alicdn.com/t/c/font_4195463_jsygxwuzcac.css",
+						"/font_4195463_jsygxwuzcac.css"
 						// MKSite-Demo
 					],
 					prefix: "iconfont ",
@@ -90,22 +91,22 @@ export default defineUserConfig({
 				return -new Date(page.date).getTime();
 			},
 		}),
-		// 搜索框
-		searchProPlugin({
-			// 索引全部内容
-			indexContent: true,
-			// 为分类和标签添加索引
-			customFields: [
-				{
-					getter: (page) => page.frontmatter.category as any,
-					formatter: "分类：$content",
-				},
-				{
-					getter: (page) => page.frontmatter.tag,
-					formatter: "标签：$content",
-				},
-			],
-		}),
+		// // 搜索框
+		// searchProPlugin({
+		// 	// 索引全部内容
+		// 	indexContent: true,
+		// 	// 为分类和标签添加索引
+		// 	customFields: [
+		// 		{
+		// 			getter: (page) => page.frontmatter.category as any,
+		// 			formatter: "分类：$content",
+		// 		},
+		// 		{
+		// 			getter: (page) => page.frontmatter.tag,
+		// 			formatter: "标签：$content",
+		// 		},
+		// 	],
+		// }),
 		// 重定向
 		redirectPlugin({
 			hostname: "https://muzzik.gitee.io",
