@@ -13,24 +13,21 @@ import baidu_auto_push from "./plugins/baidu_auto_push/baidu_auto_push.js";
 
 export default defineUserConfig({
 	base: "/",
-
 	lang: "zh-CN",
 	title: "MKSite",
 	description: "你好，欢迎来到这个刚建立的网站",
-
 	theme,
-
-	alias: {
-		// 覆盖默认首页组件
-		"@theme-hope/modules/blog/components/BlogHero": path.join(
-			__dirname,
-			"./components/BlogHero.vue"
-		),
-	},
-
+	// alias: {
+	// 	// 覆盖默认首页组件
+	// 	"@theme-hope/modules/blog/components/BlogHero": path.join(
+	// 		__dirname,
+	// 		"./components/BlogHero.vue"
+	// 	),
+	// },
 	// 构建输出目录
 	dest: "docs",
-
+	// 预拉取，提高切换速度，影响首页速度
+	shouldPrefetch: false,
 	// 描述要附加到的标签<head> tag
 	head: [
 		// 防止外部图片加载不了
