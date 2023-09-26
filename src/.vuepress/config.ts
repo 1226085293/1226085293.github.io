@@ -33,7 +33,7 @@ export default defineUserConfig({
 		// 防止外部图片加载不了
 		["meta", { name: "referrer", content: "no-referrer" }],
 		// 百度网站所有权验证
-		["meta", { name: "baidu-site-verification", content: "codeva-yoJcD9Zwf7" }],
+		["meta", { name: "baidu-site-verification", content: "codeva-5DKkVVqD6r" }],
 		// 防止缓存主页，缓存会导致内容不是最新的
 		["meta", { "http-equiv": "Cache-Control", content: "no-cache, no-store, must-revalidate" }],
 		["meta", { "http-equiv": "Pragma", content: "no-cache" }],
