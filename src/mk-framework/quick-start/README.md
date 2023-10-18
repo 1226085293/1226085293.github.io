@@ -7,3 +7,5 @@ dir:
   order: 100
   index: true
 ---
+
+<AutoCatalog />
