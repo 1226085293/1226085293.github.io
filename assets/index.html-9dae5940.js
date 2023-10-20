@@ -1,1 +1,0 @@
-import{_ as o}from"./plugin-vue_export-helper-c27b6911.js";import{o as t,c as n,a as e}from"./app-50adc12e.js";const c={},_=e("p",null,"待添加...",-1),s=e("blockquote",null,[e("p",null,"可参考框架仓库项目，包含基础示例")],-1),l=[_,s];function r(a,i){return t(),n("div",null,l)}const f=o(c,[["render",r],["__file","index.html.vue"]]);export{f as default};
