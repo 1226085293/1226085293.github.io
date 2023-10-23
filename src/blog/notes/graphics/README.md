@@ -1,11 +1,12 @@
 ---
-title: 图像处理
+title: 图形学
 icon: tuxiangleixing
 article: false
 timeline: false
 dir:
   index: true
-  order: 8
+  order: 3
 ---
 
 <AutoCatalog />
+ 
