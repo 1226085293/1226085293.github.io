@@ -27,7 +27,6 @@ const markdown_bottom_content = (content_s_: string) => {
 							) ??
 								false)
 						) {
-							// 分享 token
 							const tokens = md.parse(content_s_, {});
 
 							// 添加额外的token
