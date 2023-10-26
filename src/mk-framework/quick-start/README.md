@@ -4,7 +4,7 @@ icon: rumen
 article: false
 timeline: false
 dir:
-  order: 100
+  order: 1
   index: true
 ---
 
