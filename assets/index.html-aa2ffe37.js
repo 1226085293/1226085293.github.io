@@ -1,0 +1,1 @@
+import{_ as o}from"./plugin-vue_export-helper-c27b6911.js";import{r as t,o as n,c as a,d as c,a as r}from"./app-ef7c8e3b.js";const s={},_=r("p",null,"框架仓库项目包含基础使用示例",-1);function l(d,m){const e=t("AutoCatalog");return n(),a("div",null,[_,c(e)])}const p=o(s,[["render",l],["__file","index.html.vue"]]);export{p as default};
