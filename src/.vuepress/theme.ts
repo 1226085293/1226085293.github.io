@@ -212,15 +212,15 @@ export default hopeTheme(
 		sidebarSorter(v_a, v_b) {
 			let order_a =
 				(v_a["filename"] ?? "") === "README.md"
-					? -9999999999999
-					: v_a.type === "dir"
-					? -9999999999999 + v_a.order!
+					? -99999999999999
+					: v_a.type === "dir" || v_a.frontmatter?.['dir']
+					? -9999999999999 + (v_a.frontmatter?.['order'] || v_a.order)!
 					: -new Date(v_a.frontmatter!.date! ?? 0).getTime();
 			let order_b =
 				(v_b["filename"] ?? "") === "README.md"
-					? -9999999999999
-					: v_b.type === "dir"
-					? -9999999999999 + v_b.order!
+					? -99999999999999
+					: v_b.type === "dir" || v_b.frontmatter?.['dir']
+					? -9999999999999 + (v_b.frontmatter?.['order'] || v_b.order)!
 					: -new Date(v_b.frontmatter!.date! ?? 0).getTime();
 
 			return order_a - order_b;
