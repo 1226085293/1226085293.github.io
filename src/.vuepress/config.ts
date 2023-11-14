@@ -117,10 +117,6 @@ export default defineUserConfig({
 				"/博客/笔记/编程语言/Typescript/类型安全的单例基类.html": "/blog/notes/language/typescript/2.html",
 				// 如何更方便的使用 protobufjs
 				"/博客/文章/如何更方便的使用 protobufjs？看了你就知道.html": "/blog/article/10.html",
-				"/博客/文章/如何更方便的使用%20protobufjs？看了你就知道.html": "/blog/article/10.html",
-				// 如何更方便的使用 protobufjs
-				"/%E5%8D%9A%E5%AE%A2/%E6%96%87%E7%AB%A0/%E5%A6%82%E4%BD%95%E6%9B%B4%E6%96%B9%E4%BE%BF%E7%9A%84%E4%BD%BF%E7%94%A8%20protobufjs%EF%E7%9C%8B%E4%BA%86%E4%BD%A0%E5%B0%B1%E7%9F%A5%E9%81%93.html": "/blog/article/10.html",
-				"/%E5%8D%9A%E5%AE%A2/%E6%96%87%E7%AB%A0/%E5%A6%82%E4%BD%95%E6%9B%B4%E6%96%B9%E4%BE%BF%E7%9A%84%E4%BD%BF%E7%94%A8%20protobufjs%EF%BC%9F%E7%9C%8B%E4%BA%86%E4%BD%A0%E5%B0%B1%E7%9F%A5%E9%81%93.html": "/blog/article/10.html",
 				// 项目案例/cc-plugin-protobufjs
 				"/项目案例/cc-plugin-protobufjs/": "/project/cc-plugin-protobufjs/",
 				// 项目案例/cc-plugin-asset-copy
