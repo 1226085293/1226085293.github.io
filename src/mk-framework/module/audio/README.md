@@ -1,5 +1,5 @@
 ---
-title: 音频系统
+title: 音频
 article: false
 timeline: false
 dir:
@@ -21,21 +21,16 @@ dir:
 
 ### 方式一：属性面板
 ```ts
-// 单个音频
 @property(mk.audio_.unit)
 music = new mk.audio_.unit();
-
-// 多个音频
-@property([mk.audio_.unit])
-music_as: mk.audio_.unit[] = [];
 ```
 
 ### 方式二：动态加载
 ```ts
-// 全路径单音频
+// 全路径
 this.music = (await mk.audio.add("db://assets/resources/xxx.mp3", this))!;
 
-// bundle 路径单音频
+// bundle 相对路径
 this.music = (await mk.audio.add("xxx", this, {
     load_config: {
         bundle_s: global_config.asset.bundle.resources,
