@@ -82,13 +82,9 @@ export default defineUserConfig({
 		// 自动目录
 		autoCatalogPlugin({
 			orderGetter(page) {
-				let dir_config = page.frontmatter.dir as any;
+				let frontmatter = page.frontmatter as any;
 
-				if (dir_config?.order) {
-					return dir_config.order;
-				}
-
-				return -new Date(page.date).getTime();
+				return frontmatter.order ?? frontmatter.dir?.order ?? new Date(page.date ?? 0).getTime();
 			},
 		}),
 		// 搜索框

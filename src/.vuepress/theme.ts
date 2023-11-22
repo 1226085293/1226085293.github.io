@@ -210,20 +210,21 @@ export default hopeTheme(
 
 		// 侧边栏排序（README.md，文件夹(order)，文件(date)）
 		sidebarSorter(v_a, v_b) {
-			let order_a =
+			let a_order =
 				(v_a["filename"] ?? "") === "README.md"
 					? -99999999999999
 					: v_a.type === "dir" || v_a.frontmatter?.['dir']
 					? -9999999999999 + (v_a.frontmatter?.['order'] || v_a.order)!
-					: -new Date(v_a.frontmatter!.date! ?? 0).getTime();
-			let order_b =
+						: -new Date(v_a.frontmatter!.date! ?? 0).getTime();
+			
+			let b_order =
 				(v_b["filename"] ?? "") === "README.md"
 					? -99999999999999
 					: v_b.type === "dir" || v_b.frontmatter?.['dir']
 					? -9999999999999 + (v_b.frontmatter?.['order'] || v_b.order)!
 					: -new Date(v_b.frontmatter!.date! ?? 0).getTime();
 
-			return order_a - order_b;
+			return a_order - b_order;
 		},
 	},
 	{ custom: true }
