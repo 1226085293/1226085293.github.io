@@ -27,5 +27,10 @@ dir:
 - https://github.com/cocos/cocos-engine/issues/14175
 :::
 
+### 通用音频版本说明
+
+由于 creator 引擎存在最大播放数量（cc.AudioSource.maxAudioChannel）限制，所以如果使用引擎接口播放音频超出这个数量后会停止之前播放的一个音频
+
+MK框架的处理是阻止当前需要播放的音频而不是之前的
 
 <AutoCatalog />
