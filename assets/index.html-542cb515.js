@@ -1,0 +1,1 @@
+import{_ as t}from"./plugin-vue_export-helper-c27b6911.js";import{r as n,o as a,c,d as l,a as e}from"./app-2bd9cfaa.js";const r={},s=e("blockquote",null,[e("p",null,"可参考框架仓库项目，包含基础示例")],-1);function _(d,m){const o=n("AutoCatalog");return a(),c("div",null,[l(o),s])}const f=t(r,[["render",_],["__file","index.html.vue"]]);export{f as default};
