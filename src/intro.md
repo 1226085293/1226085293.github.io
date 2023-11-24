@@ -14,4 +14,6 @@ timeline: false
 
 个人开发的插件可以去[这里查看](https://muzzik.gitee.io/tag/cocoscreator-%E6%8F%92%E4%BB%B6/)
 
-有兴趣交流可以[加入我的企鹅群](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=9G6IB9sgAWYDK269xQttf8d6L0NZVb6H&authKey=NtrVeKTSVtCd%2F42xdkBmi2J3Ddh6cPBS%2BC6PvHUvCIQUAXoUxiF4PR8up%2BWWtjFe&noverify=0&group_code=200351945)
+有兴趣交流可以加入[企鹅群](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=9G6IB9sgAWYDK269xQttf8d6L0NZVb6H&authKey=NtrVeKTSVtCd%2F42xdkBmi2J3Ddh6cPBS%2BC6PvHUvCIQUAXoUxiF4PR8up%2BWWtjFe&noverify=0&group_code=200351945)
+
+微信号：_muzzik
