@@ -84,7 +84,13 @@ export default defineUserConfig({
 			orderGetter(page) {
 				let frontmatter = page.frontmatter as any;
 
-				return frontmatter.order ?? frontmatter.dir?.order ?? new Date(page.date ?? 0).getTime();
+				if (frontmatter.dir?.order !== undefined) {
+					return frontmatter.dir?.order;
+				} if (frontmatter.order) {
+					return frontmatter.order - 99999999999999;
+				}
+
+				return -new Date(page.date ?? 0).getTime();
 			},
 		}),
 		// 搜索框
