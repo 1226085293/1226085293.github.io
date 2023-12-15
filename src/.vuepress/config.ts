@@ -35,7 +35,7 @@ export default defineUserConfig({
 		// 百度网站所有权验证
 		["meta", { name: "baidu-site-verification", content: "codeva-uFXbzZZKAp" }],
 		// 防止缓存主页，缓存会导致内容不是最新的
-		["meta", { "http-equiv": "Cache-Control", content: "no-cache, no-store, must-revalidate" }],
+		["meta", { "http-equiv": "Cache-Control", content: "no-cache, no-store, must-revalidate, max-age=0" }],
 		["meta", { "http-equiv": "Pragma", content: "no-cache" }],
 		["meta", { "http-equiv": "Expires", content: "0" }],
 	],

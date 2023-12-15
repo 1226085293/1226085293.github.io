@@ -10,5 +10,6 @@
 	"commentTranslate.targetLanguage": "en",
 	"cSpell.words": [
 		"muzzik"
-	]
+	],
+	"editor.inlineSuggest.showToolbar": "always"
 }
