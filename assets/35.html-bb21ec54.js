@@ -1,1 +1,0 @@
-import{_ as o,o as n,c,e as l,a as t,b as e}from"./app-21c97978.js";const s={},a=t("p",null,[e("其实 swap 的定义在 utility 头文件中，我们只需要 "),t("strong",null,[e("#include <"),t("strong",null,"utility"),e(">")]),e(" 就好了。")],-1);function r(_,i){return n(),c("div",null,[l(" more "),a])}const d=o(s,[["render",r],["__file","35.html.vue"]]);export{d as default};
