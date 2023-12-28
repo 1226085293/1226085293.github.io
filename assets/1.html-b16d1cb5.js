@@ -1,0 +1,22 @@
+import{_ as n,o as s,c as a,e as t,f as p}from"./app-59c9f330.js";const e={},o=p(`<p>话不多说，看代码</p><div class="language-lua line-numbers-mode" data-ext="lua"><pre class="language-lua"><code><span class="token keyword">function</span> <span class="token function">String_conversion</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+	<span class="token keyword">local</span> path <span class="token operator">=</span> <span class="token string">&quot;&quot;</span>
+	<span class="token keyword">for</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token operator">#</span>value <span class="token keyword">do</span>
+		<span class="token keyword">local</span> tmp <span class="token operator">=</span> string<span class="token punctuation">.</span><span class="token function">sub</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span>i<span class="token punctuation">,</span>i<span class="token punctuation">)</span>
+		<span class="token keyword">if</span> tmp<span class="token operator">==</span><span class="token string">&#39;\\\\&#39;</span> <span class="token keyword">then</span>
+			path <span class="token operator">=</span> path<span class="token operator">..</span><span class="token string">&#39;/&#39;</span>
+		<span class="token keyword">else</span>
+			path <span class="token operator">=</span> path<span class="token operator">..</span>tmp
+		<span class="token keyword">end</span>
+	<span class="token keyword">end</span>
+	<span class="token keyword">return</span> path
+<span class="token keyword">end</span>
+<span class="token keyword">local</span> info <span class="token operator">=</span> debug<span class="token punctuation">.</span><span class="token function">getinfo</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">&quot;S&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">--获取当前路径</span>
+<span class="token keyword">local</span> pathinfo <span class="token operator">=</span> info<span class="token punctuation">.</span>short_src
+<span class="token comment">--由于获取的路径为反斜杠(\\)所以用上面的函数转为正斜杠(/)</span>
+<span class="token keyword">local</span> path <span class="token operator">=</span> string<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token function">String_conversion</span><span class="token punctuation">(</span>pathinfo<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">&quot;^.*/&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">--添加搜索路径</span>
+package<span class="token punctuation">.</span>path <span class="token operator">=</span> string<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">&quot;%s?.lua;%s?/init.lua;%s&quot;</span><span class="token punctuation">,</span> path<span class="token punctuation">,</span> path<span class="token punctuation">,</span> package<span class="token punctuation">.</span>path<span class="token punctuation">)</span>
+<span class="token comment">--加载模块(module为lua模块文件名&quot;module.lua&quot;)</span>
+<span class="token keyword">local</span> m <span class="token operator">=</span> require <span class="token string">&quot;module&quot;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>基于上一篇博客做的加载当前路径下 lua 模块</p>`,3);function c(l,i){return s(),a("div",null,[t(" more "),o])}const r=n(e,[["render",c],["__file","1.html.vue"]]);export{r as default};
