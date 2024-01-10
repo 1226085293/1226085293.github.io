@@ -1,1 +1,0 @@
-import{_ as e,o,c,e as t,a as n}from"./app-4ae9b6f9.js";const _={},r=n("p",null,"必须使用相同版本的 opencv 和 opencv_contrib 来编译就不会报错了",-1);function a(s,l){return o(),c("div",null,[t(" more "),r])}const d=e(_,[["render",a],["__file","2.html.vue"]]);export{d as default};
