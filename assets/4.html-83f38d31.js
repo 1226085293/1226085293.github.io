@@ -1,0 +1,1 @@
+import{_ as a,o as c,c as o,e as s,a as e,b as t}from"./app-932d792f.js";const _={},n=e("p",null,[t("mk.view_base 适合动态模块，而 "),e("code",null,"mk.static_view_base"),t(" 为了静态模块存在，屏蔽了多余的属性面板展示")],-1);function r(l,m){return c(),o("div",null,[n,s(" more ")])}const i=a(_,[["render",r],["__file","4.html.vue"]]);export{i as default};
