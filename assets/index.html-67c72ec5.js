@@ -1,1 +1,0 @@
-import{_ as t,r as n,o as a,c,d as l,a as e}from"./app-932d792f.js";const s={},_=e("blockquote",null,[e("p",null,"可参考框架仓库项目，包含基础示例")],-1);function r(d,u){const o=n("AutoCatalog");return a(),c("div",null,[l(o),_])}const m=t(s,[["render",r],["__file","index.html.vue"]]);export{m as default};
