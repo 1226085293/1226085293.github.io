@@ -9,7 +9,8 @@
 	"editor.formatOnSave": false,
 	"commentTranslate.targetLanguage": "en",
 	"cSpell.words": [
-		"muzzik"
+		"muzzik",
+		"protobuf"
 	],
 	"editor.inlineSuggest.showToolbar": "always"
 }
