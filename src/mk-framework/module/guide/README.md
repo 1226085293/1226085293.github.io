@@ -1,5 +1,5 @@
 ---
-title: 新手引导（待添加文档）
+title: 新手引导
 article: false
 timeline: false
 dir:

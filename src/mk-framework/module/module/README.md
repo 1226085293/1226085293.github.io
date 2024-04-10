@@ -12,6 +12,7 @@ dir:
 ```state 模块系统架构
 cc.Component --> mk.layer
 mk.layer --> mk.life_cycle
+mk.life_cycle --> mk.scene_drive
 mk.life_cycle --> mk.static_view_base
 mk.life_cycle --> mk.view_base
 ```
