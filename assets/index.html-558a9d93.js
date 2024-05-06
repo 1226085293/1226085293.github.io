@@ -1,1 +1,0 @@
-import{_ as o,r as t,o as n,c as a,e as c,d as r}from"./app-9afbaedb.js";const s={};function _(l,m){const e=t("AutoCatalog");return n(),a("div",null,[c(" more "),r(e)])}const f=o(s,[["render",_],["__file","index.html.vue"]]);export{f as default};
