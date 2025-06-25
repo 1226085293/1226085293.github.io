@@ -4,11 +4,26 @@
     <meta charset="utf-8" />
     <title>Content Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="cms-config-url" href="/admin/config.yml" />
+
+    <!-- ❶ *相对* 路径，不要以 / 开头 -->
+    <link rel="cms-config-url" type="text/yaml" href="config.yml" />
+
+    <!-- 若你不用 Netlify Identity，可先注释掉 -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </head>
   <body>
+    <!-- ❷ 必须存在，id 固定为 nc-root -->
     <div id="nc-root"></div>
+
+    <!-- 可选：如果你想在脚本加载完再手动初始化 -->
+    <!--
+    <script>
+      window.CMS_MANUAL_INIT = true; // 放在 decap-cms.js 之前
+    </script>
+    <script>
+      CMS.init();                    // 放在 decap-cms.js 之后
+    </script>
+    -->
   </body>
 </html>
