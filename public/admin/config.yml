@@ -13,7 +13,7 @@ collections:
     files:
       - label: 'Hero'
         name: 'hero'
-        file: 'src/content/homepage/hero.md' # Path to the markdown file
+        file: 'public/hero.md' # Path to the markdown file
         create: true
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
