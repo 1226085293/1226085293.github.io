@@ -1,15 +1,22 @@
 backend:
-  name: github
+  name: git-gateway
   repo: 1226085293/blog
   branch: main
-media_folder: public/images
-public_folder: /images
+
+media_folder: 'public/static/images' # Location where files will be stored in the repo
+public_folder: 'public/static/images' # The src attribute for uploaded med
+
+# Here we define content structure
 collections:
-  - name: 'posts'
-    label: 'Posts'
-    folder: 'src/content/posts'
-    create: true
-    fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Date', name: 'date', widget: 'datetime' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+  - label: 'Home page'
+    name: 'homepage'
+    files:
+      - label: 'Hero'
+        name: 'hero'
+        file: 'src/content/homepage/hero.md' # Path to the markdown file
+        create: true
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Subtitle', name: 'subtitle', widget: 'string' }
+          - { label: 'Background Image', name: 'backgroundImage', widget: 'image', required: false }
+          - { label: 'Button Text', name: 'buttonText', widget: 'string' }
