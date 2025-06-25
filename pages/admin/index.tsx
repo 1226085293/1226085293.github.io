@@ -21,7 +21,7 @@ const CMSPage: React.FC = () => {
       window.netlifyIdentity.on('init', (user) => {
         if (!user) {
           window.netlifyIdentity.on('login', () => {
-            document.location.href = '/admin/'
+            document.location.href = '/blog/admin/'
           })
         }
       })
@@ -47,7 +47,7 @@ const CMSPage: React.FC = () => {
         <title>Content Manager</title>
         <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js" async></script>
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async></script>
-        <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
+        <link href="/blog/admin/config.yml" type="text/yaml" rel="cms-config-url" />
       </Head>
       <main id="cms" />
     </>
