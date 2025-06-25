@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const { withContentlayer } = require('next-contentlayer2')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
@@ -96,6 +97,15 @@ module.exports = () => {
       })
 
       return config
+    },
+    // 添加以下配置：
+    async rewrites() {
+      return [
+        {
+          source: '/admin/:path*',
+          destination: '/admin/:path*',
+        },
+      ]
     },
   })
 }
