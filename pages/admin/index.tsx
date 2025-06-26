@@ -15,14 +15,13 @@ declare global {
 }
 
 const CMSPage: React.FC = () => {
-  const basePath = process.env.BASE_PATH || ''
   useEffect(() => {
     // Initialize Netlify Identity
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on('init', (user) => {
         if (!user) {
           window.netlifyIdentity.on('login', () => {
-            document.location.href = `${basePath}/admin/`
+            document.location.href = '/admin/'
           })
         }
       })
@@ -37,7 +36,7 @@ const CMSPage: React.FC = () => {
         <meta name="robots" content="noindex" />
         <title>Content Manager</title>
         <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" async></script>
-        <link href={`${basePath}/admin/config.yml`} type="text/yaml" rel="cms-config-url" />
+        <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
       </Head>
       <main id="cms" />
     </>
