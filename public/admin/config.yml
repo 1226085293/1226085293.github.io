@@ -2,7 +2,7 @@
 backend:
   name: github
   branch: main
-  repo: 1226085293/blog
+  repo: 1226085293/1226085293.github.io
 
 local_backend: true
 media_folder: 'public/static'
