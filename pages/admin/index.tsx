@@ -36,6 +36,7 @@ const CMSPage: React.FC = () => {
         <meta name="robots" content="noindex" />
         <title>Content Manager</title>
         <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" async></script>
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async></script>
         <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
       </Head>
       <main id="cms" />
