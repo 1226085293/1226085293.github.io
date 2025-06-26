@@ -1,0 +1,57 @@
+---
+title: 如何保证在多线程中对象的有效性？进来告诉你
+date: 2020-05-30 00:40:34
+tags:
+  - C++
+  - 多线程
+---
+
+大家一定在网上看过其他文章，都是说用**std::shared_ptr**，其实还有一种情况，就是在 std::shared_ptr 也销毁后的情况下调用对象的函数，这时候会直接**抛出错误**
+那么我们如何**安全**的使用一个对象呢，很简单，利用**std::shared_ptr + std::enable_shared_from_this**，如果我们在对象销毁后再调用对象成员函数 **std::shared_from_this()** 获取指针的时候就会抛出异常。起初觉得并没有什么用，但我转念一想，抛出异常。那就直接捕获异常呗，这样就可以第一时间捕获异常并处理。这样就可以知道我们的对象是否有效了（用 this 的情况下存在可能不抛出异常的情况）。也就知道在异步过程中调用的对象有效性！
+
+```cpp
+struct A : public std::enable_shared_from_this<A> {
+	~A() {
+		std::cout << "析构" << std::endl;
+	}
+	void func() {
+		try {
+			try {
+				auto self = shared_from_this();
+				std::cout << self.use_count() << std::endl;
+			}
+			catch (...) {
+				throw 1;
+			}
+			// 其他代码块, 可以抛出其他类型的异常，便于检查错误信息
+		}
+		catch (int type) {
+			if (type == 1) {
+				std::cout << "参数无效" << std::endl;
+			}
+		}
+		catch (std::exception e) {
+			std::cout << e.what() << std::endl;
+		}
+	}
+};
+
+int main() {
+	{
+		std::shared_ptr<A> a;
+		a = std::make_shared<A>();
+		{
+			std::thread temp([&] {
+				Sleep(1000);
+				a->func();
+				}
+			);
+			temp.detach();
+		}
+		std::cout << a.use_count() << std::endl;
+	}
+	while (true) {}
+}
+```
+
+学会记得点个赞哦

@@ -1,0 +1,32 @@
+---
+title: 写好函数参数，避免代码修改次数
+date: 2022-12-05 11:16:00
+tags:
+  - CocosCreator
+  - Typescript
+---
+
+### # 方式 1
+
+```auto
+function test(必选参数: number, 可选参数?: TestConfig): void {
+    let 参数 = new TestConfig(可选参数);
+}
+
+class TestConfig {
+    constructor(init_?: TestConfig) {
+        Object.assign(this, init_);
+    }
+    参数a?: number;
+    参数b? = "str";
+}
+```
+
+### # 方式 2
+
+```auto
+// 类型声明：{ 参数a = null as number, 参数b =  "str" }: 类型
+function test(必选参数: number, { 参数a = null as number, 参数b =  "str" }): void {
+    let a = 参数a;
+}
+```

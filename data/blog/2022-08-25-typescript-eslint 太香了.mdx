@@ -1,0 +1,82 @@
+---
+title: typescript-eslint 太香了
+date: 2022-08-25 00:19:00
+tags:
+  - Typescript
+  - ESlint
+---
+
+![](https://forum.cocos.org/uploads/default/original/3X/1/a/1a5e565a4796dbe52816402f307710827e7a6051.png =643x500)
+
+晚上试用了一下，
+
+竟然支持我最爱的蛇形命名法
+_typescript-eslint + prettier_
+
+---
+
+_配置如下，需要的可以根据自己习惯自行调整_
+package.json
+
+```auto
+{
+	"type": "module",
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.34.0",
+		"@typescript-eslint/parser": "^5.34.0",
+		"eslint": "^8.22.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"typescript": "^4.7.4"
+	}
+}
+```
+
+---
+
+.eslintrc（注意前面有个点）
+
+```auto
+/**
+ * "off" 或 0 - 关闭规则
+ * "warn" 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出),
+ * "error" 或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)
+ */
+{
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"requireConfigFile": false,
+		"ecmaVersion": 6,
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	},
+	"plugins": ["@typescript-eslint", "eslint-plugin-prettier"],
+	"extends": ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+	"env": {
+		"browser": true,
+		"node": true
+	},
+	"globals": {},
+	"rules": {
+		"@typescript-eslint/naming-convention": [
+			"error",
+			{
+				"selector": "variableLike",
+				"format": ["snake_case"],
+				"trailingUnderscore": "allowSingleOrDouble"
+			}
+		],
+		"@typescript-eslint/no-namespace": "off"
+	}
+}
+```
+
+---
+
+.eslintignore
+
+```auto
+node_modules/
+```
+
+需要安装的需要把上面几个文件的内容复制到自己项目中，然后再 npm i ，再安装 vscode 内的 eslint 插件后重启 vscode 就行了

@@ -1,0 +1,42 @@
+---
+title: Vue 中将 ref.value 简写为 ref
+date: 2024-03-30 15:39:00
+tags:
+  - Vue
+---
+
+在 Vue 组件中修改 ref 变量需要 `xxx.value = `，但是可以这样用 `xxx = `
+
+# 安装
+
+npm i -D @vue-macros/reactivity-transform
+
+# 配置
+
+```tsconfig.json
+{
+	"compilerOptions": {
+		"types": ["@vue-macros/reactivity-transform/macros-global"]
+	}
+}
+```
+
+```vite.config.js
+import ReactivityTransform from '@vue-macros/reactivity-transform/vite'
+
+export default defineConfig({
+  plugins: [
+    ReactivityTransform(),
+  ],
+})
+```
+
+# 使用
+
+```vue
+<script setup lang="ts">
+const value = $ref('')
+
+value = '123'
+</script>
+```

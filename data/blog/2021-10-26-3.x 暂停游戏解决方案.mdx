@@ -1,0 +1,93 @@
+---
+title: 3.x 暂停游戏解决方案
+date: 2021-10-26 21:28:00
+tags:
+  - CocosCreator
+  - 游戏功能
+---
+
+## # 前言
+
+众所周知，我们想要*全局暂停游戏*的话只能调用 _cc.director.pause_ 或者 _cc.game.pause_
+
+## # 讲解
+
+由于本人工作中需要用到游戏暂停效果，所以花了一上午写了个比较全面的游戏暂停方法
+
+首先在 3.x 中，之前的各种管理器全部都变成了 system，而我们只需要分类管理即可，下面是运行时 system
+
+![](https://forum.cocos.org/uploads/default/original/3X/d/3/d3cae608b188721226563cc4173f018e05d5ba52.png =677x499)
+
+可以看到上图中 system 一共有 5 个，分别是
+
+- Scheduler：定时器
+- AnimationManager：动画管理器
+- TweenSystem：缓动
+- PhysicsSystem：3d 物理
+- PhysicsSystem2D：2d 物理
+  其实如果项目中用到了龙骨，还有个
+- ArmatureSystem：骨骼系统
+
+### 现在开始挨个暂停…
+
+---
+
+_Scheduler 定时器：_
+
+```auto
+// 暂停所有对象的定时器
+cc.director.getScheduler().pauseAllTargets()
+```
+
+_AnimationManager 动画管理器：_
+
+```auto
+// creator只提供了系统获取接口，并没有直接的暂停所有动画的接口，
+// 但是动画系统内的 _anims 保存了当前所有动画信息，所以直接挨个pause就好
+let anim_system = cc.director.getSystem(cc.AnimationManager.ID);
+pause_data.anim_as.splice(0, pause_data.anim_as.length, ...anim_system["_anims"].array);
+pause_data.anim_as.forEach(v1 => {
+    v1.pause();
+});
+```
+
+_ArmatureSystem 骨骼系统：_
+
+```auto
+// 同样也没有提供接口，不过可以另辟蹊径
+pause_data.dragon_bones_as = cc.director
+	.getScene()
+	.getComponentsInChildren(cc.dragonBones.ArmatureDisplay);
+pause_data.dragon_bones_as.forEach(v1 => {
+	v1.timeScale = 0;
+});
+```
+
+_TweenSystem 缓动：_
+
+```auto
+cc.TweenSystem.instance.ActionManager.pauseAllRunningActions();
+```
+
+_PhysicsSystem2D 2d 物理：_
+
+```auto
+cc.PhysicsSystem2D.instance.enable = false;
+```
+
+_PhysicsSystem 3d 物理：_
+
+```auto
+cc.PhysicsSystem.instance.enable = false;
+```
+
+按照上面的方式就可以暂停所有当前系统内运行的对象，但不会对新增的节点暂停，如果需要排除暂停节点，就需要手动恢复了
+
+## # 代码（福音书）
+
+内部除了游戏全局的暂停和恢复，还提供了排除暂停节点，以及单个节点的暂停和恢复
+
+<a class="attachment" href="/uploads/short-url/5UZSqkBXUApXjAsrYWMkj2izo9e.zip">
+  game.zip
+</a>
+(1.5 KB)

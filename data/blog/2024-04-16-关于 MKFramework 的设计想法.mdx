@@ -1,0 +1,957 @@
+---
+title: 关于 MKFramework 的设计想法
+date: 2024-04-16 00:00:00
+tags:
+  - CocosCreator
+  - 游戏框架
+---
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/1.jpg)
+
+MKFramework是我个人维护持续了几年的项目（虽然公开只有一年左右），最开始由于自己从事QP类游戏开发，我很喜欢MVVM，于是想把他做成 MVVM 框架，在论坛第一个 MVVM 框架出来的时候，我的框架已经快完成了，但是为了其他人项目的安全着想还是没有发布.. 后面又进行了数次大改动，现在说说自己对于代码框架开发的一些心得和想法
+
+github：https://github.com/1226085293/MKFramework  
+gitee：https://gitee.com/muzzik/MKFramework  
+文档：https://muzzik.gitee.io/mk-framework/quick-start/
+
+# # 游戏框架需要有哪些功能？
+
+作为一个游戏框架需要支持什么功能？我认为框架只是弥补引擎的不足和痛点，只需要解决用户高频使用的功能/缺点即可，而其他的功能让用户自行选择开源项目或者自定义
+
+- UI
+
+> 屏幕适配，多节点实例化卡顿，规范生命周期函数（重复利用的节点脚本必须），点击返回按钮怎么关闭对应的UI，查找场景内指定模块，使用单脚本多预制体，支持脚本和预制体分离，UI层级控制
+
+- 音频
+
+> 播放音频得添加组件，加载动态音频代码太多，播放多个音频会停止之前的音频，单AudioSource只能play单个音频，音频分组控制
+
+- 网络
+
+> XMLHttpRequest 代码太多需要封装，webscoket的心跳，重连，发送间隔控制，多种消息格式支持
+
+- 资源
+
+> 资源管理，编辑器资源加载，无意义的/SpriteFrame后缀，同时间加载同一资源导致的引用计数错误，防止资源短时间内重复加载，Bundle热更
+
+- 多语言
+
+> 多语言资源和文本垃圾堆积，编辑器预览，多语言布局，多语言节点
+
+- 新手引导
+
+> 多实例新手引导，引导步骤脚本分离，引导步骤需要依赖节点，引导步骤的跳转和插入，暂停引导状态，更新引导数据
+
+- 事件
+
+> 类型安全保证，事件键的提示
+
+- 存储
+
+> 类型安全保证，怎么保证默认值的存在
+
+- 数据
+
+> 共享数据的类型，多模块请求对方的异步数据
+
+- MVVM
+
+> 解决数据更新展示问题，免去不必要的代码
+
+---
+
+# # 各个模块的不同之处
+
+> 以下主要讲解的是MK框架和其他框架不同的地方，大家都知道的功能讲出来那也没什么意义
+
+# UI
+
+<details>
+<summary>点击展开</summary>
+
+## 1. 适配
+
+- **屏幕适配**
+  这个都说烂了，基本就是更宽定高，更高定宽，为了方便，可以监听切换场景事件后自动添加到 canvas
+      ```tsx
+      cc.director.on(cc.Director.EVENT_AFTER_SCENE_LAUNCH, () => { ... });
+      ```
+
+      **源码**：[mk_adaptation_canvas](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/%40component/adaptation/mk_adaptation_canvas.ts)
+- **节点适配**
+  除了屏幕适配，可能大家还没意识到，使用更多的是节点适配，比如背景，比如大小不同的商品图标
+      适配尺寸
+
+      1. canvas
+      2. 父节点
+      3. 自定义
+
+      需要哪些适配模式呢？
+
+      1. 缩放（占满空间）
+      2. 自适应_展示完（展示全部内容，可能有上下左右黑边）
+      3. 自适应_填充满（更宽定宽，更高定高，无黑边）
+      4. 填充宽（保持大小比例占满宽度，可能有上下黑边）
+      5. 填充高（保持大小比例占满高度，可能有左右黑边）
+
+      这就是我的节点适配脚本可以做的事情
+
+      **源码**：[mk_adaptation_node](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/%40component/adaptation/mk_adaptation_node.ts)
+
+## 2. 生命周期
+
+> 为什么需要生命周期函数？又需要有哪些生命周期函数？
+
+### 1. 为什么需要生命周期函数
+
+在重复使用一个节点的时候，必然存在打开和关闭状态，其上的组件脚本中的 onEnable 和 onDisable 并不能代替打开和关闭回调。所以 **必须存在 open 和 close** 这两个最基本的生命周期函数！
+
+### 2. 生命周期函数需要有哪些？
+
+- create
+- init(...)
+- open
+- close
+- late_close
+
+除了最基本的 open 和 close，为什么还需要其他回调？一个一个说
+
+### create（初始化视图回调）
+
+> 为什么需要在 create 中初始化视图，而不是 open 或者 onLoad？那就和生命周期函数调用顺序有关
+
+**生命周期调用顺序**
+
+- open：子节点-->父节点
+- close：父节点->子节点
+
+为什么是这样的顺序？因为要保证在父模块 open 时能获取正常的子模块数据，反之亦然，如果子模块先 close，父模块获取子模块数据就会出错。
+
+所以为什么要在 create 初始化视图？**onLoad 只会调用一次，而 open 需要等待子模块** 全部 open 完成，所以为了更新初始视图，只能用 create
+
+### init（初始化数据回调）
+
+> 为什么需要它？init 的职责就是利用外部传递的数据进行初始化操作，
+
+那么为什么不在 open 内进行初始化操作呢？**open 的职责其实也是初始化**，但是如果把使用初始化数据的初始化操作放在 open 内，你的模块需要从外部手动传递初始化数据的时候你该怎么做？
+
+比如提前创建的模块，等待网络请求返回后再传递初始化数据。这时候就需要一个初始化函数，用于处理外部传递的数据进行初始化操作，而且可能在 open 后被调用多次，而 open 只会在模块打开时调用一次，所以就有了 init
+
+### late_close（关闭之后）
+
+> 这个回调存在的意义就是框架为了在模块 close 之后清理模块的数据，比如事件，定时器，框架已经在父类中为你做了这些事情，所以你大部分时候不会使用到它
+
+**源码**：[mk_life_cycle](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/module/mk_life_cycle.ts)
+
+### 3. 怎么驱动生命周期？
+
+可以监听场景切换后的事件（cc.Director.EVENT_AFTER_SCENE_LAUNCH），然后进行递归调用生命周期
+
+**源码**：[mk_scene_drive](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/module/mk_scene_drive.ts)
+
+## 3. UI 管理器
+
+> UI 管理器主要做的事情就是 预加载 / 创建(启动) / 回收 / 查找 模块，当然，为了更方便的使用，你需要设计一个好的接口
+
+而我设计的接口有这几个
+
+- regis（注册）
+- unregis（取消注册）
+- open（打开）
+- close（关闭）
+- get（获取）
+
+很简单对吧，它们做了什么事？让我娓娓道来~
+
+### regis
+
+1. 在 regis 时，UI 管理器会为这个模块的资源创建一个对象池，使用你传递的参数(或默认参数)进行预加载，完全可控，默认只创建一个对象
+2. regis 会保存某些固定的配置，防止你每次 open 时都传递这些参数，例如
+   - repeat_b：是否允许重复创建多个模块，像子弹就需要，弹窗大部分都不需要，可以防止用户点击过快导致打开多个模块
+   - parent：默认的父节点，当然 open 函数参数配置内也有 parent，按需覆盖或者空置
+
+### unregis
+
+主要是为了释放 regis 传递的对象和对象池，在 regis 时会有一个跟随释放对象，对象池和资源会跟随这个对象（模块）一起释放。也就是前面生命周期内说的 late_close 会清理，如果它不为空，你就不需要手动调用 unregis
+
+### open
+
+open 的职责就是从对象池中取出指定模块，然后执行生命周期。你以为就这些吗？不，在我们工作中，经常有一些全屏的 UI，这时候 **我们是不需要展示全屏 UI 以下的内容的**。这时候我们利用 UI 栈的数据，把全屏 UI 之前打开的模块全部隐藏，就节省了 DrawCall 占用 =.=:+1:
+
+### close
+
+和 open 类似，不过是变成了回收模块
+
+### get
+
+get 含义很简单，但是我重载了三次，有三个用法
+
+1. 获取当前所有的模块列表
+
+   ```tsx
+   mk.ui_manage.get()
+   ```
+
+2. 获取指定类型的模块
+
+   ```tsx
+   mk.ui_manage.get(class)
+   ```
+
+3. 获取指定类型的模块列表
+
+   ```tsx
+   mk.ui_manage.get([class])
+   ```
+
+这就是接口设计的魅力，一个接口三个方式使用
+
+### 单脚本多预制
+
+如果我们需要一个脚本对应多个预制体资源，应该怎么做？拷贝多个脚本？不不不 :no_good_man:，有更简单的方式，并且 MKFramework 已经实现了它
+
+```tsx
+mk.ui_manage.regis(
+  res_test,
+  {
+    default: 'db://assets/resources/module/test/t1.prefab',
+    new: 'db://assets/resources/module/test/t2.prefab',
+  },
+  this
+)
+```
+
+只需要在注册时这样做，你就可以使用 `ui_manage.open` 打开不同类型的模块，而且 **无须你将脚本挂载到预制体上**
+
+```tsx
+mk.ui_manage.open(res_test, { type: 'new' })
+```
+
+### 类型安全
+
+UI 管理器是支持模块类型和初始化数据类型安全的，不必担心外部使用者导致的错误，当然这个功能完全是可选的，取决你是否声明了 init_data 和 type_s 的类型
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/2.png)
+
+**源码**：[mk_ui_manage](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/mk_ui_manage.ts)
+
+## 4. 纯代码开发
+
+通过 `ui_manage.open` 打开模块，ui_manage 会在预制体实例化后自动挂载这个模块脚本（如果根节点不存在模块脚本）
+
+## 5. 层级管理
+
+对于模块，框架提供了内置的层级管理，将层级划分为不同的类型，每个类型间隔指定的数量，当然，这些是你完全可控的！
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/3.png)
+
+使用时
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/4.png)
+
+当然你也可以在编辑器对它进行赋值
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/5.png)
+
+## 6. 快捷操作
+
+MKFramework 将开发中高频的操作封装了一下，让你使用更简单，这里 diss 一下引擎开发团队，什么时候解决这个问题 https://forum.cocos.org/t/topic/154608
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/6.png)
+
+</details>
+
+---
+
+# 音频
+
+<details>
+<summary>点击展开</summary>
+
+## 1. 结构
+
+框架将每个音频都封装为一个音频单元，音频单元内存储着音频的所有信息。包括事件在内。类似 AudioSource，而音频管理器（mk.audio）则是控制音频单元的工具
+
+### 创建音频单元
+
+- 编辑器
+
+```tsx
+@property({ displayName: "音效", type: mk.audio_.unit })
+effect = new mk.audio_.unit();
+```
+
+- 脚本
+
+```tsx
+// 单个音频
+const effect = (await mk.audio.add("db://xxx.mp3", this))!;
+
+// 多个音频
+const effect_as = (await mk.audio.add(["db://xxx.mp3", ...], this))!;
+
+// 文件夹音频
+const effect_as = (await mk.audio.add("db://xxx", this, { dir_b: true }))!;
+
+// 多个文件夹音频
+const effect_as = (await mk.audio.add(["db://xxx", ...], this, { dir_b: true }))!;
+```
+
+### 使用
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/7.png)
+
+## 2. 解决多音频监听结束回调
+
+### 为 playOneShot 添加结束回调
+
+如果不指定 use_play_b 为 true，默认音频系统是使用 playOneShot 接口，而 playOneShot 也没有结束回调，所以框架内使用定时器为 playOneShot 模拟了结束事件
+
+```ts
+mk.audio.play(this.effect, { use_play_b: false })
+```
+
+### AudioSource 对象池
+
+如果你还需要对音频进行暂停操作，那么只能使用 play 接口，而单个 AudioSource 并不能支持多个音频同时使用 play 接口播放，为了解决这个问题，只能使用 AudioSource 对象池，在用户需要的时候手动指定使用 play 接口，例如
+
+```tsx
+mk.audio.play(this.overlap_effect, { use_play_b: true })
+```
+
+## 3. 音频分组
+
+MK框架支持音频多分组控制，什么是分组？音乐是分组，音效是分组，环境音也可以是分组，分组有多少，全看你定义多少。
+
+当你需要同时控制多个音频时，你就需要用到音频分组了，比如 **音乐** 和 **音效** 是内置的音频分组，被称为音频类型，音频单元必须存在音频类型。但是不一定存在音频分组
+
+### 功能
+
+1. 设置音量
+2. 设置播放状态（播放/停止）
+3. 添加/删除音频单元
+
+### 规则
+
+1. 单个音频单元可以存在于多个分组内
+2. 音频单元的音量 = 其音频分组的音量相乘结果 \* 自身音量
+3. 音频分组存在优先级，音频的播放/停止状态优先级高的音频分组决定
+
+源码：[mk_audio_base](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/audio/mk_audio_base.ts)
+
+</details>
+
+---
+
+# 网络
+
+<details>
+<summary>点击展开</summary>
+
+## 1. 无须传递消息号的秘密
+
+在平常使用中，收发网络消息通常需要手动传递消息号，但是MK框架避免了这个问题，那么是怎么完成的呢？
+
+```tsx
+// 发送消息
+this._ws2.message.send(test.test_c.create())
+
+// 请求指定消息（等待返回、需在消息体添加消息序号并修改对应编解码）
+this._ws2.message.request(test.test_c.create())?.then((value) => {
+  this._log.log('收到请求消息', value)
+})
+
+// 监听指定消息
+this._ws2.message.on(test.test_c, (value) => {
+  this.data.chat2_ss.push('网络 2 收到：' + value.data)
+})
+```
+
+### 答案
+
+通过消息体获得消息号，就是这么简单，在创建 socket 的时候，可以传递这两个函数，一个用于获取消息 ID，一个用于获取消息序列号
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/8.png)
+
+怎么把消息号包含在消息体内？个人推荐的是使用 proto 的 **默认值**，
+
+```protobuf
+package test;
+syntax = "proto3";
+
+message test_c {
+    int32 __id = 1 [default=100];
+    string data = 2;
+}
+```
+
+这个在我之前的文章讲过，我也开发了一个编译 protobuf 的插件，也支持生成默认值，有需要的可以自行购买
+
+https://store.cocos.com/app/detail/5243
+
+## 2. 模拟事件结构的网络消息
+
+框架将网络消息事件封装为了一个事件对象，并增加 send 和 request 接口，让用户更熟悉
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/9.png)
+
+- send：发送消息到服务器
+- emit：模拟服务器消息
+- request：发送消息到服务器并等待返回
+
+## 3. 消息潮
+
+如果你需要将多个消息同时发送，或者手动触发时发送，那么可以使用消息潮。
+
+```tsx
+const message_tide = new mk.network.base_.send_tide(this._ws, -1)
+
+message_tide.send('123')
+message_tide.send('456')
+message_tide.send('789')
+
+message_tide.trigger()
+```
+
+根据定时器或者手动调用 trigger 才会进行发送操作
+
+源码：[mk_network_base](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/network/mk_network_base.ts)
+
+</details>
+
+---
+
+# 资源
+
+<details>
+<summary>点击展开</summary>
+
+支持网络资源、本地资源、编辑器资源的加载和管理。bundle 和场景的加载/预加载/重载
+
+## 1. 解决资源释放管理
+
+怎么完全解决资源释放？那就是增加一个资源跟随释放对象，这是获取资源的接口
+
+```tsx
+/**
+	 * 获取资源
+	 * @param path_s_ 资源路径
+	 * @param type_ 资源类型
+	 * @param target_ 跟随释放对象
+	 * @param config_ 获取配置
+	 * @returns
+	 */
+	get<T extends cc.Asset>(
+		path_s_: string,
+		type_: cc.Constructor<T>,
+		target_: mk_asset_.follow_release_object | null,
+		config_?: mk_asset_.get_config<T>
+	): Promise<T | null> { ... }
+```
+
+target\_ 即为跟随释放对象，类型为
+
+```tsx
+/** 跟随释放类型 */
+export type follow_release_object<CT = release_param_type> = {
+  /**
+   * 跟随释放
+   * @param object_ 释放对象/释放对象数组
+   */
+  follow_release<T extends CT>(object_: T): T
+
+  /**
+   * 取消释放
+   * @param object_ 取消释放对象/取消释放对象数组
+   */
+  cancel_release<T extends CT>(object_: T): T
+}
+```
+
+即在资源加载完成后调用 follow_release，让对象自行管理释放时机，而MK框架的生命周期系统是在 late_close 中进行释放
+
+## 2. 解决资源系统的 Bug
+
+### 同时加载同一资源，返回的资源对象不一致
+
+如果对首个返回的资源引用计数进行 + 1，那么后面返回的资源对象引用计数还是 0，为了解决这个问题。可以设置资源缓存表，在资源加载完成后再返回表内的资源，如果表内没有资源则存储到表内再返回
+
+### 释放资源后立即加载会出现返回的资源已经无效
+
+这个问题在框架内设置了一个资源释放缓冲时间，可以避免这个问题，但是仍然不能完全避免，因为没有资源释放完成的通知，需要引擎开发人员解决
+
+## 3. 针对接口的优化
+
+你可以怎么加载资源？看下面
+
+```tsx
+mk.asset.get('db://assets/xxx.png', cc.SpriteFrame, this)
+mk.asset.get('db://assets/xxx', cc.SpriteFrame, this)
+mk.asset.get('xxx.png', cc.SpriteFrame, this)
+mk.asset.get('xxx', cc.SpriteFrame, this)
+```
+
+支持 db 路径，后缀名，省略无意义的 `/spriteFrame`, `/texture`
+
+## 4. Bundle 热更
+
+MK框架抛弃了传统的版本文件对比热更。而是内置了 Bundle 热更方式，让你可以直接实现大厅子游戏，而免去学习使用版本文件热更。可控性更强且自由定制！
+
+```tsx
+// 重载(热更) bundle 示例
+await mk.bundle.reload({
+  bundle_s: global_config.asset.bundle.config,
+  origin_s: this.data.remote_url_s + '/' + global_config.asset.bundle.config,
+  version_s: this.data.bundle_version_s,
+})
+```
+
+只需要调用一个函数，即可实现热更 Bundle！
+
+## 5. Bundle 管理器
+
+Bundle 管理器是专门为子游戏设计的，用以初始化子游戏，存放公共数据，事件，存储的对象
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/10.png)
+
+Bundle 管理器的生命周期有 init, open, close
+
+- init：从其他 bundle 的场景切换到此 bundle 的场景之前调用
+- open：从其他 bundle 的场景切换到此 bundle 的场景时调用
+- close：从此 bundle 的场景切换到其他 bundle 的场景时调用
+
+源码：[mk_asset](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/resources/mk_asset.ts)
+源码：[mk_bundle](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/resources/mk_bundle.ts)
+
+</details>
+
+---
+
+# 多语言
+
+<details>
+<summary>点击展开</summary>
+
+多语言文本、多语言图片、多语言节点
+
+## 1. 避免垃圾的堆积
+
+在使用多语言资源的时候，一般会把资源放在一块，以 Bundle 为单位或整包为单位，但是MK框架不一样，它可以模块为单位，也可以 Bundle 为单位！这意味着很少存在多语言垃圾堆积
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/11.png)
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/12.png)
+
+多语言类型即为你注册的单位，而语言标识即为多语言键
+
+## 2. 多语言节点
+
+在开发过程中，存在一些多语言文本和图片不能解决的多语言展示问题，比如结构不一致的布局。节点位置、大小等等。这时候就可以使用多语言节点组件，将其挂载到父节点会自动根据当前语言显示或隐藏对应节点
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/13.png)
+
+源码：[language](https://github.com/1226085293/MKFramework/tree/main/assets/%40framework/language)
+
+</details>
+
+---
+
+# 新手引导
+
+<details>
+<summary>点击展开</summary>
+
+支持多实例，任意步骤的(插入/删除)，(暂停/完成)引导，支持任意步骤跳转后的状态还原(操作单元)，引导步骤脚本分离，支持组件式挂载。它可以完成你的任何需求
+
+## 1. 引导步骤脚本
+
+框架将每个引导步骤都分为单独的脚本，继承于 mk.guide_step_base，而 mk.guide_step_base 继承于 cc.Component，这意味着你可以把它挂载到节点上
+
+### 注册引导步骤
+
+```tsx
+guide_manage.regis([new resources_guide_step1()])
+```
+
+regis 是可以调用多次的，所以你也可以从节点上面 getComponent 然后 regis
+
+### 引导步骤脚本内容
+
+```tsx
+@ccclass
+class resources_guide_step1 extends resources_guide_step_base {
+  step_n = 1
+  next_step_ns = [2]
+  scene_s = 'main.main'
+  operate_ss = [resources_guide_operate.key.隐藏所有按钮, resources_guide_operate.key.按钮1]
+  /* ------------------------------- 生命周期 ------------------------------- */
+  load(): void | Promise<void> {
+    const button = this.operate_tab[resources_guide_operate.key.按钮1]
+
+    button?.once(cc.Button.EventType.CLICK, async () => {
+      this._next()
+    })
+  }
+}
+
+export default resources_guide_step1
+```
+
+- step_n：步骤标识
+- next_step_ns：下个步骤数组（包含可能跳转的步骤用于预加载）
+- scene_s：bundle名.场景名，用于自动跳转场景
+- operate_ss：引导单元列表
+
+## 2. 使用引导单元实现任意步骤的跳转
+
+引导操作单元是什么？它可以是一个加载 UI 的操作，也可以是一次更新视图的操作，我们每个引导步骤都有一个自己的操作列表，**在切换步骤时执行步骤生命周期前初始化**
+
+### **操作单元接口**
+
+```tsx
+class guide_operate {
+  // 重置：操作单元同时存在于上下两个步骤时执行
+  reset?: () => void
+
+  // 加载：操作单元不存在于上个步骤时执行
+  load: () => void
+
+  // 卸载：操作单元不存在于下个步骤时执行
+  unload?: () => void
+}
+```
+
+我们可以把所有操作单元放在一个对象中，方便使用，例如
+
+```tsx
+const operate_tab = {
+	说明弹窗: new guide_operate({
+		load: ()=> {...}
+	}),
+	手指动画: new guide_operate({
+		load: ()=> {...}
+	}),
+	...
+};
+```
+
+使用引导单元时，可以把清理操作或者多次会用到的操作添加到里面（operate_ss ），在步骤切换时会自动加载
+
+## 3. 避免误触
+
+在引导步骤切换时，为了防止误触可能需要添加场景节点遮罩，而你可以监听引导系统的事件完成它！
+
+```tsx
+/** 事件协议 */
+export interface event_protocol {
+  /** 暂停 */
+  pause(): void
+  /** 恢复 */
+  resume(): void
+  /**
+   * 切换步骤前
+   * @param next_step_n 下个步骤
+   * @remarks
+   * set_step 时执行
+   */
+  before_switch(next_step_n: number): void
+  /**
+   * 加载步骤
+   * @remarks
+   * 加载步骤(场景/操作)前调用
+   */
+  loading_step(): void
+  /**
+   * 卸载步骤后
+   * @param step 卸载的步骤
+   */
+  after_unload_step(step: mk_guide_step_base): void
+  /**
+   * 加载步骤完成
+   * @remarks
+   * 步骤 load 执行后调用
+   */
+  loading_step_complete(): void
+  /** 中断 */
+  break(): void
+  /** 完成 */
+  finish(): void
+}
+```
+
+你可以在 before_switch 打开遮罩、在 loading_step_complete 和 break 关闭遮罩
+
+## 4. 引导步骤的插入/删除
+
+只需要修改引导步骤脚本的 step_n 和 next_step_ns 即可
+
+## 5. 更新引导数据
+
+在引导步骤完成后或者请求引导步骤奖励，应该怎么做？
+
+```tsx
+const guide_manage = new mk.guide_manage({
+  operate_tab: operate.tab,
+  end_step_n: 4,
+  step_update_callback_f: () => true,
+})
+```
+
+你只需自定义 step_update_callback_f 函数即可
+
+```tsx
+/**
+* 步骤更新回调
+ * @param step_n
+ * @returns null/undefined：更新失败，中断引导
+ * @remarks
+ * - 默认返回 true
+ *
+ * - 可在此内更新服务端数据并请求奖励
+ *
+ * - 步骤可使用 this.step_update_data 获取返回数据
+ */
+step_update_callback_f?(step_n: number): any;
+```
+
+## 6. 多边形遮罩、触摸屏蔽
+
+使用 mk_polygon_mask 组件，支持多边形遮罩，节点跟踪、触摸屏蔽
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/14.png)
+
+源码：[guide](https://github.com/1226085293/MKFramework/tree/main/assets/%40framework/guide)
+
+</details>
+
+---
+
+# 事件
+
+<details>
+<summary>点击展开</summary>
+
+类型安全且兼容 cc.EventTarget 的事件系统
+
+## 1. 类型安全
+
+### 使用
+
+```tsx
+interface main_event_protocol {
+  test(a: number): void
+}
+
+const event = new mk.event_target<main_event_protocol>()
+```
+
+### 提示
+
+emit
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/15.png)
+
+on
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/16.png)
+
+## 2. 增强接口：request（请求）
+
+有时候需要等待事件返回值，那么就可以使用 request，同样也支持类型安全
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/17.png)
+
+源码：[mk_event_target](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/mk_event_target.ts)
+
+</details>
+
+---
+
+# 存储
+
+<details>
+<summary>点击展开</summary>
+
+## 1. 类型安全
+
+不需要有各种类型的 getXXX / setXXX，只需要一个 get 和 set 函数，即可实现类型安全
+
+get
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/18.png)
+
+set
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/19.png)
+
+## 2. 怎么保证默认值存储
+
+构造函数必须填写默认值，避免 get 获取到空数据
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/20.png)
+
+源码：[mk_storage](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/mk_storage.ts)
+
+</details>
+
+---
+
+# 数据
+
+<details>
+<summary>点击展开</summary>
+
+一般模块间共享的数据放在第三方脚本，但是异步数据怎么办呢？可以使用 mk.data_sharer 创建一个共享数据
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/21.png)
+
+## 同步数据
+
+get
+
+```tsx
+data.xxx
+```
+
+set
+
+```tsx
+data.xxx = ...;
+```
+
+## 异步数据
+
+get
+
+```tsx
+await data.request(data.key.xxx)
+```
+
+set
+
+```tsx
+data.xxx = ...;
+```
+
+源码：[mk_data_sharer](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/mk_data_sharer.ts)
+
+</details>
+
+---
+
+# MVVM
+
+<details>
+<summary>点击展开</summary>
+
+使用 mvvm 也非常简单，MK框架提供了一个最基础的工具，mk.monitor，用于对数据的监听
+
+```tsx
+const data = {
+  a: 0,
+  b: 'test',
+}
+
+mk.monitor.on(data, 'a', (new_value, old_value) => {
+  console.log(new_value, old_value)
+})
+```
+
+有了数据监听，你可以把它封装为任何使用方式，比如框架示例项目中的 tool_monitor_trigger 组件，就是一个封装的例子
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/25.gif)
+
+下面是一个简单的 tool_monitor_trigger 事件定义，根据数据来显示或者隐藏节点。只需要导出一个 namespace 即可增加一个方法，**目前最为灵活的 mvvm 实现方式，没有之一。**
+
+```tsx
+export namespace 显示隐藏 {
+  @ccclass('data_method_boolean/显示隐藏')
+  export class ccclass_params extends tool_monitor_trigger_event {
+    @property({ displayName: '反向' })
+    reverse_b = false
+  }
+
+  export function on<T, T2 extends keyof T>(
+    target_: T,
+    key_: T2,
+    node_: cc.Node,
+    params_: ccclass_params
+  ): void {
+    mk.monitor
+      .on(
+        target_,
+        key_,
+        (value) => {
+          node_.active = params_?.reverse_b ? !value : Boolean(value)
+        },
+        target_
+      )
+      ?.call(target_, target_[key_])
+  }
+}
+```
+
+你也可以将 mk.monitor 的使用封装为装饰器，全看你的喜好
+
+源码：[mk_monitor](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/mk_monitor.ts)
+
+</details>
+
+# # 框架的结构
+
+> 框架包含了两个 Bundle
+
+- @config：全局配置
+- @framework：框架代码
+
+为什么框架不打包为一个 js 和 d.ts？或者使用 npm 包的方式进行安装？因为 **MK框架推荐你进行自定义**，而且自定义框架提供了构建 d.ts 的工具，**即改即用，灵活强大**
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/22.png)
+
+# # 框架的安装与使用
+
+## 依赖环境
+
+- Nodejs
+
+## 安装步骤
+
+1. 终端执行 `npm i -g @muzzik/mk-install` ，等待安装完成
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/23.png)
+
+2. 终端执行 `npx mk-install` ，输入你的 CocosCreator 项目路径
+3. 关闭编辑器，输入 `install` 后回车，等待安装完成
+
+> 注意：如果安装位置存在文件，原始文件将被保存到 `项目路径/temp/mk-install-backup` 下
+
+## 使用
+
+在脚本中使用输入 mk 即可出现类型提示
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/29/24.png)
+
+这是因为框架使用了[导入映射](https://docs.cocos.com/creator/manual/zh/scripting/modules/import-map.html?h=%E5%AF%BC%E5%85%A5%E6%98%A0%E5%B0%84)，所以需要使用 mk 导入，为什么一定要导入？因为框架内的 d.ts 为了类型安全导入了脚本 global_config，否则是可以做成全局变量的。
+
+# # 框架文档的搭建
+
+> 为什么选择 Vuepress？因为快速且有丰富的模板
+
+## 网站
+
+搭建工具：Vuepress
+地址：https://muzzik.gitee.io/mk-framework/quick-start/
+
+## API
+
+搭建工具：Vuepress、typedoc、Github Actions
+typedoc 路径：`示例项目/tool/typedoc`。
+github actions 路径：`.github\workflows\deploy-docs.yml`
+
+> 在每次提交代码到 main 分支后，github actions 会自动构建文档上传到 gitee pages，自动更新文档。但是目前还没有搭建多版本文档
+
+# # 代码交流
+
+QQ群：[200351945](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=yyeLEWEpCKo8I8WLQ0AeC75m8Gk8xE8y&authKey=PnjB9X0meyAA2zFOwTjHUJW8kaisCpNhTFCFeltOfbWTGtg3OrXT%2Fn40TRS0ZC3U&noverify=0&group_code=200351945)
+
+### 有任何问题欢迎批评，只有批评才能让产品进步

@@ -1,0 +1,127 @@
+---
+title: 单临界区管理和多临界区管理的效率对比
+date: 2020-04-26 01:56:13
+tags:
+  - C++
+  - 多线程
+---
+
+测试代码：
+
+```cpp
+​
+struct test1 {
+	int value;
+	CRITICAL_SECTION _critical;				//临界区
+	test1() : value(0) {
+		// 初始化临界区
+		InitializeCriticalSection(&_critical);
+	}
+	~test1() {
+		// 释放临界区
+		DeleteCriticalSection(&_critical);
+	}
+	void add() {
+		raii temp(&_critical);
+		++value;
+	}
+	void sub() {
+		raii temp(&_critical);
+		--value;
+	}
+};
+
+struct test2 {
+	int value;
+	test2() : value(0) {
+	}
+	~test2() {
+	}
+	void add() {
+		++value;
+	}
+	void sub() {
+		--value;
+	}
+};
+
+int main() {
+	auto timer = &time_heap::instance();
+	std::unordered_map<SOCKET, test1> t1;	//客户端信息
+	std::unordered_map<SOCKET, test2> t2;	//客户端信息
+	int num = 1000000;
+	for (int i = 0; i < num; ++i) {
+		t1[i] = *new test1;
+		t2[i] = *new test2;
+	}
+	auto _thread_pool = &thread_pool::instance();
+	auto start_time = timer->get_ms();
+	std::atomic<int> complete_num(0);
+	for (int i = 0; i < 5; ++i) {
+		_thread_pool->add([&] {
+			for (int j = 0; j < num; ++j) {
+				t1[j].add();
+			}
+			if (++complete_num == 10) {
+				printf("消耗时间(毫秒)：%I64d\n", timer->get_ms() - start_time);
+			}
+			}
+		);
+	}
+	for (int i = 0; i < 5; ++i) {
+		_thread_pool->add([&] {
+			for (int j = 0; j < num; ++j) {
+				t1[j].sub();
+			}
+			if (++complete_num == 10) {
+				printf("消耗时间(毫秒)：%I64d\n", timer->get_ms() - start_time);
+			}
+			}
+		);
+	}
+	//CRITICAL_SECTION _critical;				//临界区
+	//// 初始化临界区
+	//InitializeCriticalSection(&_critical);
+	//for (int i = 0; i < 5; ++i) {
+	//	_thread_pool->add([&] {
+	//		for (int j = 0; j < num; ++j) {
+	//			raii temp(&_critical);
+	//			t2[j].add();
+	//		}
+	//		if (++complete_num == 10) {
+	//			printf("消耗时间(毫秒)：%I64d\n", timer->get_ms() - start_time);
+	//		}
+	//		}
+	//	);
+	//}
+	//for (int i = 0; i < 5; ++i) {
+	//	_thread_pool->add([&] {
+	//		for (int j = 0; j < num; ++j) {
+	//			raii temp(&_critical);
+	//			t2[j].sub();
+	//		}
+	//		if (++complete_num == 10) {
+	//			printf("消耗时间(毫秒)：%I64d\n", timer->get_ms() - start_time);
+	//		}
+	//		}
+	//	);
+	//}
+}
+
+```
+
+里面有我改写的网络上的线程池和一些其他的类，所以在各位的电脑上直接运行不了，如果想运行可以自己改一下。
+
+单临界区：
+
+![](https://img-blog.csdnimg.cn/20200426014912685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Mzk4MzAx,size_16,color_FFFFFF,t_70)
+
+多临界区：
+
+![](https://img-blog.csdnimg.cn/20200426014949965.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Mzk4MzAx,size_16,color_FFFFFF,t_70)
+
+耗时：
+
+![](https://img-blog.csdnimg.cn/20200426015052275.png)
+
+平均值相差 5-6 倍， 大家可以不用在意多个临界区的开销问题， 可以使用对象池解决开销问题

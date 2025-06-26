@@ -1,0 +1,24 @@
+---
+title: 模板编程之std::is_same和std::decay
+date: 2020-02-11 08:02:00
+tags:
+  - C++
+---
+
+`std::is_same`判断两种类型是否相同，相同返回true，不同返回false
+
+`std::is_same<int, int>::value`结果为true
+`std::is_same<int, bool>::value`结果为false
+
+`std::decay`则是去掉类型修饰符，如const、& 等...
+
+两者结合则为
+
+```cpp
+template<typename T>
+bool checkType_Int(T value) {
+　　return std::is_same<typename std::decay<T>::type,int>::value;
+}
+```
+
+参考来自https://blog.csdn.net/tecsai/article/details/76610240

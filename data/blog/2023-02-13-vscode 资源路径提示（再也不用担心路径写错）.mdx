@@ -1,0 +1,91 @@
+---
+title: vscode 资源路径提示（再也不用担心路径写错）
+date: 2023-02-13 15:27:00
+tags:
+  - VSCode
+---
+
+# 前言
+
+在开发中，你是否担心 _脚本中资源路径错误_，烦恼 _meta 文件手动同步_
+有了它，你就不用烦恼上面的问题
+
+# 功能
+
+- 资源路径提示
+  - 包含错误提示
+  - 多根路径配置（用于 bundle）
+  - color 编辑器
+  - 资源定位
+  - meta 文件同步（删除/改名/移动）
+
+# 下载
+
+<a href="https://store.cocos.com/app/detail/4516" class="onebox" target="_blank">
+  https://store.cocos.com/app/detail/4516
+</a>
+
+# 介绍
+
+## 资源路径提示
+
+![](https://download.cocos.com/CocosStore/markdown/269e4ec2156b41808139884ddd6bfe36/269e4ec2156b41808139884ddd6bfe36.gif =572x217)
+
+- 支持三种字符串格式（_前缀可自定义_
+
+```auto
+let pathS = `res/...`;
+let pathS = "res/...";
+let pathS = 'res/...';
+```
+
+- 动态路径可使用字符串拼接（只有变量前的路径有提示）
+
+```auto
+let pathS = "res/resources/" + 变量;
+```
+
+## 资源路径错误提示
+
+![](https://download.cocos.com/CocosStore/markdown/e53855724a504c49bf93825a85aba1f4/e53855724a504c49bf93825a85aba1f4.png =549x314)
+
+## color 快捷编辑（附赠功能）
+
+![](https://download.cocos.com/CocosStore/markdown/ffef3d241ea84505a1bd3852183e64f5/ffef3d241ea84505a1bd3852183e64f5.png =690x236)
+
+# 更新功能
+
+## 定位资源（1.0.1）
+
+鼠标 _左键点击路径后右键菜单_
+![](https://download.cocos.com/CocosStore/markdown/acd429d5bb9141b5a5603e3893806dad/acd429d5bb9141b5a5603e3893806dad.png =625x164)
+
+## meta 文件同步（1.0.2）
+
+在 vscode 内对资源文件进行 `删除/改名/移动`
+
+## 多根路径配置（1.0.3）
+
+不止 _‘res/’_
+扩展面板 -> MK Typescript Extension 设置
+
+# 安装
+
+将下载后的 `mk-typescript-extension-1.0.0.vsix`
+![](https://download.cocos.com/CocosStore/markdown/eda3adec8d7c4b03bff9290b1299c03d/eda3adec8d7c4b03bff9290b1299c03d.png =417x271)
+
+## 使用
+
+- 资源路径提示
+  编辑器内 ts 文件中输入字符串前缀 `"res/"`
+- color 快捷编辑
+  编辑器内 ts 文件输入 `color(0,0,0,0)`
+
+## 配置（vscode 扩展设置）
+
+![](https://download.cocos.com/CocosStore/markdown/a8daa3227de043afa693be1dd6030353/a8daa3227de043afa693be1dd6030353.png =690x331)
+
+## 联系作者
+
+qq 群：200351945
+后续维护，有什么想要的功能或者遇到 bug 都可以提出来

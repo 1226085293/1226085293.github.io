@@ -1,0 +1,58 @@
+---
+title: NPM 使用注解
+date: 2020-07-11 03:02:23
+tags:
+  - Nodejs
+---
+
+#### 常用命令
+
+- 安装项目所有依赖包：
+
+```bash
+npm i
+```
+
+- 查看项目依赖：
+
+```bash
+npm ls
+```
+
+- 安装指定包：
+
+```bash
+npm i 包名
+```
+
+#### 备注
+
+**package.json**中的**dependencies**和**devDependencies**
+
+- devDependencies 是开发时的依赖，上线打包时并不会出现打包进代码中，比如 gulp 相关的工具，只是用于开发阶段
+- dependencies 是线上运行时需要的依赖，打包时会被打包处理，比如 angular、vue、vue-router 等等，没有这些依赖，你的程序又怎么能跑起来呢。项目中做依赖处理的时候要注意，项目中依赖的包需要放到 dependencies 当中。
+  脚本命令：
+
+保存在 devDependencies
+
+```bash
+npm i 包名 --save-dev
+```
+
+保存在 dependencies
+
+```bash
+npm i 包名
+```
+
+如果想使用淘宝源下载, 主要为了速度，建议不要用 cnpm，而是直接修改源地址
+
+```bash
+npm i 包名 --save  --registry=http://registry.npm.taobao.org
+```
+
+\
+\
+引用：
+
+1. [https://www.jianshu.com/p/41b863e358b5](https://www.jianshu.com/p/41b863e358b5)

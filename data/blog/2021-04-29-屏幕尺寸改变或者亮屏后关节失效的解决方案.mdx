@@ -1,0 +1,19 @@
+---
+title: 屏幕尺寸改变或者亮屏后关节失效的解决方案
+date: 2021-04-29 10:33:00
+tags:
+  - CocosCreator
+---
+
+在项目中发现了这个问题，在论坛中完全没发现解决方案，在反复尝试几次后，发现直接合适的时机直接调用关节的 apply 函数即可，如下
+
+```javascript
+cc.director
+  .getScene()
+  .getComponentsInChildren(cc.Joint)
+  .forEach((v1_o) => {
+    v1_o.apply()
+  })
+```
+
+将上方代码添加在 _cc.game.on(cc.game.EVENT_SHOW)_ 和 _cc.view.setResizeCallback_

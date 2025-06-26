@@ -1,0 +1,12 @@
+---
+title: 关于AcceptEx函数
+date: 2020-06-01 23:22:33
+tags:
+  - C++
+  - 网络
+---
+
+1. AcceptEx 函数的第一个参数 listen_socket 和第二个参数 accept_sock 不能相同。
+2. 并且第一个参数 listen_socket 必须开启监听，否则会返回 10022 错误。
+3. AcceptEx 函数的缓冲区如果设为 0 字节，那么每次发到客户端将延迟 10ms 左右，底层原因。。
+4. 如果收到连接请求，GetQueuedCompletionStatus 函数的 lpCompletionKey 参数将是调用 CreateIoCompletionPort 绑定 listen_socket 到完成端口的第三个参数。

@@ -1,0 +1,326 @@
+---
+title: 分享一个下载 B 站视频的油猴脚本
+date: 2024-03-22 18:58:00
+tags:
+  - Tampermonkey
+---
+
+在线下载 B 站视频，转载自 https://www.cnblogs.com/harglo/p/17095612.html
+
+```js
+// ==UserScript==
+// @name         B站视频下载
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  try to take over the world!
+// @author       harglo
+// @include      *://www.bilibili.com*
+// @include      *://*.bilibili.com/video/*
+// @include      *://*.bilibili.com/bangumi/play/*
+// @require      https://unpkg.com/axios@0.27.2/dist/axios.min.js
+// @require      https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js
+// @grant        none
+// ==/UserScript==
+
+;(function () {
+  'use strict'
+
+  setTimeout(function () {
+    let xmlHTTP = new XMLHttpRequest()
+    let xmlHttpAbort = false
+    function myDownloadTip(number, text, width, height) {
+      let tip = $(
+        '<div id="downloadVideoTip"><span id="downloadVideoTipText">' +
+          text +
+          '</span><button id="cancelDownload" style="float: right;margin-top: 7px;margin-right: 20px;height: 35px;line-height: 35px;">取消下载</button></div>'
+      )
+      let tip_style =
+        'z-index:9999;position: fixed;top:20px;left: calc(50% - ' +
+        width / 2 +
+        'px);width: ' +
+        width +
+        'px;height: ' +
+        height +
+        'px;border-radius: 5px;text-align: center;line-height: 50px;font-size: 16px;'
+      number === 1
+        ? (tip.get(0).style.cssText = tip_style + 'background-color: #dff0d8;color: #3c763d;')
+        : (tip.get(0).style.cssText = tip_style + 'background-color: #f2dede;color: #a94442;')
+      $('body').append(tip)
+      document.getElementById('cancelDownload').onclick = function () {
+        this.style.display = 'none'
+        xmlHttpAbort = true
+        xmlHTTP.abort()
+        $('#downloadVideoTipText').text('已取消下载')
+        $('#downloadVideoTip').fadeTo(3000, 0)
+        setTimeout(function () {
+          $('#downloadVideoTip').remove()
+        }, 3100)
+      }
+    }
+    function byteUnitConversion(size) {
+      if (!size) return ''
+      let num = 1024.0 //byte
+      if (size < num) return size + 'B'
+      if (size < Math.pow(num, 2)) return (size / num).toFixed(2) + 'KB' //kb
+      if (size < Math.pow(num, 3)) return (size / Math.pow(num, 2)).toFixed(2) + 'MB' //M
+      if (size < Math.pow(num, 4)) return (size / Math.pow(num, 3)).toFixed(2) + 'G' //G
+      return (size / Math.pow(num, 4)).toFixed(2) + 'T' //T
+    }
+    function myDownloadFunction(fileUrl, fileName) {
+      myDownloadTip(1, '正在下载', 550, 50)
+      let blob
+      xmlHTTP.open('GET', fileUrl, true)
+      xmlHTTP.responseType = 'arraybuffer'
+      xmlHTTP.onload = function (e) {
+        blob = new Blob([this.response])
+      }
+      xmlHTTP.onprogress = function (pr) {
+        //document.getElementById('downloadVideo').textContent="正在下载："+Number(pr.loaded/pr.total*100).toFixed(2)+"%";
+        $('#downloadVideoTipText').text(
+          '正在下载：' +
+            byteUnitConversion(pr.loaded) +
+            '/' +
+            byteUnitConversion(pr.total) +
+            '  进度: ' +
+            Number((pr.loaded / pr.total) * 100).toFixed(2) +
+            '%'
+        )
+        if (Number((pr.loaded / pr.total) * 100).toFixed(2) == 100) {
+          $('#downloadVideoTipText').text('下载完成')
+          $('#downloadVideoTip').fadeTo(3000, 0)
+          setTimeout(function () {
+            $('#downloadVideoTip').remove()
+          }, 3100)
+        }
+      }
+      let fileName2 = fileName
+      xmlHTTP.onloadend = function (e) {
+        if (!xmlHttpAbort) {
+          console.log('fileName=' + fileName2)
+          let tempEl = document.createElement('a')
+          document.body.appendChild(tempEl)
+          tempEl.style = 'display: none'
+          let downUrl = window.URL.createObjectURL(blob)
+          tempEl.href = downUrl
+          tempEl.download = fileName2
+          tempEl.click()
+          window.URL.revokeObjectURL(downUrl)
+        }
+      }
+      xmlHTTP.send()
+    }
+    //上面↑是方法
+    //批量下载的弹出框
+    let body = document.body
+    let toastDiv = document.createElement('div')
+    toastDiv.setAttribute('id', 'myToastDiv')
+    toastDiv.style.cssText =
+      'display:none;z-index:9999;position:fixed;bottom:8px;left:8px;background-color:#f4f4f4;border: skyblue 2px solid;'
+    let toastDivChild1 = document.createElement('div')
+    toastDivChild1.style.cssText = 'margin:8px'
+    toastDivChild1.textContent = '下载视频'
+    toastDiv.appendChild(toastDivChild1)
+    let htmlSpanElement = document.createElement('span')
+    htmlSpanElement.textContent = 'X'
+    htmlSpanElement.style.cssText = 'float:right;cursor:pointer;'
+    htmlSpanElement.onclick = function () {
+      $('#myToastDiv').animate({ width: 'toggle' }, 460)
+    }
+    toastDivChild1.appendChild(htmlSpanElement)
+    let toastDivChild2 = document.createElement('div')
+    toastDiv.appendChild(toastDivChild2)
+    toastDivChild2.style.cssText =
+      'border: skyblue 2px solid;margin:8px;max-height:200px;max-width:400px;overflow-y:auto;display:flex;flex-direction:row;flex-wrap:wrap;background-color:#f4f4f4'
+    body.appendChild(toastDiv)
+    //弹出框↑
+    let href = location.href
+    axios.defaults.withCredentials = true
+    if (href.includes('.bilibili.com/video')) {
+      let bvid, cid, url
+      if (document.getElementById('multi_page')) {
+        console.log('分集视频') //bvid是一样的，cid不同
+        let href1 = document.getElementsByClassName('watched on')[0].firstElementChild.href
+        bvid = href1.match(/(?=BV).*?(?=(\?|\/|$))/)[0]
+        console.log(bvid)
+        let myInterval = setInterval(function () {
+          console.log(document.getElementsByClassName('bpx-player-ctrl-eplist-menu')[0])
+          if (document.getElementsByClassName('bpx-player-ctrl-eplist-menu')[0]) {
+            clearInterval(myInterval)
+            let li1 = document
+              .getElementsByClassName('bpx-player-ctrl-eplist-menu')[0]
+              .getElementsByTagName('li')
+            console.log(li1.length)
+            for (let i = 0; i < li1.length; i++) {
+              cid = li1[i].getAttribute('data-cid')
+              let title = li1[i].textContent
+              console.log(cid)
+              console.log(title)
+              let htmlButtonElement = document.createElement('button')
+              htmlButtonElement.style.cssText =
+                'cursor:pointer;margin:5px;border: skyblue 2px solid;border-radius:10px;background-color:white;'
+              htmlButtonElement.textContent = title + '.flv'
+              htmlButtonElement.onmouseover = function () {
+                this.style.backgroundColor = 'skyblue'
+              }
+              htmlButtonElement.onmouseout = function () {
+                this.style.backgroundColor = 'white'
+              }
+              htmlButtonElement.onclick = function () {
+                url =
+                  'https://api.bilibili.com/x/player/playurl?bvid=' +
+                  bvid +
+                  '&cid=' +
+                  cid +
+                  '&qn=80&fnval=0&fnver=0&fourk=0'
+                console.log('url=' + url)
+                axios.get(url).then((resp) => {
+                  console.log(resp.data.data.durl[0].url)
+                  myDownloadFunction(resp.data.data.durl[0].url, title + '.flv')
+                })
+              }
+              toastDivChild2.appendChild(htmlButtonElement)
+            }
+            let span = document.createElement('span')
+            span.title = '下载视频'
+            span.innerHTML =
+              '<i class="van-icon-videodetails_share" style="transform: rotate(90deg)"></i>下载'
+            document.getElementsByClassName('toolbar-left-item-wrap')[0].after(span)
+            span.onclick = function () {
+              $('#myToastDiv').animate({ width: 'toggle' }, 460)
+            }
+          }
+        }, 300)
+      } else if (document.getElementsByClassName('base-video-sections')[0]) {
+        console.log('合集视频')
+        $.get(window.location.href, function (res) {
+          let regExpMatchArray = res.match(/"aid":\d+,"cid":\d+,"title":(.*?),/g)
+          let resultArray = [...new Set(regExpMatchArray)]
+          console.log(resultArray)
+          for (let i = 0; i < resultArray.length; i++) {
+            let aid = resultArray[i].match(/(?<="aid":)(.*?)(?=,)/)[0]
+            let cid = resultArray[i].match(/(?<="cid":)(.*?)(?=,)/)[0]
+            let title = resultArray[i].match(/(?<="title":)(.*?)(?=,)/)[0]
+            console.log(aid + '-' + cid + '-' + title)
+            let htmlButtonElement = document.createElement('button')
+            htmlButtonElement.style.cssText =
+              'cursor:pointer;margin:5px;border: skyblue 2px solid;border-radius:10px;background-color:white;'
+            htmlButtonElement.textContent = title + '.flv'
+            htmlButtonElement.onmouseover = function () {
+              this.style.backgroundColor = 'skyblue'
+            }
+            htmlButtonElement.onmouseout = function () {
+              this.style.backgroundColor = 'white'
+            }
+            htmlButtonElement.onclick = function () {
+              url =
+                'https://api.bilibili.com/x/player/playurl?avid=' +
+                aid +
+                '&cid=' +
+                cid +
+                '&qn=80&fnval=0&fnver=0&fourk=0'
+              console.log('url=' + url)
+              axios.get(url).then((resp) => {
+                console.log(resp.data.data.durl[0].url)
+                myDownloadFunction(resp.data.data.durl[0].url, title + '.flv')
+              })
+            }
+            toastDivChild2.appendChild(htmlButtonElement)
+          }
+          let span = document.createElement('span')
+          span.title = '下载视频'
+          span.innerHTML =
+            '<i class="van-icon-videodetails_share" style="transform: rotate(90deg)"></i>下载'
+          document.getElementsByClassName('toolbar-left-item-wrap')[0].after(span)
+          span.onclick = function () {
+            $('#myToastDiv').animate({ width: 'toggle' }, 460)
+          }
+        })
+      } else {
+        console.log('普通视频')
+        let span = document.createElement('span')
+        span.title = '下载视频'
+        span.innerHTML =
+          '<i class="van-icon-videodetails_share" style="transform: rotate(90deg)"></i>下载'
+        document.getElementsByClassName('toolbar-left-item-wrap')[0].after(span)
+        span.onclick = function () {
+          bvid = location.href.match(/(?=BV).*?(?=(\?|\/|$))/)[0]
+          axios
+            .all([
+              axios.get('https://api.bilibili.com/x/player/pagelist?bvid=' + bvid).then((resp) => {
+                console.log(resp.data)
+                console.log(resp.data.data[0].cid)
+                cid = resp.data.data[0].cid
+                url =
+                  'https://api.bilibili.com/x/player/playurl?bvid=' +
+                  bvid +
+                  '&cid=' +
+                  cid +
+                  '&qn=80&fnval=0&fnver=0&fourk=0'
+              }),
+            ])
+            .then(() => {
+              console.log('url=' + url)
+              axios.get(url).then((resp) => {
+                console.log(resp.data.data.durl[0].url)
+                console.log(document.getElementsByClassName('video-title')[0].textContent + '.flv')
+                //window.open(resp.data.data.durl[0].url+"&attname="+document.getElementsByClassName('video-title')[0].textContent+".flv");
+                myDownloadFunction(
+                  resp.data.data.durl[0].url,
+                  document.getElementsByClassName('video-title')[0].textContent + '.flv'
+                )
+              })
+            })
+        }
+      }
+    } else if (href.includes('.bilibili.com/bangumi/play/')) {
+      console.log('番剧')
+      //弹出框
+      //弹出框↑
+      let ep_id = document
+        .getElementsByClassName('ep-item cursor visited')[0]
+        .firstElementChild.href.match(/(?<=ep).*?(?=\/)/)[0]
+      axios.get('https://api.bilibili.com/pgc/view/web/season?ep_id=' + ep_id).then((resp) => {
+        console.log(resp.data.result.episodes)
+        for (let i = 0; i < resp.data.result.episodes.length; i++) {
+          let epid = resp.data.result.episodes[i].link.match(/(?<=ep).*?(?=$)/)[0]
+          console.log(epid)
+          let title = resp.data.result.episodes[i].share_copy
+          console.log(title)
+          let htmlButtonElement = document.createElement('button')
+          htmlButtonElement.style.cssText =
+            'cursor:pointer;margin:5px;border: skyblue 2px solid;border-radius:10px;background-color:white;'
+          htmlButtonElement.textContent = title + '.flv'
+          htmlButtonElement.onmouseover = function () {
+            this.style.backgroundColor = 'skyblue'
+          }
+          htmlButtonElement.onmouseout = function () {
+            this.style.backgroundColor = 'white'
+          }
+          htmlButtonElement.onclick = function () {
+            let requestUrl =
+              'https://api.bilibili.com/pgc/player/web/playurl?ep_id=' +
+              epid +
+              '&qn=80&fnval=0&fnver=0&fourk=0'
+            console.log('url=' + requestUrl)
+            axios.get(requestUrl).then((resp) => {
+              console.log(resp.data.result.durl[0].url)
+              myDownloadFunction(resp.data.result.durl[0].url, title + '.flv')
+            })
+          }
+          toastDivChild2.appendChild(htmlButtonElement)
+        }
+        let div = document.createElement('div')
+        div.title = '下载视频'
+        div.setAttribute('class', 'share-info')
+        div.innerHTML =
+          '<i class="iconfont icon-share" style="transform: rotate(90deg)"></i><span>下载</span>'
+        document.getElementsByClassName('coin-info')[0].after(div)
+        div.onclick = function () {
+          // myTip(1,"请在右侧点击下载",350,50);
+          $('#myToastDiv').animate({ width: 'toggle' }, 460)
+        }
+      })
+    }
+  }, 5000)
+})()
+```

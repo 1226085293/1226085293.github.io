@@ -1,0 +1,99 @@
+---
+title: cocos2dx lua 三种创建帧动画的方式
+date: 2019-06-17 17:56:44
+tags:
+  - Cocos2dx-Lua
+---
+
+使用 cocostdio 中的帧动画并设置回调
+
+```lua
+self.node = cc.CSLoader:createNode("plaza/gamePropAnim/bingtong.csb")
+self._root:addChild(self.node)
+-- 是否反转
+if self.data.reverse then
+    self.node:getChildByName("Node_1"):setScaleX(-1)
+end
+-- 播放动画
+self.node:setPosition(self.data.staPos.x,self.data.staPos.y)
+self.node:runAction(cc.MoveTo:create(0.6,cc.p(self.data.endPos.x + (not self.data.reverse and -110 or 110), self.data.endPos.y + 240)))
+self.node:runAction(cc.Sequence:create(cc.ScaleTo:create(0.6,1.5),
+cc.CallFunc:create(function()
+    local nodeAction = cc.CSLoader:createTimeline("plaza/gamePropAnim/bingtong.csb")
+    -- 设置回调
+    local eventFrameCall = function(frame)
+        local eventName = frame:getEvent()
+        if eventName == "end" then
+            self.node:removeFromParent()
+            self.node = nil
+        end
+    end
+    nodeAction:clearFrameEventCallFunc()
+    nodeAction:setFrameEventCallFunc(eventFrameCall)
+    nodeAction:play("end", false)
+    nodeAction:gotoFrameAndPlay(0, 130, false)
+    self.node:runAction(nodeAction)
+end)))
+```
+
+-- 说明：
+end: cocostdio 帧动画中的帧事件
+gotoFrameAndPlay(开始帧, 结束帧, 是否循环播放)
+
+使用图片文件创建动画
+
+```lua
+    local scale = 1
+    local offsetX,offsetY = 0, 0
+    -- 加载图片
+    local animation = cc.Animation:create()
+    for i=1,18 do
+        animation:addSpriteFrameWithFile("zjh/cardType/baozi/baozi"..i..".png")
+    end
+    -- 播放间隔
+    animation:setDelayPerUnit(0.1)
+    -- 播放完成回归初始状态
+--    animation:setRestoreOriginalFrame(true)
+    -- 创建精灵
+    local sprite = cc.Sprite:create("zjh/cardType/baozi/baozi1.png")
+    sprite:setPosition(cc.p(x+offsetX,y+offsetY))
+    sprite:addTo(self._root)
+    sprite:setScale(scale)
+    -- 播放动画
+    local action = cc.Animate:create(animation)
+    sprite:runAction(cc.Sequence:create(
+    action,cc.CallFunc:create(function()
+        sprite:removeFromParent()
+        sprite = nil
+    end)))
+```
+
+使用 plist 创建动画
+
+```lua
+    local scale = 1
+    local offsetX,offsetY = 0, 0
+    local spriteFrame = cc.SpriteFrameCache:getInstance()
+    -- 添加plist
+    spriteFrame:addSpriteFrames("texture/gamePropAnim/plistAnim/baotui.plist")
+    -- 创建精灵
+    local sprite = cc.Sprite:createWithSpriteFrameName("baodatui0001.png")
+    sprite:setPosition(cc.p(self.data.staPos.x+offsetX, self.data.staPos.y+offsetY))
+    sprite:setScale(scale)
+    sprite:addTo(self._root)
+    -- 加载图片
+    local animation = cc.Animation:create()
+    for i=1, 12 do
+        animation:addSpriteFrame(spriteFrame:getSpriteFrame("baodatui00"..(i<10 and "0" or "")..i..".png"))
+    end
+    -- 播放间隔
+    animation:setDelayPerUnit(0.1)
+    -- 播放完成回归初始状态
+--    animation:setRestoreOriginalFrame(true)
+    local action = cc.Animate:create(animation)
+    sprite:runAction(cc.Sequence:create(
+    action,cc.CallFunc:create(function()
+        sprite:removeFromParent()
+        sprite = nil
+    end)))
+```

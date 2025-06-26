@@ -1,0 +1,62 @@
+---
+title: static_cast、dynamic_cast、reinterpret_cast、const_cast以及C强制类型转换的区别【转载】
+date: 2020-04-22 14:40:00
+tags:
+  - C++
+---
+
+static_cast
+
+1. 基础类型之间互转。如：float转成int、int转成unsigned int等
+
+2. 指针与`void*`之间互转。如：`float*`转成`void*`、`CBase*`转成`void*`、函数指针转成`void*`、`void*`转成`CBase*`等
+
+3. 派生类指针【引用】转成基类指针【引用】。如：Derive*转成Base*、Derive&转成Base&等
+
+4. 非virtual继承时，可将基类指针【引用】转成派生类指针【引用】（多继承时，会做偏移处理）。如：Base*转成Derive*、Base&转成Derive&等
+
+dynamic_cast 专门用于处理多态机制，对继承体系内的对象（类中必须含有至少一个虚函数）的指针【引用】进行转换，转换时会进行类型检查；vc在编译时要带上/EHsc /GR
+
+如果能转换会返回对应的指针【引用】；不能转换时，指针会返回空，引用则抛出 `std::bad_cast` 异常（`const std::bad_cast& e`）
+
+注：由于`std::bad_cast`类型定义在typeinfo头文件中，固需要`#include<typeinfo>`
+
+另外，对于菱形非virtual继承、非public继承，转换引用时也会抛出std::bad_cast异常
+
+reinterpret_cast 对指针【引用】进行原始转换，不做任何偏移处理（当然：多继承时，也不会做偏移处理）
+
+1. 将指针【引用】转换成整型。如：float*转成int、CBase*转成int、float&转成int、CBase&转成int等
+
+```cpp
+float f1 = 1.0f; CBase o1;
+int n1 = reinterpret_cast<int>(&f1);
+int n2 = reinterpret_cast<int>(&o1);
+int n3 = reinterpret_cast<int&>(f1);
+int n4 = reinterpret_cast<int&>(o1);
+```
+
+2. 指针【引用】之间互转。如：float*转成int*、CBase&转成int&、CBase*转成CBase2*、CBase&转成CBase2&等
+
+```cpp
+float f1 = 1.0f;  CBase1 o1;
+int* n1 = reinterpret_cast<int*>(&f1);
+int& n2 = reinterpret_cast<int&>(o1);
+CBase2* o21 = reinterpret_cast<CBase2*>(&o1);
+CBase2& o22 = reinterpret_cast<CBase2&>(o1);
+const_cast   去掉或增加const、volatile特性
+
+const int* a = new int(10);
+int* b = const_cast<int*>(a);
+```
+
+C类型强制转换 形式：(type)object或type(object)
+
+最好是使用type(object)；原因是：在某些编译器下，(type)object不会调用构造函数，而type(object)下则肯定会调用构造函数
+
+C类型强制转换会按照以下顺序进行尝试转换：
+
+a. const_cast
+b. static_cast
+c. static_cast, then const_cast
+d. reinterpret_cast
+f. reinterpret_cast, then const_cast

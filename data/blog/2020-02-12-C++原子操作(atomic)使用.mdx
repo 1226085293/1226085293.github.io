@@ -1,0 +1,43 @@
+---
+title: C++原子操作(atomic)使用
+date: 2020-02-12 12:07:00
+tags:
+  - C++
+  - 多线程
+---
+
+小白记录贴
+
+````cpp
+//定义一个类型为atomic_bool的原子变量并赋初值为true
+std::atomic<bool> a(true);　
+```　　　
+
+原子操作:
+赋值:
+```cpp
+a = true;
+a.store(true);
+````
+
+读取:
+
+```cpp
+int b = a;
+int b = a.load();
+```
+
+原子操作还可以包含一个参数：内存顺序（memory_order），是C++11为原子类型定义的内存模型，让程序员根据实际情况灵活地控制原子类型的执行顺序。通常情况下，使用该参数将有利于编译器进一步提高并行性能。
+
+memory_order
+枚举值 定义规则
+memory_order_relaxed 不对执行顺序做任何保障
+memory_order_acquire 本线程中，所有后续的读操作均在本条原子操作完成后执行
+memory_order_release 本线程中，所有之前的写操作完成后才能执行本条原子操作
+memory_order_acq_rel 同时包含memory_order_acquire和memory_order_release标记
+memory_order_consume 本线程中，所有后续的有关本原子类型的操作，必须在本条原子操作完成后执行
+memory_order_seq_cst 全部存取都按顺序执行
+
+接口同样为store或load, 例:
+a.store(true, memory_order_relaxed);
+a.load(memory_order_relaxed);

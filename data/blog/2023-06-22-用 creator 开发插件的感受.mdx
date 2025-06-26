@@ -1,0 +1,125 @@
+---
+title: 用 creator 开发插件的感受
+date: 2023-06-22 06:09:00
+tags:
+  - CocosCreator 插件
+---
+
+# 新旧对比
+
+## # 调试/修改代码
+
+- 老旧的开发方式：(修改 -> 编译 -> 重启插件 -> 运行插件)
+
+![](https://forum.cocos.org/uploads/default/optimized/3X/d/7/d75c492a792d93063b2931957a9d9fd9e7fd0e10_2_690x342.gif =690x342)
+
+- 新的开发方式：(修改 -> 预览编译 -> 刷新预览)
+
+![](https://forum.cocos.org/uploads/default/optimized/3X/d/5/d5a6d35b21629cff39ef7490855ca5d09a2c3ccf_2_690x359.gif =690x359)
+
+## # 修改 UI
+
+- 老旧的开发方式：(修改运行时 html(可选) -> 修改 html -> 编译 -> 重启插件 -> 运行插件)
+  > …时间太长就不录了
+- 新的开发方式：(编辑器修改 -> 刷新预览)
+
+![](https://forum.cocos.org/uploads/default/optimized/3X/f/3/f3f3d81205f553a05e3c5fb877f98415288479ef_2_690x359.gif =690x359)
+
+# 商店链接
+
+<a href="https://store.cocos.com/app/detail/4897" rel="nofollow noopener">
+  https://store.cocos.com/app/detail/4897
+</a>
+我已经给大家设置了节日优惠，需要的可以购买
+
+![](https://forum.cocos.org/uploads/default/optimized/3X/d/4/d4a18f4fb0395576fc95354d2e5887e40e8485df_2_690x276.png =690x276)
+
+# 使用文档
+
+## # 初始化
+
+- 安装插件编译器，命令行执行 `npm i -g @muzzik/cc-plugin-cli`
+- 初始化项目依赖包，_项目根目录_ 下命令行执行 `npm i`
+- 初始化插件依赖包，_项目根目录/extensions_dev/mk-project-template-plugin_ 下命令行执行 `npm i`
+- 编译插件，参考下方说明
+- 启用插件（菜单栏：扩展/扩展管理器）
+
+![](https://forum.cocos.org/uploads/default/original/3X/2/c/2cfc9441e6c663a8690544eca88fc54fb9ddcf8b.png =500x344)
+
+- 按下 F3 键即可见到插件面板，如果快捷键被占用可通过菜单栏打开
+
+![](https://forum.cocos.org/uploads/default/original/3X/0/8/0829f05e21552e6425bd1b86faf96c2b874e97cd.png =369x190)
+
+## # 编译插件
+
+- _两种编译方式（任选其一）_
+
+  1.1. vscode 提供的 npm 脚本窗口
+
+![](https://forum.cocos.org/uploads/default/original/3X/5/d/5df6c118a88c95d6f44974c8c1d1955840abede2.png =690x300)
+
+1.2. 手动编译
+
+命令行执行：`cc-plugin-cli c -p 插件开发目录绝对路径`
+
+- 插件开发目录示例：`xxx\extensions_dev\mk-project-template-plugin`
+- _什么时候需要编译插件？_
+  - 当你安装了新的 npm 包的时候
+  - 修改了插件开发目录下的源码
+
+## # 开发阶段
+
+- _怎么在 creator 中使用 Nodejs_
+
+以 fs 模块导入举例：`const fs = require("fs") as typeof import("fs");`
+
+- _怎么刷新插件预览？_
+
+选中插件面板按 _f5_
+
+- _怎么使用 html 混合开发？_
+  - _标签类型_
+
+以一个 ui-button 组件举例
+
+![](https://forum.cocos.org/uploads/default/original/3X/9/f/9f0582390167a1fd7d6d48ac8460fec6a946c4f8.png =362x93)>
+
+节点名 # 前面的字符就代表标签类型，例如 div 就是 `div#`
+
+- _标签属性_
+
+![](https://forum.cocos.org/uploads/default/optimized/3X/a/8/a8340467ea7f01f7bade50ecc1d1b67ecb1a31ee_2_690x228.png =690x228)
+
+在节点上添加 `tool_tag`
+
+- _key:data_
+
+这代表直接进行赋值，例如 `style.background-color: red`
+
+- _key=data_
+  注意：之所以能使用 html 混合开发，是因为有一层 html 叠加在 creator 的界面上，所以 html 标签不能被 creator UI 遮挡
+- _无边框窗口_
+
+在插件开发目录的 `src/config.ts` 修改
+
+![](https://forum.cocos.org/uploads/default/original/3X/9/0/9073942546c3432a8c1e42d9bf37efe4ec926986.png =690x314)
+
+注意：使用无边框将无法使用 cocos 自带的 ui 组件
+
+## # 打包发布
+
+- 将我们的 creator 工程发布为 web-mobile
+
+![](https://forum.cocos.org/uploads/default/original/3X/1/e/1e90950e08bf635a1bd68f6878b8444e770ee1d5.png =609x425)
+
+- 进入构建输出目录打包为 _web-mobile.zip_ (名字必须相同)
+
+![](https://forum.cocos.org/uploads/default/original/3X/0/9/0906b19b5d57b02766c1b3171332a0357b317a1e.png =690x317)
+
+- 将压缩包拷贝到插件输出目录中 src 的同级目录 res 中（没有则创建）
+
+![](https://forum.cocos.org/uploads/default/original/3X/2/c/2ca3149fb4a6db22cbbc182fc95323272bb6c812.png =690x228)
+
+- 再把插件输出目录打为压缩包即可发布到商店（注意加密）
+
+![](https://forum.cocos.org/uploads/default/original/3X/0/f/0fd97941d20e070c4432db118ff4d4c362ab75b4.png =690x345)

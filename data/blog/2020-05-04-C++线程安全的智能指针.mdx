@@ -1,0 +1,123 @@
+---
+title: C++线程安全的智能指针
+date: 2020-05-04 05:31:35
+tags:
+  - C++
+  - 多线程
+  - 智能指针
+---
+
+采用引用计数的方式进行管理，简单明了
+
+smart_ptr.hpp
+
+```cpp
+​
+#pragma once
+#include <cstdint>
+#include <memory>
+#define del_ptr(ptr) if (ptr) { delete ptr; ptr = nullptr; }
+
+template <class T>
+class smart_ptr {
+private:
+	bool	_free;
+	T*		_obj;
+	long*	_count;
+protected:
+public:
+	smart_ptr();
+	smart_ptr(T* obj_);
+	smart_ptr(const smart_ptr&);
+	smart_ptr& operator =(const smart_ptr&);
+	smart_ptr& operator =(smart_ptr&&);
+	bool operator ==(const smart_ptr&);
+	T& operator *();
+	T* operator ->();
+	~smart_ptr();
+
+	void add();
+	void dec();
+	long count() const;
+};
+
+template <class T>
+inline smart_ptr<T>::smart_ptr() : _free(false), _obj(nullptr), _count(new long(0)) {}
+
+template <class T>
+inline smart_ptr<T>::smart_ptr(T* obj_) : _free(false), _obj(obj_), _count(new long(1)) {}
+template <class T>
+inline smart_ptr<T>::smart_ptr(const smart_ptr& that) {
+	operator =(that);
+}
+
+template <class T>
+inline smart_ptr<T>& smart_ptr<T>::operator =(const smart_ptr& that) {
+	if (&that == this || that.count() == 0) {
+		return *this;
+	}
+	dec();
+	memcpy_s(this, sizeof(smart_ptr), &that, sizeof(smart_ptr));
+	add();
+	return *this;
+}
+
+template<class T>
+inline smart_ptr<T>& smart_ptr<T>::operator =(smart_ptr&& that) {
+	operator =(that);
+	return *this;
+}
+
+template<class T>
+inline bool smart_ptr<T>::operator ==(const smart_ptr& that) {
+	return this == &that;
+}
+
+template<class T>
+inline T& smart_ptr<T>::operator *() {
+	return *_obj;
+}
+
+template<class T>
+inline T* smart_ptr<T>::operator->() {
+	return _obj;
+}
+
+template <class T>
+inline smart_ptr<T>::~smart_ptr() {
+	dec();
+	_free = true;
+}
+
+template <class T>
+inline void smart_ptr<T>::add() {
+	if (!_free && _count) {
+		_InterlockedIncrement(reinterpret_cast<volatile long*>(_count));
+	}
+}
+
+template <class T>
+inline void smart_ptr<T>::dec() {
+	if (_free || !_count) {
+		return;
+	}
+	if (*_count == 0) {
+		del_ptr(_count);
+		return;
+	}
+	if (_InterlockedDecrement(reinterpret_cast<volatile long*>(_count)) == 0) {
+		del_ptr(_count);
+		if (!_obj) {
+			return;
+		}
+		delete _obj;
+	}
+}
+
+template <class T>
+inline long smart_ptr<T>::count() const {
+	return (!_free && _count) ? *_count : 0;
+}
+
+​
+```

@@ -1,0 +1,19 @@
+---
+title: 获取资源全路径
+date: 2020-08-26 00:15:00
+tags:
+  - CocosCreator
+---
+
+```typescript
+if (cc['resources']) {
+  return cc.assetManager.utils.getUrlWithUuid(cc['resources'].getInfoWithPath(path_s_).uuid, {
+    isNative: cc.sys.isNative,
+    ext: '.json',
+  })
+} else {
+  return cc.url.raw(`resources/${path_s_}.json`)
+}
+```
+
+后缀按类型替换

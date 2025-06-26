@@ -1,0 +1,39 @@
+---
+title: SDF实战~利用SDF纹理实现多边形描边，外发光，阴影
+date: 2022-05-12 23:17:00
+tags:
+  - SDF
+  - CocosCreator
+---
+
+## # 效果
+
+![](https://forum.cocos.org/uploads/default/optimized/3X/7/e/7e2a6615cc501404f29b4bec73b88006ebdc338d_2_669x500.png =669x500)
+
+## # 简介
+
+之前我们将的 SDF 图形都是*动态传递的坐标计算距离场*，_对于复杂多边形来说，实时计算量更是负担巨大_，那么有没有什么好的方案呢？其实如果大家了解*深度图*就知道，其实*SDF 距离场也可以通过像素的方式存在图片里*
+
+## # 实现
+
+为了大家更方式的使用，这里我写了一个插件，用于生成 SDF 纹理，[商店 9.9 包邮](https://store.cocos.com/app/detail/3776)
+
+![](https://forum.cocos.org/uploads/default/optimized/3X/4/5/45e5c391a4e0f2a068b8ea40ebecce210e987b46_2_667x500.png =667x500)
+
+## # 使用
+
+- CCSampleWithAlphaSeparated：采样函数，获得图片指定 uv 坐标的 color，值范围： 0 - 1
+- sdf_radius_f：SDF 纹理范围（插件配置）
+
+```auto
+// 获取距离场
+float dist_f = (1.0 - CCSampleWithAlphaSeparated(sdf_texture, uv0).r) * sdf_radius_f;
+```
+
+_Demo 开源_
+
+## # 拓展
+
+- SDF 讲解：[https://shaderfun.com/](https://shaderfun.com/)
+
+- 在线 SDF 字体生成：<a href="https://evanw.github.io/font-texture-generator/" class="inline-onebox">Font Texture Generator Online</a>

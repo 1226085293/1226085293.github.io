@@ -1,0 +1,40 @@
+---
+title: C++ const引用、临时变量 引用参数【转载】
+date: 2020-02-27 00:54:00
+tags:
+  - C++
+---
+
+如果实参与引用参数不匹配，C++将生成临时变量。如果引用参数是const,则编译器在下面两种情况下生成临时变量：1.实参类型是正确的，但不是左值2.实参类型不正确，但可以转换为正确的类型
+
+```cpp
+Double refcube(const double& ra) {
+　　Returnra*ra*ra;
+}
+
+double side = 3.0;
+
+double* pd = &side;
+
+double& rd = side;
+
+long edge = 5L;
+
+double lens[4]={2.3,3.4,4.5,6.7};
+
+double c1 = refcube(side); // ra 是side
+
+double c2 = refcube(lens[2]); // ra是lens[2]
+
+double c3 = refcube(rd); // ra 是 rd
+
+double c4 = refcube(*pd); // ra 是*pd
+
+double c5 = refcube(edge); // ra 是临时变量
+
+double c6 = refcube(7.0); // ra 是临时变量
+
+double c7 = refcube(side+10.0); // ra 是临时变量
+```
+
+转载自https://blog.csdn.net/yusiguyuan/article/details/43526039

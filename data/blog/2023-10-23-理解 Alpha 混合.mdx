@@ -1,0 +1,46 @@
+---
+title: 理解 Alpha 混合
+date: 2023-10-23 12:00:00
+tags:
+---
+
+Alpha 混合是什么？简单的说的就是两种带透明度的图片叠加在一起展示，就是 Alpha 混合
+
+## 常规/预乘？
+
+### 常规Alpha混合
+
+常规Alpha混合是指直接使用原始的非预乘Alpha值进行图像混合。在这种混合方式下，对于每个像素的RGB分量和Alpha值，都分别与背景进行混合计算。常规Alpha混合在某些情况下可能导致混合结果的颜色不准确或边缘出现锯齿状的伪像。
+
+### 预乘Alpha混合
+
+预乘Alpha混合是一种常见的Alpha混合方式，它使用预乘Alpha值来表示像素的透明度信息。在预乘Alpha混合中，图像的RGB（红绿蓝）分量被乘以Alpha值，然后再与背景进行混合。这种方式可以提高混合的效率和质量，特别是在图像中存在半透明边缘的情况下。预乘Alpha混合通常用于实时图形应用中，如视频游戏和计算机动画。
+
+使用alpha预乘方式混合出来的结果图片也是alpha预乘的。所以在显示此结果图片时应该使用(One,OneMinusSrcAlpha)对其进行绘制。
+
+## 代码参考
+
+```ts
+// 常规Alpha混合
+let result_color = color * alpha + color2 * (1 - alpha)
+
+// 预乘Alpha混合
+let premultiplied_color = color * alpha
+let result_color = premultiplied_color + color2 * (1 - alpha)
+
+// 例： (255,0,0,180) 叠加在 (0,0,255,180) 上的结果为
+alpha: 0.7 = 180 / 255
+r: 180 = 255 * alpha
+g: 0
+b: 52.94 = 255 * alpha * (1 - alpha)
+```
+
+- color：源像素
+- color2：背景像素
+- alpha：源像素的透明度值（0-1）
+
+---
+
+参考：
+
+- https://www.cnblogs.com/wantnon/p/5342359.html

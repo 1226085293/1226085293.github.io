@@ -1,0 +1,34 @@
+---
+title: 渲染透明图片错误解决
+date: 2023-04-09 07:13:29
+tags:
+  - OpenCV
+---
+
+### 问题图片
+
+![](https://gitee.com/muzzik/images/raw/master/blog/notes/image-process/opencv/1.png)
+
+### 解决方案
+
+1. 创建一个对应的透明度遮罩
+
+```python
+alpha = cv.imread(f'./0{v}.png', cv.IMREAD_UNCHANGED);
+alpha = alpha[:,:,3]
+alpha[alpha<=20] = 0
+alpha = cv.cvtColor(alpha, cv.COLOR_GRAY2BGRA)
+```
+
+输出如下
+![](https://gitee.com/muzzik/images/raw/master/blog/notes/image-process/opencv/2.png)
+
+2. 减去透明通道像素
+
+```python
+roi = cv.imread(f'./0{v}.png', cv.IMREAD_UNCHANGED);
+cv.subtract(roi, cv.bitwise_not(alpha), roi)
+```
+
+输出如下
+![](https://gitee.com/muzzik/images/raw/master/blog/notes/image-process/opencv/3.png)

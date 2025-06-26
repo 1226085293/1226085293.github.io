@@ -1,0 +1,34 @@
+---
+title: Lua 加载当前路径下的模块实现
+date: 2018-12-07 16:36:49
+tags:
+  - Lua
+---
+
+话不多说，看代码
+
+```lua
+function String_conversion(value)
+	local path = ""
+	for i=1,#value do
+		local tmp = string.sub(value,i,i)
+		if tmp=='\\' then
+			path = path..'/'
+		else
+			path = path..tmp
+		end
+	end
+	return path
+end
+local info = debug.getinfo(1,"S")
+--获取当前路径
+local pathinfo = info.short_src
+--由于获取的路径为反斜杠(\)所以用上面的函数转为正斜杠(/)
+local path = string.match(String_conversion(pathinfo),"^.*/")
+--添加搜索路径
+package.path = string.format("%s?.lua;%s?/init.lua;%s", path, path, package.path)
+--加载模块(module为lua模块文件名"module.lua")
+local m = require "module"
+```
+
+基于上一篇博客做的加载当前路径下 lua 模块

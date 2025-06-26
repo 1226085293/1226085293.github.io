@@ -1,0 +1,150 @@
+---
+title: Cocos Creator：简单 Mesh 切割
+date: 2023-03-12 17:50:00
+tags:
+  - CocosCreator
+  - Mesh
+---
+
+## 最终效果
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/24/1.png)
+
+## Mesh 是什么？
+
+我们看到的模型就是网格，网格是由一个个三角面片组成的再经过光栅化才到我们的屏幕上，而切割网格，实际就是切割三角形
+
+## 确定切割方向
+
+使用平面来确定切割方向，由于我们获取的网格顶点坐标是模型的本地坐标，所以也需要把创建平面的法线，坐标也转换为模型本地坐标
+
+```
+this._plane = cc.geometry.Plane.fromNormalAndPoint(
+	new cc.geometry.Plane(),
+	// 法线方向
+	node_.ui_transform
+		.convertToNodeSpaceAR(plane_.ui_transform.convertToWorldSpaceAR(cc.Vec3.UP))
+		.subtract(node_.ui_transform.convertToNodeSpaceAR(plane_.worldPosition))
+		.normalize(),
+	// 平面在切割节点的本地坐标
+	node_.ui_transform.convertToNodeSpaceAR(plane_.worldPosition)
+);
+```
+
+## 获取模型网格
+
+```
+// 获取 cc.Mesh
+this._mesh = node_.getComponent(cc.MeshRenderer)!.mesh!;
+
+/** 网格数据 */
+const mesh = cc.utils.readMesh(this._mesh, 0);
+```
+
+注意，这里只是获取的下标为 0 的子网格，如果一个模型包含多个子网格，那么还是需要遍历获取再切割，可以通过 `this._mesh.struct.primitives.length` 获取子网格数量
+
+## 切割三角形
+
+前面说了切割模型实际就是切换三角形，如何切割？
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/24/2.png)
+
+- **(i1, i0)**：平面
+- **(p0, p1, p2)**：原本的三角形（逆时针为正面）
+- **(p0, i1, i2)**：切割后的三角形
+- **(i1, p1, p2)**: 切割后的三角形2
+- **(i2, i1, p2)**: 切割后的三角形3
+
+1. 如果三角形三个顶点形成的线段不与平面相交，那么则不需要新建顶点
+2. 如果三角形线段与平面相交，则切割为三个三角形
+
+### 1. 确定三角点是否与平面相交
+
+这里我们只需要知道三角形的顶点是否在平面的正面或者反面就可以判断是否相交，
+**如果三个点全在一侧则肯定不相交，如果不全在一侧则一点相交**，我们可以使用点乘 dot 判断在平面的哪一侧
+
+```
+positive_b = this._plane.n.dot(p) - this._plane.d >= 0;
+```
+
+### 1. 确定平面与模型的交点
+
+确定 i1 的坐标，从 p0 到 p1 的方向创建一条射线
+
+```
+cc.geometry.Ray.fromPoints(ray, p0, p1);
+```
+
+计算与平面的交点距离
+
+```
+const distance_n = cc.geometry.intersect.rayPlane(ray, this._plane);
+```
+
+获取交点坐标
+
+```
+ray.computeHit(point, distance_n);
+```
+
+### 2. 计算新建顶点的uv，法线
+
+uv 和 法线的计算很简单，例：p0 - p1 的交点 i1 的法线及 uv 就是 p0 - p1 的法线及 uv 插值交点距离
+
+## 生成平面
+
+切割网格后会留下空洞，那么如何给它添加一个平面？
+
+### 简单的三角剖分方案
+
+1. 求平均点，不完全支持凹多边形
+   ![](https://gitee.com/muzzik/images/raw/master/blog/article/24/3.png)
+
+2. 左右横跳，不完全支持凹多边形
+   ![](https://gitee.com/muzzik/images/raw/master/blog/article/24/4.png)
+
+3. 单点遍历，不完全支持凹多边形
+   ![](https://gitee.com/muzzik/images/raw/master/blog/article/24/5.png)
+
+### 不支持凹面多边形的后果
+
+可以看下图
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/24/6.png)
+
+这样的话，无论是使用平均点，还是图中的单点遍历新建三角形，都会有可能出现生成的三角形错误的情况
+
+**那么如何做？步骤如下**
+
+1. 记录新增的顶点坐标并排序（连线）
+
+2. 将排序后的多边形顶点分解为凸多边形
+
+3. 为所有凸多边形生成三角形
+
+### 怎么判断凹凸？
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/24/7.png)
+
+判断 p0 - p1 - p2 的夹角角度即可，这也是我们需要对新增顶点坐标排序的原因
+
+### 将凹多边形分解为凸多边形
+
+在找到凹角之后，我们只需要从 p1 的位置开始遍历至顶点，只要找到 p0 - p1 - pn 夹角不为凹角的 pn 顶点就可以分割为两个多边形，再对分割后的多边形重复执行此操作
+
+## 后记
+
+### 平面带孔的情况
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/24/8.png)
+
+将排序后的两个多边形合并为一个，将内多边形的点连接到最近的一个外多边形，组合成为一个单独的多边形
+
+但是还有一个问题，那就是单独的两个多边形可以依靠法线和碰撞检测来判断当前多边形是否在另一个内，那么多个多边形嵌套呢？
+
+我这里想到的是使用面积判断，从大到小对多边形排序，内多边形的面积一定比外多边形小
+
+## 结语
+
+1. 不提供源码
+2. 疑问可在群内提问，qq 群：200351945

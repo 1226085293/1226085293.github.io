@@ -1,0 +1,56 @@
+---
+title: 通过节点名生成 @property 或运行时代码
+date: 2022-08-04 15:17:00
+tags:
+  - CocosCreator 插件
+---
+
+根据节点名生成节点引用代码的插件，免去手动写一堆 <span class="mention">@property</span>
+购买前请看明白使用说明，_若看不懂使用说明请不要购买_
+
+## 效果图
+
+- 属性生成
+
+![](https://forum.cocos.org/uploads/default/optimized/3X/7/2/72a82279dd05ba9b6a41e883283c77ea2ceeaee3_2_690x414.gif =690x414)
+
+- 运行时生成
+
+![](https://forum.cocos.org/uploads/default/optimized/3X/a/a/aaa86ec842c437bceb3ff11e1a54931a894abd6b_2_690x446.gif =690x446)
+
+## 商店链接
+
+<a href="https://store.cocos.com/app/detail/3998" class="onebox" target="_blank">
+  https://store.cocos.com/app/detail/3998
+</a>
+
+## 功能介绍
+
+- 根据节点名生成 属性代码 或者 运行时代码
+  - 属性代码：<span class="mention">@property</span>(…)
+
+- 运行时代码：
+  - 一个额外的 nodes.ts（类成员为引用节点） 的脚本
+  - 在 onLoad 处定义，无 onLoad 函数则自动生成
+  - 节点名前缀为 + 代表引用节点
+  - 节点名前缀为 - 代表排除 _其下级节点（所有子节点）_
+  - 节点名前缀可以混用，例如 +-, -+
+
+## 使用教程
+
+- 选中*符合生成条件*
+- 快捷键 F1 一键生成
+- _傻瓜式示例项目_
+- 插件根目录下 mk_nodes_template.zip
+- _生成条件_
+- 存在自定义组件脚本（没脚本代码生成在哪儿？）
+- 组件脚本内存在插件配置中的 _生成标记_ 或者组件继承了配置中的*固定基类*
+- 生成的 _引用节点_
+- _配置面板_
+- 顶部菜单 -> 扩展 -> mk_nodes 配置
+- _挂载方式定位_
+  - 固定基类：挂载组件必须继承 _挂载组件基类_
+  - 生成标记：挂载组件内必须存在标记字符串，属性代码将在标记下一行生成
+- _生成方式_
+  - 属性：生成 <span class="mention">@property</span>(…) 代码
+  - 脚本：生成一个额外的 nodes 脚本，并在 onLoad 初始化（自动注入）

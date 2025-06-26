@@ -1,0 +1,45 @@
+---
+title: 新手使用Nuxt遇到的问题
+date: 2024-03-21 18:36:00
+tags:
+  - Nuxt
+---
+
+Nuxt 初学者遇到的问题解决
+
+## 1. 在 Vue 文件中，scss 被识别为 css 导致 scss 语法报错
+
+解决方案：建立.vscode/settings.json 文件，添加如下内容
+
+```json
+{
+  "files.associations": {
+    "*.vue": "vue"
+  }
+}
+```
+
+## 2. nuxt.config.js 中的 css 全局配置无效
+
+解决方案：使用 vite 配置
+
+```ts
+export default defineNuxtConfig({
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import '@/assets/scss/global.scss';`,
+        },
+      },
+    },
+  },
+})
+```
+
+3. 首次启动总是报错：Not Found Page:/
+   解决方案：长按浏览器的刷新按钮，选择清空缓存并刷新
+
+4. import vue 单文件组件提示没有导出
+解决方案：禁止Vetur插件，使用Vue - Official插
+   件

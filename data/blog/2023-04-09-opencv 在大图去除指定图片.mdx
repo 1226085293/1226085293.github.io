@@ -1,0 +1,27 @@
+---
+title: opencv 在大图去除指定图片
+date: 2023-04-09 07:03:29
+tags:
+  - OpenCV
+---
+
+- color_img1：大图
+- a.png：小图
+
+```python
+# 透明度遮罩
+alpha = cv.imread('a.png', cv.IMREAD_UNCHANGED);
+# 转为透明通道（单通道）
+alpha = img2[:,:,3]
+# 透明度小于20的变成黑色
+alpha[alpha<=20] = 0
+# 转为 4 通道
+alpha = cv.cvtColor(alpha, cv.COLOR_GRAY2BGRA)
+
+# 获取 color_img1 图片中 alpha 对应位置的像素
+roi = color_img1[top_left[1]:top_left[1]+h, top_left[0]:top_left[0]+w]
+# 在 roi 减去 alpha 中黑色像素（透明区域）并输出到 roi
+cv.subtract(roi, alpha, roi)
+```
+
+获取小图在大图中的位置自己选择，特征匹配，角点匹配，模板匹配，dnn匹配...

@@ -1,0 +1,67 @@
+---
+title: C++用for遍历自定义类
+date: 2020-05-24 22:26:35
+tags:
+  - C++
+---
+
+**正确的做法**是像 STL 容器那样，创建一个迭代器类，然后里面重载 **!=（比较）， ++（递增），\*（解引用）** 这几个函数。
+
+例如：
+
+```cpp
+template <class T>
+class iterator {
+private:
+	T* _data;
+protected:
+public:
+	// 构造函数，传进迭代器管理的值
+	iterator(T* data_) :
+	_data(data)
+	{}
+
+	bool operator !=(const iterator& that) {
+		// 比较实现, 例如：
+		return _data == &that;
+	}
+
+	iterator& operator ++() {
+		// 自增实现, 例如：
+		_data = _data->next;
+		return *this;
+	}
+
+	T& operator *() {
+		// 解引用, 例如：
+		return *_data;
+	}
+
+	iterator(const iterator&) = delete;
+	iterator& operator =(const iterator&) = delete;
+	~iterator() = default;
+}
+```
+
+光是这样还不够，还得在我么要遍历的类中添加**begin 和 end**两个函数，begin 和 end 返回什么呢？我给大家举个例子，**一个数组 char a[5]，begin 代表了第一个元素，即 a[0]， end 代表最后一个元素的后一位，即 a[5]**，我们只需要把 begin 和 end 函数内返回我们提前指定好这两个元素的迭代器就行了，例：
+
+```cpp
+class A {
+private:
+	iterator<A> _begin;	// 第一个元素
+	iterator<A> _end;	// 最后一个元素后一位
+protected:
+public:
+	iterator<A>& begin() {
+		// 这里可以动态更新 _begin 代表的值，再返回 _begin
+		return _begin;
+	}
+
+	iterator<A>& end() {
+		// 这里可以动态更新 _end 代表的值，再返回 _end
+		return _end;
+	}
+}
+```
+
+之后我们就可以使用 **for (auto& i : xxx)** 遍历这个类型的变量了，最后和大家说一下，**如果 begin 和 end 是返回指针的话可以不用迭代器类**就可以，因为指针的 !=（比较）, ++（自增），\*（解引用）这几个函数都是 C++语言内置的。前提是你遍历的数据是连续内存，这样通过++（自增）获取的下个值才是正确的，不然你还是得额外写一个迭代器类。

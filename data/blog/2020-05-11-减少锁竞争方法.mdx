@@ -1,0 +1,27 @@
+---
+title: 减少锁竞争方法
+date: 2020-05-11 02:55:58
+tags:
+  - C++
+  - 多线程
+---
+
+设置双重进入锁判断，例：
+
+```cpp
+bool enter = false;
+
+void test() {
+    if (enter) {
+        return;
+    }
+    mutex.lock();
+    if (enter) {
+        return;
+    }
+    enter = true;
+    mutex.unlock();
+    // 代码块..
+    enter = false;
+}
+```

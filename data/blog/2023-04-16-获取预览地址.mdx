@@ -1,0 +1,54 @@
+---
+title: 获取预览地址
+date: 2023-04-16 03:05:00
+tags:
+  - CocosCreator 插件
+---
+
+```typescript
+/** 预览地址 */
+let preview_url_s = await cocos_window.webContents.executeJavaScript('window.xxx.address')
+
+// 不存在预览地址
+if (!preview_url_s) {
+  // 3.8.0 以下
+  if (engine_version_n < 380) {
+    await cocos_window.webContents.executeJavaScript(
+      'window.xxx.$refs.qr.parentElement.dispatchEvent(new Event("mouseenter")); window.xxx.$refs.qr.parentElement.dispatchEvent(new Event("click"))'
+    )
+  }
+  // 3.8.0 及以上
+  else {
+    await cocos_window.webContents.executeJavaScript(
+      'window.xxx.$refs.qr.parentElement.firstChild.dispatchEvent(new Event("click"))'
+    )
+  }
+  await new Promise<void>((resolve_f) => {
+    const timer = setInterval(async () => {
+      preview_url_s = await cocos_window.webContents.executeJavaScript('window.xxx.address')
+      if (preview_url_s) {
+        clearInterval(timer)
+        resolve_f()
+      }
+    }, 0)
+  })
+
+  // 3.8.0 以下
+  if (engine_version_n < 380) {
+    cocos_window.webContents.executeJavaScript(
+      'window.xxx.$refs.qr.parentElement.dispatchEvent(new Event("mouseleave"))'
+    )
+  }
+  // 3.8.0 及以上
+  else {
+    cocos_window.webContents.executeJavaScript(
+      'window.xxx.$refs.qr.parentElement.firstChild.dispatchEvent(new Event("click"))'
+    )
+  }
+}
+
+// 预览地址初始化
+preview_url_s = `http://${preview_url_s}`
+/** 预览端口 */
+const preview_port_s = preview_url_s.slice(preview_url_s.lastIndexOf(':') + 1)
+```

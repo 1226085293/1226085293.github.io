@@ -1,0 +1,71 @@
+---
+title: 将 unity 嵌入 cocos - 实现 cocos 热更 unity
+date: 2023-03-24 16:03:00
+tags:
+  - CocosCreator
+  - Unity
+  - Android
+  - 热更
+  - HybridCLR
+---
+
+# 前言
+
+花了大概4天时间恶补 unity 热更的知识，说说自己的理解。
+首先 unity 热更方式和 cocos 不太一样，unity 基本上是将热更分为了资源热更和脚本热更
+
+资源热更：非脚本资源，可以使用 unity 自带的 AssetBundle 或者 Addressables
+
+# 资源热更方案
+
+直接使用 Addressables，没啥好说的，AssetBundle 的升级版
+
+**参考链接：**
+
+- https://zhuanlan.zhihu.com/p/496737920
+
+# 脚本热更方案
+
+网上有大概三种热更方案，分别是
+
+- Lua
+- ILRunTime
+- HybridCLR
+
+最终我选择了 HybridCLR，首先语言上，强类型比弱类型好，还有各种泛型机制。那么就剩下 `ILRunTime， HybridCLR` ，相比较 HybridCLR 性能更高，ILRunTime 热更泛型函数还比较麻烦
+
+**参考链接：**
+
+- https://www.cnblogs.com/wwhhgg/p/16784367.html
+
+# 热更流程
+
+网上的 HybridCLR 教程基本都不是对于 Unity 小白友好的，所以这里我说简单点
+
+- 新建一个空项目
+
+- 安装 Addressables，顶部菜单/窗口/包管理器
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/23/1.png)
+  搜到之后点击右下角的安装
+
+- 安装 HybridCLR，包管理器左上角+号/添加来自git URL的包
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/23/2.png)
+  包链接：https://github.com/focus-creative-games/hybridclr_unity.git
+
+- 初始化项目设置，顶部菜单/文件/生成设置/Build Settings面板左下角玩家设置
+  选择安卓项目配置
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/23/3.png)
+  红框处为教程示例项目的自定义配置
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/23/4.png)
+
+- Addressables 配置
+  窗口/资产管理/addressables/profiles
+  左上角 create 新建一个自定义的 android 分组
+  .
+  Local.BuildPath：bundle构建后输出路径
+  Local.LoadPath：运行时资源加载路径，这里设置为从存储卡路径加载资源，所以我们就可以**在 cocos 下载热更资源到这个路径中**
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/23/5.png)
+  项目资源中选中红框资源
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/23/6.png)
+  右侧检查器按照红框设置
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/23/7.png)

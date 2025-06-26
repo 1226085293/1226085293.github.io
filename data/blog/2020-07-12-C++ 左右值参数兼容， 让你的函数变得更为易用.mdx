@@ -1,0 +1,36 @@
+---
+title: C++ 左右值参数兼容， 让你的函数变得更为易用
+date: 2020-07-12 20:17:41
+tags:
+  - C++
+---
+
+这里可以模拟 STL 中的实现，自己改良了一下，让其可以返回值。
+
+```cpp
+template<class T, class... Args>
+T _func(Args&&... args_) {
+	T data(std::forward<Args>(args_)...);
+	// 逻辑处理...
+	return static_cast<T>(data);
+}
+
+test& func(test& data_) {
+	return _func<test&>(data_);
+}
+
+test func(test&& data_) {
+	return _func<test&&>(std::move(data_));
+}
+```
+
+这样我们不论传递左值还是右值我们的程序都能正常处理，也可以避免下面的情况
+
+```cpp
+test a;
+func(a);
+// 可以替换为
+test a(func(test()));	// 调用顺序为: 构造 -> 移动构造 -> 析构
+```
+
+如果不需要返回值可以去掉。

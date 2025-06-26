@@ -1,0 +1,55 @@
+---
+title: 克隆远程仓库指定目录/文件
+date: 2023-09-16 18:33:00
+tags:
+  - Github
+---
+
+## 依赖库
+
+- `simple-git`
+- `fs-extra`
+
+## 实现
+
+> 注意，这种方式依旧会拉取历史记录数据
+
+```typescript
+import simple_git from 'simple-git'
+import fs from 'fs-extra'
+
+const git = simple_git()
+const remote_repo_url = '远程仓库地址'
+const local_folder = '输出目录'
+// 目录需要加后缀 /*
+const target_folder = '克隆的目录/文件'
+
+fs.removeSync(local_folder)
+fs.ensureDirSync(local_folder)
+await git
+  .cwd(local_folder)
+  .init()
+  .addRemote('origin', remote_repo_url)
+  .addConfig('core.sparseCheckout', 'true')
+fs.appendFileSync(`${local_folder}/.git/info/sparse-checkout`, `${target_folder}\n`, 'utf8')
+await git.pull('origin', 'main')
+fs.removeSync(`${local_folder}/.git`)
+```
+
+### 单独下载文件的方式
+
+- gitee:
+  - file*path_s*：下载文件相对路径
+  - output_path_s：输出目录路径
+
+```typescript
+/** 下载 url */
+const download_url_s = `https://gitee.com/用户名/仓库名/raw/分支/${file_path_s_.replace(/\\/g, '/')}`
+
+// 确保目录存在
+fs.ensureDirSync(path.dirname(output_path_s))
+// 下载文件
+https.get(download_url_s, (res) => {
+  res.pipe(fs.createWriteStream(output_path_s)).once('close', resolve_f).once('error', reject_f)
+})
+```

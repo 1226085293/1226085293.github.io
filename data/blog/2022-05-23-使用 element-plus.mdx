@@ -1,0 +1,50 @@
+---
+title: 使用 element-plus
+date: 2022-05-23 10:46:00
+tags:
+  - CocosCreator 插件
+  - Element-Plus
+---
+
+之所以 element-plus 展示错误是因为 css 没加载完，可以用如下方式加载，完整 demo 在我写的插件模板 https://github.com/1226085293/cc-plugin-template
+
+```typescript
+interface css_info {
+  /** css 路径 */
+  url_s: string
+  /** 挂载节点 */
+  parent: ParentNode
+}
+
+const option: vue.Component = {
+  template: fs.readFileSync(`${__dirname}/container.html`, 'utf-8'),
+  methods: {
+    /** 动态加载 css */
+    load_css(info_as_: css_info[]): void {
+      info_as_.forEach((v) => {
+        let css = document.createElement('link')
+        css.rel = 'stylesheet'
+        css.href = v.url_s
+        v.parent.appendChild.call(v.parent, css)
+      })
+    },
+  },
+  data() {
+    return {}
+  },
+  watch: {},
+  created() {},
+  mounted() {
+    this.load_css([
+      {
+        parent: document.head,
+        url_s: config.path_s + '/node_modules/element-plus/dist/index.css',
+      },
+      {
+        parent: this.$el,
+        url_s: config.path_s + '/node_modules/element-plus/dist/index.css',
+      },
+    ])
+  },
+}
+```

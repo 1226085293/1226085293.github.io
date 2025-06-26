@@ -1,0 +1,43 @@
+---
+title: NodeS扩展，优雅的获取节点和组件方式
+date: 2020-08-29 02:04:00
+tags:
+  - CocosCreator
+---
+
+![](//forum.cocos.org/uploads/default/optimized/3X/5/6/56b26acf1757bb41aac5f39e0e9b9313c858bc9b_2_690x67.png =690x67)
+
+### 还在为 getComponent 和 getChildByName 烦恼吗？担心每次频繁的遍历消耗太浪费时间？那就来扩展一下我们的 cc.Node 吧，让你不必为了一长串 getChildByName 和 getComponent 而烦恼。使用得当也可以免去每次的遍历消耗（大量节点下）
+
+---
+
+### 使用说明
+
+- _获取子节点_
+- _node.child(“xxx”)_
+- _node.child(“xxx/xxx”)_
+- _node.child(“xxx”, true)_
+- _获取组件_
+- _node.label_ 或者 _node.sprite_ 或者 _node.button_ 或者 _node.layout_
+- _设置自动更新子节点缓存_
+  - _node.child_update_b = true_
+- _清除组件缓存_
+  - _node.label = null;_ ##<span class="hashtag">#备注说明</span>
+  - 由于内部给所有获取的节点和组件都存储了缓存，所以下次获取是直接拿到缓存中的数据, 如果要更新缓存请看上面说明。
+
+_好处_
+
+- 分摊性能消耗，只在使用的第一次遍历获取，之后都是获取的缓存(可以手动/自动更新缓存)
+- 简化接口，不必写一长串的 getComponent/getChildByName, 怎么方便怎么来
+
+---
+
+-> _接下来看看扩展方式_
+
+- 将 NodeS 扩展.txt 中的内容复制到 creator.d.ts 的 Node 类中（位置随意, 注意不要覆盖其他接口）
+
+![](//forum.cocos.org/uploads/default/original/3X/2/c/2c211389dcbbe7fdd08ad7c1cd9e839ce45b5547.png =582x500)
+
+- 将 nodes.ts 脚本拖入项目中并置顶（提示：脚本和文件夹排列顺序默认是按照字母排列）
+- 现在就可以随意使用啦；
+  github: [https://github.com/1226085293/nodes](https://github.com/1226085293/nodes)

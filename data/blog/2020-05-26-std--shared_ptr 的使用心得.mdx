@@ -1,0 +1,15 @@
+---
+title: std::shared_ptr 的使用心得
+date: 2020-05-26 15:42:39
+tags:
+  - C++
+  - 智能指针
+---
+
+- 如果要在一个 lambda 表达式中使用一个 shared_ptr 对象的话，不要使用 **[&] () { 内部使用 }** 这样的方式。因为捕获列表不会给 shared_ptr 增加引用数。就有可能导致我们使用的时候 shared_ptr 已经销毁了。正确的使用方式是 **[] (std::shared_ptr& obj) { 内部使用 }， 然后再用 std::bind 函数绑定 shared_ptr 对象到 lambda 表达式** ，这样 shared_ptr 就会增加引用计数，我们之后使用也不会有问题了。还有一种方式是在捕获列表使用=拷贝捕获。**[=] () { 内部使用 }**，类似 **[shared_ptr 变量名] () { 内部使用 }**，两者本质上是一样的。
+- 除非必要，尽量用 **std::make_shared_ptr< T >()** 的方式初始化 shared_ptr 指针，而不是 **std::make_shared_ptr< T >(data)** ，这样做将造成一次拷贝。某些必须要用外部数据初始化的可以这样写：
+
+```cpp
+node(const T& data_) : data(std::make_shared<T>(data_)) {}
+node(T&& data_) : data(std::make_shared<T>(std::move(data_))) {}
+```

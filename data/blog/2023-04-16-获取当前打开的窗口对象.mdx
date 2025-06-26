@@ -1,0 +1,12 @@
+---
+title: 获取当前打开的窗口对象
+date: 2023-04-16 03:05:00
+tags:
+  - CocosCreator 插件
+---
+
+```typescript
+const window_id_ns = electron.BrowserWindow.getAllWindows().map((v) => v.id)
+await Editor.Panel.open(config.name_s)
+const window = electron.BrowserWindow.getAllWindows().find((v) => !window_id_ns.includes(v.id))!
+```

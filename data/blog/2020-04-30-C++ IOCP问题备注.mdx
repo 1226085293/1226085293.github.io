@@ -1,0 +1,53 @@
+---
+title: C++ IOCP问题备注
+date: 2020-04-30 14:29:08
+tags:
+  - C++
+  - 网络
+  - IOCP
+---
+
+​
+【1236 错误】情况如下: 1.client 连接 server
+　　　　   2.client 发送消息到 server
+　　　　   3.client 使用 closesocket(sock);
+　　　　   4.server 接收到关闭 socket 消息  (lpNumberOfBytesTransferred 为 0,  注意：如果客户端发送的是空消息同样为零)  然后使用 closesocket 函数关闭了这个客户端的 socket
+　　　　   5.这时候情况发生了，GetQueuedCompletionStatus 函数返回 false 并且 GetLastError() == 995  或者 1236
+
+原因如下: 经过本人测试发现， 如果不向系统投递这个客户端 recv 操作， 那么客户端使用 closesocket 函数服务端是无法接收到消息的， 那么说明 closesocket 对于服务端来说也是一个特殊的 recv 操作,
+　　　　但是投递了接收操作却会出现 995 或者 1236 错误，995 错误的说明是中止 I/O 操作引起的，但是我们已经接收到了客户端的 close 消息， 所以才说 closesocket 是特殊的 recv 操作,
+
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWcyMDIwLmNuYmxvZ3MuY29tL2Jsb2cvMTc2MDkyMi8yMDIwMDQvMTc2MDkyMi0yMDIwMDQwMzAwMTk1ODk5My03MTM4ODM5MDMucG5n?x-oss-process=image/format,png)
+
+那么 1236 错误呢？ 最开始我是在网络上查找这种错误说明，但是都没有太大的帮助， 直到我找到了一篇文章，上面是这样说的
+
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWcyMDIwLmNuYmxvZ3MuY29tL2Jsb2cvMTc2MDkyMi8yMDIwMDQvMTc2MDkyMi0yMDIwMDQwMzAwMjU0MTE4OC0xOTA2OTQ2NTY4LnBuZw?x-oss-process=image/format,png)
+
+我们主要看第二条消息， 和我们的 995 错误是不是很类似，那么我们就可以假设是因为投递的 I/O 操作返回引起的
+
+解决方法：
+　　　　既然是因为 I/O 操作未完成引起的，那么我们何不让它完成，这样就从根源上解决了问题发生，经过本人测试， 我们只需要让客户端再发一次消息，然后服务端再关闭客户端的 socket, 这时候既没有出现 995 错误，也没有 1235 错误， 完美解决。
+
+【WSASend 或者 WSARecv 未接受到失败消息引起的资源未释放问题】
+
+1. 发生情况：例：OVERLAPPED\* overlapped = &context->overlapped;
+   WSASend(context->accept, wsabuf, 1, &bytes, flags, overlapped, NULL)，
+   如果我们使用了自定义结构体中 overlapped 投递了 send 或者 recv，然后又使用 free 或者 delete 释放了该结构的内存，那么 GetQueuedCompletionStatus 将不会返回失败消息，我们也就不会删除客户端信息，那么就会造成信息未释放的问题。 2.解决办法：#1: 不要清理这块内存
+   #2: 只留下两种 context, recv 和 send,   recv 可以充当 accept 的 context，因为 accept 操作使用完之后就不再需要 context 了
+
+【AcceptEx 返回 10022】 1.发生情况：使用 DisconectEx 返回成功后的 socket 2.解决办法：注意 DisconnectEx 的 flags 参数必须为 TF_REUSE_SOCKET，才是表示关闭连接并复用 socket，为 0 则表示只关闭连接
+
+【CreateIoCompletionPort 返回 87】 1.发生情况：使用 DisconectEx 返回成功后的 socket 2.解决办法：其实复用的 socket 已经绑定了完成端口，不用第二次绑定，直接投递之后的 recv 或者 send 操作就好了
+
+【WSASend 返回 10055】 1.发生情况：投递多个 send 请求，且发送速度 > 对方接受速度导致数据堆积占用非分页内存 2.解决办法：1. 限制投递数量， 如果限制一个客户端同时只能存在一个 send 和 recv 请求（增加并发量，减少吞吐量，但是理论上并发过多还是可能会出现这种情况）
+　　　　　　 2. 投递之前将 WSABUF 的缓存区 size 设置为 0， 那么将不会锁定用户投递的缓存区，也不会占用非分页内存， 但是缓冲区将不会接收数据， 所以需要我们提前将客户端的连接 socket 使用 setsocketopt 函数设置非阻塞套接字，然后在收到接收通知或者发送通知的时候再使用 recv/send 函数取出客户端发来的数据或者再向客户端发送数据（提高吞吐量，降低并发量）
+
+【客户端连接服务器返回 10055】 1.发生情况：大量并发客户端连接（不超过 6w 左右） 2.解决办法：添加 MaxUserPort 参数到注册表， 添加之后除开系统底层和其他应用占用的端口单机应该能到 6w 左右并发量，如果有其他客户端机器可以突破这个数量
+
+【NO_ERROR 错误】 1.发生情况：投递 WSASend/WSARecv 后 GetQueuedCompletionStatus 函数返回 NO_ERROR 错误 2.解决办法：WSARecv 必须关闭客户端连接（这时客户端已经使用了 closesocket 断开连接），WSASend 则表示没有错误。
+
+【WSA_IO_PENDING 错误】 1.发生情况：投递 WSASend/WSARecv 后 GetQueuedCompletionStatus 函数返回 WSA_IO_PENDING 错误 2.解决办法：WSARecv 必须关闭客户端连接（这时客户端已经使用了 closesocket 断开连接），WSASend 则表示没有错误。
+
+【投递 WSARecv 后 GetQueuedCompletionStatus 不返回】 1.发生情况：正常投递 WSARecv 2.解决办法：投递 WSARecv 或者 WSASend 前加一句 memset(&context->overlapped, 0, sizeof(OVERLAPPED));   不然很容易造成各种奇怪的问题，当然，如果你是在不复用 context 的情况下不需要 memset， 因为你每次投递都是一个新的 overlapped, 自然不需要 memset。
+
+​

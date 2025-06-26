@@ -1,0 +1,25 @@
+---
+title: 绕任意轴旋转
+date: 2023-07-06 11:26:00
+tags:
+  - CocosCreator
+---
+
+```typescript
+let startRotate = this.cube.rotation.clone()
+let axis = this.cube
+  .getComponent(cc.UITransform)
+  .convertToWorldSpaceAR(cc.v3(0, 1, 0))
+  .subtract(this.cube.worldPosition)
+  .normalize()
+let quat = cc.quat()
+
+cc.Quat.rotateAround(quat, startRotate, axis, cc.misc.degreesToRadians(angle))
+this.cube.rotation = quat
+```
+
+- this.cube: 旋转对象
+- axis: 旋转轴，示例为对象的 cc.v3(0, 1, 0) 到对象位置的方向向量
+- angle: 旋转角度
+
+> 示例代码效果为从起始角度（startRotate）绕 axis 轴旋转角度 angle 后输出到 quat

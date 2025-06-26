@@ -1,0 +1,81 @@
+---
+title: 阿拉伯语言中的字符顺序处理
+date: 2023-12-11 10:18:00
+tags:
+  - CocosCreator
+  - 多语言
+---
+
+在阿拉伯语中，字符顺序是从右往左的，而且如果在其中插入非数字的字符，会导致语序错误...
+
+## 替换字符后错误的语序
+
+::: playground#ts 点击 Run 运行，F12 控制台查看结果
+
+@file index.ts
+
+```ts
+const text_s = 'هناك 0 التفاح في المجموع'
+
+console.log(text_s.replace('0', '5') + '\n' + text_s.replace('0', '五'))
+```
+
+:::
+
+在上面的示例中，我们可以看到将 `0` 替换为 `五` 的输出结果导致语句顺序错误了，而在游戏看到的结果也是错误的
+
+### 怎么解决？
+
+::: playground#ts 点击 Run 运行，F12 控制台查看结果
+
+@file index.ts
+
+```ts
+const text_s = 'هناك 0 التفاح في المجموع'
+
+console.log(text_s.replace('0', '5'))
+console.log(text_s.replace('0', '\u202b五\u202c'))
+```
+
+:::
+
+经过我的尝试，发现使用 Unicode 字符 `\u202b` 和 `\u202c` 包裹非阿拉伯语的字符即可正常替换
+
+### 为什么可以这样做？
+
+在 wiki 百科中，介绍了 `U+202B` 是从右到左嵌入，那么和我们的目标一致，而 `U+202C` 解释比较含糊，实际的作用是 `终止嵌入或覆盖控制`，也就是在嵌入非阿拉伯语字符结束后，我们需要使用 `U+202C` 来表示嵌入字符结束了，才能正常展示出来
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/26/1.png)
+
+## 阿拉伯语中的数字开头导致的语序错误
+
+通常，你拿到的翻译结果中，需要数字开头展示的字符串在结果中往往会跑到左边（阿拉伯语从右边开头），如下
+
+::: playground#ts 点击 Run 运行，F12 控制台查看结果
+
+@file index.ts
+
+```ts
+const text_s = '0 تفاح'
+
+console.log(text_s[0])
+console.log(text_s.replace('0', '5'))
+```
+
+:::
+
+### 怎么解决？
+
+我们只需要将开头的数字也使用 `\u202b` 和 `\u202c` 包围即可
+
+::: playground#ts 点击 Run 运行，F12 控制台查看结果
+
+@file index.ts
+
+```ts
+const text_s = '0 تفاح'
+
+console.log(text_s.replace('0', '\u202b5\u202c'))
+```
+
+:::

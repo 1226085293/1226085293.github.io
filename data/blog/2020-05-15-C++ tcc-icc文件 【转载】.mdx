@@ -1,0 +1,41 @@
+---
+title: C++ tcc/icc文件 【转载】
+date: 2020-05-15 03:27:00
+tags:
+  - C++
+---
+
+它不是标准化的。有些使用.tcc（t =模板，cc = C ++源代码），
+有些使用.icc（i =包含，cc = C ++源代码），有些使用.h（但这
+使其与“真实”标头没有区别），有些则只是使用
+根本不用额外的文件。它通常是一个文件，其中包含
+在标头中声明的模板的实现，标头随后包含#tcc（或
+任何其他名称）文件。但是由于对此没有标准或普遍共识
+，因此也可能是其他任何事情。
+这只是需要
+在大多数编译器使用它们的所有翻译单元中可见模板定义的人工
+
+产物：==== example.hpp ====
+
+```cpp
+#ifndef EXAMPLE_HPP
+#define EXAMPLE_HPP
+
+template <typename T>
+
+#include“ example.tcc”
+
+#endif
+
+==== example.tcc ====
+#ifndef EXAMPLE_HPP
+＃错误不要直接包含此文件，请包含example.hpp代替
+#endif
+
+template <类型名T> void f（）
+{
+//东西
+}
+```
+
+来自https://bytes.com/topic/c/answers/138863-what-tcc

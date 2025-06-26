@@ -1,0 +1,88 @@
+---
+title: 热更 bundle 脚本（不修改引擎）
+date: 2023-02-08 01:24:00
+tags:
+  - CocosCreator
+  - 热更
+---
+
+# 测试环境
+
+版本：3.7.0
+
+平台：`[web-desktop-debug, android-debug-md5, android-release-md5]`
+
+# 注意事项
+
+- 重载 bundle 时不能在 bundle 内的场景
+- 重载前需要进行数据清理操作（例如定时器、节点池、监听的全局事件）
+- bundle 内的 ccclass 清理并没有很好的方法，所以是按照类名匹配，需要规范 <span class="mention">@ccclass</span> 装饰器的参数前缀
+
+# 使用代码
+
+```auto
+/** bundle 脚本表 */
+const bundle_script_tab: Record<string, any> = {};
+/** js 系统 */
+const system_js = self["System"];
+/** 脚本缓存表 */
+const script_cache_tab: Record<string, any> = system_js[Reflect.ownKeys(system_js).find((v) => typeof v === "symbol")];
+
+// 初始化 bundle 脚本表
+Object.keys(script_cache_tab).forEach((v_s) => {
+	const current = script_cache_tab[v_s];
+	const parent = script_cache_tab[v_s].p;
+	const child = parent.d;
+
+	if (!parent || !child || current.id !== parent.id) {
+		return;
+	}
+
+	const name_s = parent.id.slice((parent.id as string).lastIndexOf("/") + 1);
+
+	bundle_script_tab[name_s] = parent;
+});
+
+// 清理脚本缓存
+{
+	const bundle_root = bundle_script_tab[bundle_s];
+
+	if (bundle_root) {
+		bundle_root.d.forEach((v: { id: string }) => {
+			delete script_cache_tab[v.id];
+			delete system_js["registerRegistry"][v.id];
+		});
+		delete script_cache_tab[bundle_root.id];
+		delete system_js["registerRegistry"][bundle_root.id];
+	}
+}
+
+// 清理 ccclass
+{
+	const reg = new RegExp(`${bundle_s}(_|/)`);
+
+	Object.keys(cc.js._nameToClass)
+		.filter((v_s) => v_s.match(reg) !== null)
+		.forEach((v_s) => {
+			cc.js.unregisterClass(cc.js.getClassByName(v_s));
+		});
+}
+
+// 清理 bundle 资源
+{
+	const bundle = cc.assetManager.getBundle(bundle_s);
+
+	if (bundle) {
+		bundle.releaseAll();
+		cc.assetManager.removeBundle(bundle);
+	}
+}
+
+// ... 加载 bundle
+```
+
+### 参数
+
+- bundle_s：bundle 名
+
+### 实现参考

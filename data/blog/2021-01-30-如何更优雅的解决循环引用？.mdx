@@ -1,0 +1,41 @@
+---
+title: 如何更优雅的解决循环引用？
+date: 2021-01-30 01:04:00
+tags:
+  - Typescript
+---
+
+## # 全局法
+
+- _每个模块都注册到全局_
+- _每个模块注册到全局唯一键中_
+
+## # 合并法
+
+_将依赖的类全部放在一个模块内_
+
+## # 间接法
+
+_假如 a 与 b 模块互相依赖，那么就将依赖的功能代码搬到 c 模块，c 模块引用 a 和 b_
+
+## # 动态加载法
+
+_把静态 import 修改为动态_， 缺点是将跳过模板类型检查，以及不能 _"立即使用"_
+
+- 直接在使用处 import(“module_path”).default
+- 或者如下提前定义，免去每次手写路径
+
+```javascript
+type ui_base<T1, T2> = (import("./ui_base").default<T1, T2>);
+let ui_base: (typeof import("./ui_base").default);
+// ------------------异步函数
+// (async () => {
+//     ui_base = (await import("./ui_base")).default;
+// })();
+// ------------------或者直接promise.then
+import("./ui_base").then(module_a=> {
+    ui_base = module_a.default;
+});
+```
+
+目前本人已知解决循环引用的方法如上，随着项目增大循环引用是不可避免的，各位论坛大神有更好的办法吗？

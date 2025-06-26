@@ -1,0 +1,41 @@
+---
+title: <AutoCatalog /> 自动目录
+date: 2023-08-07 20:54:00
+tags:
+---
+
+## 安装/配置
+
+参考插件官网：https://plugin-auto-catalog.vuejs.press/zh
+
+## 使用
+
+- 怎么根据时间排序？
+
+```typescript
+autoCatalogPlugin({
+    orderGetter(page) {
+        // 根据时间升序排序
+        return -new Date(page.date).getTime();
+    },
+}),
+```
+
+- 怎么不影响原本的文件夹顺序？
+
+```typescript
+autoCatalogPlugin({
+    orderGetter(page) {
+        // 获取 md 文件的 frontmatter.dir 数据
+        let dir_config = page.frontmatter.dir as any;
+
+        // 如果文件夹配置了索引 (index)，则根据 order 排序
+        if (dir_config?.index) {
+            return dir_config.order;
+        }
+
+        // 根据时间升序排序
+        return -new Date(page.date).getTime();
+    },
+}),
+```

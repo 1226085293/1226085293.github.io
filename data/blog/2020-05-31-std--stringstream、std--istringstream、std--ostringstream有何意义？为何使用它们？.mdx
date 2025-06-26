@@ -1,0 +1,10 @@
+---
+title: std::stringstream、std::istringstream、std::ostringstream有何意义？为何使用它们？
+date: 2020-05-31 23:29:32
+tags:
+  - C++
+---
+
+std::stringstream 所能办到的事 std::string 也能办到，那它**有何意义呢？**
+······我在实际使用中发现，std::stringstream 变量可以使用 `<<` 输入数字类型。而 std::string.append 只能连接字符串。
+······所以用 std::stringstream 会更加便捷。std::stringstream 的 str()函数是返回的一个**std::string**临时变量，所以我们在使用过程中最好用一个**std::string temp(std::stringstream 变量)** 来接收这个临时变量。防止后面多次调用 str()创建不必要的临时变量。

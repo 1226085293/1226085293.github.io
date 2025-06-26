@@ -1,0 +1,141 @@
+---
+title: 如何更方便的使用 protobufjs？看了你就知道
+date: 2023-08-25 21:49:00
+tags:
+  - 网络
+  - protobufjs
+---
+
+## 怎么给 pb 消息添加消息号？
+
+目前论坛里的方案：
+
+- 二次包装（消息体封装消息体）
+- 拼接消息号（拼接固定字节在消息头用于消息号解析）
+
+我的方案：
+
+- 使用默认值
+
+## 默认值是什么？
+
+其实这是 protobuf 的语法特性，只需要在 `;` 前面加上 `[default = 默认值]` 就可以定义一个属性的默认值
+
+```proto
+package test;
+syntax = "proto3";
+
+message test {
+   uint32 __id = 1 [default = 100];
+   string data = 2;
+}
+```
+
+## 使用默认值有什么好处？
+
+- 更好的性能
+
+- 节省传输字节
+
+- 更方便的使用（发送/接收再也不需要关注消息号）
+
+- 不需要再手动定义消息号
+
+## 三种方式性能对比
+
+1w 次
+![](/图片/文章/protobufjs/1w.png =666x63)
+
+10w 次
+![](/图片/文章/protobufjs/10w.png =690x63)
+
+> 测试代码在末尾
+
+## 怎么省略消息号？
+
+1. 首先我们必须生成 static module 的 proto 协议文件
+
+1. 游戏初始化时候递归遍历 proto 顶层对象，使用 Map\<消息号, 消息体>
+
+1. 在发送的时候就可以直接取 Map 里面的消息体用来 encode，也可以用 `__proto__.constructor` 获取到 class 来 encode
+
+1. 在接收的时候，则可以使用 `protobufjs.Reader` 来获得消息号，再通过 Map 获取消息体 decode，这样就完全用不到消息号了，除了排错之外
+
+> 怎么避免手写消息号呢？答案是自动生成，并且生成的消息号需要缓存文件，避免上下次生成的消息不一致导致热更出现问题
+
+### 源码参考
+
+- https://github.com/1226085293/MKFramework/blob/dev/assets/tool/codec/tool_codec_proto_static.ts#L103
+
+### protobufjs 安装/使用
+
+推荐自动化插件
+
+- 包含导入式安装、NPM 安装
+
+- 自动监听 proto 修改构建协议文件
+
+- 可自定义构建流程
+
+更多内容点击查看：https://muzzik.gitee.io/%E9%A1%B9%E7%9B%AE%E6%A1%88%E4%BE%8B/cc-plugin-protobufjs/
+
+---
+
+### 测试代码
+
+```typescript
+// 二次包装
+{
+  this._log.time_start('二次包装')
+  let temp: any
+
+  for (let k_n = 0; k_n < for_n; ++k_n) {
+    /** 消息体字节 */
+    const body = test.send_data_body.encode(test.send_data_body.create({ data: '1' })).finish()
+
+    /** 消息 */
+    temp = test.send_data
+      .encode(
+        test.send_data.create({
+          id: 100,
+          body: body,
+        })
+      )
+      .finish()
+  }
+  this._log.time_end('二次包装')
+}
+
+// 拼接消息号
+{
+  this._log.time_start('拼接消息号')
+  for (let k_n = 0; k_n < for_n; ++k_n) {
+    /** 消息体字节 */
+    const body = test.send_data_body.encode(test.send_data_body.create({ data: '1' })).finish()
+    const buff = new ArrayBuffer(2 + body.length)
+    const mess = new Uint8Array(buff)
+    const data_view = new DataView(buff)
+
+    // 设置消息号
+    data_view.setUint16(0, 100)
+    // 设置消息体
+    mess.set(body, 2)
+  }
+  this._log.time_end('拼接消息号')
+}
+
+// 默认消息号
+{
+  this._log.time_start('默认消息号')
+  let temp: any
+
+  for (let k_n = 0; k_n < for_n; ++k_n) {
+    const body = test.test.create({ data: '1' })
+
+    // eslint-disable-next-line no-self-assign
+    body['__id'] = body['__id']
+    temp = test.test.encode(body).finish()
+  }
+  this._log.time_end('默认消息号')
+}
+```

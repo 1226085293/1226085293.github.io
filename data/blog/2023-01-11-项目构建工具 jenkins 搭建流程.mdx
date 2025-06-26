@@ -1,0 +1,147 @@
+---
+title: 项目构建工具 jenkins 搭建流程
+date: 2023-01-11 22:31:00
+tags:
+  - CocosCreator
+  - Jenkins
+---
+
+> windows 环境
+
+## 搭建流程
+
+### 1.下载及安装
+
+官网：https://www.jenkins.io/
+
+### 2.配置 jenkins 权限
+
+1. 打开服务面板
+
+   > ![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/1.png)
+
+2. 找到 jenkins 服务，双击打开属性面板 -> 此账户（填写账户及密码）
+   ![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/2.png)
+
+3. 关闭电脑防火墙，否则局域网其他电脑访问不了
+
+### 3.配置 jenkins 编码
+
+> 编码不一致会导致打包输出的中文为乱码，默认的编码为 gbk，我们需要改为 utf8
+
+1. 打开环境变量配置面板
+
+2. 新建系统变量 **JAVA_TOOL_OPTIONS**，值为 **-Dfile.encoding=UTF-8**
+   ![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/3.png)
+
+3. 重启电脑
+
+### 4. 增加代理节点
+
+> jenkins 默认使用内置节点，但是会导致打包卡住
+
+1. 访问 `http://安装电脑IP:8080/manage/computer/new`
+
+2. 输入名称（最好不要有中文，否则执行 bat 命名会失败），选择 Permanent Agent 类型节点
+   ![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/7.png)
+
+3. 配置
+   - 远程工作目录：这里我随便选的，因为后续我用的绝对路径，个人猜测是执行命令的相对路径的根路径，然后进入下一步
+
+   - 标签：和名称一致
+
+   其他的都不管，然后进入下一步
+
+4. 在节点列表点击创建的节点
+   ![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/8.png)
+
+5. 复制 `Run from agent command line: (Windows) ` 下的命令然后在 powerShell 执行，如果没有问题你会发现节点已经成功连接上了
+   ![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/9.png)
+
+### 5. 配置构建流程
+
+1. 打开 jenkins 后台，访问 `http://安装电脑IP:8080`
+
+2. 新建 pipeline 构建流程，勾选不允许并发构建选项
+   ![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/4.png)
+
+3. 添加拉代码的批处理命令
+   > pipeline 脚本内可以使用 `bat "命令"` 来执行批处理脚本
+
+![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/5.png)
+
+4. 添加命令行构建
+
+![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/6.png)
+
+> 参考：https://docs.cocos.com/creator/manual/zh/editor/publish/publish-in-command-line.html#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E5%B8%83%E5%8F%82%E8%80%83
+
+---
+
+## 怎么让节点自启动
+
+由于 jenkins 已经注册为了服务，但是节点却需要每次手动执行命令才能启动，那么你可以将命令保存为 bat 脚本，然后将其注册到服务中即可
+
+#### 个人猜想
+
+可以在 jenkins 启动时自动执行节点启动命令，不过暂时没找到方法
+
+## 参考
+
+在 pipeline 脚本中使用 http：https://www.lfhacks.com/tech/jenkins-httprequest/
+
+## 示例源码
+
+```
+pipeline {
+    agent {
+        label: '节点的标签'
+    }
+    environment {
+        // 项目路径
+        ProjectPath = 'D:/xxx'
+        // 引擎路径
+        EnginePath = 'D:/CocosEditor/Creator/3.6.3/CocosCreator.exe'
+        // 构建配置路径
+        BuildConfigPath = "${ProjectPath}/config/build/release.json"
+    }
+
+    stages {
+        stage('更新代码') {
+            steps {
+                echo '更新代码 - 开始'
+                dir("${ProjectPath}") {
+                    bat returnStdout: true, script: 'git pull "origin"'
+                }
+                echo '更新代码 - 结束'
+            }
+        }
+        stage('构建工程') {
+            steps {
+                echo '构建工程 - 开始'
+                dir("${ProjectPath}") {
+                    script {
+                        def code = bat returnStatus: true, script: "${EnginePath} --project ${ProjectPath} --build \"configPath=${BuildConfigPath}\""
+
+                        if (code == 36) {
+                            echo '构建工程 -构建成功'
+                            return
+                        }
+                        else if (code == 34) {
+                            echo '构建工程 -构建失败（构建过程出错失败，详情请参考构建日志）'
+                        }
+                        else if (code == 32) {
+                            echo '构建工程 -构建失败（构建参数不合法）'
+                        }
+                        else {
+                            echo '构建工程 -构建失败'
+                        }
+                        exit 1
+                    }
+                }
+                echo '构建工程 - 结束'
+            }
+        }
+    }
+}
+```

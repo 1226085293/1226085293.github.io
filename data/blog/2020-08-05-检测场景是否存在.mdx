@@ -1,0 +1,15 @@
+---
+title: 检测场景是否存在
+date: 2020-08-05 01:41:00
+tags:
+  - CocosCreator
+---
+
+版本为 2.3.4
+
+```typescript
+// @ts-ignore
+if (!cc.director._getSceneUuid('场景名')) {
+  cc.error('场景不存在')
+}
+```

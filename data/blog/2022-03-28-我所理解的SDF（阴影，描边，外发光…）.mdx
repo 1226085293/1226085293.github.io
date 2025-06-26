@@ -1,0 +1,381 @@
+---
+title: 我所理解的SDF（阴影，描边，外发光…）
+date: 2022-03-28 03:56:00
+tags:
+  - CocosCreator
+  - 2d 阴影
+  - SDF
+---
+
+![](https://forum.cocos.org/uploads/default/original/3X/2/5/254ecd905eb3aeae5a037fff0b029e65409adfb8.png =690x67)
+
+## # 效果图
+
+![](https://forum.cocos.org/uploads/default/original/3X/4/b/4b69d086f21abe7f2eb48a2a6ac72923b277f647.gif =338x213)>
+
+![](https://forum.cocos.org/uploads/default/original/3X/8/6/8643098204e1921861f55ba8429e14f8b7af2694.gif =342x216)
+
+## # 前言
+
+_SDF 是什么？_
+  *SDF* 的全称是 _Signed Distance Field（有符号距离场）_
+  *有符号*：指的是正数和负数，_正数代表在物体外，负数代表在物体内_
+  *距离场*：其中的 _数值正是代表到物体表面的距离，0 就代表物体表面_
+
+## # 内容目录
+
+- SDF 渲染
+- 相交
+- 融合
+- 抵消
+- 减去
+- 描边
+- 外发光
+- 内发光
+- 硬阴影
+- 软阴影
+
+---
+
+## # 什么是 Shader?
+
+方便没有 shader 基础的同学观看，特此增加简单基础介绍
+_Shader 其实是一段 GLSL（OpenGL 着色语言）程序，而 WebGL 则是为了方便浏览器使用而封装的 OpenGL_
+_组成结构：_
+
+- _顶点着色器_：模型由三角面组成，三角面由顶点组成，而顶点作色器就负责 _顶点的坐标控制_，可以用来实现*布料、水体*
+- _片段着色器_：片段着色器则是负责 _渲染位置的颜色输出_
+  _本文用到的 glsl 内置函数说明_
+- _clamp(x, y, z)_
+- _mix(x, y, z)_
+- _length(x)_
+- _sign(x)_
+
+---
+
+## # 如何用 SDF 画一个圆？
+
+如果我们想要在 shader 内 _用 sdf 画一个圆_
+![](https://forum.cocos.org/uploads/default/optimized/3X/c/f/cf685aab29dc4b24fbc14ab59a188e219baf2bb0_2_690x204.png =690x204)
+
+- _问题 1：参数 p 是什么？_
+  - _解答：p 是当前渲染点的位置，因为是 2d，所以只有 xy_
+- _问题 2：参数 r 是什么？_
+  - _解答：r 就是想要绘制的圆半径_
+    _这里的返回结果就是距离场_
+    _“举个栗子 <img src="https://forum.cocos.org/images/emoji/twitter/muscle.png?v=9" title=":muscle:" class="emoji" alt=":muscle:"/> <img src="https://forum.cocos.org/images/emoji/twitter/chestnut.png?v=9" title=":chestnut:" class="emoji" alt=":chestnut:"/>”：_
+
+###
+
+<strong>在片段着色器“画”出来</strong>
+
+- output_v4：片段着色器输出的颜色
+- float dist_f：距离场
+- vec4 color_v4：物体颜色
+
+```auto
+output_v4 = mix(output_v4, color_v4, clamp(-dist_f, 0.0, 1.0));
+```
+
+_- dist_f_
+
+_“深入理解”_
+
+- 更多的 SDF 图形公式：<a href="https://iquilezles.org/www/articles/distfunctions2d/distfunctions2d.htm" rel="nofollow noopener">链接， 需梯子</a>
+
+- 图形公式原理讲解：<a href="https://blog.csdn.net/qq_41368247/article/details/106194092?spm=1001.2014.3001.5506" rel="nofollow noopener">链接</a>
+
+---
+
+以下内容通将 SDF 值称为 _距离场_
+
+## # 旋转，跳跃，我闭着眼~
+
+![](https://forum.cocos.org/uploads/default/original/3X/6/a/6a45a616f0ec6aa15cf0f4648cd55c1132eaf568.gif =164x91)
+前面说了如何画出 SDF 图形，那么怎么让它们动起来呢？很简单，我们只需要*将渲染点减去我们要移动的坐标*
+
+### <strong>如何实现？</strong>
+
+```auto
+vec2 translate(vec2 render_v2_, vec2 move_v2_) {
+	return render_v2_ - move_v2_;
+}
+```
+
+<img
+  src="https://forum.cocos.org/images/emoji/twitter/muscle.png?v=9"
+  title=":muscle:"
+  class="emoji"
+  alt=":muscle:"
+/>
+<img
+  src="https://forum.cocos.org/images/emoji/twitter/chestnut.png?v=9"
+  title=":chestnut:"
+  class="emoji"
+  alt=":chestnut:"
+/>
+_（举栗）_
+
+```auto
+float dist_f = sdf_circle(translate(render_v2_, vec2(100.0, 100.0)), 10.0);
+```
+
+- dist_f 便是我们通过 sdf 函数求得平移 vec2(100.0, 100.0) 后的距离场
+
+### 平移实现了，旋转呢？
+
+- 其实也很简单，学习过矩阵的同学应该知道有个*旋转矩阵*，我们只需要 _将向量 _ 二维旋转矩阵，那么就会得到旋转后的点\*
+
+```auto
+// 逆时针旋转
+vec2 rotate_ccw(vec2 render_v2_, float radian_f_) {
+	mat2 m = mat2(cos(radian_f_), sin(radian_f_), -sin(radian_f_), cos(radian_f_));
+	return render_v2_ * m;
+}
+
+// 顺时针旋转
+vec2 rotate_cw(vec2 render_v2_, float radian_f_) {
+	mat2 m = mat2(cos(radian_f_), -sin(radian_f_), sin(radian_f_), cos(radian_f_));
+	return render_v2_ * m;
+}
+```
+
+_最终结果：_
+
+![](https://forum.cocos.org/uploads/default/original/3X/6/4/6417cc7fc1a4f68610cdd59faa751514e16d3172.gif =164x91)
+
+---
+
+## # “正常” 效果
+
+![](https://forum.cocos.org/uploads/default/original/3X/2/4/24d583ec03d55f8645c49bd10ad9e39ca777cd68.gif =164x91)
+如果我们要*正常展示多个 SDF 物体*
+
+### <strong>如何实现？</strong>
+
+```auto
+float merge(float dist_f_, float dist2_f_) {
+	return min(dist_f_, dist2_f_);
+}
+```
+
+是不是很简单，通过对距离场进行操作，就可以得到不同的效果，看看下面
+
+---
+
+## # “相交” 效果
+
+![](https://forum.cocos.org/uploads/default/original/3X/4/c/4c35eea849ae74c029bf9784368467d12bdf4069.gif =164x91)
+效果是不是很奇怪，其实名字一样，这个函数只会在两个物体的距离场同时 < 0 时才会返回 < 0，方法也很简单
+
+### <strong>如何实现？</strong>
+
+```auto
+float intersect(float dist_f_, float dist2_f_) {
+	// dist_f_ < 0, dist2_f_ > 0  例 dist_f_ = -2, dist2_f_ = 3，r = 3, 例 dist_f_ = -2, dist2_f_ = 1，r = 1， 则值 > 0
+	// dist_f_ > 0, dist2_f_ < 0  例 dist_f_ = 2, dist2_f_ = -1，r = 2, 例 dist_f_ = 2, dist2_f_ = -5，r = 2， 则值 > 0
+	// dist_f_ > 0, dist2_f_ > 0  例 dist_f_ = 1, dist2_f_ = 2，r = 2, 例 dist_f_ = 2, dist2_f_ = 1，r = 2， 则值 > 0
+	// dist_f_ < 0, dist2_f_ < 0  例 dist_f_ = -2, dist2_f_ = -3，r = -2, 例 dist_f_ = -2, dist2_f_ = -1，r = -1， 则值 < 0
+	// 所以最终结果只会在 dist_f_ 和 dist2_f_ 重合时展示
+	return max(dist_f_, dist2_f_);
+}
+```
+
+其实原理就是只有两个数同时 < 0 时，max 才会返回负数，所以造成了上面的效果
+
+---
+
+## # “融合” 效果
+
+![](https://forum.cocos.org/uploads/default/original/3X/1/8/189447c70b90b68bd179df3ecf584fbae7d1dfec.gif =164x91)
+怎么样？是不是很熟悉？每天打开 cocos 官网都会看见的那个 ta，哈哈哈
+
+### <strong>如何实现？</strong>
+
+````auto
+float smooth_merge(float dist_f_, float dist2_f_, float k_f_) {
+	// k_f_ 如果不超过 abs(dist_f_ - dist2_f_)，那么都是无效值（0 或 1）
+    float h_f = clamp(0.5 + 0.5 * (dist2_f_ - dist_f_) / k_f_, 0.0, 1.0);
+	// 假设 k_f_ = 0, dist_f_ = 2, dist2_f_ = 1，则 h_f = 0, mix(...) = dist2_f_, k_f_ * h_f * (1.0 - h_f) = 0，结果为 dist2_f_
+	// 假设 k_f_ = 0, dist_f_ = 1, dist2_f_ = 2，则 h_f = 1, mix(...) = dist_f_, k_f_ * h_f * (1.0 - h_f) = 0，结果为 dist_f_
+	//…1) = 0
+   - 返回值就为 color_v4_，此时为无效值
+
+---
+
+## # 内什么啊？内发光啊，什么发光啊？内发光阿
+![](https://forum.cocos.org/uploads/default/original/3X/0/b/0b72e8b15abd410cd6b66c732f39b3e8ee4ad97a.png =353x217)
+（此函数根据上面的外发光改写）
+```auto
+vec4 inner_glow(float dist_f_, vec4 color_v4_, vec4 input_color_v4_, float radius_f_) {
+    // (dist_f_ + radius_f_) > radius_f_ 结果为1
+    // (dist_f_ + radius_f_) < 0 结果为0
+    // (dist_f_ + radius_f_) > 0 &amp;&amp; (dist_f_ + radius_f_) < radius_f_ 则 dist_f_ 越大 a_f 越大，范围 0 ~ 1
+    float a_f = clamp((dist_f_ + radius_f_) / radius_f_, 0.0, 1.0);
+    // pow：平滑 a_f
+    // 1.0+：在物体内渲染
+    // max(1.0, sign(dist_f_) * -：dist_f_ < 0 时返回 -1，dist_f_ == 0 返回 0，dist_f_ > 0 返回 1，所以有效值只在物体内部
+    float b_f = 1.0 - max(1.0, sign(dist_f_) * -(1.0 + pow(a_f, 5.0)));
+		return color_v4_ + input_color_v4_ * b_f;
+}
+````
+
+- 如果 (dist*f* + radius*f*) > radius*f*
+  - a_f = 1.0;
+  - b_f = 1.0 - max(1.0, -2.0) = 0;
+  - 返回值就为 color*v4*，此时为无效值
+
+- 如果 (dist*f* + radius*f*) < 0
+  - a_f = 0.0;
+  - b_f = 1.0 - max(1.0, 1.0) = 0;
+  - 返回值就为 color*v4*，此时为无效值
+    由于 dist_f 越往物体内部越小，所以也会导致 a_f 也是也是如此，所以最后 1.0 - max
+
+---
+
+## # 比较硬的阴影
+
+![](https://forum.cocos.org/uploads/default/original/3X/b/5/b58718cb364293df0c56877731442b67c0815e2f.gif =603x398)
+
+### <strong>什么是硬阴影？</strong>
+
+边缘没有过渡的阴影便是硬阴影
+
+我们的 SDF 不仅可以同来生成各种图形，还可以做阴影，没想到吧！
+
+###
+
+<strong>原理简介</strong>：
+从渲染点出发到光源点，依次步进安全距离（SDF 距离场，代表这个范围不会触碰到物体），_如果距离场 < 0，则代表碰到了物体_
+
+### 小二，上一份代码，不要辣
+
+- vec2 render*v2* 渲染点
+- vec2 light*v2* 光源点
+
+```auto
+float shadow(vec2 render_v2_, vec2 light_v2_) {
+		// 当前渲染位置到光源位置的方向向量
+    vec2 render_to_light_dir_v2 = normalize(light_v2_ - render_v2_);
+		// 渲染位置至光源位置距离
+    float render_to_light_dist_f = length(render_v2_ - light_v2_);
+		// 行走距离
+    float travel_dist_f = 0.01;
+
+    for (int k_i = 0; k_i < max_shadow_step; ++k_i) {
+      // 渲染点到场景的距离
+      float dist_f = scene_dist(render_v2_ + render_to_light_dir_v2 * travel_dist_f);
+      // 小于0表示在物体内部
+      if (dist_f < 0.0) {
+        return 0.0;
+      }
+      // abs：避免往回走
+      // max 避免渲染点距离物理表面过近导致极小耗尽遍历次数，所以有可能会跳过物体距离小于1.0的阴影绘制
+      travel_dist_f += max(1.0, abs(dist_f));
+      // travel_dist_f += abs(dist_f); 精确的阴影
+
+      // 渲染点的距离超过光源点
+      if (travel_dist_f > render_to_light_dist_f) {
+        return 1.0;
+      }
+    }
+    return 0.0;
+  }
+```
+
+---
+
+## # 比较软的阴影
+
+![](https://forum.cocos.org/uploads/default/original/3X/d/a/da30c5804bf6b667f510c34451aebbbceb4c7302.gif =603x398)
+是不是真实感瞬间就上去了，想不想用在自己的游戏里？
+
+###
+
+<strong>实现方式</strong>： 这个和硬阴影有一些差别，目前我了解的 sdf
+实现软阴影目前大概是两种，一种是 iq 大神和 games202
+里面提到的公式，但是效果并不好，在靠近物体时会产生弯曲的软阴影，如下图，不过我这里给大家展示的是
+shadertoy 上一位大神的代码，效果非常好，图上所示
+![](https://forum.cocos.org/uploads/default/original/3X/4/7/47786ecafdbbb042d168d6da640933f743a7c942.png
+=410x258)
+
+### 先上代码
+
+```auto
+float shadow(vec2 render_v2_, vec2 light_v2_, float hard_f_) {
+		// 当前渲染位置到光源位置的方向向量
+		vec2 render_to_light_dir_v2 = normalize(light_v2_ - render_v2_);
+		// 渲染位置至光源位置距离
+		float render_to_light_dist_f = length(render_v2_ - light_v2_);
+		// 可见光的一部分，从一个半径开始（最后添加下半部分）；
+		float brightness_f = hard_f_ * render_to_light_dist_f;
+		// 行走距离
+		float travel_dist_f = 0.01;
+
+		for (int k_i = 0; k_i < max_shadow_step; ++k_i) {
+		// 当前位置到场景的距离
+		float dist_f = scene_dist(render_v2_ + render_to_light_dir_v2 * travel_dist_f);
+
+		// 渲染点在物体内部
+		if (dist_f < -hard_f_) {
+			return 0.0;
+		}
+
+		// dist_f 不变，brightness_f 越小，在越靠近光源和物体时 brightness_f 越小
+		brightness_f = min(brightness_f, dist_f / travel_dist_f);
+
+		// max 避免渲染点距离物理表面过近导致极小耗尽遍历次数，所以有可能会跳过物体距离小于1.0的阴影绘制
+		// abs 避免朝回走
+		travel_dist_f += max(1.0, abs(dist_f));
+
+		// 渲染点的距离超过光源点
+		if (travel_dist_f > render_to_light_dist_f) {
+			break;
+		}
+	}
+
+	// brightness_f * render_to_light_dist_f 根据距离平滑, 离光源越近越小，消除波纹线
+	// 放大阴影，hard_f 越大结果越小则阴影越大, hard_f_ / (2.0 * hard_f_) 使结果趋近于0.5，用于平滑过渡
+	brightness_f = clamp((brightness_f * render_to_light_dist_f + hard_f_) / (2.0 * hard_f_), 0.0, 1.0);
+	brightness_f = smoothstep(0.0, 1.0, brightness_f);
+	return brightness_f;
+}
+```
+
+###
+
+<strong>原理简介</strong>：
+从渲染点出发到光源点，依次步进安全距离（SDF 距离场，代表这个范围不会触碰到物体），_如果距离场 < -hard*f* 则返回 0_
+_具体实现方式可以看注释_
+
+---
+
+## # 结语
+
+### 福音书（Code）
+
+<a href="https://github.com/1226085293/mk_sdf_shadow.git" rel="nofollow noopener">
+  github
+</a>
+
+<a href="https://gitee.com/muzzik/mk_sdf_shadow.git" rel="nofollow noopener">
+  gitee
+</a>
+
+### 参考代码
+
+- <a href="https://www.shadertoy.com/view/4dfXDn" rel="nofollow noopener">
+    shadertoy2d 软阴影实现
+  </a>
+- <a href="https://www.ronja-tutorials.com/post/037-2d-shadows/" rel="nofollow noopener">
+    软阴影和硬阴影
+  </a>
+
+### 推荐的 shader 调试网址
+
+- <a href="https://www.shadertoy.com/" rel="nofollow noopener">
+    shadertoy 可以登录保存、分支代码，功能全面
+  </a>
+- <a href="https://glslsandbox.com/" rel="nofollow noopener">
+    glslsandbox 可以实时编译运行，但编辑器不太行
+  </a>

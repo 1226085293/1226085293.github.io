@@ -1,0 +1,280 @@
+---
+title: 原生预览调试！我给Cocos加了个新功能，原生开发者福音
+date: 2024-04-07 00:00:00
+tags:
+  - CocosCreator
+  - 调试
+---
+
+## 前言
+
+一年一度的征稿到了，倒腾点存货，在之前阅读[云风大佬文章](https://blog.codingnow.com/2017/12/mobile_3d_engine.html)的时候，发现他的引擎调试机制是在 **手机上实时刷新预览**，而不是在PC上调试，作为一个 Cocos 原生开发者，我深有体会，主要有以下原因
+
+- Creator 在原生只能达到大概 95% 的一致性
+
+  > 例如多 Bundle 脚本引用顺序错误，龙骨/Spine闪退，渲染异常（极少发生）
+
+- 性能测试
+
+  > PC网页可以使用CPU降速达到原生大概的性能，但是并没有真机准确以及不能测试是否发热
+
+- UI/交互设计
+  > 这个对于经验丰富的团队来说没什么问题，但是对于新团队或者独立开发者是个重要的问题，鼠标并不能准确模拟手指的体验，有可能美术图标小了，也有可能按钮的点击范围小了
+
+所以我在想 Creator 是否能实现原生预览调试呢？既然网页可以，为什么真机不行，于是我完成了它
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/1.gif)
+
+## 环境
+
+Creator版本：3.6.1
+
+## 开始实现
+
+1. 创建一个 Launcher 项目用于加载 Bundle，刚开始我想通过 Launcher 直接加载远程 Bundle 的方式加载原项目预览模式的 Bundle，于是...
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/2.png)
+
+2. 好的，熟悉原生开发的我知道这是 bundle 的配置文件，然后我在网页发现了预览模式加载 Bundle 配置获取的是 **config.json** 而不是 **cc.config.json**
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/3.png)
+
+##
+
+3. 使用 Nodejs 创建一个代理服务器用来转发和修改 Launcher 项目的请求
+   1. 创建一个基础的 TS Nodejs项目，并使用 npm i 安装 `http-proxy` 模块
+   2. 使用内置的 http 创建一个服务器，并使用 http-proxy 模块转发请求，代码如下
+
+   ```ts
+   http
+     .createServer((req, res) => {
+       // bundle 配置
+       if (req.url?.endsWith('/cc.config.json')) {
+         req.url = req.url.replace('/cc.config.json', '/config.json')
+       }
+
+       proxy.web(req, res, { target: 'http://localhost:7456' })
+     })
+     .listen(端口号)
+   ```
+
+4. 重新尝试，没有config的错误的了，发现有个资源加载失败，搜索一番，发现是Test Bundle 中的脚本
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/4.png)
+
+而在原生中 bundle 的脚本都是合并后的 index.js，我们打开调试器看看现在 Test Bundle脚本
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/5.png)
+
+什么都没有，这是不正常的，正常 Bundle 的 index 脚本包含了全部的脚本源码，所以继续研究
+
+### 第一个问题：Bundle 脚本不正确
+
+由于我之前无意中逛项目文件夹，发现 `项目根目录\temp\programming\packer-driver\targets\preview\import-map.json` 文件是**记录脚本引用关系**的 json 文件
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/6.png)
+
+于是就可以利用这个文件组装 Bundle 的脚本，代码太多不便展示，步骤简单为
+
+1. 通过Bundle磁盘路径划分 imports 中的脚本
+2. 通过请求 `http://localhost:7456/scripting/x/import路径` 拿到脚本源码
+3. 合并脚本源码
+
+### 第二个问题：脚本加载顺序如何保证？
+
+> 脚本加载顺序不对会导致 import 的模块出现空的情况
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/7.png)
+
+在正常编译出的 Bundle 脚本内，`System.register("chunks:///_virtual/Bundle名称"` 这一行后面其实就脚本的加载顺序，所以我们生成的 Bundle 脚本可以在这里把排序后的脚步名填写进去
+
+排序算法为：
+
+```ts
+script_ss.sort((va_s, vb_s) => {
+  for (let k_n = 0, len_n = Math.min(va_s.length, vb_s.length); k_n < len_n; ++k_n) {
+    let a_n = va_s.charCodeAt(k_n)
+    let b_n = vb_s.charCodeAt(k_n)
+    if (a_n !== b_n) {
+      return a_n - b_n
+    }
+  }
+  return va_s.length - vb_s.length
+})
+```
+
+### 第三个问题：NPM脚本
+
+最开始尝试了在 Launcher 项目内安装 npm 包，结果没有任何用，因为 System.register 导入的模块名不一致，所以需要在前面生成 Bundle 脚本时将 import 的模块名替换为实际 npm 的模块名
+
+例如 `import dayjs from "dayjs";` 导入的模块名是 dayjs，实际为 `chunks:///_virtual/index.js`,
+
+怎么确定真正的模块名呢？在原项目 **编译后的 Bundle 脚本内查看** 就知道了
+
+### 第四个问题：插件脚本
+
+直接将原项目的插件脚本拷贝至 Launcher 项目
+
+## 资源部分
+
+在你将脚本加载搞完后，你会发现部分资源也会加载失败...
+
+### SpriteFrame
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/8.png)
+
+这里过太久了，忘记当时怎么解决的了，直接贴代码吧，同样放在代理服务器内
+
+```ts
+if (req.url?.endsWith('@f9941.json')) {
+  let data = (await axios.get(`http://localhost:${client_port_n}${req.url}`)).data
+
+  res.end(
+    JSON.stringify([
+      1,
+      [data.content.texture],
+      ['_textureSource'],
+      ['cc.SpriteFrame'],
+      0,
+      [data.content],
+      [0],
+      0,
+      [0],
+      [0],
+      [0],
+    ])
+  )
+  return
+}
+```
+
+### AnimationClip
+
+这个比较复杂，一步一步来
+
+1. 通过请求链接拿到 uuid
+
+```ts
+let uuid_s = req.url!.slice(req.url!.lastIndexOf('/') + 1, req.url!.lastIndexOf('.'))
+```
+
+2. 通过 uuid 判断是否为动画文件
+
+```ts
+					let suffix_s: string = (
+						await axios.get(
+							`http://localhost:${client_port_n}/query-extname/${uuid_s}`
+						)
+					).data;
+
+					// 动画文件
+					if (suffix_s === ".cconb") { ... }
+```
+
+3. 请求 cconb 文件内容并解析后返回
+
+```ts
+let cconb: Uint8Array = (
+  await axios.get(
+    `http://localhost:${client_port_n}` + req.url!.slice(0, req.url!.lastIndexOf('.')) + suffix_s,
+    {
+      responseType: 'arraybuffer',
+    }
+  )
+).data
+
+res.end(
+  JSON.stringify({
+    version: 1,
+    document: decodeCCONBinary(cconb).document,
+    chunks: ['.bin'],
+  })
+)
+```
+
+decodeCCONBinary 函数请拷贝当前版本引擎源码的 ccon.ts 脚本源码
+
+4. 修改 config.json 的请求返回数据并修改 extensionMap[".ccon"]，这样引擎才会加载 AnimationClip 的Bin 数据，这是正常的 Bundle 配置文件内容，而预览的请求的 config.json 中的数据是空的
+
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/9.png)
+
+```ts
+if (req.url?.endsWith('/cc.config.json')) {
+  let bundle_config = (
+    await axios.get(
+      `http://localhost:${client_port_n}${req.url.replace('cc.config.json', 'config.json')}`
+    )
+  ).data
+
+  // 录入待加载的 bin 文件
+  bundle_config.extensionMap['.ccon'] = []
+  for (const [k_s, v] of Object.entries(bundle_config.paths as Record<string, string[]>)) {
+    if (v[1] === 'cc.AnimationClip') {
+      bundle_config.extensionMap['.ccon'].push(k_s)
+    }
+  }
+
+  res.end(JSON.stringify(bundle_config))
+  return
+}
+```
+
+5. 拦截 bin 文件请求返回 AnimatiomClip 数据
+   使用 `if (req.url?.endsWith(".bin")) {` 拦截，代码和上面 1-3 步一样，只是返回数据为 `res.end(decodeCCONBinary(cconb).chunks[0]);`
+
+## 使用准备
+
+代理服务器已经可以正常使用了，但是现在还有一些问题
+
+### 启动项目
+
+启动时需要清理缓存防止旧内容未刷新
+
+```ts
+cc.assetManager.cacheManager.clearCache()
+```
+
+### 原项目
+
+准备一个中转 Bundle，在中转 Bundle 的脚本内重载 loadBundle，IP 为代理服务器电脑的 IP
+
+```ts
+let old_load_bundle = cc.assetManager.loadBundle
+
+cc.assetManager.loadBundle = function (name: string, ...args_as: any[]) {
+  if (!name.startsWith('http')) {
+    name = `http://192.168.0.102:8848/assets/${name}`
+  }
+
+  old_load_bundle.call(cc.assetManager, name, ...args_as)
+}
+
+cc.assetManager.loadBundle('Test', (err, bundle) => {
+  if (err) {
+    console.log(err)
+    return
+  }
+  bundle.loadScene('test', (err, scene) => {
+    if (err) {
+      console.log(err)
+      return
+    }
+    cc.director.runScene(scene)
+  })
+})
+```
+
+## 源码
+
+**CocosStore**：https://store.cocos.com/app/detail/6112
+
+## 结语
+
+### 自动化想法
+
+> 最近不在游戏行业，所以没有实现，说说自己的想法
+
+1. 拉取代码后通过(Creator 插件监听刷新 / 文件系统监听 imports-map)
+2. 代理服务器更新代码内容后使用 websocket 通知启动项目重启
+
+写的很差，欢迎批评，不懂就问，只提供思路（涉及付费）

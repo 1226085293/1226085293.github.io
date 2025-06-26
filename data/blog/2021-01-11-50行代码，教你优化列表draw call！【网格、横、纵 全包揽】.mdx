@@ -1,0 +1,132 @@
+---
+title: 50行代码，教你优化列表draw call！【网格、横、纵 全包揽】
+date: 2021-01-11 03:06:00
+tags:
+  - CocosCreator
+  - 性能优化
+---
+
+## 话不多说，上效果：
+
+<img
+  src="https://forum.cocos.org/uploads/default/optimized/3X/8/a/8a2eaa04f4de7d81aa23f39672af42cd0c8c453b_2_573x499.gif"
+  alt="temp1"
+  data-base62-sha1="jIpRQ2vHUL7J7vMHWalzYWcM1vR"
+  width="573"
+  height="499"
+/>
+
+### 示例数据
+
+- _列表 item 数：1000_
+- _draw call：43~48_
+  可以看到 draw call 一直在 45 左右徘徊，（FPS 低是因为录屏）。
+  下面上代码
+
+```javascript
+const {ccclass, property, menu} = cc._decorator;
+
+/**列表draw call优化组件 */
+@ccclass
+@menu("tool/list_optimize")
+export default class list_optimize extends cc.Component {
+    /* --------------------------------segmentation-------------------------------- */
+    onLoad() {
+        if (!this.node.scroll_view) {
+            cc.error("不存在ScrollView组件！");
+            return;
+        }
+        // ------------------事件监听
+        this.node.on("scrolling", this._event_update_opacity, this);
+        this.node.scroll_view.content.on(cc.Node.EventType.CHILD_REMOVED, this._event_update_opacity, this);
+        this.node.scroll_view.content.on(cc.Node.EventType.CHILD_REORDER, this._event_update_opacity, this);
+    }
+    /* ***************功能函数*************** */
+    /**获取在世界坐标系下的节点包围盒(不包含自身激活的子节点范围) */
+    private _get_bounding_box_to_world(node_o_: any): cc.Rect {
+        let w_n: number = node_o_._contentSize.width;
+        let h_n: number = node_o_._contentSize.height;
+        let rect_o = cc.rect(
+            -node_o_._anchorPoint.x * w_n,
+            -node_o_._anchorPoint.y * h_n,
+            w_n,
+            h_n
+        );
+        node_o_._calculWorldMatrix();
+        rect_o.transformMat4(rect_o, node_o_._worldMatrix);
+        return rect_o;
+    }
+    /**检测碰撞 */
+    private _check_collision(node_o_: cc.Node): boolean {
+        let rect1_o = this._get_bounding_box_to_world(this.node.scroll_view.content.parent);
+        let rect2_o = this._get_bounding_box_to_world(node_o_);
+        // ------------------保险范围
+        rect1_o.width += rect1_o.width * 0.5;
+        rect1_o.height += rect1_o.height * 0.5;
+        rect1_o.x -= rect1_o.width * 0.25;
+        rect1_o.y -= rect1_o.height * 0.25;
+        return rect1_o.intersects(rect2_o);
+    }
+    /* ***************自定义事件*************** */
+    private _event_update_opacity(): void {
+        this.node.scroll_view.content.children.forEach(v1_o=> {
+            v1_o.opacity = this._check_collision(v1_o) ? 255 : 0;
+        });
+    }
+}
+```
+
+_原理：通过检测 item 与列表可视区域的碰撞，如果碰撞到了那么即判断为在可视区域内，将 item 的 opacity 设为 255，反之为 0._
+
+## 注：
+
+- _本代码使用了 nodes 扩展_，例如 `this.node.scroll_view`
+- _我该怎么使用它？_：_将上方代码复制到新建脚本内挂载到 ScrollView 所在节点即可_
+- _此组件将为你做什么？_：在不影响其他数据 or 组件的同时为你优化列表的 draw call，网格、横、纵列表全搞定，_另外此组件还可优化非固定大小 item 的 draw call_
+
+---
+
+## 代码块讲解：
+
+```javascript
+this.node.on('scrolling', this._event_update_opacity, this)
+this.node.scroll_view.content.on(cc.Node.EventType.CHILD_REMOVED, this._event_update_opacity, this)
+this.node.scroll_view.content.on(cc.Node.EventType.CHILD_REORDER, this._event_update_opacity, this)
+```
+
+这里监听了列表的滑动、子节点移除、子节点层级改变，一旦触发就更新展示
+
+```javascript
+    /**获取在世界坐标系下的节点包围盒(不包含自身激活的子节点范围) */
+    private _get_bounding_box_to_world(node_o_: any): cc.Rect {
+        let w_n: number = node_o_._contentSize.width;
+        let h_n: number = node_o_._contentSize.height;
+        let rect_o = cc.rect(
+            -node_o_._anchorPoint.x * w_n,
+            -node_o_._anchorPoint.y * h_n,
+            w_n,
+            h_n
+        );
+        node_o_._calculWorldMatrix();
+        rect_o.transformMat4(rect_o, node_o_._worldMatrix);
+        return rect_o;
+    }
+```
+
+\_get_bounding_box_to_world 函数的作用和注释一样，其实 cc.Node 本来就有个*getBoundingBoxToWorld*函数，那我为什么没有使用它呢？因为它返回的矩形范围包括了已激活的子节点大小，就是说*矩形范围可能会超出当前节点的真实大小*
+
+```javascript
+    /**检测碰撞 */
+    private _check_collision(node_o_: cc.Node): boolean {
+        let rect1_o = this._get_bounding_box_to_world(this.node.scroll_view.content.parent);
+        let rect2_o = this._get_bounding_box_to_world(node_o_);
+        // ------------------保险范围
+        rect1_o.width += rect1_o.width * 0.5;
+        rect1_o.height += rect1_o.height * 0.5;
+        rect1_o.x -= rect1_o.width * 0.25;
+        rect1_o.y -= rect1_o.height * 0.25;
+        return rect1_o.intersects(rect2_o);
+    }
+```
+
+\_check_collision 函数中上半部分很好理解，对于其中的保险范围可以理解为*为了防止列表滑动过快时节点激活展示的速度跟不上，所以需要提前激活，而提前激活的办法就是扩大列表矩形的范围*

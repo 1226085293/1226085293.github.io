@@ -1,0 +1,72 @@
+---
+title: 装饰器：实现多继承
+date: 2020-07-22 01:35:00
+tags:
+  - Typescript
+  - 装饰器
+---
+
+因为看不惯 Mixins 的多继承写法， 于是写了个类装饰器实现
+
+```auto
+/**扩展合并 */
+function extends_merge(extends_a_: any): any {
+    return function(target_a_: any) {
+        // 若要继承实际成员变量将下面取消注释(不建议)
+        // Object.assign(target_a_.prototype, new extends_a_);
+        Object.assign(target_a_.prototype, extends_a_.prototype);
+    }
+}
+
+class A {
+    public func1(): void {
+        cc.log("A类函数");
+    }
+}
+
+class B {
+    private a_n: number = 5;
+
+    public func2(): void {
+        cc.log("B类函数");
+    }
+}
+
+class C {
+    public func3(): void {
+        cc.log("C类函数");
+    }
+}
+
+// 第一种: class D extends A
+// 第二种: class D extends A implements B, C
+// 说明: 这里用implements如果类B/类C有private成员或者protected成员那么将会警告，所以建议为第一种写法, 当然在类B/类C全为public成员的时候可以使用，或者利用代码修复的时候使用
+@extends_merge(B)
+@extends_merge(C)
+class D extends A {
+    /* ***************B接口*************** */
+    a_n: number;
+    public func2(): void { throw new Error("Method not implemented."); }
+    /* ***************C接口*************** */
+    public func3(): void { throw new Error("Method not implemented."); }
+    /* -------------------------------delimiter------------------------------- */
+}
+
+let d = new D;
+d.func2();    // 输出: B类函数
+d.func3();    // 输出: C类函数
+```
+
+这里说明一下：Mixins 写法的多继承也是只继承方法和属性，但实际在创建类时候初始化的成员变量并不会继承，如果要继承成员变量上面注释有说明，但要注意构造带参又使用的话可能会报错.
+
+另外多继承下父类构造只会执行 extends 的父类构造，按照上面的例子也就是只会执行 A 类的构造。
+
+```auto
+/**扩展合并改进版 */
+public extends_merge(extends_a_: any, extends_member_b_: boolean = false, ...args_as_: any[]): any {
+    return function(target_a_: any) {
+        extends_member_b_ &amp;&amp; Object.assign(target_a_.prototype, new extends_a_(...args_as_));
+        Object.assign(target_a_.prototype, extends_a_.prototype);
+    }
+}
+```

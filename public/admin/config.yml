@@ -1,36 +1,44 @@
 # public/admin/config.yml
 backend:
-  name: git-gateway
+  name: github
   branch: main
   repo: 1226085293/blog
 
 local_backend: true
-
 media_folder: 'public/static'
 public_folder: '/static'
 
 collections:
 - name: 'posts'
   label: 'Posts'
-  folder: '/data/blog'
+  label_singular: 'Post'
+  folder: 'data/blog'
+  format: "frontmatter"
+  extension: "mdx"
   create: true
   slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
   fields:
-    - name: 'layout'
-      label: 'Layout'
-      widget: 'hidden'
-      default: 'posts'
     - name: 'title'
-      label: 'Title'
+      label: '标题'
       widget: 'string'
     - name: 'date'
-      label: 'Date'
+      label: '时间'
       widget: 'datetime'
       date_format: 'YYYY-MM-DD'
       time_format: false
-    - name: 'thumbnail'
-      label: 'Featured Image'
+    - name: 'image'
+      required: false
+      label: '顶部图'
       widget: 'image'
+    - name: 'summary'
+      label: '简述'
+      widget: 'string'
+    - name: "tags"
+      required: false
+      label: "标签"
+      widget: "select"
+      multiple: true
+      options: ["CocosCreator", "Web", "原生", "AI", "Typescript", "Javascript", "Lua", "Nodejs", "C++", "Github", "图形学", "图形处理", "开发工具", "PC", "Cocos2DX", "Unity"]
     - name: 'body'
-      label: 'Body'
+      label: '内容'
       widget: 'markdown'

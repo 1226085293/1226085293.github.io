@@ -1,0 +1,50 @@
+---
+title: 如何正确的使用原生模拟器
+date: 2022-09-29 00:58:00
+tags:
+  - CocosCreator
+  - 原生模拟器
+---
+
+![](https://forum.cocos.org/uploads/default/original/3X/4/7/47e127fc79bb1316abd2a2f2b02af2e28b30a433.png =348x163)
+
+# # 前言
+
+在项目中，有时候为了调试闪退的情况，需要用到原生模拟器，但是 creator 包体内并没有带原生模拟器，而 _文档里面简简单单的两句话，执行起来包含了数个报错_
+
+# # 步骤
+
+测试环境：windows11，creator 3.3.2
+
+- 安装 CMake 并配置环境变量
+- engine-native 目录下 npm i
+- 确保电脑已经安装了 Visual Studio 20XX
+- 打开 Visual Studio Installer 程序
+  点击自己 vs 版本右边的修改按钮
+  - 勾选 _工作负荷-> Visual Studio 扩展开发_
+  - 勾选 _单个组件-> Windows X SDK（选自己 windwos 系统最新版本）_
+  - 勾选 _单个组件-> 用于 Windows 的 C++ CMake 工具_
+  - 点击右下角的修改等待安装完成，然后*重启电脑*
+- 打开 CMake (cmake-gui)
+  - where is the source code：引擎目录/resources/resources/3d/engine-native/tools/simulator/frameworks/runtime-src
+  - where to build the binaries：引擎目录/resources/resources/3d/engine-native/simulator
+  - 点击 Add Entry 按钮添加配置
+    - Name: CMAKE_CXX_COMPILER
+    - Type: STRING
+    - Value：VS 的安装目录//Community/VC/Tools/MSVC/14.33.31629/bin/Hostx64/x64/cl.exe
+
+![](https://forum.cocos.org/uploads/default/original/3X/7/0/70e79867a93b69f63e0067867582fe90c7f03f68.png =416x239)
+
+- 点击左下方的 Configure 按钮，若无意外应该会看见下面的打印，有意外就自己解决了
+
+![](https://forum.cocos.org/uploads/default/original/3X/d/f/dfcfaba42a570060cabe74ed81b4a5c1e99bc112.png =690x494)
+
+- 回到 engine-native 目录下执行 _gulp gen-simulator_
+
+---
+
+# # 结语
+
+> 光是生成这个模拟器就花了两小时，而官方的解释是
+> ![](https://forum.cocos.org/uploads/default/original/3X/e/2/e2b4ea2f7399b9c685b03e627663a0b2bef14e1f.png =690x194)
+> 我想问的是，就不能在顶部菜单里面加个模拟器安装菜单吗？光是下载和配置 VS 这一步就耗费了大量的时间

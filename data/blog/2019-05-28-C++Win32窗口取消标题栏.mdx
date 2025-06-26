@@ -1,0 +1,14 @@
+---
+title: C++Win32窗口取消标题栏
+date: 2019-05-28 23:59:26
+tags:
+  - C++
+---
+
+在 CreateWindow 语句后加上这段代码
+
+SetWindowLong(hWnd, GWL_STYLE, GetWindowLong(hWnd, GWL_STYLE) & ~WS_CAPTION);
+
+快去试下吧！
+
+![](https://img-blog.csdnimg.cn/20190528235804735.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Mzk4MzAx,size_16,color_FFFFFF,t_70)

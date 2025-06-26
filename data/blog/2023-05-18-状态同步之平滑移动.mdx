@@ -1,0 +1,92 @@
+---
+title: 状态同步之平滑移动
+date: 2023-05-18 01:46:00
+tags:
+  - CocosCreator
+  - 状态同步
+---
+
+状态同步的游戏在同步坐标时会因为网络延迟卡顿，怎么解决?
+
+```typescript
+import * as cc from 'cc'
+import main_nodes from './main_nodes'
+import { _decorator, Component, Node } from 'cc'
+const { ccclass, property } = _decorator
+
+@ccclass('main')
+export class main extends Component {
+  @property(main_nodes)
+  nodes = new main_nodes()
+  /* ------------------------------- segmentation ------------------------------- */
+  onLoad(): void {
+    let delay_n = 0
+
+    this.node.on(
+      cc.Node.EventType.TOUCH_START,
+      (event: cc.EventTouch) => {
+        this.unscheduleAllCallbacks()
+        cc.Tween.stopAllByTarget(this.nodes.move_point)
+        this._move_b = false
+      },
+      this
+    )
+
+    this.node.on(
+      cc.Node.EventType.TOUCH_MOVE,
+      (event: cc.EventTouch) => {
+        // 模拟延迟时间
+        delay_n += Math.random() * 100
+
+        this.scheduleOnce(() => {
+          this.on_server_move(event.getUILocation())
+        }, delay_n * 0.001)
+      },
+      this
+    )
+
+    this.node.on(
+      cc.Node.EventType.TOUCH_END,
+      (event: cc.EventTouch) => {
+        delay_n = 0
+      },
+      this
+    )
+  }
+
+  /** 移动状态 */
+  private _move_b = false
+  /** 目标点 */
+  private _target_position_v3: cc.Vec3
+
+  protected update(dt: number): void {
+    if (!this._target_position_v3) {
+      return
+    }
+
+    this.nodes.move_point.worldPosition = this.nodes.move_point.worldPosition
+      .clone()
+      .lerp(this._target_position_v3, dt * 10)
+
+    if (
+      this.nodes.move_point.worldPosition.clone().subtract(this._target_position_v3).lengthSqr() < 4
+    ) {
+      this._move_b = false
+    }
+  }
+
+  on_server_move(position_v2_: cc.Vec2): void {
+    this.nodes.real_move_point.worldPosition = cc.v3(position_v2_.x, position_v2_.y)
+
+    // if (!this._move_b) {
+    // 	this.scheduleOnce(() => {
+    // 		this._target_position_v3 = cc.v3(position_v2_.x, position_v2_.y);
+    // 	}, 0.1);
+    // } else {
+    // }
+    this._target_position_v3 = cc.v3(position_v2_.x, position_v2_.y)
+
+    this._move_b = true
+  }
+}
+```

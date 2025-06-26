@@ -1,0 +1,34 @@
+---
+title: 图片内存占用记录
+date: 2024-04-28 00:00:00
+tags:
+  - 内存
+---
+
+## 结论
+
+没有启用压缩纹理的图片，在内存中的占用大小计算公式都为：
+
+`width * height * 4 / 1024 / 1024`
+
+## 测试案例
+
+环境：夜神模拟器、html
+
+占用内存获取：`cc.gfx.deviceManager.gfxDevice.memoryStatus.textureSize`
+
+### 相同图片不同格式
+
+测试相同图片的不同格式 png、jpg、bmp(16位)、bmp(24位)，其占用内存一致
+
+### 使用压缩纹理
+
+相同图片的内存占比差距非常大
+
+![image|258x58](upload://2OieQ17OqoBdRt3LWFArHxoq2oW.png)
+
+ETC1 内存占用计算公式：`width * height / 4 / 1024 / 1024`
+
+### 参考资料
+
+- https://registry.khronos.org/DataFormat/specs/1.3/dataformat.1.3.html#ASTC

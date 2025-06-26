@@ -1,0 +1,15 @@
+---
+title: 获取引擎版本
+date: 2023-09-07 10:14:00
+tags:
+  - CocosCreator
+---
+
+> 用于在运行时获取引擎版本
+
+```typescript
+self['cc']['ENGINE_VERSION']
+
+// 获取版本数字：例 332,362
+let engine_version_n = Number(self['cc']['ENGINE_VERSION'].split('.').join(''))
+```

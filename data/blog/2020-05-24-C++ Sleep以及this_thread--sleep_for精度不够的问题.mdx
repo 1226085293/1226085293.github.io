@@ -1,0 +1,20 @@
+---
+title: C++ Sleep以及this_thread::sleep_for精度不够的问题
+date: 2020-05-24 20:06:47
+tags:
+  - C++
+---
+
+​
+代码测试休眠 5 秒钟，一秒钟休眠一次测试， WaitForSingleObject 函数的精度比 sleep 和 sleep_for 的精度提高 10ms 左右；
+
+WaitForSingleObject 在等待的过程中会进入一个非常高效的沉睡等待状态，只占用极少的 CPU 时间片。
+
+使用代码：
+
+```cpp
+HANDLE eve = CreateEvent(NULL, FALSE, FALSE, NULL);
+while (WaitForSingleObject(eve, 超时时间(毫秒)) != WAIT_OBJECT_0) {
+//进入这个循环就代表接收到了事件或者超时（我们就是利用超时这个机制来使用他的等待机制， SetEvent(eve)这个函数可以发送事件，这里我们用不到）
+}
+```

@@ -1,0 +1,49 @@
+---
+title: cc-plugin-cli 插件编译工具
+date: 2021-07-21 22:26:00
+tags:
+  - CocosCreator 插件
+---
+
+## 简介
+
+ts 插件编译工具
+
+- 2.x：
+  - 引用相对路径模块 √
+  - 使用 npm 包 √
+  - 增加 $panel$ 宏替换 √
+  - 编译后自动复制依赖 npm 包 √
+  - 编译后压缩 √
+
+- 3.x
+  - 编译后自动复制依赖 npm 包 √
+  - 编译后压缩 √
+
+## 安装
+
+npm install -g <span class="mention">@muzzik</span>/cc-plugin-cli
+
+## 使用
+
+命令行：_cc-plugin-cli_
+![](https://forum.cocos.org/uploads/default/original/3X/0/0/005dc24fa29de9a251822308117cb47839e9e583.png =677x442)
+编译插件：cc-plugin-cli c -p 扩展包开发路径 -z 生成的 zip 包相对路径（tsconfig 内的 outDir 相对路径）
+例 1(只编译插件)：_cc-plugin-cli c -p H:\NewProject_5\packages_dev\test_
+例 2(编译插件并生成 zip)：_cc-plugin-cli c -p H:\NewProject_5\packages_dev\test -z …/test.zip_
+
+---
+
+### $panel$ 使用
+
+_只能在 `` 字符串内使用， 只支持 2.x 使用，3.x 请使用\_\_dirname 代替_
+编译前
+
+![](https://forum.cocos.org/uploads/default/original/3X/b/9/b93dba0ac08089489ef20b2e46313586c7bdc691.png =602x204)
+编译后
+
+![](https://forum.cocos.org/uploads/default/original/3X/e/7/e7f4bc6733a1c33d2d3e91e37f919c4af9a6be5c.png =690x166)
+
+## 注意事项
+
+必须配置扩展包 tsconfig 内的 _rootDir 或者 rootDirs_ 以及 _outDir_

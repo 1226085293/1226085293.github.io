@@ -1,0 +1,21 @@
+---
+title: C++ 死锁检测
+date: 2020-06-02 21:04:47
+tags:
+  - C++
+  - 多线程
+---
+
+csdn 大多死锁检测代码要积分，这里我贡献出自己昨天写的死锁检测代码给大家使用，**代码已精简和优化**
+**效果图和使用代码**都可以看下图
+
+最典型的**双死锁**，效果图：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200603175410932.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Mzk4MzAx,size_16,color_FFFFFF,t_70)
+
+再来看看**三死锁**，效果图：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200603175504280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Mzk4MzAx,size_16,color_FFFFFF,t_70)
+
+其实在其他复杂的情况下也都能帮你检测到死锁发生，及时暂停调试。如果能帮到你就给个赞吧！
+代码已经被我精简并优化过了。但是还是**建议大家只在 debug 下使用**，release 版本如果不在意性能消耗也可以嵌入系统， 亦可以避免死锁直接跳过，但是跳过获取锁之后的操作都是没有线程安全的。
+
+代码库在 github， -->[点击进入](https://github.com/1226085293/dead_lock_check)

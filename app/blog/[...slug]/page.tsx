@@ -40,8 +40,8 @@ export async function generateMetadata(props: {
   const modifiedAt = new Date(post.lastmod || post.date).toISOString()
   const authors = authorDetails.map((author) => author.name)
   let imageList = [siteMetadata.socialBanner]
-  if (post.images) {
-    imageList = typeof post.images === 'string' ? [post.images] : post.images
+  if (post.image) {
+    imageList = [post.image]
   }
   const ogImages = imageList.map((img) => {
     return {
@@ -104,7 +104,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
     }
   })
 
-  const Layout = layouts[post.layout || defaultLayout]
+  const Layout = layouts[post.layout || (post.image ? 'PostBanner' : defaultLayout)]
 
   return (
     <>

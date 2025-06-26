@@ -1,0 +1,180 @@
+---
+title: 在插件内使用代码编辑器
+date: 2022-06-03 03:06:00
+tags:
+  - CocosCreator 插件
+---
+
+## # 效果
+
+![](https://forum.cocos.org/uploads/default/original/3X/4/f/4feed30170d7c229235e0f0b80c9f42b31eb203a.png =355x500)
+
+## # 前言
+
+> 由于使用坑比较多，所以开贴记录
+
+## # 选择
+
+市面上流行的编辑器有 Ace，Monaco，还有比较小众的 CodeMirror
+
+这里有比较帖，可以看看，[跳转链接](https://www.xheldon.com/tech/a-comparison-of-code-editor.html)
+
+> 这里说说自己的使用感受
+
+- _Ace_
+  - 好处： 轻量级，有官方文档，使用简单
+  - 坏处： Typescript 没有类型提示，没有报错提示，全部需要自己接
+- _Monaco_
+  - 好处：vscode 核心，使用体验堪比 vscode，还可以接入部分插件
+  - 坏处：没有官方文档，入门困难
+    _经过体验后最终选择了 monaco 编辑器，只怪语法提示太香_
+
+## # 接入
+
+_1. 安装 npm 包_
+
+```javascript
+npm i monaco-editor
+```
+
+_2. 添加 css_
+
+&nbsp;&nbsp;&nbsp;&nbsp;_将下面的 link 标签放在 Editor.Panel.define 导出的 template 中_
+
+```javascript
+<link
+  rel="stylesheet"
+  href="替换为插件目录/node_modules/monaco-editor/min/vs/editor/editor.main.css"
+></link>
+```
+
+_3. 使用加载器_
+ps: 由于 monaco 编辑器只有 esm 模块和 amd 模块，我们的插件不能直接使用，除了 webpack 等打包工具，还可以直接用 min 版本提供的 loader 加载器加载
+
+```javascript
+/** monaco 加载器 */
+const monaco_loader = require(path.join(替换为插件目录, 'node_modules/monaco-editor/min/vs/loader'))
+
+// monaco 加载器配置
+monaco_loader.require.config({
+  paths: {
+    vs: path.join(替换为插件目录, 'node_modules/monaco-editor/min/vs'),
+  },
+  // 本地化
+  'vs/nls': {
+    availableLanguages: { '*': 'zh-cn' },
+  },
+})
+```
+
+_4. 加载编辑器并初始化_
+
+这里注意我们查找的标签类名为 editor，也就是`<div class="editor"></div>`才是编辑器的标签，当然也可以自行修改
+
+- _ts：typescript 模块，自行 `npm i typescript` 后 `import ts from "typescript";`_
+
+```javascript
+// 加载编辑器并初始化
+monaco_loader.require(
+	["vs/editor/editor.main"],
+	(monaco: typeof import("monaco-editor")) => {
+		/** 编辑器元素 */
+		let editor_element_as = (this.$el as HTMLElement).getElementsByClassName(
+			"editor"
+		);
+		if (!editor_element_as.length) {
+			return;
+		}
+
+    	// 引用 cc.d.ts
+    	{
+    		let file_s = fs.readFileSync(
+    			path.join(Editor.Project.path, "temp/declarations/cc.d.ts"),
+    			"utf-8"
+    		);
+    		let reg_as = file_s.match(/(?<=<reference path=")([^"]*)(?=")/g);
+    		if (reg_as?.length) {
+    			monaco.languages.typescript.typescriptDefaults.addExtraLib(
+    				fs.readFileSync(reg_as[0], "utf-8").replace('"cc"', "cc"),
+    				"cc.d.ts"
+    			);
+    		}
+    	}
+
+    	/** 当前编辑器 model */
+    	let curr_model = monaco.editor.createModel(
+    		``,
+    		"typescript",
+    		monaco.Uri.parse(`main.ts`)
+    	);
+
+    	/** 项目 tsconfig 解析 */
+    	let tsconfig_parse: ts.ParsedCommandLine;
+    	{
+    		/** 配置路径 */
+    		let tsconfig_path_s = path.join(Editor.Project.path, "tsconfig.json");
+    		let tsconfig = ts.readConfigFile(
+    			path.join(Editor.Project.path, "tsconfig.json"),
+    			ts.sys.readFile
+    		);
+    		if (!tsconfig.error) {
+    			 tsconfig_parse = ts.parseJsonConfigFileContent(
+    				tsconfig.config,
+    				ts.sys,
+    				path.dirname(tsconfig_path_s)
+    			);
+    		}
+    	}
+
+    	for (let k_n = 0, length_n = editor_element_as.length; k_n < length_n; k_n++) {
+    		let element = editor_element_as.item(k_n) as HTMLElement;
+
+    		// 初始化编辑器
+    		let editor = monaco.editor.create(element, {
+    			value: [""].join("\n"),
+    			language: "typescript",
+    			theme: "vs-dark",
+    			model: curr_model,
+    		});
+
+    		// 设置编译配置
+    		if (tsconfig_parse) {
+    			monaco.languages.typescript.typescriptDefaults.setCompilerOptions(
+    				tsconfig_parse.options as any
+    			);
+    		}
+
+    		// 防止编辑器初始化时元素未展示导致展示错误
+    		new ResizeObserver(() => {
+    			editor.layout();
+    		}).observe(element);
+    	}
+    }
+
+);
+
+```
+
+## # 使用
+
+_1. 如何将文件夹设为工作区?_
+
+&nbsp;&nbsp;&nbsp;&nbsp;这里大家记住，_monaco 编辑器没有工作区的概念_，而是将每个文件都视为一个 Model，我们只需要使用 _monaco.editor.createModel_
+
+```javascript
+// 示例
+monaco.editor.createModel(
+  // 文件内容字符串
+  `export class Test {}`,
+  // 语言类型
+  'typescript',
+  // 文件路径，xxx/xxx.ts
+  monaco.Uri.parse(`Test.ts`)
+)
+```
+
+# 结语
+
+- 使用帮助（需梯）：[https://blog.expo.dev/building-a-code-editor-with-monaco-f84b3a06deaf](https://blog.expo.dev/building-a-code-editor-with-monaco-f84b3a06deaf)
+
+- 主题扩展（需梯）：[https://github.com/brijeshb42/monaco-themes](https://github.com/brijeshb42/monaco-themes)

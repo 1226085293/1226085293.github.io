@@ -1,0 +1,192 @@
+---
+title: 浅谈自己的编程风格
+date: 2022-04-01 01:22:00
+tags:
+  - Typescript
+---
+
+## # 前言
+
+> 此篇闲聊贴，大家可以随意发表自己的意见
+
+## # 命名风格
+
+### - 蛇形命名法
+
+也就是类似 _user_name_
+
+### - 原因
+
+_强迫症_
+以前用驼峰，现在项目要求也用驼峰，不过我私下还是蛇形，嘿嘿嘿
+虽然是蛇形，不过我还是有一套自己 _久经考验_
+
+## # 命名结构
+
+变量含义在前，变量类型在后， <img src="https://forum.cocos.org/images/emoji/twitter/chestnut.png?v=9" title=":chestnut:" class="emoji" alt=":chestnut:"/>
+
+- _boolean：_
+
+```javascript
+let open_b: boolean;
+let touch_b: boolean;
+```
+
+- _string：_
+
+```javascript
+let name_s: string;
+let time_s: string;
+```
+
+- _number：_
+
+```javascript
+let count_n: number;
+let time_n: number;
+```
+
+- _object：若是类型名超过 4 个字符则直接省略或者简写_
+
+```javascript
+let temp_node: cc.Node;
+let temp_anim: cc.Animation;
+```
+
+- _any 或不清楚类型：那就直接省略_
+
+```javascript
+let temp: any;
+```
+
+- _array：一维便是一 s，对象类型用 a 代替_
+
+```javascript
+// 基础数据类型数据
+let temp_ss: string[];
+let temp_ns: number[];
+let temp_bs: boolean[];
+
+// 对象数组
+let node_as: cc.Node[];
+
+// 多维数组
+let node_ass: cc.Node[][];
+let node_asss: cc.Node[][][];
+```
+
+如果用我这套命名法，那么不用把鼠标放变量上，_一眼就能知道这个变量是什么类型_
+
+## # 命名规则
+
+> 首先必须满足上面的类型规则，接下来…
+
+### - Class
+
+- _private 成员/函数_
+
+```auto
+private _test: any;
+```
+
+- _protected 成员/函数_
+
+```auto
+protected _test: any;
+```
+
+- _public 成员/函数_
+
+```auto
+public test: any;
+```
+
+### - Function
+
+- 参数：_下划线结尾，代表外部参数_
+
+```auto
+class test {
+    public func(test_b_: boolean, args_as_: any[]): void { ... }
+}
+```
+
+### - 复数变量
+
+- _直接在第二个及之后变量末尾追加数字_
+
+```auto
+let temp_n: number;
+let temp2_n: number;
+
+
+// 循环示例，用的最多!!!，也是最方便的
+this.node.children.forEach((v, k_n)=> {
+    v.children.forEach((v2, k2_n)=> {
+    });
+});
+```
+
+## # 代码块划分
+
+不知道各位是什么注释代码块的呢？会不会出现代码块注释和变量注释放在上下两行很难看的情况，或者留出几行空间注释，_我觉得都不行_
+
+```auto
+function temp() {
+    // 这里是代码块1
+    {
+        let temp_n = 0;
+        // 这里是代码块2
+        {
+            let temp_n = 0;
+        }
+    }
+}
+```
+
+_用块作用域来划分代码块_， 就算出现变量命名相同也不会警告，更可以通过 ide 折叠代码块，_获得极好的代码阅读体验！_
+
+## # 文件命名
+
+采用目录跟进式命名
+
+```javascript
+// assets/script/main/login
+则 login 文件夹下的 ts 文件命名为：main_login_xxx.ts
+```
+
+## # 模块结构
+
+> 当初研究了段时间模块拆分，最终选择如下
+
+```javascript
+// 存放模块内部使用的接口，类型，枚举，常量等
+module _test { ... }
+
+class test { ... }
+
+// 存放模块内部和外部使用的接口，类型，枚举，常量等
+export module test_ { ... }
+
+export default test;
+```
+
+## # 模块集成
+
+> 写框架必配，我用过几乎所有写法，下面的是我最推荐使用的方式
+
+```auto
+// ui_a.ts
+export default a;
+
+// ui_b.ts
+export default b;
+
+// ui_export.ts
+export { a, a_ } from "./a";
+export { b, b_ } from "./b";
+
+// ui.ts
+import * as ui from "./ui_export";
+export default ui;
+```

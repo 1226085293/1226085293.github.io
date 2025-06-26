@@ -1,0 +1,16 @@
+---
+title: cc党绝不屈服
+date: 2021-09-17 21:33:00
+tags:
+  - CocosCreator
+---
+
+为了让大家更香的使用 cc，而不是每个脚本都要去手动加 `import * as cc from "cc"`，或者去修改脚本模板，给大家分享个办法
+在项目任意一处新建 _cc.ts_
+
+```javascript
+import * as cc from 'cc'
+export default cc
+```
+
+好了，就这么简单，你的 cc 提示回来了，不过还没有测试过会不会影响 cocos 的未使用模块剔除功能，大家可以自行测试

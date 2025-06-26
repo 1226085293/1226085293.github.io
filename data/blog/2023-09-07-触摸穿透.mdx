@@ -1,0 +1,26 @@
+---
+title: 触摸穿透
+date: 2023-09-07 10:10:00
+tags:
+  - CocosCreator
+---
+
+- 3.4 之前：
+
+```typescript
+this.node.eventProcessor.touchListener.setSwallowTouches(false)
+```
+
+- 3.4 及之后
+
+```typescript
+// event_ 类型: cc.EventTouch | cc.EventMouse
+
+// 触摸穿透
+event_.preventSwallow = true
+// 拦截事件
+event_.propagationStopped = false
+```
+
+参考自：
+https://forum.cocos.org/t/topic/134993/2?u=1226085293

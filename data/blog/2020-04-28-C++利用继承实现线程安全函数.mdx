@@ -1,0 +1,118 @@
+---
+title: C++利用继承实现线程安全函数
+date: 2020-04-28 01:23:41
+tags:
+  - C++
+  - 多线程
+---
+
+因为被多线程搞的有点头痛，所以想了一个简单的办法，不用自己手动加锁，也免去了使用 raii 机制，直接传递一个 std::function 即可.  仅做参考
+
+代码：
+
+raii_critical.h
+
+```cpp
+​
+#pragma once
+#include <Windows.h>
+
+class raii_critical {
+private:
+	CRITICAL_SECTION* _crit;
+public:
+	raii_critical(CRITICAL_SECTION* crit) {
+		_crit = crit;
+		EnterCriticalSection(_crit);
+	}
+	raii_critical(const raii_critical&) = delete;
+	raii_critical& operator =(const raii_critical&) = delete;
+	~raii_critical() {
+		LeaveCriticalSection(_crit);
+	}
+};
+```
+
+safe_base.h
+
+```cpp
+​
+#pragma once
+#include <functional>
+#include <map>
+#include "raii_critical.h"
+
+class safe_base {
+private:
+	bool									_exit;			//退出标记
+	CRITICAL_SECTION						_critical;		//临界区
+	std::map<uint8_t, CRITICAL_SECTION*>	_criticals;		//多临界区
+protected:
+public:
+	safe_base() : _exit(false) {
+		InitializeCriticalSection(&_critical);
+	}
+	virtual ~safe_base() {
+		{
+			raii_critical r1(&_critical);
+			_exit = true;
+		}
+		DeleteCriticalSection(&_critical);
+		for (auto i : _criticals) {
+			DeleteCriticalSection(i.second);
+		}
+	};
+
+	// 默认安全函数
+	virtual void safe_func(std::function<void(safe_base*)>&& task) {
+		{
+			raii_critical r1(&_critical);
+			if (_exit) {
+				return;
+			}
+		}
+		raii_critical r1(&_critical);
+		task(this);
+	}
+
+	// 指定临界安全函数
+	virtual void safe_func(uint8_t id, std::function<void(safe_base*)>&& task) {
+		{
+			raii_critical r1(&_critical);
+			if (_exit) {
+				return;
+			}
+		}
+		CRITICAL_SECTION* cri = nullptr;
+		auto result = _criticals.find(id);
+		if (result == _criticals.end()) {
+			cri = new CRITICAL_SECTION;
+			_criticals[id] = cri;
+			InitializeCriticalSection(cri);
+		}
+		raii_critical r1(cri);
+		task(this);
+	}
+};
+```
+
+使用：
+
+```cpp
+#include "safe_base.h"
+
+class safe_test1 : public safe_base {
+public:
+	int a = 0;
+};
+
+int main() {
+	safe_test1 s1;
+	s1.safe_func([](safe_base* me) {
+		auto _me = dynamic_cast<safe_test1*>(me);
+		_me->a = 10;
+	});
+}
+```
+
+这个最重要的功能还是退出标记，可以防止析构后其他进程仍在操作已销毁的对象造成异常。不过不能传参，局限性很大

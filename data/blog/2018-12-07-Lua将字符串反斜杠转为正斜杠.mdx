@@ -1,0 +1,25 @@
+---
+title: Lua将字符串反斜杠转为正斜杠
+date: 2018-12-07 15:55:40
+tags:
+  - Lua
+---
+
+```lua
+function String_conversion(value)
+	local path = ""
+	for i=1,#value do
+        --获取当前下标字符串
+		local tmp = string.sub(value,i,i)
+        --如果为'\\'则替换
+		if tmp=='\\' then
+			path = path..'/'
+		else
+			path = path..tmp
+		end
+	end
+	return path
+end
+```
+
+之前用 lua 的 string.gsub 函数发现不行，网上也没找到，于是就自己写了个简单的函数

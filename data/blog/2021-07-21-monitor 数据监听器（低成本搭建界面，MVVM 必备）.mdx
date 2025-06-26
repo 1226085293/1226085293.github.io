@@ -1,0 +1,65 @@
+---
+title: monitor 数据监听器（低成本搭建界面，MVVM 必备）
+date: 2021-07-21 22:26:00
+tags:
+  - Typescript
+  - MVVM 模式
+---
+
+# # monitor 是什么？
+
+它的功能很简单，_监听数据的修改_
+
+## # 可以用它做什么？
+
+- _数据到视图_
+- _视图到数据_
+- _debugger_
+
+## # 效果演示
+
+![](https://forum.cocos.org/uploads/default/optimized/3X/9/9/995aa55fdc4b5b5c32f437bc1ebfd9ab22b4d7e9_2_430x500.gif =430x500)>
+
+![](https://forum.cocos.org/uploads/default/optimized/3X/1/e/1e3d2ce5b4da9357bef4ebd0192fca45c042154f_2_690x465.gif =690x465)
+
+_monitor 有无限的可能_
+_它很灵活_，使用时一定要符合规范，不然你会写成一堆屎山，_个人建议更新的视图节点只能是当前组件节点的下级_
+
+## # 使用代码
+
+![](https://forum.cocos.org/uploads/default/original/3X/6/2/62aa0107dcb6d4eb56e87773d96b1bd0a66d2a2d.png =543x500)
+
+_monitor_
+
+监听的数据尽量不要依赖外部模块，比如 a 模块和 b 模块互相监听各自的数据，像这样继续下去，一旦其中任何一个模块出问题，其他监听了问题模块数据的模块都会出现问题
+
+_monitor_trigger_
+比如节点树
+
+- a (组件 A)
+- b (组件 B)
+  - d
+- c
+
+1. c，d 节点挂载了 monitor_trigger
+1. c 节点的数据目标尽量只用组件 A
+1. d 节点的数据目标尽量只用组件 B
+
+每个组件模块的数据只提供给下属节点和组件，不包括下属组件的子节点，避免组件间交叉使用，否则很容易出错，后续维护也困难
+
+## # 更新日志
+
+- monitor_trigger 预制体/场景数据全部转为 string 存储，方便修改
+- 添加数据类型检查
+- 添加数据键提示
+
+## # 源码下载（包含 Demo）
+
+- 示例源码
+
+  github：[https://github.com/1226085293/mk_monitor](https://github.com/1226085293/mk_monitor)
+
+  gitee：[https://gitee.com/muzzik/mk_monitor](https://gitee.com/muzzik/mk_monitor)
+
+- 后续更新
+  [https://gitee.com/muzzik/mk_framework/blob/main/assets/@framework/mk_monitor.ts](https://gitee.com/muzzik/MKFramework/blob/main/extensions/MKFramework/assets/mk-framework/@framework/mk_monitor.ts)

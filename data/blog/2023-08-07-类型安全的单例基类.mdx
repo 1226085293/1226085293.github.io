@@ -1,0 +1,45 @@
+---
+title: 类型安全的单例基类
+date: 2023-08-07 10:46:00
+tags:
+  - Typescript
+  - 单例模式
+---
+
+## 适配：
+
+- 构造参数类型
+- 函数返回类型
+
+> 来自于 MKFramework
+
+```typescript
+/** 继承单例 */
+abstract class mk_instance_base {
+  /** 单例方法 */
+  static instance<T extends new (...args_as: any[]) => any>(
+    this: T,
+    ...args_as_: ConstructorParameters<T>
+  ): InstanceType<T> {
+    const self = this as any
+
+    if (!self._instance) {
+      self._instance = new self(...args_as_)
+    }
+
+    return self._instance
+  }
+}
+
+export default mk_instance_base
+```
+
+## 为什么不采用 getter 的方式替代 function 接口？
+
+getter 类型并不通用：
+
+1.  如果构造参数是动态的情况下初始化默认值，getter 并不适用
+2.  如果你想要一个单例和多实例的 class，那么也不能用 getter
+
+    > 例子：日志类，存在一个默认的全局日志对象通过 logger.instance() 获取，还可以通过 new logger(...) 创建指定模块使用的 logger 对象
+    > 例子 2：网络类，存在一个默认的全局网络对象通过 network.instance() 获取，还可以通过 new network(...) 创建指定服务器使用的 network 对象

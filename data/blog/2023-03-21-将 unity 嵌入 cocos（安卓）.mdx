@@ -1,0 +1,141 @@
+---
+title: 将 unity 嵌入 cocos（安卓）
+date: 2023-03-21 16:25:00
+tags:
+  - CocosCreator
+  - Unity
+  - Android
+---
+
+# 使用配置
+
+unity 2021.3.20f1c1
+cocos creator 3.6.1
+
+###**备注：**
+
+- unity 打包依赖 sdk,ndk,il2cpp 需要提前使用 UnityHub 下载
+
+# 接入步骤
+
+- 导出 unity 安卓项目
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/22/1.png)
+
+- 将导出的 unity 安卓项目中的 unityLibrary 拷贝到 cocos 安卓项目根目录下
+
+- 将 `unity 安卓项目根目录\launcher\src\main\res` 拷贝到 `cocos项目根目录\native\engine\android\res`，选择覆盖
+
+- 将 `cocos 安卓项目根目录\unityLibrary\libs\unity-classes.jar` 解压缩删除 `com\google` 文件夹后再压缩为 unity-classes.jar
+
+- settings.gradle 内增加 include，project('')
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/22/2.png)
+
+- build.gradle（Module）修改
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/22/3.png)
+
+- build.gradle（Project）修改
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/22/4.png)
+
+- 在 cocos 安卓项目的 AndroidManifest 中修改 unityActivity 为单独进程，防止退出 unity 结束主进程
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/22/5.png)
+
+- 添加原生跳转方法
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/22/6.png)
+
+- 同步模块 ndk,sdk 版本设置
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/22/7.png)
+
+# 问题解决
+
+- 安装后出现两个图标，删除蓝色区域代码
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/22/8.png)
+
+- 进入 Unity 切后台旋转屏幕 activity 被重载，同步 unity 的 activity 属性
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/22/9.png)
+
+- 取消 activity 跳转动画，修改 android:theme
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/22/10.png)
+
+- activity 透明背景导致残留上个 activity 的画面，修改 unity 场景内摄像机的清除标志和背景，初始的应该是透明的，所以能看到后面的 activity
+  ![](https://gitee.com/muzzik/images/raw/master/blog/article/22/11.png)
+
+# 示例代码
+
+AppActivity.java
+
+```java
+
+public class AppActivity extends CocosActivity {
+    private static AppActivity instance;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // 初始化单例
+        AppActivity.instance = this;
+    }
+
+    public static AppActivity getInstance() {
+        return instance;
+    }
+
+    public static void jumpToUnity() {
+        // 启动 unity activity
+        instance.startActivity(new Intent(instance, UnityActivity.class));
+    }
+}
+```
+
+UnityActivity.java
+
+```java
+public class UnityActivity extends UnityPlayerActivity {
+    private static UnityActivity instance;
+
+    public static UnityActivity getInstance() {
+        return instance;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // 初始化单例
+        instance = this;
+    }
+
+    public void jumpToCocos() {
+        instance.startActivity(new Intent(instance, AppActivity.class));
+    }
+}
+```
+
+cocos 跳 unity 代码
+
+```ts
+buttonJumpToUnity(): void {
+	cc.native.reflection.callStaticMethod(
+		"com/cocos/game/AppActivity",
+		"jumpToUnity",
+		"()V"
+	)
+}
+```
+
+unity 跳 cocos 代码
+
+```C#
+public void buttonJumpToCocos() {
+    // UnityActivity 类的全路径
+    string unityActivityClassName = "com.cocos.game.UnityActivity";
+    // 创建 UnityActivity 对象
+    AndroidJavaClass unityActivityClass = new AndroidJavaClass(unityActivityClassName);
+    AndroidJavaObject unityActivity = unityActivityClass.CallStatic<AndroidJavaObject>("getInstance");
+    // 调用 UnityActivity 对象的 jumpToCocos 方法
+    unityActivity.Call("jumpToCocos");
+}
+```
+
+# 未解决问题
+
+- 进入 unity 时需要停止 cocosActivity 渲染（减少性能浪费）
+  如果你把 unityActivity 设置为半透明就能看到 cocosActivity 还在渲染

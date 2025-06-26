@@ -1,0 +1,23 @@
+---
+title: Socket端口复用和非阻塞套接字
+date: 2020-05-26 15:42:39
+tags:
+  - C++
+  - 网络
+  - Socket
+---
+
+```cpp
+​
+BOOL optval = TRUE;
+// 端口复用
+if (SOCKET_ERROR == setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (char*)&optval, sizeof(optval))) {
+}
+
+
+// 非阻塞套接字
+if (SOCKET_ERROR == ioctlsocket(sock, FIONBIO, (u_long FAR*) & optval)) {
+}
+
+​
+```

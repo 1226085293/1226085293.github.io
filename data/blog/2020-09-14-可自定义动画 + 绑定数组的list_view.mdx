@@ -1,0 +1,29 @@
+---
+title: 可自定义动画 + 绑定数组的list_view
+date: 2020-09-14 02:00:00
+tags:
+  - CocosCreator
+---
+
+一个简单的效果：
+
+![](//forum.cocos.org/uploads/default/optimized/3X/1/6/1633f769a7e8f0199087ed00014a27a0f9377a2b_2_285x500.gif =285x500)
+
+_为啥想要做这个_
+
+- 在论坛也看到老哥做的虚拟列表，一看代码两千行…（出了问题都不知道咋改）
+- 在工作中经常使用 list， 但是很多项目基本都没有加上动画，导致用户体验差，自己体验也差，于是写了个可定制动画的 list_view
+- 绑定数据：目前只实现了绑定数组（由于懒），更新数组内数据需要手动调用 refresh_item 更新，数组的 push、pop、sort、shift、unshift、splice 都进行了监听，在调用时自动更新数据。
+- 不创建重置事件/拉取事件就不会有对应的动画，可按需更改
+- 目前只支持竖列表和固定高度 item，后续看情况更新
+- 代码只有三百行左右，自己可按需更改（写的渣）
+  _使用_
+- 只需要添加一个重置数据接口（不需要可以不用）以及拉取下一页的数据接口即可
+
+![](//forum.cocos.org/uploads/default/original/3X/6/2/6290cf38e3999b52a5566138d878f0d2d1876acc.png =521x465)
+
+- item 只需要继承 item_base 后实现对应的视图刷新函数即可
+
+![](//forum.cocos.org/uploads/default/original/3X/1/2/12a1b5a292c8a8d90f29380d4ee6438c38507e1e.png =565x140)
+
+_具体请看 github 示例_

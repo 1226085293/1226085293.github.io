@@ -1,0 +1,23 @@
+---
+title: 滑动选择器、时间选择器，还不快来试试？
+date: 2020-10-09 03:09:00
+tags:
+  - CocosCreator
+---
+
+话不多说，先上效果图：
+
+![](//forum.cocos.org/uploads/default/optimized/3X/4/5/45ae9f6b7b61bec018128f1af88e1f6cd45950dd_2_690x433.gif =690x433)
+由于搭建 UI 需要用到时间选择器，论坛查找一番后只找到几个相似的组件。但是由于看不惯内部代码（太复杂…），作为菜鸡的自己就手动写了一个，目前只支持竖列表，如果后面有需要可以留言。需求多的话可以加上横列表。
+外部接口很简单，只有两个：
+
+````auto
+    public update_view(): void {...}```
+
+```/**选中节点下标 */
+    get selected_n() {... }```
+
+代码注释都有，简单明了...
+此组件只需要挂载在ScrollView组件的节点上即可，需要保证item锚点y为0.5。其他都不要求，具体看demo
+github: [https://github.com/1226085293/slider_select](https://github.com/1226085293/slider_select)
+````

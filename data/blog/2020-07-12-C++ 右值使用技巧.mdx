@@ -1,0 +1,42 @@
+---
+title: C++ 右值使用技巧
+date: 2020-07-12 20:10:40
+tags:
+  - C++
+---
+
+- 延长将亡生命周期
+
+1. 第一种方法：
+
+```cpp
+test get_t() {
+	return test();
+}
+
+int main() {
+	test t = get_t();
+}
+```
+
+    调用顺序： 构造
+
+2. 第二种方法：
+
+```cpp
+test get_t(test&& a) {
+	return a;
+}
+
+int main() {
+	test t = get_t(test());
+}
+```
+
+调用顺序： 构造 -> 移动构造 -> 析构
+
+备注: 这里之所以不能避免移动构造和析构个人猜测是因为不知道接收方是右值还是左值，
+比如 int a = _; 或者 int&& a = _; 如果大佬知道请讲解一下。
+
+- 兼容左右值参数
+  [https://blog.csdn.net/qq_28398301/article/details/107304554](https://blog.csdn.net/qq_28398301/article/details/107304554)

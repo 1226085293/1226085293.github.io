@@ -1,0 +1,82 @@
+---
+title: 3.x 的 PolygonCollider2D 多边形Mask
+date: 2022-03-23 10:01:00
+tags:
+  - CocosCreator
+---
+
+## # 使用效果
+
+![](https://forum.cocos.org/uploads/default/original/3X/6/6/6677ed86680440b6b0abb272169d3cefb1866a28.png =690x416)
+
+![](https://forum.cocos.org/uploads/default/original/3X/c/4/c4a09b03fbdd140af6cc88497032b7781f3a6477.png =631x467)
+
+## # 简介
+
+虽然 3.x 的 Mask 支持了 GRAPHICS_STENCIL 类型绘制，但是不能在编辑器编辑有个卵用，所以简单的写了个套用 PolygonCollider2D 组件的 points
+
+## # 下载
+
+<a class="attachment" href="/uploads/short-url/rSFp71NMO7YKuBEDWLHQlgQWCzP.zip">
+  polygon_mask_editor.zip
+</a>
+(844 字节)
+
+## # 源码展示
+
+```javascript
+import { _decorator, Component } from "cc";
+import * as cc from "cc";
+const { ccclass, property, executeInEditMode, requireComponent } = _decorator;
+
+/** 多边形遮罩编辑 */
+@ccclass("polygon_mask_editor")
+@executeInEditMode
+@requireComponent(cc.PolygonCollider2D)
+export class polygon_mask_editor extends Component {
+	mask_comp: cc.Mask;
+	polygon_comp: cc.PolygonCollider2D;
+	/* -------------------------------segmentation------------------------------- */
+	onLoad() {
+		this.mask_comp = this.getComponent(cc.Mask);
+		this.polygon_comp = this.getComponent(cc.PolygonCollider2D);
+		if (this.mask_comp.type !== cc.Mask.Type.GRAPHICS_STENCIL) {
+			return;
+		}
+		// 监听 point 修改
+		let old_value = this.polygon_comp["_points"];
+		Object.defineProperty(this.polygon_comp, "_points", {
+			get: () => old_value,
+			set: (new_value) => {
+				old_value = new_value;
+				// 更新遮罩
+				this._update_mask();
+			},
+		});
+	}
+	start() {
+		this._update_mask();
+	}
+	/* ***************功能函数*************** */
+	/** 更新遮罩 */
+	private _update_mask(): void {
+		if (!this.isValid || this.mask_comp.type !== cc.Mask.Type.GRAPHICS_STENCIL) {
+			return;
+		}
+		this.mask_comp.graphics.clear();
+		this.mask_comp.graphics.moveTo(
+			this.polygon_comp.points[0].x,
+			this.polygon_comp.points[0].y
+		);
+		for (let k_n = 1; k_n < this.polygon_comp.points.length; ++k_n) {
+			this.mask_comp.graphics.lineTo(
+				this.polygon_comp.points[k_n].x,
+				this.polygon_comp.points[k_n].y
+			);
+		}
+		this.mask_comp.graphics.close();
+		this.mask_comp.graphics.stroke();
+		this.mask_comp.graphics.fill();
+	}
+}
+```

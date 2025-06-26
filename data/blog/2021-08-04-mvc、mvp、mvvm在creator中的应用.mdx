@@ -1,0 +1,71 @@
+---
+title: mvc、mvp、mvvm在creator中的应用
+date: 2021-08-04 23:40:00
+tags:
+  - MVC 模式
+  - MVP 模式
+  - MVVM 模式
+---
+
+## # 前言
+
+> 此篇教程贴对新手的帮助比较大，大佬们也可以随便看看
+> 示例项目:
+
+<a href="https://github.com/1226085293/cc-structure" rel="nofollow noopener">
+  github(点击跳转)
+</a>
+
+<a href="https://gitee.com/muzzik/cc-structure" rel="nofollow noopener">
+  gitee(点击跳转)
+</a>
+
+## MVC
+
+简单的介绍下，MVC 其实是 model、view、controller 的分离，但是发现没有，网上的很多 MVC 的调用关系都不一样，如下图
+![](https://forum.cocos.org/uploads/default/optimized/3X/a/d/ad2b9c1cc3a2bc635778989b562f58819db824e1_2_192x500.png =192x500)
+
+其实只要符合**model、view、controller**架构的都是mvc
+_model_： 数据层
+
+_view_：视图层（只存在视图方法）
+
+_controller_：业务逻辑层（C 中不应该出现直接控制视图的逻辑，而是*通过数据（设计图一）或者事件（设计图二）去驱动视图*
+_小提示_
+
+- 层与层之间的交互尽量使用回调或者去使用消息机制去完成，尽量避免直接持有
+  示例项目中采用第一结构图
+
+---
+
+## MVP
+
+![](https://forum.cocos.org/uploads/default/original/3X/6/3/630ae17734159b2d2e6cd927b5b9f2f87ba43f62.png =665x205)
+model：数据层（只与 P 交互）
+
+view：视图层（只与 P 交互）
+
+presenter：业务逻辑层（负责数据的更新以及视图的更新）
+MVP 和 MVC 最大的区别就是完全隔离了 model 和 view，但是也造成了一个问题，presenter 的臃肿
+示例项目中采用第二结构图
+
+---
+
+## MVVM
+
+![](https://forum.cocos.org/uploads/default/original/3X/d/a/da7ae6fd091275fe2f387adec261af13d0f78927.png =574x197)
+model：数据层（只与 VM 交互）
+
+view：视图层（只与 VM 交互）
+
+viewModel：业务逻辑层（负责视图和数据之间的绑定）
+咋一看和 MVP 的结构并没有什么区别，但是他们区别在于内部的使用，VM 负责的是将 V 和 M 绑定，然后操作 M 即可实现 V 的更新，这一点可以免去手动派发事件，添加事件，也避免了程序上的疏漏（比如忘记派发更新视图事件）
+_以上均为个人理解，仅供参考，如有疏漏错误望告知_
+
+---
+
+_个人感悟_
+
+- 最快的方式，单脚本开发
+- 适合换皮的架构，MVC
+- 适合展示数据多的架构，MVVM

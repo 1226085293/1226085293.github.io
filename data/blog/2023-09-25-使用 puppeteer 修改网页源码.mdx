@@ -1,0 +1,59 @@
+---
+title: 使用 puppeteer 修改网页源码
+date: 2023-09-25 01:10:00
+tags:
+  - Nodejs
+---
+
+本来打算做抖音弹幕游戏的直播内容抓取，写了一半发现已经有官方 API 了，那就不写了，顺便记录下怎么修改网页脚本/源码
+
+## 依赖包
+
+- puppeteer
+- axios
+
+## 实现
+
+```typescript
+import puppeteer from 'puppeteer'
+import axios from 'axios'
+
+;(async () => {
+  let url_s = 'https://live.douyin.com/771483148548'
+  // 启动 Puppeteer
+  const browser = await puppeteer.launch({
+    // chrome 程序路径，可不填
+    executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
+    headless: false,
+  })
+  const page = await browser.newPage()
+
+  // 监听页面的请求，拦截请求并修改源码
+  await page.setRequestInterception(true)
+  page.on('request', async (request) => {
+    // 如果是修改的脚本
+    if (request.url().endsWith('/webcast/douyin_live/7317.5c44ebf9.js')) {
+      let response = await axios.get(request.url())
+      /** 旧内容 */
+      let old_content_s = response.data as string
+      /** 修改位置 */
+      let index_n = old_content_s.indexOf('return eM(r,o,s)')
+      /** 新内容 */
+      let new_content_s =
+        old_content_s.slice(0, index_n) +
+        `console.log("收到消息", r, s);` +
+        old_content_s.slice(index_n)
+
+      await request.respond({
+        body: new_content_s,
+        headers: response.headers,
+        status: response.status,
+      })
+    } else {
+      request.continue()
+    }
+  })
+  // 打开网页
+  await page.goto(url_s)
+})()
+```

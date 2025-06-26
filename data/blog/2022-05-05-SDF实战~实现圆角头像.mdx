@@ -1,0 +1,52 @@
+---
+title: SDF实战~实现圆角头像
+date: 2022-05-05 22:07:00
+tags:
+  - SDF
+  - CocosCreator
+---
+
+继上篇帖子之后，为了让大家更好的了解 SDF，以及如何运用在 creator，特出几个小案例
+
+- 上篇帖子
+
+<a href="https://forum.cocos.org/t/topic/133228" class="inline-onebox">
+  【muzzik 教程】：我所理解的 SDF（阴影，描边，外发光...）｜社区征文
+</a>
+
+## # 效果
+
+![](https://forum.cocos.org/uploads/default/original/3X/7/8/786c687001561c3c1f1ac087a413e84b314e29a3.gif =603x398)
+
+## # 实现
+
+ps：不了解 SDF 原理的朋友请看上一篇帖子…
+如果我们想让 SDF 图形变的圆润怎么做呢？一句代码就可以搞定，用 _距离场 - 缩小半径_，会得到如下的效果
+
+![](https://forum.cocos.org/uploads/default/original/3X/9/2/924ec29f69f7e77540830d3a8a1e7d3942ba4341.gif =603x398)
+代码如下：
+
+- rounded_f：输入变量，控制圆滑度
+
+```auto
+// 距离场
+float dist_f = sdf_box(render_v2, vec2(0.5)) - rounded_f;
+```
+
+为什么会得到这样的效果呢？因为我们距离场的距离是到 _物体表面_ 的距离，如果我们缩减这个距离，就不是 _长 - 长，宽 - 宽_ 的效果了，而是*从物体边缘往中心点缩减，所以才会让物体变得圆滑*
+
+- 例（上方代码）：矩形大小为 0.5，rounded_f 为 0.5，也就是在离矩形中心 1.0 距离的位置才代表在物体内，而 1.0 以外对于横竖方向都是不可见的区域，而斜方向却是可以大于 1.0，导致四个角变得圆润
+
+既然可以变的圆滑了，那我们怎么让它在*圆滑的同时不影响原本的大小*呢？也很简单，直接把矩形大小减去我们 rounded*f，*外层的 - rounded*f 让我们的矩形范围越来越大，所以我们只需要缩减原本的矩形大小就可以抵消外层的影响*
+
+```auto
+float dist_f = sdf_box(render_v2, vec2(1.0 - rounded_f)) - rounded_f;
+```
+
+## # 结语
+
+_福音书：_
+
+- [github](https://github.com/1226085293/mk_sdf_demo)
+- [gitee](https://gitee.com/muzzik/mk_sdf_demo)
+  下一篇预告，SDF 纹理

@@ -1,0 +1,11 @@
+---
+title: C++ 模板问题备注
+date: 2020-04-09 03:33:00
+tags:
+  - C++
+---
+
+【模板类头文件重复】： `#pragma once`能解决模板类头文件重复包含问题
+【模板不定参的使用】： `template <class... Args>      void test(Args... args);`
+
+传递不定参：`(std::forward<Args>(args)...)`

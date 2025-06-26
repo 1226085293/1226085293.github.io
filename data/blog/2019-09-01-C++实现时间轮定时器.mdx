@@ -1,0 +1,286 @@
+---
+title: C++实现时间轮定时器
+date: 2019-09-01 01:14:00
+tags:
+  - C++
+  - 定时器
+---
+
+根据网上介绍了解原理后自己写的一个定时器，如有不足望指正， 大家的评论才是我进步的动力、希望大家踊跃发言
+
+注： 现在发现时间轮有个说大不大，说小不小的问题，应该大部分时间轮都有， 那就是定时时间越长，那么时间误差也就越大， 因为操作系统唤醒线程的时间不是很精确，就算有一点误差在时间轮面前也会无限的放大，定时时间越久误差越大，建议大家看我的新贴，用时间堆误差会极小。另外这是我很早写的时间轮，现在看到都觉得有点辣鸡， 目前也不准备重写时间轮，等到用到的时间再重写吧
+
+```cpp
+1 //TimeWheel.h
+  2 #pragma once
+  3 #include <iostream>
+  4 #include <windows.h>
+  5 #include <array>
+  6 #include <list>
+  7 #include <atomic>
+  8 #include <thread>
+  9 #include <mutex>
+ 10 #include <assert.h>
+ 11 #include <functional>
+ 12 using namespace std;
+ 13
+ 14 #define _SYNCHRONIZE 1                    //同步
+ 15 #define _ASYNCHRONOUS_SINGLE_THREAD 2    //异步单线程
+ 16 #define _ASYNCHRONOUS_MULTITHREADING 3    //异步多线程
+ 17 //模式(自由选择)
+ 18 #define _MODE _ASYNCHRONOUS_SINGLE_THREAD
+ 19
+ 20 #define _MAX_LEVEL 4                    //最大层级
+ 21 #define _LEVEL 4                        //层级
+ 22
+ 23 #if (_LEVEL <= _MAX_LEVEL)
+ 24 class TimeWheel final
+ 25 {
+ 26 private:
+ 27     //事件信息
+ 28     typedef struct _timerInfo
+ 29     {
+ 30         UINT level;                    //存在层级
+ 31         UINT groove;                //存在槽数
+ 32         bool once;                    //是否只执行一次
+ 33         function<void()> func;        //事件回调
+ 34         array<UINT, _LEVEL> time;    //事件层级(小到大)
+ 35     }TIMEINFO, * TIMEINFO_PTR;
+ 36
+ 37     static unique_ptr<TimeWheel> _me;        //实例指针
+ 38     mutex _lock;                            //线程锁
+ 39     condition_variable _condition;            //条件变量
+ 40     array<USHORT, _LEVEL> _grooveNum;        //层级槽数
+ 41     array<USHORT, _LEVEL> _pointer{ 0 };    //层级指针
+ 42     UINT _tick;                                //滴答(单位:毫秒)
+ 43     list<_timerInfo>* _eventList[_LEVEL];    //事件列表
+ 44     atomic<UINT> _taskNum{ 0 };                //当前任务数
+ 45     atomic<bool> _isInit{ false };            //是否初始化
+ 46     atomic<bool> _isRun{ true };            //是否正在运行
+ 47 protected:
+ 48     TimeWheel() = default;
+ 49     TimeWheel(CONST TimeWheel&) = delete;
+ 50     TimeWheel& operator =(CONST TimeWheel&) = delete;
+ 51 public:
+ 52     ~TimeWheel() {
+ 53         _isRun = false;
+ 54     };
+ 55     //获取实例
+ 56     static TimeWheel& getInstance() {
+ 57         static once_flag _flag;
+ 58         call_once(_flag, [&]() {
+ 59             _me.reset(new TimeWheel);
+ 60         });
+ 61         return *_me;
+ 62     }
+ 63     //销毁
+ 64     void destroy() {
+ 65         _me.reset(nullptr);
+ 66     }
+ 67
+ 68     //初始化数据(tick: 滴答, grooveNum: 槽数)
+ 69     void init(UINT tick, array<USHORT, _LEVEL>& grooveNum);
+ 70     //添加定时事件(time: 秒)
+ 71     template<typename Func, typename... Args>
+ 72     auto addTimer(FLOAT time, BOOL loop, Func&& func, Args&& ... args);
+ 73     //清除定时事件
+ 74     void clearTimer(list<_timerInfo>::iterator timer);
+ 75 };
+ 76
+ 77 //添加定时事件
+ 78 template<typename Func, typename... Args>
+ 79 auto TimeWheel::addTimer(FLOAT time, BOOL loop, Func&& func, Args&& ... args)
+ 80 {
+ 81     if (!_isInit) throw runtime_error("未初始化");
+ 82     //毫秒数
+ 83     UINT ms = 1000 * time;
+ 84     //最大时间单位
+ 85     char maxUnit = -1;
+ 86     TIMEINFO timerEvent;
+ 87     //计算各层级时间
+ 88     for (int i = _LEVEL-1; i > -1; --i)
+ 89     {
+ 90         //获取下一级时间单位
+ 91         UINT timeUnit = _tick;
+ 92         for (int j = 0; j < i; timeUnit *= _grooveNum[j++]);
+ 93         //计算轮数
+ 94         timerEvent.time[i] = ms / timeUnit;
+ 95         //更新剩余时间
+ 96         if (timerEvent.time[i] > 0)
+ 97         {
+ 98             ms -= timerEvent.time[i] * timeUnit;
+ 99             if (maxUnit == -1)
+100                 maxUnit = i;
+101         }
+102     }
+103     //设置事件数据
+104     assert(maxUnit != -1);
+105     timerEvent.level = maxUnit;
+106     timerEvent.func = bind(forward<Func>(func), forward<Args>(args)...);
+107     timerEvent.once = loop;
+108     {
+109         lock_guard<mutex> lock{ _lock };
+110         timerEvent.groove = timerEvent.time[timerEvent.level] + _pointer[timerEvent.level];
+111         //加入事件列表
+112         _eventList[timerEvent.level][timerEvent.groove].emplace_back(timerEvent);
+113     }
+114     ++_taskNum;
+115     //唤醒线程
+116     _condition.notify_one();
+117     return --_eventList[timerEvent.level][timerEvent.groove].end();
+118 }
+119 #endif
+```
+
+```cpp
+  1 //TimeWheel.cpp
+  2 #include "TimeWheel.h"
+  3 #if (_LEVEL <= _MAX_LEVEL)
+  4 unique_ptr<TimeWheel> TimeWheel::_me;
+  5
+  6 //初始化数据(tick: 滴答, grooveNum: 槽数)
+  7 void TimeWheel::init(UINT tick, array<USHORT, _LEVEL>& grooveNum)
+  8 {
+  9     _tick = tick;
+ 10     //初始化槽/各层级槽数
+ 11     for (int i = 0; i < _LEVEL; _eventList[i] = new list<_timerInfo>[grooveNum[i]], _grooveNum[i] = grooveNum[i], ++i);
+ 12     //启动时间轮
+ 13     auto loop = new thread([this]()
+ 14         {
+ 15             while (_isRun)
+ 16             {
+ 17                 unique_lock<mutex> lock{ _lock };
+ 18                 do{
+ 19                     _condition.wait(lock, [this] { return _taskNum.load() != 0; });
+ 20                     //二次检测
+ 21                 } while (_taskNum == 0);
+ 22                 //滴答指针
+ 23                 this_thread::sleep_for(chrono::milliseconds(_tick));
+ 24                 //事件更新函数
+ 25                 auto runTask = [this](UINT __index) {
+ 26                     //cout << "下标" << __index << "  指针：" << _pointer[__index] << endl;
+ 27                     auto& taskList = _eventList[__index][_pointer[__index]];
+ 28                     if (!taskList.empty())
+ 29                     {
+ 30                         for (list<_timerInfo>::iterator it = taskList.begin(); it != taskList.end();)
+ 31                         {
+ 32                             //检测剩余时间
+ 33                             BOOL surplusTime = false;
+ 34                             for (int i = __index - 1; i >= 0; --i)
+ 35                             {
+ 36                                 if (it->time[i] > 0)
+ 37                                 {
+ 38                                     //更新事件时间及存在层级
+ 39                                     surplusTime = true;
+ 40                                     it->time[__index] = 0;
+ 41                                     it->level = i;
+ 42                                     break;
+ 43                                 }
+ 44                             }
+ 45                             //存在剩余时间
+ 46                             if (surplusTime)
+ 47                             {
+ 48                                 //加入事件列表
+ 49                                 it->groove = it->time[it->level] + _pointer[it->level];
+ 50                                 _eventList[it->level][it->groove].push_back(*it);
+ 51                                 it = taskList.erase(it);
+ 52                             }
+ 53                             //无剩余时间
+ 54                             else
+ 55                             {
+ 56 #if (_MODE == _ASYNCHRONOUS_MULTITHREADING)
+ 57                                 auto task = new thread([&](function<void()>&& func)
+ 58                                 {
+ 59                                     cout << "执行函数" << endl;
+ 60                                     func();
+ 61                                 }, it->func);
+ 62 #else
+ 63                                 it->func();
+ 64 #endif
+ 65                                 if (it->once)
+ 66                                 {
+ 67                                     cout << "删除迭代器" << endl;
+ 68                                     it = taskList.erase(it);
+ 69                                     --_taskNum;
+ 70                                     //如果没有任务
+ 71                                     if (_taskNum == 0)
+ 72                                         return;
+ 73                                 }
+ 74                                 else
+ 75                                     ++it;
+ 76                             }
+ 77                         }
+ 78                     }
+ 79                 };
+ 80                 //执行函数
+ 81                 auto runTaskFunc = [&](UINT _index)
+ 82                 {
+ 83 #if (_MODE == _ASYNCHRONOUS_SINGLE_THREAD || _MODE == _ASYNCHRONOUS_MULTITHREADING)
+ 84                     auto task = new thread([&](UINT&& ___index)
+ 85                     {
+ 86                         runTask(___index);
+ 87                     }, _index);
+ 88 #else
+ 89                     runTask(_index);
+ 90 #endif
+ 91                 };
+ 92                 //更新指针
+ 93                 UINT index = 0;
+ 94                 function<void(UINT&, bool)> upadtePointer;
+ 95                 upadtePointer = [&](UINT& __index, bool __runtasks)
+ 96                 {
+ 97                     if (__index > _LEVEL) return;
+ 98                     if (_pointer[__index] < _grooveNum[__index])
+ 99                     {
+100                         ++_pointer[__index];
+101                         //上级指针更新
+102                         if (_pointer[__index] == _grooveNum[__index])
+103                         {
+104                             _pointer[__index++] = 0;
+105                             runTaskFunc(__index);
+106                             upadtePointer(__index, false);
+107                             return;
+108                         }
+109                         if (__runtasks)
+110                             runTaskFunc(__index);
+111                     }
+112                 };
+113                 upadtePointer(index, true);
+114             }
+115         });
+116     _isInit = true;
+117 }
+118
+119 //清除定时事件
+120 void TimeWheel::clearTimer(list<_timerInfo>::iterator timer)
+121 {
+122     if (!_isInit) throw runtime_error("未初始化");
+123     _eventList[timer->level][timer->groove].erase(timer);
+124     --_taskNum;
+125 }
+126 #endif
+```
+
+```cpp
+ 1 //main.cpp
+ 2 #include "TimeWheel.h"
+ 3
+ 4 int main(int argc, TCHAR* argv[])
+ 5 try{
+ 6     //-------------------------------------初始化数据
+ 7     auto&& timer = TimeWheel::getInstance();
+ 8     array<USHORT, 4> grooveNum{ 5,60,60,24 };
+ 9     timer.init(200, grooveNum);
+10     //当前时间
+11     OtherTools::getLocalTime();
+12     auto timer1 = timer.addTimer(5, true, [&]() {
+13         printf("执行任务timer2\n");
+14         OtherTools::getLocalTime();
+15         //timer.clearTimer(timer1);
+16     });
+17 }
+18 catch (exception err)
+19 {
+20     cout <<"Main Error: exception type -> "<< err.what() << endl;
+21 }
+```
