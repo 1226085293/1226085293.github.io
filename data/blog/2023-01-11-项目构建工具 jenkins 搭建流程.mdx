@@ -18,10 +18,11 @@ tags:
 
 1. 打开服务面板
 
-   > ![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/1.png)
+   > <AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/1.png" />
 
 2. 找到 jenkins 服务，双击打开属性面板 -> 此账户（填写账户及密码）
-   ![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/2.png)
+
+   <AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/2.png" />
 
 3. 关闭电脑防火墙，否则局域网其他电脑访问不了
 
@@ -32,7 +33,8 @@ tags:
 1. 打开环境变量配置面板
 
 2. 新建系统变量 **JAVA_TOOL_OPTIONS**，值为 **-Dfile.encoding=UTF-8**
-   ![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/3.png)
+
+   <AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/3.png" />
 
 3. 重启电脑
 
@@ -43,7 +45,8 @@ tags:
 1. 访问 `http://安装电脑IP:8080/manage/computer/new`
 
 2. 输入名称（最好不要有中文，否则执行 bat 命名会失败），选择 Permanent Agent 类型节点
-   ![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/7.png)
+
+   <AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/7.png" />
 
 3. 配置
    - 远程工作目录：这里我随便选的，因为后续我用的绝对路径，个人猜测是执行命令的相对路径的根路径，然后进入下一步
@@ -53,26 +56,28 @@ tags:
    其他的都不管，然后进入下一步
 
 4. 在节点列表点击创建的节点
-   ![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/8.png)
+
+   <AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/8.png" />
 
 5. 复制 `Run from agent command line: (Windows) ` 下的命令然后在 powerShell 执行，如果没有问题你会发现节点已经成功连接上了
-   ![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/9.png)
+   <AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/9.png" />
 
 ### 5. 配置构建流程
 
 1. 打开 jenkins 后台，访问 `http://安装电脑IP:8080`
 
 2. 新建 pipeline 构建流程，勾选不允许并发构建选项
-   ![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/4.png)
+
+   <AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/4.png" />
 
 3. 添加拉代码的批处理命令
    > pipeline 脚本内可以使用 `bat "命令"` 来执行批处理脚本
 
-![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/5.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/5.png" />
 
 4. 添加命令行构建
 
-![](https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/6.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/notes/cocos/cocos-creator/15/6.png" />
 
 > 参考：https://docs.cocos.com/creator/manual/zh/editor/publish/publish-in-command-line.html#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E5%B8%83%E5%8F%82%E8%80%83
 

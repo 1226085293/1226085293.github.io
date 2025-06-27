@@ -62,7 +62,10 @@ module.exports = () => {
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
     eslint: { dirs: ['app', 'components', 'layouts', 'scripts'] },
     images: {
-      remotePatterns: [{ protocol: 'https', hostname: 'picsum.photos' }],
+      remotePatterns: [
+        { protocol: 'https', hostname: '*' },
+        // { protocol: 'https', hostname: 'forum.cocos.org' },
+      ],
       unoptimized,
     },
     async headers() {

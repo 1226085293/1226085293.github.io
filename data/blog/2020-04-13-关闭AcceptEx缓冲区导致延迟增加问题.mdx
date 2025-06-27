@@ -8,15 +8,15 @@ tags:
 
 经测试，在 AcceptEx 函数指针投递 accept 请求的时候如果把接收缓冲区的大小设置为零，那么 server 端消息到 client 端延迟会增加 10ms 左右（各机器性能不同...）    上对比图
 
-![关闭了缓冲区的server端](https://img-blog.csdnimg.cn/20200413145933898.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Mzk4MzAx,size_16,color_FFFFFF,t_70)
+<AutoSizeImage src="https://img-blog.csdnimg.cn/20200413145933898.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Mzk4MzAx,size_16,color_FFFFFF,t_70" />
 
-![client端](https://img-blog.csdnimg.cn/20200413150016493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Mzk4MzAx,size_16,color_FFFFFF,t_70)
+<AutoSizeImage src="https://img-blog.csdnimg.cn/20200413150016493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Mzk4MzAx,size_16,color_FFFFFF,t_70" />
 
 咱们先不看第一个 client 链接，因为程序启动耗时的原因，所以拿第二个举例， 第二个执行 WSASend 函数后的时间为 1586760772134(1900 年到现在的毫秒数)，  客户端的到达时间为 1586760772144， 共 10 毫秒， 由于本人做过多次试验，所以确定时间在 10 毫秒左右浮动，  接下来我们看正常缓冲区大小的收发用时
 
-![带缓冲区的server端](https://img-blog.csdnimg.cn/20200413150736720.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Mzk4MzAx,size_16,color_FFFFFF,t_70)
+<AutoSizeImage src="https://img-blog.csdnimg.cn/20200413150736720.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Mzk4MzAx,size_16,color_FFFFFF,t_70" />
 
-![client端](https://img-blog.csdnimg.cn/20200413150816551.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Mzk4MzAx,size_16,color_FFFFFF,t_70)
+<AutoSizeImage src="https://img-blog.csdnimg.cn/20200413150816551.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Mzk4MzAx,size_16,color_FFFFFF,t_70" />
 
 大家可以看到，server 端的发送消息时间和 client 端的接收消息时间都为 1586761584231，0 毫秒的延迟， 证明之前 10 毫秒的延迟是因为我们关闭了接收缓冲区造成的，不知道系统是怎么操作的..
         但是，很重要的是，设置接收缓冲区大小为 0 有一个好处，就是可以防止拒绝服务攻击（连接上后就不发消息的 client），因为设置缓冲区大小为 0 后 windows 一收到连接请求就会通过 GetQueuedCompletionStatus 通知我们， 那么我们就可以尽快的做出处理，防止攻击， 而如果我们不设置缓冲区大小为 0 的话，windows 的机制就会将两个操作合并为一个，哪两个操作呢，那就是 accept 和客户端发出的第一组数据，写过 iocp 的都知道，客户端连接的时候 GetQueuedCompletionStatus 并不会通知我们，而是在第一组数据发出的时候才通知我们，这是易用也是不易用的地方。

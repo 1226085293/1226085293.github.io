@@ -6,7 +6,7 @@ tags:
   - 游戏框架
 ---
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/1.jpg)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/1.jpg" />
 
 MKFramework是我个人维护持续了几年的项目（虽然公开只有一年左右），最开始由于自己从事QP类游戏开发，我很喜欢MVVM，于是想把他做成 MVVM 框架，在论坛第一个 MVVM 框架出来的时候，我的框架已经快完成了，但是为了其他人项目的安全着想还是没有发布.. 后面又进行了数次大改动，现在说说自己对于代码框架开发的一些心得和想法
 
@@ -73,14 +73,15 @@ gitee：https://gitee.com/muzzik/MKFramework
 
 - **屏幕适配**
   这个都说烂了，基本就是更宽定高，更高定宽，为了方便，可以监听切换场景事件后自动添加到 canvas
-      ```tsx
-      cc.director.on(cc.Director.EVENT_AFTER_SCENE_LAUNCH, () => { ... });
-      ```
+  `tsx
+    cc.director.on(cc.Director.EVENT_AFTER_SCENE_LAUNCH, () => { ... });
+    `
 
       **源码**：[mk_adaptation_canvas](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/%40component/adaptation/mk_adaptation_canvas.ts)
+
 - **节点适配**
   除了屏幕适配，可能大家还没意识到，使用更多的是节点适配，比如背景，比如大小不同的商品图标
-      适配尺寸
+  适配尺寸
 
       1. canvas
       2. 父节点
@@ -231,7 +232,7 @@ mk.ui_manage.open(res_test, { type: 'new' })
 
 UI 管理器是支持模块类型和初始化数据类型安全的，不必担心外部使用者导致的错误，当然这个功能完全是可选的，取决你是否声明了 init_data 和 type_s 的类型
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/2.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/2.png" />
 
 **源码**：[mk_ui_manage](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/mk_ui_manage.ts)
 
@@ -243,21 +244,21 @@ UI 管理器是支持模块类型和初始化数据类型安全的，不必担�
 
 对于模块，框架提供了内置的层级管理，将层级划分为不同的类型，每个类型间隔指定的数量，当然，这些是你完全可控的！
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/3.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/3.png" />
 
 使用时
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/4.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/4.png" />
 
 当然你也可以在编辑器对它进行赋值
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/5.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/5.png" />
 
 ## 6. 快捷操作
 
 MKFramework 将开发中高频的操作封装了一下，让你使用更简单，这里 diss 一下引擎开发团队，什么时候解决这个问题 https://forum.cocos.org/t/topic/154608
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/6.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/6.png" />
 
 </details>
 
@@ -299,7 +300,7 @@ const effect_as = (await mk.audio.add(["db://xxx", ...], this, { dir_b: true }))
 
 ### 使用
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/7.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/7.png" />
 
 ## 2. 解决多音频监听结束回调
 
@@ -371,7 +372,7 @@ this._ws2.message.on(test.test_c, (value) => {
 
 通过消息体获得消息号，就是这么简单，在创建 socket 的时候，可以传递这两个函数，一个用于获取消息 ID，一个用于获取消息序列号
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/8.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/8.png" />
 
 怎么把消息号包含在消息体内？个人推荐的是使用 proto 的 **默认值**，
 
@@ -393,7 +394,7 @@ https://store.cocos.com/app/detail/5243
 
 框架将网络消息事件封装为了一个事件对象，并增加 send 和 request 接口，让用户更熟悉
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/9.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/9.png" />
 
 - send：发送消息到服务器
 - emit：模拟服务器消息
@@ -512,7 +513,7 @@ await mk.bundle.reload({
 
 Bundle 管理器是专门为子游戏设计的，用以初始化子游戏，存放公共数据，事件，存储的对象
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/10.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/10.png" />
 
 Bundle 管理器的生命周期有 init, open, close
 
@@ -538,9 +539,9 @@ Bundle 管理器的生命周期有 init, open, close
 
 在使用多语言资源的时候，一般会把资源放在一块，以 Bundle 为单位或整包为单位，但是MK框架不一样，它可以模块为单位，也可以 Bundle 为单位！这意味着很少存在多语言垃圾堆积
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/11.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/11.png" />
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/12.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/12.png" />
 
 多语言类型即为你注册的单位，而语言标识即为多语言键
 
@@ -548,7 +549,7 @@ Bundle 管理器的生命周期有 init, open, close
 
 在开发过程中，存在一些多语言文本和图片不能解决的多语言展示问题，比如结构不一致的布局。节点位置、大小等等。这时候就可以使用多语言节点组件，将其挂载到父节点会自动根据当前语言显示或隐藏对应节点
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/13.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/13.png" />
 
 源码：[language](https://github.com/1226085293/MKFramework/tree/main/assets/%40framework/language)
 
@@ -718,7 +719,7 @@ step_update_callback_f?(step_n: number): any;
 
 使用 mk_polygon_mask 组件，支持多边形遮罩，节点跟踪、触摸屏蔽
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/14.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/14.png" />
 
 源码：[guide](https://github.com/1226085293/MKFramework/tree/main/assets/%40framework/guide)
 
@@ -749,17 +750,17 @@ const event = new mk.event_target<main_event_protocol>()
 
 emit
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/15.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/15.png" />
 
 on
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/16.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/16.png" />
 
 ## 2. 增强接口：request（请求）
 
 有时候需要等待事件返回值，那么就可以使用 request，同样也支持类型安全
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/17.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/17.png" />
 
 源码：[mk_event_target](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/mk_event_target.ts)
 
@@ -778,17 +779,17 @@ on
 
 get
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/18.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/18.png" />
 
 set
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/19.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/19.png" />
 
 ## 2. 怎么保证默认值存储
 
 构造函数必须填写默认值，避免 get 获取到空数据
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/20.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/20.png" />
 
 源码：[mk_storage](https://github.com/1226085293/MKFramework/blob/main/assets/%40framework/mk_storage.ts)
 
@@ -803,7 +804,7 @@ set
 
 一般模块间共享的数据放在第三方脚本，但是异步数据怎么办呢？可以使用 mk.data_sharer 创建一个共享数据
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/21.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/21.png" />
 
 ## 同步数据
 
@@ -859,7 +860,7 @@ mk.monitor.on(data, 'a', (new_value, old_value) => {
 
 有了数据监听，你可以把它封装为任何使用方式，比如框架示例项目中的 tool_monitor_trigger 组件，就是一个封装的例子
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/25.gif)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/25.gif" />
 
 下面是一个简单的 tool_monitor_trigger 事件定义，根据数据来显示或者隐藏节点。只需要导出一个 namespace 即可增加一个方法，**目前最为灵活的 mvvm 实现方式，没有之一。**
 
@@ -906,7 +907,7 @@ export namespace 显示隐藏 {
 
 为什么框架不打包为一个 js 和 d.ts？或者使用 npm 包的方式进行安装？因为 **MK框架推荐你进行自定义**，而且自定义框架提供了构建 d.ts 的工具，**即改即用，灵活强大**
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/22.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/22.png" />
 
 # # 框架的安装与使用
 
@@ -918,7 +919,7 @@ export namespace 显示隐藏 {
 
 1. 终端执行 `npm i -g @muzzik/mk-install` ，等待安装完成
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/23.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/23.png" />
 
 2. 终端执行 `npx mk-install` ，输入你的 CocosCreator 项目路径
 3. 关闭编辑器，输入 `install` 后回车，等待安装完成
@@ -929,7 +930,7 @@ export namespace 显示隐藏 {
 
 在脚本中使用输入 mk 即可出现类型提示
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/29/24.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/29/24.png" />
 
 这是因为框架使用了[导入映射](https://docs.cocos.com/creator/manual/zh/scripting/modules/import-map.html?h=%E5%AF%BC%E5%85%A5%E6%98%A0%E5%B0%84)，所以需要使用 mk 导入，为什么一定要导入？因为框架内的 d.ts 为了类型安全导入了脚本 global_config，否则是可以做成全局变量的。
 

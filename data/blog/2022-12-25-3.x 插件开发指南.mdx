@@ -49,13 +49,13 @@ tags:
 
 ## # 创建插件
 
-![](https://forum.cocos.org/uploads/default/optimized/3X/c/9/c98540e3c992b0bacc00109032881bd778a053aa_2_524x500.png =524x500)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/optimized/3X/c/9/c98540e3c992b0bacc00109032881bd778a053aa_2_524x500.png =524x500" />
 
 我们可以从顶部菜单栏中打开 _扩展/创建扩展_
 
 ### # 创建插件 - 插件放在哪儿？
 
-![](https://forum.cocos.org/uploads/default/original/3X/f/9/f913fcb9030afb8350599b0fcda2713bb24a75d8.png =690x331)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/f/9/f913fcb9030afb8350599b0fcda2713bb24a75d8.png =690x331" />
 
 我们可以从顶部菜单栏中打开 _扩展/扩展管理器_ 从找到我们的插件，点击 _Open Folder_
 
@@ -65,7 +65,7 @@ tags:
 
 - _cd 插件根目录_
 - _npm i_
-  ![](https://forum.cocos.org/uploads/default/optimized/3X/9/3/93fcd66615de78c4d5a07cb5489777e552ba9df1_2_677x442.png =677x442)
+  <AutoSizeImage src="https://forum.cocos.org/uploads/default/optimized/3X/9/3/93fcd66615de78c4d5a07cb5489777e552ba9df1_2_677x442.png =677x442" />
 
 ## # package.json 简述
 
@@ -74,7 +74,7 @@ package.json 是一个在插件根目录内的文件，里面包含了很多信�
 - main 关系到插件能否正常启动
 - panels 关系到面板能否正常展示
 - contributions 插件大部分的配置都在这里面
-  ![](https://forum.cocos.org/uploads/default/original/3X/7/c/7ca7a7b1a54451e15290350734c6615e1a941e69.png =522x415)
+  <AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/7/c/7ca7a7b1a54451e15290350734c6615e1a941e69.png =522x415" />
   参考链接
 - <a
     href="https://docs.cocos.com/creator/manual/zh/editor/extension/first.html#%E6%89%A9%E5%B1%95%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6-packagejson"
@@ -87,9 +87,10 @@ package.json 是一个在插件根目录内的文件，里面包含了很多信�
 
 在开发中我们经常使用多语言，插件多语言怎么使用的呢？其实是*靠一个放在插件根目录的 i18n 文件夹来实现*，文件里面存放的文件名是语言代号，内容则是一个导出的对象
 
-![](https://forum.cocos.org/uploads/default/original/3X/6/4/64d1fe692ad441e11a62138b57a14e2508a73234.png =400x151)>
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/6/4/64d1fe692ad441e11a62138b57a14e2508a73234.png =400x151" />
+>
 
-![](https://forum.cocos.org/uploads/default/original/3X/0/7/07669e4be6718b8afcc855b261f5c7a99013bdae.png =400x151)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/0/7/07669e4be6718b8afcc855b261f5c7a99013bdae.png =400x151" />
 参考链接
 
 - <a
@@ -104,7 +105,7 @@ package.json 是一个在插件根目录内的文件，里面包含了很多信�
 - _脚本中使用_
 - _HTML 中使用_
 - _JSON 中使用中使用_
-  ![](https://forum.cocos.org/uploads/default/original/3X/0/1/015dc0a2865fdf331792aea493c4abf4db734516.png =396x207)
+  <AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/0/1/015dc0a2865fdf331792aea493c4abf4db734516.png =396x207" />
   参考链接
 - <a
     href="https://docs.cocos.com/creator/manual/zh/editor/extension/i18n.html#%E5%9C%A8%E8%84%9A%E6%9C%AC%E4%B8%AD%E4%BD%BF%E7%94%A8"
@@ -122,7 +123,8 @@ package.json 是一个在插件根目录内的文件，里面包含了很多信�
 ## # 怎么通过消息启动插件面板
 
 首先我们要启动插件面板需要先注册一个菜单项，在 package.json 的 contributions.menu 里面，写入一个含有 path、label、message 属性的数据
-![](https://forum.cocos.org/uploads/default/original/3X/6/8/681ba354d839e6c5032337253d79fd5f1600d443.png =559x339)
+
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/6/8/681ba354d839e6c5032337253d79fd5f1600d443.png =559x339" />
 _这些内容代表了什么？_
 
 - _菜单路径_
@@ -130,7 +132,7 @@ _这些内容代表了什么？_
 
 ### # 怎么通过消息启动插件面板 - 怎么监听消息
 
-![](https://forum.cocos.org/uploads/default/original/3X/f/f/ff229b5db5a6a94933923301dc05835b884c2797.png =467x238)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/f/f/ff229b5db5a6a94933923301dc05835b884c2797.png =467x238" />
 我们可以在 package.json 文件中的 contributions.messages 中写入我们监听的消息名以及触发的方法数组
 
 我们所有的事件都是在 messages 里面注册，_这里的 open-panel 就是我们注册的事件_
@@ -145,17 +147,18 @@ _这些内容代表了什么？_
 
 ### # 怎么通过消息启动插件面板 - 看看回调做了什么
 
-![](https://forum.cocos.org/uploads/default/original/3X/6/9/699c9a29a2a468355ac3b9d5b94c5666f7424295.png =583x217)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/6/9/699c9a29a2a468355ac3b9d5b94c5666f7424295.png =583x217" />
 在 open_panel 内我们调用了 Editor.Panel.open，这就是打开面板的方法
 
 - Editor.Panel.open：打开面板，参数为扩展名 | 扩展名.面板名
-  ![](https://forum.cocos.org/uploads/default/original/3X/5/f/5f7ea39f1240bd227f91537c0f10862eb321395c.png =681x469)
+  <AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/5/f/5f7ea39f1240bd227f91537c0f10862eb321395c.png =681x469" />
   到这里点击菜单后我们的插件面板就打开了
 
 ## # 插件面板的内容编写
 
 首先是面板的一些基础属性，我们在 package.json 内的 contributions.panels 中定义
-![](https://forum.cocos.org/uploads/default/original/3X/4/5/450896cc5532ac5c23a66a2b0b5f0cbab5b40957.png =431x311)
+
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/4/5/450896cc5532ac5c23a66a2b0b5f0cbab5b40957.png =431x311" />
 
 - title：面板标题
 - type：dockable(可停靠) | simple(不可停靠)
@@ -165,7 +168,8 @@ _这些内容代表了什么？_
 ### # 插件面板的内容编写 - 面板展示内容控制
 
 也就是在 index.js 文件中我们导出的对象，template 则为 html 内容，style 则为 css 内容
-![](https://forum.cocos.org/uploads/default/original/3X/d/4/d44712…ttps://forum.cocos.org/uploads/default/original/3X/6/8/682db28b0ed0ef717a8b7fa120d614812d102a03.png =507x203)
+
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/d/4/d44712…ttps://forum.cocos.org/uploads/default/original/3X/6/8/682db28b0ed0ef717a8b7fa120d614812d102a03.png =507x203" />
 参考链接
 
 - <a
@@ -183,7 +187,7 @@ _使用 ts 写插件自然需要将其编译为 js 才能使用_
 - tsc -b [tsconfig 所在目录]：单次编译
 - tsc -w [tsconfig 所在目录]：监听编译（在 ts 文件保存后且有改动就会自动编译）
   我们也可以配置脚本命令，在 vscode 内可以通过 ctrl + shift + p 来搜索并执行
-  ![](https://forum.cocos.org/uploads/default/original/3X/8/5/852ac69b6563796438cec63887d747c04a0a1c44.png =436x418)
+  <AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/8/5/852ac69b6563796438cec63887d747c04a0a1c44.png =436x418" />
 
 ## # 发布插件
 
@@ -228,7 +232,8 @@ _使用 ts 写插件自然需要将其编译为 js 才能使用_
 ## # 使用 element-plus
 
 什么是 element-plus？element-plus 是一个 web 前端常用的 ui 组件库，creator 编辑器虽然也提供了一些插件 ui 组件，但是可能并不满足我们的需求，这时候就可以用 element-plus
-![](https://forum.cocos.org/uploads/default/optimized/3X/0/0/00d5bb27a35441c3b90d2ef0ee8226729d7dd2dc_2_690x455.png =690x455)
+
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/optimized/3X/0/0/00d5bb27a35441c3b90d2ef0ee8226729d7dd2dc_2_690x455.png =690x455" />
 参考链接
 
 - <a href="https://forum.cocos.org/t/topic/135647/11" class="inline-onebox">
@@ -245,13 +250,15 @@ _使用 ts 写插件自然需要将其编译为 js 才能使用_
 
 插件开发时需要经常修改 html 与 css，又不想每次都要重新加载插件怎么办？
 我们可以打开插件面板后点击插件面板，再按下 _ctrl + shift + i_
-![](https://forum.cocos.org/uploads/default/original/3X/d/6/d668b4b416ec2d86f0184ddcac9ac402046aca25.png =575x325)
+
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/d/6/d668b4b416ec2d86f0184ddcac9ac402046aca25.png =575x325" />
 
 ## # 扩展 inspector
 
 inspector 是什么？简答的说就是*属性检查器面板内组件展示的内容*
 怎么定义 inspector? 只需要在 package.json 中的 contributions 中声明即可
-![](https://forum.cocos.org/uploads/default/original/3X/f/c/fc9a49c82627f23f593bd7bf8bad5fc702119bfe.png =545x169)
+
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/f/c/fc9a49c82627f23f593bd7bf8bad5fc702119bfe.png =545x169" />
 参考链接
 
 - <a
@@ -272,16 +279,17 @@ inspector 自定义了我们的组件属性面板展示，那么怎么与组件�
 - 消息系统
 
 注：编辑器使用的方式，_推荐使用此种方式_
-![](https://forum.cocos.org/uploads/default/original/3X/4/f/4fda22cb16ecf3a8fb0afd9b8e8f4d5e786ca1ac.png =636x428)
+
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/4/f/4fda22cb16ecf3a8fb0afd9b8e8f4d5e786ca1ac.png =636x428" />
 为什么推荐使用消息来修改组件数据呢？因为*编辑器会依赖这些消息*
 
 ## # 插件公共代码库
 
 在插件开发过程中，我们可能会遇到几份插件都使用同一份代码的情况，这时候我们想要只保留一份公共代码，该怎么操作呢？
 答案是 在插件根目录 tsconfig.include 中添加我们的公共代码库路径
-![](https://forum.cocos.org/uploads/default/original/3X/1/1/11e16b2567491c092271779d0f48546d63a948e4.png =690x189)
-但是这样会使用有个问题，插件编译后路径结构与之前不一致了
-前：
+
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/1/1/11e16b2567491c092271779d0f48546d63a948e4.png =690x189" />
+但是这样会使用有个问题，插件编译后路径结构与之前不一致了 前：
 
 - <span class="mention">@libs</span> 目录
 - 插件目录
@@ -316,14 +324,15 @@ npm 主页：[https://www.npmjs.com/package/@muzzik/cc-plugin-cli](https://www.n
 
 ## # 使用 creator 制作插件 UI
 
-![](https://forum.cocos.org/uploads/default/optimized/3X/4/b/4ba5e1826cbeefef2538989e20595c4f521e7cde_2_685x500.png =685x500)
-看起来很复杂，实现起来很简单，大家别忘了，插件面板也是一个 web 界面，而 web 界面是可以嵌入的，而 creator 也可以输出 web 包，那么事情就很简单了
-![](https://forum.cocos.org/uploads/default/original/3X/f/b/fb513b92d54ba942826f85eb17f2379583ebc658.png =690x55)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/optimized/3X/4/b/4ba5e1826cbeefef2538989e20595c4f521e7cde_2_685x500.png =685x500" />
+看起来很复杂，实现起来很简单，大家别忘了，插件面板也是一个 web 界面，而 web 界面是可以嵌入的，而
+creator 也可以输出 web 包，那么事情就很简单了
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/f/b/fb513b92d54ba942826f85eb17f2379583ebc658.png =690x55" />
 我们可以通过 iframe 标签嵌入指定网址链接，就可以实现插件面板展示 creator 界面
 
 - 调试时：嵌入预览网址
 - 发布时：本地开个 http-server，指向编译后的 web 包路径即可
-  ![](https://forum.cocos.org/uploads/default/original/3X/d/d/dd02e5bc99044e9a8fea4606336456b5cf0b8c90.png =690x107)
+  <AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/d/d/dd02e5bc99044e9a8fea4606336456b5cf0b8c90.png =690x107" />
 
 ## # 调试主进程代码
 
@@ -331,16 +340,16 @@ npm 主页：[https://www.npmjs.com/package/@muzzik/cc-plugin-cli](https://www.n
 
 - 设置 cocos dashboard 启动选项，path 后为项目根目录
 
-![](https://forum.cocos.org/uploads/default/original/3X/f/1/f1a130147c9e273ad1c009b1faaaf443a49d7902.png =444x99)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/f/1/f1a130147c9e273ad1c009b1faaaf443a49d7902.png =444x99" />
 
 - 打开 chrome://inspect/<span class="hashtag">#devices</span> 配置
 
-![](https://forum.cocos.org/uploads/default/original/3X/d/3/d3b1c29836534c247a79c719c179b79c57367f31.png =653x353)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/d/3/d3b1c29836534c247a79c719c179b79c57367f31.png =653x353" />
 
 - 点击 Discover network targets 右侧的 configure 添加 localhost:5858
 - 打开对应的项目，target 下会出现一个新的项，点击蓝色的 inspect，这时候我们就进入了主进程开发者工具，可以使用 ctrl + p 搜索自己插件的 main.js 进行调试
 
-![](https://forum.cocos.org/uploads/default/original/3X/b/4/b4d76ed5ca34210eec2cb523a3eaf08da107a0a8.png =690x353)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/b/4/b4d76ed5ca34210eec2cb523a3eaf08da107a0a8.png =690x353" />
 
 ## # 代码加密的方式
 

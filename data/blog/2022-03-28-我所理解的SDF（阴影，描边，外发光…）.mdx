@@ -7,13 +7,14 @@ tags:
   - SDF
 ---
 
-![](https://forum.cocos.org/uploads/default/original/3X/2/5/254ecd905eb3aeae5a037fff0b029e65409adfb8.png =690x67)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/2/5/254ecd905eb3aeae5a037fff0b029e65409adfb8.png =690x67" />
 
 ## # 效果图
 
-![](https://forum.cocos.org/uploads/default/original/3X/4/b/4b69d086f21abe7f2eb48a2a6ac72923b277f647.gif =338x213)>
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/4/b/4b69d086f21abe7f2eb48a2a6ac72923b277f647.gif =338x213" />
+>
 
-![](https://forum.cocos.org/uploads/default/original/3X/8/6/8643098204e1921861f55ba8429e14f8b7af2694.gif =342x216)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/8/6/8643098204e1921861f55ba8429e14f8b7af2694.gif =342x216" />
 
 ## # 前言
 
@@ -56,7 +57,8 @@ _组成结构：_
 ## # 如何用 SDF 画一个圆？
 
 如果我们想要在 shader 内 _用 sdf 画一个圆_
-![](https://forum.cocos.org/uploads/default/optimized/3X/c/f/cf685aab29dc4b24fbc14ab59a188e219baf2bb0_2_690x204.png =690x204)
+
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/optimized/3X/c/f/cf685aab29dc4b24fbc14ab59a188e219baf2bb0_2_690x204.png =690x204" />
 
 - _问题 1：参数 p 是什么？_
   - _解答：p 是当前渲染点的位置，因为是 2d，所以只有 xy_
@@ -91,7 +93,7 @@ _“深入理解”_
 
 ## # 旋转，跳跃，我闭着眼~
 
-![](https://forum.cocos.org/uploads/default/original/3X/6/a/6a45a616f0ec6aa15cf0f4648cd55c1132eaf568.gif =164x91)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/6/a/6a45a616f0ec6aa15cf0f4648cd55c1132eaf568.gif =164x91" />
 前面说了如何画出 SDF 图形，那么怎么让它们动起来呢？很简单，我们只需要*将渲染点减去我们要移动的坐标*
 
 ### <strong>如何实现？</strong>
@@ -142,13 +144,13 @@ vec2 rotate_cw(vec2 render_v2_, float radian_f_) {
 
 _最终结果：_
 
-![](https://forum.cocos.org/uploads/default/original/3X/6/4/6417cc7fc1a4f68610cdd59faa751514e16d3172.gif =164x91)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/6/4/6417cc7fc1a4f68610cdd59faa751514e16d3172.gif =164x91" />
 
 ---
 
 ## # “正常” 效果
 
-![](https://forum.cocos.org/uploads/default/original/3X/2/4/24d583ec03d55f8645c49bd10ad9e39ca777cd68.gif =164x91)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/2/4/24d583ec03d55f8645c49bd10ad9e39ca777cd68.gif =164x91" />
 如果我们要*正常展示多个 SDF 物体*
 
 ### <strong>如何实现？</strong>
@@ -165,7 +167,7 @@ float merge(float dist_f_, float dist2_f_) {
 
 ## # “相交” 效果
 
-![](https://forum.cocos.org/uploads/default/original/3X/4/c/4c35eea849ae74c029bf9784368467d12bdf4069.gif =164x91)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/4/c/4c35eea849ae74c029bf9784368467d12bdf4069.gif =164x91" />
 效果是不是很奇怪，其实名字一样，这个函数只会在两个物体的距离场同时 < 0 时才会返回 < 0，方法也很简单
 
 ### <strong>如何实现？</strong>
@@ -187,7 +189,7 @@ float intersect(float dist_f_, float dist2_f_) {
 
 ## # “融合” 效果
 
-![](https://forum.cocos.org/uploads/default/original/3X/1/8/189447c70b90b68bd179df3ecf584fbae7d1dfec.gif =164x91)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/1/8/189447c70b90b68bd179df3ecf584fbae7d1dfec.gif =164x91" />
 怎么样？是不是很熟悉？每天打开 cocos 官网都会看见的那个 ta，哈哈哈
 
 ### <strong>如何实现？</strong>
@@ -204,7 +206,7 @@ float smooth_merge(float dist_f_, float dist2_f_, float k_f_) {
 ---
 
 ## # 内什么啊？内发光啊，什么发光啊？内发光阿
-![](https://forum.cocos.org/uploads/default/original/3X/0/b/0b72e8b15abd410cd6b66c732f39b3e8ee4ad97a.png =353x217)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/0/b/0b72e8b15abd410cd6b66c732f39b3e8ee4ad97a.png =353x217" />
 （此函数根据上面的外发光改写）
 ```auto
 vec4 inner_glow(float dist_f_, vec4 color_v4_, vec4 input_color_v4_, float radius_f_) {
@@ -235,7 +237,7 @@ vec4 inner_glow(float dist_f_, vec4 color_v4_, vec4 input_color_v4_, float radiu
 
 ## # 比较硬的阴影
 
-![](https://forum.cocos.org/uploads/default/original/3X/b/5/b58718cb364293df0c56877731442b67c0815e2f.gif =603x398)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/b/5/b58718cb364293df0c56877731442b67c0815e2f.gif =603x398" />
 
 ### <strong>什么是硬阴影？</strong>
 
@@ -287,7 +289,7 @@ float shadow(vec2 render_v2_, vec2 light_v2_) {
 
 ## # 比较软的阴影
 
-![](https://forum.cocos.org/uploads/default/original/3X/d/a/da30c5804bf6b667f510c34451aebbbceb4c7302.gif =603x398)
+<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/d/a/da30c5804bf6b667f510c34451aebbbceb4c7302.gif =603x398" />
 是不是真实感瞬间就上去了，想不想用在自己的游戏里？
 
 ###
@@ -296,8 +298,10 @@ float shadow(vec2 render_v2_, vec2 light_v2_) {
 实现软阴影目前大概是两种，一种是 iq 大神和 games202
 里面提到的公式，但是效果并不好，在靠近物体时会产生弯曲的软阴影，如下图，不过我这里给大家展示的是
 shadertoy 上一位大神的代码，效果非常好，图上所示
-![](https://forum.cocos.org/uploads/default/original/3X/4/7/47786ecafdbbb042d168d6da640933f743a7c942.png
-=410x258)
+<AutoSizeImage
+  src="https://forum.cocos.org/uploads/default/original/3X/4/7/47786ecafdbbb042d168d6da640933f743a7c942.png
+=410x258"
+/>
 
 ### 先上代码
 

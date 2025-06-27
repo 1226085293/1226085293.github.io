@@ -8,7 +8,7 @@ tags:
 
 ## 最终效果
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/24/1.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/24/1.png" />
 
 ## Mesh 是什么？
 
@@ -47,7 +47,7 @@ const mesh = cc.utils.readMesh(this._mesh, 0);
 
 前面说了切割模型实际就是切换三角形，如何切割？
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/24/2.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/24/2.png" />
 
 - **(i1, i0)**：平面
 - **(p0, p1, p2)**：原本的三角形（逆时针为正面）
@@ -98,19 +98,21 @@ uv 和 法线的计算很简单，例：p0 - p1 的交点 i1 的法线及 uv 就
 ### 简单的三角剖分方案
 
 1. 求平均点，不完全支持凹多边形
-   ![](https://gitee.com/muzzik/images/raw/master/blog/article/24/3.png)
+
+   <AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/24/3.png" />
 
 2. 左右横跳，不完全支持凹多边形
-   ![](https://gitee.com/muzzik/images/raw/master/blog/article/24/4.png)
+
+   <AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/24/4.png" />
 
 3. 单点遍历，不完全支持凹多边形
-   ![](https://gitee.com/muzzik/images/raw/master/blog/article/24/5.png)
+   <AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/24/5.png" />
 
 ### 不支持凹面多边形的后果
 
 可以看下图
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/24/6.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/24/6.png" />
 
 这样的话，无论是使用平均点，还是图中的单点遍历新建三角形，都会有可能出现生成的三角形错误的情况
 
@@ -124,7 +126,7 @@ uv 和 法线的计算很简单，例：p0 - p1 的交点 i1 的法线及 uv 就
 
 ### 怎么判断凹凸？
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/24/7.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/24/7.png" />
 
 判断 p0 - p1 - p2 的夹角角度即可，这也是我们需要对新增顶点坐标排序的原因
 
@@ -136,7 +138,7 @@ uv 和 法线的计算很简单，例：p0 - p1 的交点 i1 的法线及 uv 就
 
 ### 平面带孔的情况
 
-![](https://gitee.com/muzzik/images/raw/master/blog/article/24/8.png)
+<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/24/8.png" />
 
 将排序后的两个多边形合并为一个，将内多边形的点连接到最近的一个外多边形，组合成为一个单独的多边形
 
