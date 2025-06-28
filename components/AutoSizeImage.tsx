@@ -20,7 +20,9 @@ export default function AutoSizeImage({
   } | null>(null)
 
   // 代理URL处理
-  const proxySrc = src.startsWith('http') ? `/api/proxy-image?url=${encodeURIComponent(src)}` : src
+  const proxySrc = src.startsWith('http')
+    ? `/api/proxy-image?url=${encodeURIComponent(src)}&t=${Date.now()}`
+    : src
 
   useEffect(() => {
     // 如果已知原始尺寸，直接使用
