@@ -78,13 +78,5 @@ module.exports = () => {
       })
       return config
     },
-    async rewrites() {
-      return [
-        {
-          source: '/api/proxy-image',
-          destination: '/api/proxy-image',
-        },
-      ]
-    },
   })
 }

@@ -13,7 +13,7 @@ tags:
 
 本来是打算做一个 AR 示例的，不过时间不够了，最近状态也不好，就稍微讲下怎么用 opencv 实现 WebAR 的方向吧
 
-<AutoSizeImage src="https://forum.cocos.org/uploads/default/optimized/3X/d/6/d6f81254ca2a19ccdafffb0472ad66f11addd0c6_2_690x411.png =690x411" />
+![](https://forum.cocos.org/uploads/default/optimized/3X/d/6/d6f81254ca2a19ccdafffb0472ad66f11addd0c6_2_690x411.png =690x411)
 
 # # AR 怎么实现的？
 
@@ -29,7 +29,7 @@ tags:
 
 特征检测有很多种算法，这里我们使用的是 AKAZE
 
-<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/a/d/ad5351e32f4ab4d79fb0a0d98f5ea2b2b4972992.png =621x372" />
+![](https://forum.cocos.org/uploads/default/original/3X/a/d/ad5351e32f4ab4d79fb0a0d98f5ea2b2b4972992.png =621x372)
 参考链接
 
 - 2d 特征框架：[https://docs.opencv.org/4.6.0/d9/d97/tutorial_table_of_content_features2d.html](https://docs.opencv.org/4.6.0/d9/d97/tutorial_table_of_content_features2d.html)
@@ -38,7 +38,7 @@ tags:
 
 这里使用的是 knnMatch（暴力匹配）
 
-<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/0/a/0a5c8b63df531510b6923e435e2731d05885e2a7.jpeg =633x378" />
+![](https://forum.cocos.org/uploads/default/original/3X/0/a/0a5c8b63df531510b6923e435e2731d05885e2a7.jpeg =633x378)
 
 > 现在我们拿到了关键点的数据，该怎么用呢？其实下一步就是通过关键点估计单应性，什么是单应性呢？有什么用？
 
@@ -50,18 +50,18 @@ tags:
 
 - 估计相机姿势以增强现实
 
-<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/d/c/dc28d94e036c9f6072da22196c465c5e3ea54105.jpeg =480x386" />
+![](https://forum.cocos.org/uploads/default/original/3X/d/c/dc28d94e036c9f6072da22196c465c5e3ea54105.jpeg =480x386)
 
 - 透视去除/校正
 
-<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/6/d/6d116e46b480886a37f923af32eb9ba78983246f.jpeg =662x268" />
+![](https://forum.cocos.org/uploads/default/original/3X/6/d/6d116e46b480886a37f923af32eb9ba78983246f.jpeg =662x268)
 
 - 图片拼接
 
-<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/9/b/9b05db06d9395c281809877d52b438956b91f17c.jpeg =344x314" />
+![](https://forum.cocos.org/uploads/default/original/3X/9/b/9b05db06d9395c281809877d52b438956b91f17c.jpeg =344x314)
 知道了它有什么用？那么想必会更加更多大家对它的兴趣 简单的说，_单应性矩阵是一个 3x3
 的矩阵（投影变换），可以从一个平面上的点转换到另一个平面上_
-<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/b/2/b27410e1161f18d04a2fbb6b5b85036f35d076c6.png =616x500" />
+![](https://forum.cocos.org/uploads/default/original/3X/b/2/b27410e1161f18d04a2fbb6b5b85036f35d076c6.png =616x500)
 _如果我们这一步返回的单应性是无效的，那么就说明两张图像没有匹配成功_ 参考链接：
 
 - 使用代码解析单应性： [https://docs.opencv.org/4.x/d9/dab/tutorial_homography.html#pose_ar](https://docs.opencv.org/4.x/d9/dab/tutorial_homography.html#pose_ar)
@@ -72,9 +72,9 @@ _如果我们这一步返回的单应性是无效的，那么就说明两张图�
 
 这一步需要提前进行相机校准，什么是相机校准？让我们看看下面的图片
 
-<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/c/b/cb16b1e1a3c1382103fd6cac4b089ea8f73fd1da.jpeg =400x300" />
+![](https://forum.cocos.org/uploads/default/original/3X/c/b/cb16b1e1a3c1382103fd6cac4b089ea8f73fd1da.jpeg =400x300)
 相机是存在边缘被拉伸（畸变）的情况的，相机校准就是确定相机畸变系数，以及相机矩阵（包含了像素值，相机焦距），下面是校准后的图像
-<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/7/f/7fd5d37bc4a0fe9cfbe78e4a5617763663db0c04.jpeg =400x298" />
+![](https://forum.cocos.org/uploads/default/original/3X/7/f/7fd5d37bc4a0fe9cfbe78e4a5617763663db0c04.jpeg =400x298)
 获得了相机矩阵后，我们就可以通过 `solvePnP` 参考链接
 
 - 完整的 C++ 代码示例（Chapter3）：[https://github.com/MasteringOpenCV/code.git](https://github.com/MasteringOpenCV/code.git)
@@ -89,7 +89,7 @@ _如果我们这一步返回的单应性是无效的，那么就说明两张图�
 
 ### 1.1 光流算法是什么？
 
-<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/c/9/c9ad3fff0765faf173f3a9111818ca3ee3ce9eb3.gif =300x200" />
+![](https://forum.cocos.org/uploads/default/original/3X/c/9/c9ad3fff0765faf173f3a9111818ca3ee3ce9eb3.gif =300x200)
 
 ### 1.2 光流有什么好处？
 
@@ -126,7 +126,7 @@ blippar（国外）：[https://www.blippar.com/](https://www.blippar.com/)
 
 ### # 1.1 使用 docker 安装 opencv 的镜像（依赖 WSL 功能，win10 及以上）
 
-<AutoSizeImage src="https://forum.cocos.org/uploads/default/original/3X/8/e/8eb68d0c17579905da69bb7ac371a15ad1d63029.png =690x317" />
+![](https://forum.cocos.org/uploads/default/original/3X/8/e/8eb68d0c17579905da69bb7ac371a15ad1d63029.png =690x317)
 
 ### # 1.2 创建一个容器
 

@@ -7,7 +7,7 @@ tags:
 
 ## # 成品
 
-<AutoSizeImage src="https://forum.cocos.org/uploads/default/optimized/3X/3/2/32af8f6d554f39f1d90757c9355e5db51b476dc8_2_690x347.jpeg =690x347" />
+![](https://forum.cocos.org/uploads/default/optimized/3X/3/2/32af8f6d554f39f1d90757c9355e5db51b476dc8_2_690x347.jpeg =690x347)
 
 [点击体验，由 gitee pages 驱动](https://muzzik.gitee.io/)
 
@@ -65,13 +65,13 @@ tags:
 
 我这里使用了 [google analytics](https://analytics.google.com/)，不过统计数据上传没问题，如果是请求数据还是需要梯子
 
-<AutoSizeImage src="https://s1.imagehub.cc/images/2023/08/14/F3SVZU_91YZOK8OE.png" />
+![](https://s1.imagehub.cc/images/2023/08/14/F3SVZU_91YZOK8OE.png)
 
 ### 自动构建
 
 使用 github actions，可以直接从 github 同步至 gitee，你只需要上传你的文章，github actions 自动构建并同步至 gitee pages，简直不要太方便
 
-<AutoSizeImage src="https://s1.imagehub.cc/images/2023/08/14/imagecb3d0f94a91b9f1d.png" />
+![](https://s1.imagehub.cc/images/2023/08/14/imagecb3d0f94a91b9f1d.png)
 
 ## # 迁移文章
 
@@ -196,16 +196,12 @@ fetch('https://forum.cocos.org/t/topic/137919', {
           }
           // 图片
           case 1: {
-            result_ss.push(
-              `<AutoSizeImage src="${match_result[2]} =${match_result[4]}x${match_result[5]}" />`
-            )
+            result_ss.push(`![](${match_result[2]} =${match_result[4]}x${match_result[5]})`)
             break
           }
           // 图片
           case 10: {
-            result_ss.push(
-              `<AutoSizeImage src="${match_result[1]} =${match_result[3]}x${match_result[4]}" />`
-            )
+            result_ss.push(`![](${match_result[1]} =${match_result[3]}x${match_result[4]})`)
             break
           }
           // 引用

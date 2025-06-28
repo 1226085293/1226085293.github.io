@@ -23,7 +23,7 @@ tags:
 
 所以我在想 Creator 是否能实现原生预览调试呢？既然网页可以，为什么真机不行，于是我完成了它
 
-<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/30/1.gif" />
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/1.gif)
 
 ## 环境
 
@@ -33,11 +33,11 @@ Creator版本：3.6.1
 
 1. 创建一个 Launcher 项目用于加载 Bundle，刚开始我想通过 Launcher 直接加载远程 Bundle 的方式加载原项目预览模式的 Bundle，于是...
 
-<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/30/2.png" />
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/2.png)
 
 2. 好的，熟悉原生开发的我知道这是 bundle 的配置文件，然后我在网页发现了预览模式加载 Bundle 配置获取的是 **config.json** 而不是 **cc.config.json**
 
-<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/30/3.png" />
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/3.png)
 
 ##
 
@@ -60,11 +60,11 @@ Creator版本：3.6.1
 
 4. 重新尝试，没有config的错误的了，发现有个资源加载失败，搜索一番，发现是Test Bundle 中的脚本
 
-<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/30/4.png" />
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/4.png)
 
 而在原生中 bundle 的脚本都是合并后的 index.js，我们打开调试器看看现在 Test Bundle脚本
 
-<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/30/5.png" />
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/5.png)
 
 什么都没有，这是不正常的，正常 Bundle 的 index 脚本包含了全部的脚本源码，所以继续研究
 
@@ -72,7 +72,7 @@ Creator版本：3.6.1
 
 由于我之前无意中逛项目文件夹，发现 `项目根目录\temp\programming\packer-driver\targets\preview\import-map.json` 文件是**记录脚本引用关系**的 json 文件
 
-<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/30/6.png" />
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/6.png)
 
 于是就可以利用这个文件组装 Bundle 的脚本，代码太多不便展示，步骤简单为
 
@@ -84,7 +84,7 @@ Creator版本：3.6.1
 
 > 脚本加载顺序不对会导致 import 的模块出现空的情况
 
-<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/30/7.png" />
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/7.png)
 
 在正常编译出的 Bundle 脚本内，`System.register("chunks:///_virtual/Bundle名称"` 这一行后面其实就脚本的加载顺序，所以我们生成的 Bundle 脚本可以在这里把排序后的脚步名填写进去
 
@@ -121,7 +121,7 @@ script_ss.sort((va_s, vb_s) => {
 
 ### SpriteFrame
 
-<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/30/8.png" />
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/8.png)
 
 这里过太久了，忘记当时怎么解决的了，直接贴代码吧，同样放在代理服务器内
 
@@ -196,7 +196,7 @@ decodeCCONBinary 函数请拷贝当前版本引擎源码的 ccon.ts 脚本源码
 
 4. 修改 config.json 的请求返回数据并修改 extensionMap[".ccon"]，这样引擎才会加载 AnimationClip 的Bin 数据，这是正常的 Bundle 配置文件内容，而预览的请求的 config.json 中的数据是空的
 
-<AutoSizeImage src="https://gitee.com/muzzik/images/raw/master/blog/article/30/9.png" />
+![](https://gitee.com/muzzik/images/raw/master/blog/article/30/9.png)
 
 ```ts
 if (req.url?.endsWith('/cc.config.json')) {
