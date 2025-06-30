@@ -13,11 +13,5 @@ export const components: MDXComponents = {
   pre: Pre,
   table: TableWrapper,
   BlogNewsletterForm,
-  img: ({ src, alt }) => (
-    <img 
-      src={src} 
-      alt={alt} 
-      referrerPolicy="no-referrer" 
-    />
-  ),
+  img: ({ src, alt }) => <img src={src} alt={alt} referrerPolicy="no-referrer" />,
 }
