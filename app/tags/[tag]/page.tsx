@@ -30,7 +30,7 @@ export const generateStaticParams = async () => {
   const tagCounts = tagData as Record<string, number>
   const tagKeys = Object.keys(tagCounts)
   return tagKeys.map((tag) => ({
-    tag: encodeURI(tag),
+    tag: process.env.NODE_ENV === 'production' ? tag : encodeURI(tag),
   }))
 }
 
