@@ -64,6 +64,7 @@ const computedFields: ComputedFields = {
  */
 async function createTagCount(allBlogs) {
   const tagCount: Record<string, number> = {}
+  const tagName: Record<string, string> = {}
   allBlogs.forEach((file) => {
     if (file.tags && (!isProduction || file.draft !== true)) {
       file.tags.forEach((tag) => {
@@ -73,11 +74,18 @@ async function createTagCount(allBlogs) {
         } else {
           tagCount[formattedTag] = 1
         }
+        tagName[formattedTag] = tag
       })
     }
   })
-  const formatted = await prettier.format(JSON.stringify(tagCount, null, 2), { parser: 'json' })
-  writeFileSync('./app/tag-data.json', formatted)
+  {
+    const formatted = await prettier.format(JSON.stringify(tagCount, null, 2), { parser: 'json' })
+    writeFileSync('./app/tag-data.json', formatted)
+  }
+  {
+    const formatted = await prettier.format(JSON.stringify(tagName, null, 2), { parser: 'json' })
+    writeFileSync('./app/tag-name.json', formatted)
+  }
 }
 
 function createSearchIndex(allBlogs) {
