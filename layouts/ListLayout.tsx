@@ -1,5 +1,6 @@
 'use client'
 
+import tagName from '../app/tag-name.json'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { formatDate } from 'pliny/utils/formatDate'
@@ -137,7 +138,7 @@ export default function ListLayout({
                       </h3>
                       <div className="flex flex-wrap">
                         {tags?.map((tag) => (
-                          <Tag key={tag} text={tag} />
+                          <Tag key={tag} text={tagName[tag]} />
                         ))}
                       </div>
                     </div>
