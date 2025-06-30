@@ -36,8 +36,8 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          EXPORT: 1
-          UNOPTIMIZED: 1
+          EMAILOCTOPUS_API_KEY: ${{ secrets.EMAILOCTOPUS_API_KEY }}
+          EMAILOCTOPUS_LIST_ID: ${{ secrets.EMAILOCTOPUS_LIST_ID }}
           BASE_PATH: ${{ steps.configurepages.outputs.base_path }}
       - uses: actions/upload-pages-artifact@v3
         with:
