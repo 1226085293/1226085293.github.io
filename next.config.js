@@ -22,7 +22,7 @@ const ContentSecurityPolicy = isDev
     `
   : `
       default-src 'self';
-      script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app analytics.umami.is;
+      script-src * 'unsafe-inline' 'unsafe-eval' blob: data:;
       style-src 'self' 'unsafe-inline';
       img-src * blob: data:;
       media-src *.s3.amazonaws.com;
