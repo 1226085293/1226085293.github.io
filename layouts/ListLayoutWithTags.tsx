@@ -9,6 +9,7 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import tagData from 'app/tag-data.json'
+import tagName from 'app/tag-name.json'
 
 interface PaginationProps {
   totalPages: number
@@ -105,16 +106,16 @@ export default function ListLayoutWithTags({
                   return (
                     <li key={t} className="my-3">
                       {decodeURI(pathname.split('/tags/')[1]) === slug(t) ? (
-                        <h3 className="text-primary-500 inline px-3 py-2 text-sm font-bold uppercase">
-                          {`${t} (${tagCounts[t]})`}
+                        <h3 className="text-primary-500 inline px-3 py-2 text-sm font-bold normal-case">
+                          {`${tagName[t]} (${tagCounts[t]})`}
                         </h3>
                       ) : (
                         <Link
                           href={`/tags/${slug(t)}`}
-                          className="hover:text-primary-500 dark:hover:text-primary-500 px-3 py-2 text-sm font-medium text-gray-500 uppercase dark:text-gray-300"
+                          className="hover:text-primary-500 dark:hover:text-primary-500 px-3 py-2 text-sm font-medium text-gray-500 normal-case dark:text-gray-300"
                           aria-label={`View posts tagged ${t}`}
                         >
-                          {`${t} (${tagCounts[t]})`}
+                          {`${tagName[t]} (${tagCounts[t]})`}
                         </Link>
                       )}
                     </li>
