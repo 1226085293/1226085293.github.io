@@ -1,55 +1,69 @@
-# Inspired from https://github.com/actions/starter-workflows/blob/main/pages/nextjs.yml
+# .github/workflows/pages.yml
 name: GitHub Pages
 
 on:
   push:
-    branches: main
-  workflow_dispatch:
+    branches: [main]      # 仅 main 分支触发
+  workflow_dispatch:      # 允许手动触发
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: read          # 克隆代码所需
+  pages: write            # 发布到 GitHub Pages
+  id-token: write         # 用于 OIDC 身份验证
 
 concurrency:
-  group: 'pages'
+  group: 'pages'          # 防止并行部署互相覆盖
   cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    # ⬇ 全局注入 EmailOctopus 变量（来自 Environment Secrets）
+    env:
+      EMAILOCTOPUS_API_KEY: ${{ secrets.EMAILOCTOPUS_API_KEY }}
+      EMAILOCTOPUS_LIST_ID: ${{ secrets.EMAILOCTOPUS_LIST_ID }}
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: npm
-      - id: configurepages
+          node-version: 20
+          cache: 'npm'
+
+      - id: configure-pages
         uses: actions/configure-pages@v5
-      - name: Restore cache
+
+      # 可选：缓存 Next.js 构建产物，加速二次构建
+      - name: Restore Next.js cache
         uses: actions/cache@v4
         with:
           path: .next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
-      - run: npm ci
-      - run: npm run build
+            ${{ runner.os }}-nextjs-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        # Base path 由 configure-pages 决定；仅当你在 next.config.js 中用到 basePath 时需要
         env:
-          EMAILOCTOPUS_API_KEY: ${{ secrets.EMAILOCTOPUS_API_KEY }}
-          EMAILOCTOPUS_LIST_ID: ${{ secrets.EMAILOCTOPUS_LIST_ID }}
-          BASE_PATH: ${{ steps.configurepages.outputs.base_path }}
+          BASE_PATH: ${{ steps.configure-pages.outputs.base_path }}
+        run: |
+          npm run build
+
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./out                # Next.js export 输出目录
 
-  # Deployment job
   deploy:
+    needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
+
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
