@@ -4,13 +4,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
-/* ──────────────────────────────────────────────────────────── */
-/*  ① 根据环境生成不同的 Content Security Policy              */
-/* ──────────────────────────────────────────────────────────── */
-const isDev = process.env.NODE_ENV !== 'production'
-
-const ContentSecurityPolicy = isDev
-  ? `
+const ContentSecurityPolicy = `
       default-src *;
       script-src * 'unsafe-inline' 'unsafe-eval' blob: data:;
       style-src * 'unsafe-inline' blob: data:;
@@ -19,16 +13,6 @@ const ContentSecurityPolicy = isDev
       connect-src *;
       font-src * data:;
       frame-src *;
-    `
-  : `
-      default-src 'self';
-      script-src * 'unsafe-inline' 'unsafe-eval' blob: data:;
-      style-src * 'unsafe-inline' blob: data:;
-      img-src * blob: data:;
-      media-src *.s3.amazonaws.com;
-      connect-src *;
-      font-src 'self';
-      frame-src giscus.app;
     `
 
 const securityHeaders = [
