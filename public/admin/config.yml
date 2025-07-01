@@ -3,6 +3,7 @@ backend:
   name: github
   branch: main
   repo: 1226085293/1226085293.github.io
+  base_url: https://muzzik-blog.vercel.app
 
 local_backend: true
 media_folder: 'public/static'
