@@ -23,7 +23,7 @@ const ContentSecurityPolicy = isDev
   : `
       default-src 'self';
       script-src * 'unsafe-inline' 'unsafe-eval' blob: data:;
-      style-src 'self' 'unsafe-inline';
+      style-src * 'unsafe-inline' blob: data:;
       img-src * blob: data:;
       media-src *.s3.amazonaws.com;
       connect-src *;
