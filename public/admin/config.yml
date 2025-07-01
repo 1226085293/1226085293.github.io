@@ -3,6 +3,7 @@ backend:
   name: github
   branch: main
   repo: 1226085293/1226085293.github.io
+  site_domain: muzzik.cc
 
 local_backend: true
 media_folder: 'public/static'
