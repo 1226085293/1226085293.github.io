@@ -11,7 +11,7 @@ tags:
 我们项目的版本是 3.6.1，上周同事有个需求是做一个刮刮卡，自然用到了最常用的 Mask 来实现，然后…
 采用 3.8 录制（想必大家已经明白了）
 
-![](https://forum.cocos.org/uploads/default/original/3X/9/d/9d34105a9b35f77848c43f9380742d01a42d8747.gif =662x401)
+![](https://forum.cocos.org/uploads/default/original/3X/9/d/9d34105a9b35f77848c43f9380742d01a42d8747.gif)
 只要你的小手一直摩擦摩擦，在安卓机和模拟器预览上，会造成 _所有 Mask 失效_
 
 - _真机（模拟器）和网页预览不一致_
@@ -19,7 +19,7 @@ tags:
   - 这个 bug 只会在原生出现，浏览器正常
   - （只测了 3.6.1 - 3.6.3）编辑器保存不了 cc.Graphics 的 lineWidth，重新打开场景就又还原了（确认已经保存，且挂载脚本不会在编辑器状态运行）
 
-![](https://forum.cocos.org/uploads/default/optimized/3X/f/3/f305b580c7d63558213f2a2a1fb48c01a13804e1_2_552x499.gif =552x499)
+![](https://forum.cocos.org/uploads/default/optimized/3X/f/3/f305b580c7d63558213f2a2a1fb48c01a13804e1_2_552x499.gif)
 
 - （偶现）shader 内我采样 RenderTexture 然后判断 `color.a != 0.0`
 
