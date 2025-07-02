@@ -26,9 +26,20 @@ export default function Footer() {
           <div>{` • `}</div>
           <Link href="/">{siteMetadata.title}</Link>
         </div>
-        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
+        <div className="mb-8 flex flex-row space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
             Tailwind Nextjs Theme
+          </Link>
+
+          <Link
+            href={`${siteMetadata.github}/actions/workflows/pages.yml`}
+            aria-label={'GitHub Pages'}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`${siteMetadata.github}/actions/workflows/pages.yml/badge.svg`}
+              alt="部署状态"
+            />
           </Link>
         </div>
       </div>
