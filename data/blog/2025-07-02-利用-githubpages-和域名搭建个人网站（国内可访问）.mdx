@@ -1,0 +1,31 @@
+---
+title: 利用 GithubPages 和域名搭建个人网站（国内可访问）
+date: 2025-07-02
+image: /static/pexels-lukas-574069.jpg
+summary: 使用 github pages 和你的域名搭建一个全球网站
+tags:
+  - Web
+---
+# 前置条件
+
+
+- 个人域名（无须备案）
+
+
+- 已经开通 github pages 的 github 仓库
+
+# 原理
+
+github pages 作为网页静态仓库，利用 cloudflare 作为全球 CDN 部署自己的网站
+
+# 开始行动
+
+1. 在 https://dash.cloudflare.com 添加你的域名
+
+2. 在你的域名服务商网站设置域名服务器（Nameservers）为 cloudflare 提供的地址![](https://forum.cocos.org/uploads/default/original/3X/4/3/43aaed2245590b4143c37d6123dec265a47b97f4.png)
+
+3. 去 cloudflare 控制台左侧的 DNS 界面添加如下记录，1226085293.github.io 替换为自己的 github pages 地址即可。![](https://forum.cocos.org/uploads/default/original/3X/d/a/da7fad0a01d7d2dfd4137fcc3e80e65947d7c555.png)A 和 AAAA 的地址在这儿（方便复制）：[Managing a custom domain for your GitHub Pages site - GitHub Docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain)
+
+4. 去 github 设置界面添加自己的域名并验证通过（验证不通过检查自己的 DNS 设置）![](https://forum.cocos.org/uploads/default/original/3X/2/0/207ad9ac69d5ad30d78ed775f4e962ba7d4b1ae6.png)
+
+5. 去自己的 github pages 仓库的设置添加域名并验证通过，下面的 HTTPS 不用勾，cloudflare 已经支持 HTTPS![](https://forum.cocos.org/uploads/default/optimized/3X/e/a/eaa829b270f895702dc0a9afd3d27ef16760020d_2_690x389.png)
