@@ -3,42 +3,54 @@ name: GitHub Pages
 
 on:
   push:
-    branches: [main]
-  workflow_dispatch:
+    branches: [main]      # 仅 main 分支触发
+  workflow_dispatch:      # 允许手动触发
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: read          # 克隆代码所需
+  pages: write            # 发布到 GitHub Pages
+  id-token: write         # 用于 OIDC 身份验证
 
 concurrency:
-  group: pages
-  cancel-in-progress: true   # 如需自动取消并行任务
+  group: 'pages'          # 防止并行部署互相覆盖
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm           # 让 setup‑node 缓存 node_modules
+          cache: 'npm'
+
       - id: configure-pages
         uses: actions/configure-pages@v5
+
+      # 可选：缓存 Next.js 构建产物，加速二次构建
+      - name: Restore Next.js cache
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build & export static site
+      - name: Build site
+        # Base path 由 configure-pages 决定；仅当你在 next.config.js 中用到 basePath 时需要
         env:
           BASE_PATH: ${{ steps.configure-pages.outputs.base_path }}
         run: |
-          npm run build        # 请确保脚本里最终生成 ./out
+          npm run build
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./out                # Next.js export 输出目录
 
   deploy:
     needs: build
@@ -46,6 +58,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
