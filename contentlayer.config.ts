@@ -65,27 +65,42 @@ const computedFields: ComputedFields = {
 async function createTagCount(allBlogs) {
   const tagCount: Record<string, number> = {}
   const tagName: Record<string, string> = {}
+
   allBlogs.forEach((file) => {
     if (file.tags && (!isProduction || file.draft !== true)) {
       file.tags.forEach((tag) => {
         const formattedTag = slug(tag)
-        if (formattedTag in tagCount) {
-          tagCount[formattedTag] += 1
-        } else {
-          tagCount[formattedTag] = 1
-        }
+        tagCount[formattedTag] = (tagCount[formattedTag] || 0) + 1
         tagName[formattedTag] = tag
       })
     }
   })
+
+  const sortedTagCount = sortObjectByKey(tagCount)
+  const sortedTagName = sortObjectByKey(tagName)
+
   {
-    const formatted = await prettier.format(JSON.stringify(tagCount, null, 2), { parser: 'json' })
+    const formatted = await prettier.format(JSON.stringify(sortedTagCount, null, 2), {
+      parser: 'json',
+    })
     writeFileSync('./app/tag-data.json', formatted)
   }
+
   {
-    const formatted = await prettier.format(JSON.stringify(tagName, null, 2), { parser: 'json' })
+    const formatted = await prettier.format(JSON.stringify(sortedTagName, null, 2), {
+      parser: 'json',
+    })
     writeFileSync('./app/tag-name.json', formatted)
   }
+}
+
+function sortObjectByKey<T extends Record<string, any>>(obj: T): T {
+  return Object.keys(obj)
+    .sort()
+    .reduce((acc, key) => {
+      ;(acc as any)[key] = obj[key]
+      return acc
+    }, {} as T)
 }
 
 function createSearchIndex(allBlogs) {
