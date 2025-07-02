@@ -5,12 +5,16 @@ backend:
   repo: 1226085293/1226085293.github.io
 
 local_backend: true
-media_folder: 'public/static'
-public_folder: '/static'
+# CMS 用户界面将在页面顶部的固定区域添加一个链接，方便内容作者轻松返回您的主站点
+display_url: https://www.muzzik.cc
+# 相对于 repo 基础的上传文件的保存文件夹路径
+media_folder: 'public/static/blog'
+# 媒体库上传文件的文件夹路径
+public_folder: '/static/blog'
 
 collections:
 - name: 'posts'
-  label: 'Posts'
+  label: '帖子'
   label_singular: 'Post'
   folder: 'data/blog'
   format: "frontmatter"
@@ -24,8 +28,7 @@ collections:
     - name: 'date'
       label: '时间'
       widget: 'datetime'
-      date_format: 'YYYY-MM-DD'
-      time_format: false
+      format: 'YYYY-MM-DD HH:mm:ss'
     - name: 'image'
       required: false
       label: '顶部图'
