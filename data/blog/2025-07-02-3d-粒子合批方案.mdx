@@ -1,0 +1,17 @@
+---
+title: 3d 粒子合批方案
+date: 2025-07-03 03:25:00
+image: /static/blog/pexels-cottonbro-studio-9667551.jpg
+summary: CocosCreator中的3d粒子合批方案，减少DrawCall开销
+tags:
+  - CocosCreator
+---
+
+1. 新建 layer “粒子”
+2. 新建粒子摄像机拍摄粒子并输入到 render-texture，Clear Color 为 #80808000（目测最接近本色）![](/static/blog/IMG_6275.png)
+3. 新建使用 render-texture 图片的 2d 精灵节点，拷贝默认的 ui-sprite-material 材质，并开启深度测试(Depth Test)![](/static/blog/IMG_6276.png)
+4. 将其设置为 RenderRoot2D 组件节点的子节点即可合批
+
+## 注意事项
+
+此方案会让粒子从 3d 展示变为平面，所以对于要求有动态粒子效果遮挡物品的需求无法满足，但是可以叠加多个粒子RT贴图，例如正视，侧视，俯视
