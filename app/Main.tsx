@@ -21,24 +21,9 @@ export default function Home({ posts }) {
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((post) => {
-            const { slug, date, title, summary, tags, image } = post
+            const { slug, date, title, summary, tags } = post
             return (
               <li key={slug} className="group relative py-12">
-                {/* 图片作为单独标签，带有透明度 */}
-                {image && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={image}
-                    alt={title}
-                    className="absolute inset-0 h-full w-full rounded-r-xl object-cover opacity-50"
-                    style={{
-                      maskImage: 'linear-gradient(to left, black 30%, transparent)',
-                      WebkitMaskImage: 'linear-gradient(to left, black 30%, transparent)',
-                    }}
-                    aria-hidden="true"
-                  />
-                )}
-
                 <article className="relative z-10">
                   <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                     <dl>
