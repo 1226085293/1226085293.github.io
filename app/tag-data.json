@@ -7,7 +7,7 @@
   "c": 48,
   "c-模板": 2,
   "cocos2dx-lua": 1,
-  "cocoscreator": 45,
+  "cocoscreator": 46,
   "cocoscreator-插件": 8,
   "element-plus": 1,
   "esc": 1,
@@ -61,7 +61,7 @@
   "热更": 2,
   "状态同步": 1,
   "编解码": 1,
-  "网络": 8,
+  "网络": 9,
   "装饰器": 2,
   "调试": 4
 }

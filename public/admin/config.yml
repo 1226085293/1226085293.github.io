@@ -41,7 +41,7 @@ collections:
       label: "标签"
       widget: "select"
       multiple: true
-      options: ["CocosCreator", "Web", "原生", "AI", "Typescript", "Javascript", "Lua", "Nodejs", "C++", "Github", "图形学", "图形处理", "开发工具", "PC", "Cocos2DX", "Unity"]
+      options: ["CocosCreator", "Web", "原生", "网络", "AI", "Typescript", "Javascript", "Lua", "Nodejs", "C++", "Github", "图形学", "图形处理", "开发工具", "PC", "Cocos2DX", "Unity"]
     - name: 'body'
       label: '内容'
       widget: 'markdown'
