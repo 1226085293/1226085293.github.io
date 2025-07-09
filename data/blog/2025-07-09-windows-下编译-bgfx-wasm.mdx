@@ -1,0 +1,54 @@
+---
+title: windows 下编译 bgfx wasm
+date: 2025-07-09 10:02:00
+image: /static/blog/pexels-rostislav-uzunov-5011647.jpg
+summary: 在 windows 下编译 bgfx 渲染引擎的 wasm 版本流程
+tags:
+  - 开发工具
+---
+# 依赖环境
+
+- python3
+- git bash
+
+# 安装存储库
+
+链接：https://bkaradzic.github.io/bgfx/build.html
+![](/static/blog/a87291bc-0648-4186-bf69-876989550992.png)
+> 注意：需要让三个存储库的路径在同一目录下
+
+
+# 安装编译工具
+
+链接：https://bkaradzic.github.io/bgfx/build.html#windows
+![](/static/blog/2.png)
+> 注意：需安装到同一路径下
+
+添加环境变量 `你的安装路径\GnuWin32\bin` 到系统 Path 下
+
+# 安装 emscripten
+
+使用 git bash 执行
+
+```
+git clone https://github.com/emscripten-core/emsdk.git
+cd emsdk
+./emsdk install 3.1.51
+./emsdk activate 3.1.51
+```
+
+添加环境变量 `emscripten 安装路径` 到系统 Path 下
+
+# 开始编译
+
+在 git bash 中执行
+
+```
+cd emscripten安装路径 
+source ./emsdk_env.sh
+cd bgfx仓库目录
+emmake make wasm-debug
+```
+
+完成后即可在 `bgfx\.build\wasm\bin` 看到编译的 wasm 和 html
+![](/static/blog/3.png)
