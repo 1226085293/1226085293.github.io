@@ -1,0 +1,379 @@
+---
+title: 在 Windows 下使用 BGFX(WASM) +JS 渲染三角形
+date: 2025-07-15 16:22:00
+image: /static/blog/c47eaf49-8c97-4b28-b18b-db12dfcbf510.png
+summary: 多平台 BGFX 渲染引擎与 JS 的初步交互实验
+tags:
+  - 开发工具
+---
+# 必要条件
+
+- 成功构建 bgfx 的 wasm 示例项目的环境
+
+
+# 前置工作
+
+### 构建 shaderc（bgfx的多平台着色器构建工具）
+
+1. 安装 MSYS2
+官网：https://www.msys2.org/
+
+2. 安装正确工具链
+启动 MSYS2 目录下的 mingw64.exe，也可以在启动菜单搜索 MSYS2 MINGW64，然后在打开的终端内执行以下命令
+`pacman -S yu`
+`pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-make ninja`
+
+3. 生成 projects
+在 bgfx 目录下执行 make
+
+4. 修改引用路径
+进入 \`bgfx\\.build\\projects\\gmake-mingw-gcc\` 目录，将所有 make 文件内的 \`$(MINGW)/bin/\` 替换为 \`$(MINGW)/mingw64/bin/\`
+
+5. 构建 shaderc
+在 mingw64 终端执行 \`make shaderc config=release64\`，等待构建完成（大概半小时左右）
+> 构建完成的 exe 在 \`bgfx\\.build\\win64_mingw-gcc\\bin\` 目录下
+
+# 新建源码
+
+## 目录结构
+![](/static/blog/17f25a61-7226-43a1-950c-fdfc864818e9.png)
+
+## main.cpp
+
+```
+#include <bgfx/bgfx.h>
+#include <bgfx/platform.h>
+#include <bx/math.h>
+#include <emscripten.h>
+#include <emscripten/html5.h>
+#include <cstdio>
+#include <cstdint>
+
+
+// 顶点结构定义
+struct PosColorVertex {
+    float x, y, z;
+    uint32_t abgr;
+};
+
+
+// 三角形顶点数据
+static PosColorVertex vertices[] = {
+    { 0.0f,  0.5f, 0.0f, 0xff0000ff },
+    { 0.5f, -0.5f, 0.0f, 0xff00ff00 },
+    {-0.5f, -0.5f, 0.0f, 0xffff0000 }
+};
+
+
+// 全局资源句柄
+static bgfx::VertexLayout vertexLayout;
+static bgfx::VertexBufferHandle vbh = BGFX_INVALID_HANDLE;
+static bgfx::ProgramHandle program = BGFX_INVALID_HANDLE;
+
+
+bgfx::ShaderHandle loadShader(const char* path) {
+    FILE* file = fopen(path, "rb");
+    if (!file) {
+        printf("❌ Failed to open shader: %s\n", path);
+        return BGFX_INVALID_HANDLE;
+    }
+
+
+    fseek(file, 0, SEEK_END);
+    long size = ftell(file);
+    rewind(file);
+
+
+    const bgfx::Memory* mem = bgfx::alloc(size);
+    fread(mem->data, 1, size, file);
+    fclose(file);
+
+
+    printf("📦 Loading shader: %s\n", path);
+    return bgfx::createShader(mem);
+}
+
+
+extern "C" {
+// 初始化 BGFX
+EMSCRIPTEN_KEEPALIVE
+void initBgfx()
+{
+    printf("🔥 Initializing bgfx...\n");
+    bgfx::renderFrame();
+
+
+    bgfx::Init init;
+    init.type = bgfx::RendererType::Count;
+    init.platformData.nwh = (void*)"#canvas";
+    init.platformData.ndt = NULL;
+    init.platformData.type = bgfx::NativeWindowHandleType::Default;
+    init.resolution.width = 800;
+    init.resolution.height = 600;
+    init.resolution.reset = BGFX_RESET_VSYNC;
+
+
+    if (!bgfx::init(init)) {
+        printf("❌ bgfx::init failed!\n");
+        return;
+    }
+
+
+    // Enable debug text.
+    bgfx::setDebug(BGFX_DEBUG_TEXT);
+    // Set view 0 clear state.
+    bgfx::setViewClear(0
+        , BGFX_CLEAR_COLOR|BGFX_CLEAR_DEPTH
+        , 0x303030ff
+        , 1.0f
+        , 0
+        );
+
+
+
+    vertexLayout.begin()
+        .add(bgfx::Attrib::Position, 3, bgfx::AttribType::Float)
+        .add(bgfx::Attrib::Color0, 4, bgfx::AttribType::Uint8, true)
+        .end();
+
+
+    vbh = bgfx::createVertexBuffer(
+        bgfx::makeRef(vertices, sizeof(vertices)),
+        vertexLayout);
+
+
+    bgfx::ShaderHandle vsh = loadShader("shaders/vs_triangle.bin");
+    bgfx::ShaderHandle fsh = loadShader("shaders/fs_triangle.bin");
+
+
+    if (!bgfx::isValid(vsh) || !bgfx::isValid(fsh)) {
+        printf("❌ Failed to load shaders.\n");
+        return;
+    }
+
+
+    program = bgfx::createProgram(vsh, fsh, true);
+    if (!bgfx::isValid(program)) {
+        printf("❌ Failed to create program.\n");
+    }
+
+
+    printf("✅ bgfx initialized.\n");
+}
+
+
+// 渲染一帧
+EMSCRIPTEN_KEEPALIVE
+void renderFrame()
+{
+    if (!bgfx::isValid(vbh) || !bgfx::isValid(program)) {
+        printf("⚠️ Skipping frame (invalid handle)\n");
+        return;
+    }
+
+
+    // 视图 / 投影矩阵
+    float view[16];
+    bx::mtxLookAt(view, {0.0f, 0.0f, -3.0f}, {0.0f, 0.0f, 0.0f});
+
+
+    float proj[16];
+    bx::mtxProj(proj, 60.0f, 800.0f / 600.0f, 0.1f, 100.0f, bgfx::getCaps()->homogeneousDepth);
+    bgfx::setViewTransform(0, view, proj);
+
+
+    bgfx::setViewRect(0, 0, 0, 800, 600);
+    bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x303030ff, 1.0f, 0);
+    bgfx::touch(0); // 确保 view 被清屏
+
+
+    // 模型矩阵
+    float mtx[16];
+    bx::mtxIdentity(mtx);
+    bgfx::setTransform(mtx);
+
+
+    // 绑定顶点缓冲
+    bgfx::setVertexBuffer(0, vbh);
+
+
+    // 渲染状态：写颜色 + 关剔除
+    bgfx::setState(BGFX_STATE_WRITE_RGB | BGFX_STATE_WRITE_A | BGFX_STATE_DEPTH_TEST_LESS);
+
+
+    bgfx::submit(0, program);
+    bgfx::frame();
+}
+
+
+// 资源清理
+EMSCRIPTEN_KEEPALIVE
+void shutdown()
+{
+    printf("🔻 Shutting down...\n");
+    if (bgfx::isValid(vbh)) bgfx::destroy(vbh);
+    if (bgfx::isValid(program)) bgfx::destroy(program);
+    bgfx::shutdown();
+}
+
+
+}
+
+
+int main() {
+    return 0;
+}
+```
+
+## index.html
+
+```
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>bgfx WASM Demo</title>
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                background: #303030;
+                overflow: hidden;
+            }
+            canvas {
+                width: 100vw;
+                height: 100vh;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas
+            id="canvas"
+            width="800"
+            height="600"
+            style="background: red"
+        ></canvas>
+        <script>
+            var Module = {
+                canvas: document.getElementById("canvas"),
+                onRuntimeInitialized() {
+                    console.log("✅ WASM ready");
+                    // 初始化 bgfx
+                    Module._initBgfx();
+
+
+                    FS.readdir("/shaders");
+
+
+                    // 开始渲染循环
+                    function loop() {
+                        Module._renderFrame();
+                        requestAnimationFrame(loop);
+                    }
+
+
+                    requestAnimationFrame(loop);
+                    window.addEventListener("beforeunload", Module._shutdown);
+                },
+            };
+        </script>
+        <script src="bgfx_demo.js"></script>
+    </body>
+</html>
+```
+
+## shaders/varying.def.sc
+
+```
+vec3 a_position  : POSITION;
+vec4 a_color0    : COLOR0;
+
+vec4 v_color0    : COLOR0;
+```
+
+## shaders/fs_triangle.sc
+
+```
+$input v_color0
+
+#include <bgfx_shader.sh>
+
+void main()
+{
+    gl_FragColor = v_color0;
+}
+```
+
+## shaders/vs_triangle.sc
+
+```
+$input a_position, a_color0
+$output v_color0
+
+#include <bgfx_shader.sh>
+
+void main()
+{
+    gl_Position = mul(u_modelViewProj, vec4(a_position, 1.0));
+    v_color0 = a_color0;
+}
+```
+
+# 开始构建
+
+## 1. 构建着色器
+
+先把 **shadercRelease.exe** 和  **bgfx/src/bgfx_shader.sh** 拷贝到 `src/shaders` 目录下
+
+然后在 PowelShell 中 cd 到 shaders 目录，执行下面两条命令
+
+```
+./shadercRelease.exe -f fs_triangle.sc -o fs_triangle.bin -i .   --type fshader --platform wasm --profile 120 --varyingdef varying.def.sc
+./shadercRelease.exe -f vs_triangle.sc -o vs_triangle.bin -i .   --type vshader --platform wasm --profile 120 --varyingdef varying.def.sc
+```
+
+如果没有报错则执行成功
+
+## 2. 构建 wasm
+
+在 PowelShell 中 cd 到根目录（bgfx 的上级目录），然后执行以下命令
+
+```
+./emsdk/emsdk_env
+emcc ./src/main.cpp `
+  -o ./src/bgfx_demo.js `
+  -I./bgfx/include `
+  -I./bx/include `
+  -I./bimg/include `
+  ./bgfx/.build/wasm/bin/bgfxRelease.a `
+  ./bgfx/.build/wasm/bin/bimgRelease.a `
+  ./bgfx/.build/wasm/bin/bimg_decodeRelease.a `
+  ./bgfx/.build/wasm/bin/bxRelease.a `
+  -D BX_CONFIG_DEBUG=0 `
+  -s WASM=1 `
+  -s USE_WEBGL2=1 `
+  -s FULL_ES3=1 `
+  -s DISABLE_EXCEPTION_CATCHING=1 `
+  -s MODULARIZE=0 `
+  -s EXPORT_NAME="Module" `
+  -s EXPORTED_FUNCTIONS='["_main","_renderFrame","_shutdown","_emscripten_webgl_create_context","_emscripten_webgl_make_context_current"]' `
+  -s EXPORTED_RUNTIME_METHODS='["ccall","cwrap","FS"]' `
+  -s ALLOW_MEMORY_GROWTH=1 `
+  -s ASSERTIONS=2 `
+  -s INITIAL_MEMORY=67108864 `
+  -s MAX_WEBGL_VERSION=2 `
+  -s MIN_WEBGL_VERSION=2 `
+  -s FORCE_FILESYSTEM=1 `
+  -s ENVIRONMENT=web `
+  -s GL_ENABLE_GET_PROC_ADDRESS=1 `
+  --preload-file ./src/shaders@/shaders `
+  -std=c++20
+```
+
+成功后即可看到 src 目录下的 bgfx_demo.js, bgfx_demo.data, bgfx_demo.wasm
+
+然后在 src 目录执行 npx http-server 启动 http 服务器预览
+
+![](/static/blog/c47eaf49-8c97-4b28-b18b-db12dfcbf510.png)
