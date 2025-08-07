@@ -1,8 +1,8 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: '马赛克的 Blog',
+  title: 'MuzzikBlog',
   author: 'muzzik',
-  headerTitle: 'Muzzik Blog',
+  headerTitle: 'MuzzikBlog',
   description: '向下探索',
   language: 'zh-CN',
   theme: 'system', // system, dark or light
