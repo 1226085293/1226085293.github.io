@@ -9,6 +9,14 @@ content:
     label: 帖子
     path: data/blog
     type: collection
+    filename: '{month}-{day}-{primary}-{title}.mdx'
+    view:
+      fields: [ title ]
+      primary: title
+      sort: [ date, title ]
+      default:
+        search: ''
+        sort: date
     fields:
       - name: title
         label: 标题
