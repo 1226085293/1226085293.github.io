@@ -1,0 +1,33 @@
+media:
+- name: blog
+  label: 博客
+  input: public/static/blog
+  output: public/static/blog
+
+content:
+  - name: posts
+    label: 帖子
+    path: data/blog
+    type: collection
+    fields:
+      - name: title
+        label: 标题
+        type: string
+      - name: date
+        label: 时间
+        type: date
+      - name: image
+        required: false
+        label: 顶部图
+        type: image
+      - name: summary
+        label: 简述
+        type: string
+      - name: tags
+        required: false
+        label: 标签
+        type: string
+        list: true
+      - name: body
+        label: 内容
+        type: rich-text
