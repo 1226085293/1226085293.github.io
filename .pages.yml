@@ -9,7 +9,7 @@ content:
     label: 帖子
     path: data/blog
     type: collection
-    filename: 'index.mdx'
+    filename: '{year}-{month}-{day}-{title}.mdx'
     view:
       fields: [ title ]
       primary: title
